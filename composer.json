@@ -1,0 +1,22 @@
+{
+    "name": "syscover/octopus",
+    "version": "2.0.0",
+    "description": "Octopus package",
+    "keywords": ["syscover","pulsar","laravel","octopus"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SYSCOVER SL",
+            "email": "info@syscover.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Syscover\\Octopus\\": "src/Syscover/Octopus"
+        }
+    },
+    "minimum-stability": "dev"
+}
