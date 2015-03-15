@@ -10,7 +10,7 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Country;
 use Syscover\Pulsar\Traits\ControllerTrait;
@@ -32,38 +32,38 @@ class Laboratories extends Controller {
     public function storeCustomRecord()
     {
         Laboratory::create([
-            'company_name_073'          => Input::get('companyName'),
-            'tin_073'                   => Input::get('tin'),
-            'country_073'               => Input::get('country'),
-            'territorial_area_1_073'    => Input::get('territorialArea1') == 'null'? null : Input::get('territorialArea1'),
-            'territorial_area_2_073'    => Input::get('territorialArea2') == 'null'? null : Input::get('territorialArea2'),
-            'territorial_area_3_073'    => Input::get('territorialArea3') == 'null'? null : Input::get('territorialArea3'),
-            'cp_073'                    => Input::get('cp'),
-            'locality_073'              => Input::get('locality'),
-            'address_073'               => Input::get('address'),
-            'contact_073'               => Input::get('contact'),
-            'phone_073'                 => Input::get('phone'),
-            'email_073'                 => Input::get('email'),
-            'web_073'                   => Input::get('web')
+            'company_name_073'          => Request::input('companyName'),
+            'tin_073'                   => Request::input('tin'),
+            'country_073'               => Request::input('country'),
+            'territorial_area_1_073'    => Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
+            'territorial_area_2_073'    => Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
+            'territorial_area_3_073'    => Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'cp_073'                    => Request::input('cp'),
+            'locality_073'              => Request::input('locality'),
+            'address_073'               => Request::input('address'),
+            'contact_073'               => Request::input('contact'),
+            'phone_073'                 => Request::input('phone'),
+            'email_073'                 => Request::input('email'),
+            'web_073'                   => Request::input('web')
         ]);
     }
     
     public function updateCustomRecord($parameters)
     {
         Laboratory::where('id_073', $parameters['id'])->update([
-            'company_name_073'          => Input::get('companyName'),
-            'tin_073'                   => Input::get('tin'),
-            'country_073'               => Input::get('country'),
-            'territorial_area_1_073'    => Input::get('territorialArea1') == 'null'? null : Input::get('territorialArea1'),
-            'territorial_area_2_073'    => Input::get('territorialArea2') == 'null'? null : Input::get('territorialArea2'),
-            'territorial_area_3_073'    => Input::get('territorialArea3') == 'null'? null : Input::get('territorialArea3'),
-            'cp_073'                    => Input::get('cp'),
-            'locality_073'              => Input::get('locality'),
-            'address_073'               => Input::get('address'),
-            'contact_073'               => Input::get('contact'),
-            'phone_073'                 => Input::get('phone'),
-            'email_073'                 => Input::get('email'),
-            'web_073'                   => Input::get('web')
+            'company_name_073'          => Request::input('companyName'),
+            'tin_073'                   => Request::input('tin'),
+            'country_073'               => Request::input('country'),
+            'territorial_area_1_073'    => Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
+            'territorial_area_2_073'    => Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
+            'territorial_area_3_073'    => Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'cp_073'                    => Request::input('cp'),
+            'locality_073'              => Request::input('locality'),
+            'address_073'               => Request::input('address'),
+            'contact_073'               => Request::input('contact'),
+            'phone_073'                 => Request::input('phone'),
+            'email_073'                 => Request::input('email'),
+            'web_073'                   => Request::input('web')
         ]);
     }
 }

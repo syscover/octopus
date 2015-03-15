@@ -10,7 +10,7 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Brand;
@@ -38,9 +38,9 @@ class Products extends Controller {
     public function storeCustomRecord()
     {
         Product::create([
-            'id_072'    => Input::get('id'),
-            'brand_072' => Input::get('brand'),
-            'name_072'  => Input::get('name')
+            'id_072'    => Request::input('id'),
+            'brand_072' => Request::input('brand'),
+            'name_072'  => Request::input('name')
         ]);
     }
 
@@ -54,9 +54,9 @@ class Products extends Controller {
     public function updateCustomRecord($parameters)
     {
         Product::where('id_072', $parameters['id'])->update([
-            'id_072'    => Input::get('id'),
-            'brand_072' => Input::get('brand'),
-            'name_072'  => Input::get('name')
+            'id_072'    => Request::input('id'),
+            'brand_072' => Request::input('brand'),
+            'name_072'  => Request::input('name')
         ]);
     }
 }

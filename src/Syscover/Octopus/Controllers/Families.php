@@ -10,7 +10,7 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Family;
@@ -31,16 +31,16 @@ class Families extends Controller {
     public function storeCustomRecord()
     {
         Family::create([
-            'id_070'    => Input::get('id'),
-            'name_070'  => Input::get('name')
+            'id_070'    => Request::input('id'),
+            'name_070'  => Request::input('name')
         ]);
     }
     
     public function updateCustomRecord($parameters)
     {
         Family::where('id_070', $parameters['id'])->update([
-            'id_070'    => Input::get('id'),
-            'name_070'  => Input::get('name')
+            'id_070'    => Request::input('id'),
+            'name_070'  => Request::input('name')
         ]);
     }
 }
