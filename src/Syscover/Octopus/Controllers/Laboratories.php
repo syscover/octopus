@@ -12,7 +12,6 @@
 
 use Illuminate\Support\Facades\Request;
 use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Models\Country;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Laboratory;
 
@@ -35,9 +34,9 @@ class Laboratories extends Controller {
             'company_name_073'          => Request::input('companyName'),
             'tin_073'                   => Request::input('tin'),
             'country_073'               => Request::input('country'),
-            'territorial_area_1_073'    => Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_073'    => Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_073'    => Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_073'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
+            'territorial_area_2_073'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
+            'territorial_area_3_073'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
             'cp_073'                    => Request::input('cp'),
             'locality_073'              => Request::input('locality'),
             'address_073'               => Request::input('address'),
@@ -54,9 +53,9 @@ class Laboratories extends Controller {
             'company_name_073'          => Request::input('companyName'),
             'tin_073'                   => Request::input('tin'),
             'country_073'               => Request::input('country'),
-            'territorial_area_1_073'    => Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_073'    => Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_073'    => Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_073'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
+            'territorial_area_2_073'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
+            'territorial_area_3_073'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
             'cp_073'                    => Request::input('cp'),
             'locality_073'              => Request::input('locality'),
             'address_073'               => Request::input('address'),

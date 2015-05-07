@@ -6,7 +6,7 @@
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/select2/js/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/select2/js/i18n/' . config('app.locale') . '.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/getaddress/js/jquery.getaddress.js') }}"></script>
-    <!-- octopus::laboratories.create -->
+    <!-- octopus::companies.create -->
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -30,11 +30,11 @@
             });
         });
     </script>
-    <!-- octopus::laboratories.create -->
+    <!-- octopus::companies.create -->
 @stop
 
 @section('rows')
-    <!-- octopus::laboratories.create -->
+    <!-- octopus::companies.create -->
     @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'name' => 'id', 'readOnly' => true, 'fieldSize' => 2])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.company_name'), 'name' => 'companyName', 'value' => Input::old('companyName'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.tin'), 'name' => 'tin', 'value' => Input::old('tin'), 'maxLength' => '50', 'rangeLength' => '2,50', 'required' => false, 'fieldSize' => 4])
@@ -49,5 +49,5 @@
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.address'), 'name' => 'address', 'value' => Input::old('address'), 'maxLength' => '150', 'rangeLength' => '2,150', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.phone'), 'name' => 'phone', 'value' => Input::old('phone'), 'maxLength' => '50', 'rangeLength' => '2,50', 'required' => false, 'fieldSize' => 5])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.email'), 'name' => 'email', 'value' => Input::old('email'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => false, 'fieldSize' => 5])
-    <!-- /octopus::laboratories.create -->
+    <!-- /octopus::companies.create -->
 @stop

@@ -1,12 +1,15 @@
-        <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory']) !!}>
+        <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company']) !!}>
             <a href="javascript:void(0);"><i class="icomoon-icon-images"></i>Octopus</a>
             <ul class="sub-menu">
                 @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'mifinan', 'access'))
                     <li{{ Miscellaneous::setCurrentPage('mifinan') }}><a href="{{ route('OctopusFamily') }}"><i class="icomoon-icon-truck"></i>Solicitudes</a></li>
                 @endif
-                <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory']) !!}>
+                <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company']) !!}>
                     <a href="javascript:void(0);"><i class="icomoon-icon-grid"></i>Tablas maestras</a>
                     <ul class="sub-menu" >
+                        @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'octopus-company', 'access'))
+                            <li{!! Miscellaneous::setCurrentPage('octopus-company') !!}><a href="{{ route('OctopusCompany') }}"><i class="icon-building"></i>{{ trans_choice('octopus::pulsar.company', 2) }}</a></li>
+                        @endif
                         @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'octopus-laboratory', 'access'))
                             <li{!! Miscellaneous::setCurrentPage('octopus-laboratory') !!}><a href="{{ route('OctopusLaboratory') }}"><i class="icomoon-icon-lab"></i>{{ trans_choice('octopus::pulsar.laboratory', 2) }}</a></li>
                         @endif

@@ -15,5 +15,6 @@ return [
     'package_name'                          => 'Octopus',
     'brand'                                 => 'Marca|Marcas',
     'product'                               => 'Producto|Productos',
-    'laboratory'                            => 'Laboratorio|Laboratorios'
+    'laboratory'                            => 'Laboratorio|Laboratorios',
+    'company'                               => 'Empresa|Empresas',
 ];
