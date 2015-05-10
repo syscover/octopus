@@ -14,6 +14,20 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | CUSTOMER
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/customer/{offset?}',                            ['as'=>'OctopusCustomer',                   'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/customer/json/data',                            ['as'=>'jsonDataOctopusCustomer',           'uses'=>'Syscover\Octopus\Controllers\Customers@jsonData',                  'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/customer/create/{offset}',                      ['as'=>'createOctopusCustomer',             'uses'=>'Syscover\Octopus\Controllers\Customers@createRecord',              'resource' => 'octopus-customer',       'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/customer/store/{offset}',                      ['as'=>'storeOctopusCustomer',              'uses'=>'Syscover\Octopus\Controllers\Customers@storeRecord',               'resource' => 'octopus-customer',       'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/customer/{id}/edit/{offset}',                   ['as'=>'editOctopusCustomer',               'uses'=>'Syscover\Octopus\Controllers\Customers@editRecord',                'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/customer/update/{id}/{offset}',                 ['as'=>'updateOctopusCustomer',             'uses'=>'Syscover\Octopus\Controllers\Customers@updateRecord',              'resource' => 'octopus-customer',       'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/customer/delete/{id}/{offset}',                 ['as'=>'deleteOctopusCustomer',             'uses'=>'Syscover\Octopus\Controllers\Customers@deleteRecord',              'resource' => 'octopus-customer',       'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/customer/delete/select/records',             ['as'=>'deleteSelectOctopusCustomer',       'uses'=>'Syscover\Octopus\Controllers\Customers@deleteRecordsSelect',       'resource' => 'octopus-customer',       'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
     | COMPANY
     |--------------------------------------------------------------------------
     */
