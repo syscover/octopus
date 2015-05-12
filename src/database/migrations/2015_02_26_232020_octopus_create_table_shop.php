@@ -16,7 +16,7 @@ class OctopusCreateTableShop extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id_076')->unsigned();
             $table->integer('customer_076')->unsigned();
-            $table->string('company_name_076', 100);
+            $table->string('name_076', 100);
             $table->string('tin_076', 50)->nullable();
             $table->string('country_076', 2);
             $table->string('territorial_area_1_076', 6)->nullable();

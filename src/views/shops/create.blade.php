@@ -2,11 +2,13 @@
 
 @section('script')
     @parent
+    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/plugins/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/css/select2.min.css') }}">
+    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/jquery.magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/js/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/js/i18n/' . config('app.locale') . '.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/getaddress/js/jquery.getaddress.js') }}"></script>
-    <!-- octopus::customers.create -->
+    <!-- octopus::shops.create -->
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -28,17 +30,30 @@
                 territorialArea2Value:      '{{ Input::old('territorialArea2') }}',
                 territorialArea3Value:      '{{ Input::old('territorialArea3') }}'
             });
+
+            $('.magnific-popup').magnificPopup({
+                type: 'iframe',
+                removalDelay: 300,
+                mainClass: 'mfp-fade'
+            });
         });
+
+        function relatedRecord(data)
+        {
+            $('[name="customer"]').val(data.company_name_075);
+            $('[name="customerid"]').val(data.id_075);
+            $.magnificPopup.close();
+        }
     </script>
-    <!-- octopus::customers.create -->
+    <!-- octopus::shops.create -->
 @stop
 
 @section('rows')
-    <!-- octopus::customers.create -->
+    <!-- octopus::shops.create -->
     @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'name' => 'id', 'readOnly' => true, 'fieldSize' => 2])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.code'), 'name' => 'code', 'value' => Input::old('code'), 'maxLength' => '50', 'rangeLength' => '2,50', 'fieldSize' => 4])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.company_name'), 'name' => 'companyName', 'value' => Input::old('companyName'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.tin'), 'name' => 'tin', 'value' => Input::old('tin'), 'maxLength' => '50', 'rangeLength' => '2,50', 'required' => false, 'fieldSize' => 4])
+    @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans_choice('pulsar::pulsar.customer', 1), 'name' => 'customer', 'value' => Input::old('customer'), 'valueId' => Input::old('customerid'), 'maxLength' => '50', 'rangeLength' => '2,50', 'modalUrl' => route('modalOctopusCustomer', ['offset' => $offset, 'modal' => 1]), 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => Input::old('name'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.tin'), 'name' => 'tin', 'value' => Input::old('tin'), 'maxLength' => '50', 'rangeLength' => '2,50', 'fieldSize' => 4])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.web'), 'name' => 'web', 'value' => Input::old('web'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => false, 'fieldSize' => 5])
     @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.contact', 1), 'name' => 'contact', 'value' => Input::old('contact'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => false, 'fieldSize' => 5])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.country', 1), 'name' => 'country', 'value' => Input::old('country'), 'required' => true, 'idSelect' => 'id_002', 'nameSelect' => 'name_002', 'class' => 'select2', 'fieldSize' => 4, 'data' => ['language' => config('app.locale')]])
@@ -50,5 +65,5 @@
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.address'), 'name' => 'address', 'value' => Input::old('address'), 'maxLength' => '150', 'rangeLength' => '2,150', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.phone'), 'name' => 'phone', 'value' => Input::old('phone'), 'maxLength' => '50', 'rangeLength' => '2,50', 'required' => false, 'fieldSize' => 5])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.email'), 'name' => 'email', 'value' => Input::old('email'), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => false, 'fieldSize' => 5])
-    <!-- /octopus::customers.create -->
+    <!-- /octopus::shops.create -->
 @stop

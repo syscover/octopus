@@ -2,9 +2,9 @@
 
 @section('script')
     @parent
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/plugins/select2/css/select2.min.css') }}">
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/select2/js/select2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/select2/js/i18n/' . config('app.locale') . '.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/css/select2.min.css') }}">
+    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/js/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/jquery.select2/js/i18n/' . config('app.locale') . '.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/getaddress/js/jquery.getaddress.js') }}"></script>
     <!-- octopus::customers.create -->
     <script type="text/javascript">

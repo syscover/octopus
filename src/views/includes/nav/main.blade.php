@@ -1,12 +1,15 @@
-        <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer']) !!}>
+        <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop']) !!}>
             <a href="javascript:void(0);"><i class="sys-icon-octopus"></i>Octopus</a>
             <ul class="sub-menu">
                 @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'mifinan', 'access'))
                     <li{{ Miscellaneous::setCurrentPage('mifinan') }}><a href="{{ route('OctopusFamily') }}"><i class="icomoon-icon-truck"></i>Solicitudes</a></li>
                 @endif
-                <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer']) !!}>
+                <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop']) !!}>
                     <a href="javascript:void(0);"><i class="icomoon-icon-grid"></i>Tablas maestras</a>
-                    <ul class="sub-menu" >
+                    <ul class="sub-menu">
+                        @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'octopus-shop', 'access'))
+                            <li{!! Miscellaneous::setCurrentPage('octopus-shop') !!}><a href="{{ route('OctopusShop') }}"><i class="icomoon-icon-office"></i>{{ trans_choice('octopus::pulsar.shop', 2) }}</a></li>
+                        @endif
                         @if(Session::get('userAcl')->isAllowed(Auth::user()->profile_010, 'octopus-customer', 'access'))
                             <li{!! Miscellaneous::setCurrentPage('octopus-customer') !!}><a href="{{ route('OctopusCustomer') }}"><i class="icomoon-icon-users"></i>{{ trans_choice('pulsar::pulsar.customer', 2) }}</a></li>
                         @endif

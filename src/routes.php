@@ -14,11 +14,26 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | SHOP
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/shop/{offset?}',                                ['as'=>'OctopusShop',                       'uses'=>'Syscover\Octopus\Controllers\Shops@index',                         'resource' => 'octopus-shop',           'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/shop/json/data',                                ['as'=>'jsonDataOctopusShop',               'uses'=>'Syscover\Octopus\Controllers\Shops@jsonData',                      'resource' => 'octopus-shop',           'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/shop/create/{offset}',                          ['as'=>'createOctopusShop',                 'uses'=>'Syscover\Octopus\Controllers\Shops@createRecord',                  'resource' => 'octopus-shop',           'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/shop/store/{offset}',                          ['as'=>'storeOctopusShop',                  'uses'=>'Syscover\Octopus\Controllers\Shops@storeRecord',                   'resource' => 'octopus-shop',           'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/shop/{id}/edit/{offset}',                       ['as'=>'editOctopusShop',                   'uses'=>'Syscover\Octopus\Controllers\Shops@editRecord',                    'resource' => 'octopus-shop',           'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/shop/update/{id}/{offset}',                     ['as'=>'updateOctopusShop',                 'uses'=>'Syscover\Octopus\Controllers\Shops@updateRecord',                  'resource' => 'octopus-shop',           'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/shop/delete/{id}/{offset}',                     ['as'=>'deleteOctopusShop',                 'uses'=>'Syscover\Octopus\Controllers\Shops@deleteRecord',                  'resource' => 'octopus-shop',           'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/shop/delete/select/records',                 ['as'=>'deleteSelectOctopusShop',           'uses'=>'Syscover\Octopus\Controllers\Shops@deleteRecordsSelect',           'resource' => 'octopus-shop',           'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
     | CUSTOMER
     |--------------------------------------------------------------------------
     */
     Route::any(config('pulsar.appName') . '/octopus/customer/{offset?}',                            ['as'=>'OctopusCustomer',                   'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
-    Route::any(config('pulsar.appName') . '/octopus/customer/json/data',                            ['as'=>'jsonDataOctopusCustomer',           'uses'=>'Syscover\Octopus\Controllers\Customers@jsonData',                  'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/customer/modal/{offset}/{modal}',               ['as'=>'modalOctopusCustomer',              'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/customer/json/data/{modal}',                    ['as'=>'jsonDataOctopusCustomer',           'uses'=>'Syscover\Octopus\Controllers\Customers@jsonData',                  'resource' => 'octopus-customer',       'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/customer/create/{offset}',                      ['as'=>'createOctopusCustomer',             'uses'=>'Syscover\Octopus\Controllers\Customers@createRecord',              'resource' => 'octopus-customer',       'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/customer/store/{offset}',                      ['as'=>'storeOctopusCustomer',              'uses'=>'Syscover\Octopus\Controllers\Customers@storeRecord',               'resource' => 'octopus-customer',       'action' => 'create']);
     Route::get(config('pulsar.appName') . '/octopus/customer/{id}/edit/{offset}',                   ['as'=>'editOctopusCustomer',               'uses'=>'Syscover\Octopus\Controllers\Customers@editRecord',                'resource' => 'octopus-customer',       'action' => 'access']);

@@ -17,4 +17,5 @@ return [
     'product'                               => 'Product|Products',
     'laboratory'                            => 'Laboratory|Laboratories',
     'company'                               => 'Company|Companies',
+    'shop'                                  => 'Shop|Shops',
 ];

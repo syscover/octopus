@@ -17,4 +17,5 @@ return [
     'product'                               => 'Producto|Productos',
     'laboratory'                            => 'Laboratorio|Laboratorios',
     'company'                               => 'Empresa|Empresas',
+    'shop'                                  => 'Punto de venta|Punto de venta',
 ];
