@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OctopusCreateTablePedido extends Migration {
+class OctopusCreateTableCommitted extends Migration {
 
 	/**
 	 * Run the migrations.
