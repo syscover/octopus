@@ -16,6 +16,7 @@ class ResourceOctopusTableSeeder extends Seeder {
             ['id_007' => 'octopus-company','name_007' => 'Company','package_007' => '8'],
             ['id_007' => 'octopus-customer','name_007' => 'Customer','package_007' => '8'],
             ['id_007' => 'octopus-shop','name_007' => 'Point of sale','package_007' => '8'],
+            ['id_007' => 'octopus-address','name_007' => 'Address of point of sale','package_007' => '8'],
             ['id_007' => 'octopus-request','name_007' => 'Request','package_007' => '8'],
             ['id_007' => 'octopus-order','name_007' => 'Order','package_007' => '8'],
             ['id_007' => 'octopus-committed','name_007' => 'Committed','package_007' => '8']

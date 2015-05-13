@@ -10,9 +10,9 @@
                 $('.datatable-pulsar').dataTable({
                     'iDisplayStart' : {{ $offset }},
                     'aoColumnDefs': [
-                        { 'bSortable': false, 'aTargets': [5,6]},
-                        { 'sClass': 'checkbox-column', 'aTargets': [5]},
-                        { 'sClass': 'align-center', 'aTargets': [6]}
+                        { 'bSortable': false, 'aTargets': [6,7]},
+                        { 'sClass': 'checkbox-column', 'aTargets': [6]},
+                        { 'sClass': 'align-center', 'aTargets': [7]}
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
@@ -28,6 +28,7 @@
     <!-- octopus::shops.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
+        <th data-hide="phone">{{ trans('pulsar::pulsar.company_name') }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.phone') }}</th>

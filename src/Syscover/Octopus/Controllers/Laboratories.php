@@ -22,7 +22,7 @@ class Laboratories extends Controller {
     protected $routeSuffix  = 'OctopusLaboratory';
     protected $folder       = 'laboratories';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_073', 'company_name_073', 'email_073', 'phone_073', 'contact_073'];
+    protected $aColumns     = ['id_073', 'company_name_073', ['data' => 'email_073', 'type' => 'email'], 'phone_073', 'contact_073'];
     protected $nameM        = 'name_company_073';
     protected $model        = '\Syscover\Octopus\Models\Laboratory';
     protected $icon         = 'icomoon-icon-lab';

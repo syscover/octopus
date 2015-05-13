@@ -22,11 +22,19 @@ class Shops extends Controller {
     protected $routeSuffix  = 'OctopusShop';
     protected $folder       = 'shops';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_076', 'name_076', 'email_076', 'phone_076', 'contact_076'];
+    protected $aColumns     = ['id_076', 'company_name_075', 'name_076', ['data' => 'email_076', 'type' => 'email'], 'phone_076', 'contact_076'];
     protected $nameM        = 'company_name_076';
     protected $model        = '\Syscover\Octopus\Models\Shop';
     protected $icon         = 'icomoon-icon-office';
     protected $objectTrans  = 'shop';
+
+    public function customActionUrlParameters($actionUrlParameters, $parameters)
+    {
+        // init record on tap 1
+        $actionUrlParameters['tab'] = 1;
+
+        return $actionUrlParameters;
+    }
 
     public function storeCustomRecord()
     {
@@ -46,6 +54,13 @@ class Shops extends Controller {
             'email_076'                 => Request::input('email'),
             'web_076'                   => Request::input('web')
         ]);
+    }
+
+    public function editCustomRecord($parameters)
+    {
+        $parameters['object'] = Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->find($parameters['id']);
+
+        return $parameters;
     }
     
     public function updateCustomRecord($parameters)

@@ -40,4 +40,9 @@ class Shop extends Model {
     {
         return Validator::make($data, static::$rules);
 	}
+
+    public static function getCustomRecordsLimit()
+    {
+        return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->newQuery();
+    }
 }
