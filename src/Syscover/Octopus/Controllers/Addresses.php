@@ -19,14 +19,14 @@ class Addresses extends Controller {
 
     use ControllerTrait;
 
-    protected $routeSuffix  = 'OctopusAddress';
-    protected $folder       = 'addresses';
-    protected $package      = 'octopus';
-    protected $aColumns     = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
-    protected $nameM        = 'alias_077';
-    protected $model        = '\Syscover\Octopus\Models\Address';
-    protected $icon         = 'icon-road';
-    protected $objectTrans  = 'address';
+    protected $routeSuffix      = 'OctopusAddress';
+    protected $folder           = 'addresses';
+    protected $package          = 'octopus';
+    protected $aColumns         = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
+    protected $nameM            = 'alias_077';
+    protected $model            = '\Syscover\Octopus\Models\Address';
+    protected $icon             = 'icon-road';
+    protected $objectTrans      = 'address';
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
@@ -41,7 +41,7 @@ class Addresses extends Controller {
         Address::create([
             'shop_077'                  => Request::input('ref'),
             'alias_077'                 => Request::input('alias'),
-            'business_077'              => Request::input('business'),
+            'company_name_077'          => Request::input('companyName'),
             'name_077'                  => Request::input('name'),
             'surname_077'               => Request::input('surname'),
             'country_077'               => Request::input('country'),
@@ -56,7 +56,7 @@ class Addresses extends Controller {
             'favorite_077'              => Request::input('favorite', 0)
         ]);
 
-        $parameters['modal'] = true;
+        $parameters['modal'] = 1;
 
         return $parameters;
     }
@@ -67,7 +67,7 @@ class Addresses extends Controller {
 
         Address::where('id_077', $parameters['id'])->update([
             'alias_077'                 => Request::input('alias'),
-            'business_077'              => Request::input('business'),
+            'company_name_077'          => Request::input('companyName'),
             'name_077'                  => Request::input('name'),
             'surname_077'               => Request::input('surname'),
             'country_077'               => Request::input('country'),
@@ -82,14 +82,14 @@ class Addresses extends Controller {
             'favorite_077'              => Request::input('favorite', 0)
         ]);
 
-        $parameters['modal'] = true;
+        $parameters['modal'] = 1;
 
         return $parameters;
     }
 
     public function deleteCustomRecordRedirect($object, $parameters)
     {
-        $parameters['tab'] = 0;
+        $parameters['tab'] = 1;
 
         return redirect()->route('editOctopusShop', $parameters)->with([
             'msg'        => 1,
@@ -99,7 +99,7 @@ class Addresses extends Controller {
 
     public function deleteCustomRecordsRedirect($parameters)
     {
-        $parameters['tab'] = 0;
+        $parameters['tab'] = 1;
 
         return redirect()->route('editOctopusShop', $parameters)->with([
             'msg'        => 1,

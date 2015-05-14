@@ -18,4 +18,7 @@ return [
     'laboratory'                            => 'Laboratorio|Laboratorios',
     'company'                               => 'Empresa|Empresas',
     'shop'                                  => 'Punto de venta|Punto de venta',
+    'request'                               => 'Solicitud|Solicitudes',
+    'order'                                 => 'Pedido|Pedidos',
+    'committed'                             => 'Entregado|Entregados',
 ];

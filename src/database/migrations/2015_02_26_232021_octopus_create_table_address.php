@@ -17,7 +17,7 @@ class OctopusCreateTableAddress extends Migration {
             $table->increments('id_077')->unsigned();
             $table->integer('shop_077')->unsigned();
             $table->string('alias_077', 100)->nullable();
-            $table->string('business_077', 100)->nullable();
+            $table->string('company_name_077', 100)->nullable();
             $table->string('name_077', 50)->nullable();
             $table->string('surname_077', 50)->nullable();
             $table->string('country_077', 2);

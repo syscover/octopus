@@ -18,4 +18,7 @@ return [
     'laboratory'                            => 'Laboratory|Laboratories',
     'company'                               => 'Company|Companies',
     'shop'                                  => 'Shop|Shops',
+    'request'                               => 'Request|Requests',
+    'order'                                 => 'Order|Orders',
+    'committed'                             => 'Committed|Committed',
 ];

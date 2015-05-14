@@ -41,7 +41,7 @@
     <!-- octopus::addresses.edit -->
     @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'name' => 'id', 'value' => $object->id_077, 'readOnly' => true, 'fieldSize' => 2])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.alias'), 'name' => 'alias', 'value' => $object->alias_077, 'maxLength' => '100', 'rangeLength' => '2,100'])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.business', 1), 'name' => 'business', 'value' => $object->business_077, 'maxLength' => '100', 'rangeLength' => '2,100'])
+    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.company_name'), 'name' => 'companyName', 'value' => $object->company_name_077, 'maxLength' => '100', 'rangeLength' => '2,100'])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => $object->name_077, 'maxLength' => '50', 'rangeLength' => '2,50'])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.surname'), 'name' => 'surname', 'value' => $object->surname_077, 'maxLength' => '50', 'rangeLength' => '2,50'])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.country', 1), 'name' => 'country', 'required' => true, 'idSelect' => 'id_002', 'nameSelect' => 'name_002', 'class' => 'select2', 'fieldSize' => 4, 'data' => ['language' => config('app.locale')]])
