@@ -21,4 +21,9 @@ return [
     'request'                               => 'Request|Requests',
     'order'                                 => 'Order|Orders',
     'committed'                             => 'Committed|Committed',
+    'expiration'                            => 'Expiration',
+    'view_width'                            => 'View width',
+    'view_height'                           => 'View height',
+    'total_width'                           => 'Total width',
+    'total_height'                          => 'Total height',
 ];

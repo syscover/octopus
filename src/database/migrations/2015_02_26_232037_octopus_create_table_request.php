@@ -44,10 +44,10 @@ class OctopusCreateTableRequest extends Migration {
 
             //request
             $table->integer('date_078')->unsigned();
-            $table->decimal('view_height_078', 6, 2);
             $table->decimal('view_width_078', 6, 2);
-            $table->decimal('total_height_078', 6, 2);
+            $table->decimal('view_height_078', 6, 2);
             $table->decimal('total_width_078', 6, 2);
+            $table->decimal('total_height_078', 6, 2);
             $table->smallInteger('units_078')->unsigned();
             $table->integer('expiration_078')->nullable()->unsigned()->default(0);
             $table->string('attached_078',255)->nullable();

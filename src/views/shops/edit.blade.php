@@ -59,7 +59,7 @@
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076]) }}"
+                    "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0]) }}"
                 }).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json)
                 {
                     $('[name="urlTarget"]').val('{{ route('editOctopusShop', ['id' => $object->id_076]) }}/' + settings._iDisplayStart + '/1');
@@ -162,9 +162,6 @@
                         Pulse o arrastre aquí sus fotos
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
