@@ -56,4 +56,9 @@ class Address extends Model {
     {
         Address::where('shop_077', $shop)->update(['favorite_077' => 0]);
     }
+
+    public static function getFavoriteAddressShop($shop)
+    {
+        return Address::where('shop_077', $shop)->where('favorite_077', 1)->first();
+    }
 }

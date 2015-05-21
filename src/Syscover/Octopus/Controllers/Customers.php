@@ -30,14 +30,16 @@ class Customers extends Controller {
 
     public function storeCustomRecord()
     {
+        dd(Request::has('territorialArea1'));
+
         Customer::create([
             'code_075'                  => Request::input('code'),
             'company_name_075'          => Request::input('companyName'),
             'tin_075'                   => Request::input('tin'),
             'country_075'               => Request::input('country'),
-            'territorial_area_1_075'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_075'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_075'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_075'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
+            'territorial_area_2_075'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
+            'territorial_area_3_075'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
             'cp_075'                    => Request::input('cp'),
             'locality_075'              => Request::input('locality'),
             'address_075'               => Request::input('address'),
@@ -55,9 +57,9 @@ class Customers extends Controller {
             'company_name_075'          => Request::input('companyName'),
             'tin_075'                   => Request::input('tin'),
             'country_075'               => Request::input('country'),
-            'territorial_area_1_075'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_075'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_075'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_075'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
+            'territorial_area_2_075'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
+            'territorial_area_3_075'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
             'cp_075'                    => Request::input('cp'),
             'locality_075'              => Request::input('locality'),
             'address_075'               => Request::input('address'),

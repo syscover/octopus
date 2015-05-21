@@ -11,9 +11,11 @@
  */
 
 use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Brand;
+use Syscover\Octopus\Models\Product;
 
 class Products extends Controller {
 
@@ -58,5 +60,14 @@ class Products extends Controller {
             'brand_072' => Request::input('brand'),
             'name_072'  => Request::input('name')
         ]);
+    }
+
+    public function jsonBrandProducts(HttpRequest $request)
+    {
+        $parameters = $request->route()->parameters();
+
+        $products = Product::getBrandProducts($parameters['brand']);
+
+        return response()->json($products);
     }
 }

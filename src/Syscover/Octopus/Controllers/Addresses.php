@@ -11,6 +11,7 @@
  */
 
 use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Address;
@@ -45,9 +46,9 @@ class Addresses extends Controller {
             'name_077'                  => Request::input('name'),
             'surname_077'               => Request::input('surname'),
             'country_077'               => Request::input('country'),
-            'territorial_area_1_077'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_077'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_077'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_077'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
+            'territorial_area_2_077'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
+            'territorial_area_3_077'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
             'cp_077'                    => Request::input('cp'),
             'locality_077'              => Request::input('locality'),
             'address_077'               => Request::input('address'),
@@ -71,9 +72,9 @@ class Addresses extends Controller {
             'name_077'                  => Request::input('name'),
             'surname_077'               => Request::input('surname'),
             'country_077'               => Request::input('country'),
-            'territorial_area_1_077'    => !Request::has('territorialArea1') || Request::input('territorialArea1') == 'null'? null : Request::input('territorialArea1'),
-            'territorial_area_2_077'    => !Request::has('territorialArea2') || Request::input('territorialArea2') == 'null'? null : Request::input('territorialArea2'),
-            'territorial_area_3_077'    => !Request::has('territorialArea3') || Request::input('territorialArea3') == 'null'? null : Request::input('territorialArea3'),
+            'territorial_area_1_077'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
+            'territorial_area_2_077'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
+            'territorial_area_3_077'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
             'cp_077'                    => Request::input('cp'),
             'locality_077'              => Request::input('locality'),
             'address_077'               => Request::input('address'),
@@ -105,5 +106,14 @@ class Addresses extends Controller {
             'msg'        => 1,
             'txtMsg'     => trans('pulsar::pulsar.message_delete_records_successful')
         ]);
+    }
+
+    public function jsonFavoriteAddress(HttpRequest $request)
+    {
+        $parameters = $request->route()->parameters();
+
+        $address = Address::getFavoriteAddressShop($parameters['shop']);
+
+        return response()->json($address);
     }
 }

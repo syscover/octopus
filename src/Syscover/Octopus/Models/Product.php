@@ -36,4 +36,9 @@ class Product extends Model {
     {
         return Product::join('008_071_brand', '008_072_product.brand_072', '=', '008_071_brand.id_071')->newQuery();
     }
+
+    public static function getBrandProducts($brand)
+    {
+        return Product::where('brand_072', $brand)->get();
+    }
 }
