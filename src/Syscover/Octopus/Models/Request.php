@@ -35,7 +35,8 @@ class Request extends Model {
         'email'         => 'email|between:0,100',
         'viewWidth'     => 'required|numeric',
         'viewHeight'    => 'required|numeric',
-        'units'         => 'required|numeric'
+        'units'         => 'required|numeric',
+        'date'          => 'required'
     ];
 
     public static function validate($data)
@@ -47,6 +48,7 @@ class Request extends Model {
     {
         return Request::join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
             ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
+            ->join('008_072_product', '008_078_request.product_078', '=', '008_072_product.id_072')
             ->newQuery();
     }
 }
