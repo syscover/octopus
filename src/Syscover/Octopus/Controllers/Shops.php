@@ -55,13 +55,6 @@ class Shops extends Controller {
             'web_076'                   => Request::input('web')
         ]);
     }
-
-    public function editCustomRecord($parameters)
-    {
-        $parameters['object'] = Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->find($parameters['id']);
-
-        return $parameters;
-    }
     
     public function updateCustomRecord($parameters)
     {

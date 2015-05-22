@@ -78,11 +78,9 @@ class Requests extends Controller {
 
     public function editCustomRecord($parameters)
     {
-        $parameters['companies'] = Company::all();
-        $parameters['families'] = Family::all();
-        $parameters['brands']   = Brand::all();
-
-        //$parameters['object'] = Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->find($parameters['id']);
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
 
         return $parameters;
     }
