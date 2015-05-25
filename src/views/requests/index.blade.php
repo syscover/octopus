@@ -31,8 +31,8 @@
         <th>{{ trans('pulsar::pulsar.date') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.code') }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
-        <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans_choice('octopus::pulsar.product', 1) }}</th>
+        <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.phone', 1) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
