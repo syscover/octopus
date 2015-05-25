@@ -70,6 +70,8 @@ class OctopusCreateTableRequest extends Migration {
             $table->foreign('product_078')->references('id_072')
                 ->on('008_072_product')->onDelete('restrict')->onUpdate('cascade');
 
+            $table->foreign('id_address_078')->references('id_077')
+                ->on('008_077_address')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('country_078')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('territorial_area_1_078')->references('id_003')->on('001_003_territorial_area_1')

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Request;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
+use Syscover\Octopus\Models\Product;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\ControllerTrait;
 use Syscover\Octopus\Models\Request as OctopusRequest;
@@ -50,9 +51,9 @@ class Requests extends Controller {
             'family_078'                => Request::input('family'),
             'brand_078'                 => Request::input('brand'),
             'product_078'               => Request::input('product'),
-            'id_address_078'            => Request::input('idAddress'),
+            'id_address_078'            => Request::input('aliasid'),
             'company_name_078'          => Request::input('companyName'),
-            'name_078'                  => Request::input('companyName'),
+            'name_078'                  => Request::input('name'),
             'surname_078'               => Request::input('surname'),
             'country_078'               => Request::input('country'),
             'territorial_area_1_078'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
@@ -81,6 +82,7 @@ class Requests extends Controller {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
+        $parameters['products']     = Product::getBrandProducts($parameters['object']->brand_078);
 
         return $parameters;
     }
@@ -88,16 +90,15 @@ class Requests extends Controller {
     public function updateCustomRecord($parameters)
     {
         OctopusRequest::where('id_078', $parameters['id'])->update([
-            'supervisor_078'            => Request::input('supervisor'),
             'customer_078'              => Request::input('customer'),
-            'shop_078'                  => Request::input('shop'),
+            'shop_078'                  => Request::input('shopid'),
             'company_078'               => Request::input('company'),
             'family_078'                => Request::input('family'),
             'brand_078'                 => Request::input('brand'),
             'product_078'               => Request::input('product'),
-            'id_address_078'            => Request::input('idAddress'),
+            'id_address_078'            => Request::input('aliasid'),
             'company_name_078'          => Request::input('companyName'),
-            'name_078'                  => Request::input('companyName'),
+            'name_078'                  => Request::input('name'),
             'surname_078'               => Request::input('surname'),
             'country_078'               => Request::input('country'),
             'territorial_area_1_078'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
@@ -109,13 +110,12 @@ class Requests extends Controller {
             'phone_078'                 => Request::input('phone'),
             'email_078'                 => Request::input('email'),
             'observations_078'          => Request::input('observations'),
-            'date_078'                  => Request::input('date'),
             'view_height_078'           => Request::input('viewHeight'),
             'view_width_078'            => Request::input('viewWidth'),
             'total_height_078'          => Request::input('totalHeight'),
             'total_width_078'           => Request::input('totalWidth'),
             'units_078'                 => Request::input('units'),
-            'expiration_078'            => Request::input('expiration'),
+            'expiration_078'            => Request::has('expiration')? \DateTime::createFromFormat('d-m-Y',Request::input('expiration'))->getTimestamp() : null,
             'attached_078'              => Request::input('attached'),
             'comments_078'              => Request::input('comments')
         ]);

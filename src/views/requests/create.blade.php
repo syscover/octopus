@@ -37,6 +37,9 @@
 
                 if($('[name="brand"]').val() != "")
                 {
+                    $("[name='product']").val("");
+                    $("[name='product']").select2();
+
                     $.ajax({
                         type: "POST",
                         url: '{{ route('jsonBrandProductsOctopusProduct') }}/' +  $('[name="brand"]').val(),
@@ -145,8 +148,7 @@
     @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans_choice('octopus::pulsar.shop', 1), 'name' => 'shop', 'value' => Input::old('shop'), 'valueId' => Input::old('shopid'), 'maxLength' => '50', 'rangeLength' => '2,50', 'modalUrl' => route('modalOctopusShop', ['offset' => $offset, 'modal' => 1]), 'required' => true, 'readOnly' => true])
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.address', 1), 'icon' => 'icon-road'])
     <div id="selectAddress" style="display: none">
-        @include('pulsar::includes.html.form_hidden', ['name' => 'idAddress'])
-        @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans('pulsar::pulsar.alias'), 'name' => 'alias', 'value' => Input::old('alias'), 'valueId' => Input::old('aliasid'), 'maxLength' => '100', 'rangeLength' => '2,100', 'modalUrl' => route('modalOctopusAddress', ['ref' => $offset,'offset' => $offset, 'modal' => 1]), 'required' => true, 'labelSize' => 1, 'fieldSize' => 9, 'readOnly' => true])
+        @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans('pulsar::pulsar.alias'), 'name' => 'alias', 'value' => Input::old('alias'), 'valueId' => Input::old('aliasid'), 'maxLength' => '100', 'rangeLength' => '2,100', 'modalUrl' => route('modalOctopusAddress', ['ref' => null, 'offset' => $offset, 'modal' => 1]), 'required' => true, 'labelSize' => 1, 'fieldSize' => 9, 'readOnly' => true])
         <hr>
     </div>
     <div class="row">
@@ -183,11 +185,11 @@
             @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.expiration'), 'name' => 'expiration', 'value' => Input::old('expiration'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '99-99-9999']])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_width'), 'name' => 'viewWidth', 'value' => Input::old('viewWidth'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_height'), 'name' => 'viewHeight', 'value' => Input::old('viewHeight'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_width'), 'name' => 'totalWidth', 'value' => Input::old('totalWidth'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_height'), 'name' => 'totalHeight', 'value' => Input::old('totalHeight'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.units'), 'name' => 'units', 'value' => Input::old('units'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '9?9']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_width'), 'name' => 'viewWidth', 'value' => Input::old('viewWidth'), 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_height'), 'name' => 'viewHeight', 'value' => Input::old('viewHeight'), 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_width'), 'name' => 'totalWidth', 'value' => Input::old('totalWidth'), 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_height'), 'name' => 'totalHeight', 'value' => Input::old('totalHeight'), 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.units'), 'name' => 'units', 'value' => Input::old('units'), 'maxLength' => '100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '9?9']])
             @include('pulsar::includes.html.form_file_group', ['label' => trans('pulsar::pulsar.attached'), 'name' => 'attached', 'value' => Input::old('attached'), 'fieldSize' => 4])
         </div>
     </div>

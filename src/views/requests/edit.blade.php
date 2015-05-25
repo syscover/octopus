@@ -37,6 +37,9 @@
 
                 if($('[name="brand"]').val() != "")
                 {
+                    $("[name='product']").val("");
+                    $("[name='product']").select2();
+
                     $.ajax({
                         type: "POST",
                         url: '{{ route('jsonBrandProductsOctopusProduct') }}/' +  $('[name="brand"]').val(),
@@ -144,9 +147,8 @@
     @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'name' => 'id', 'readOnly' => true, 'fieldSize' => 2, 'value' => $object->id_078])
     @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans_choice('octopus::pulsar.shop', 1), 'name' => 'shop', 'value' => $object->name_076, 'valueId' => $object->shop_078, 'maxLength' => '50', 'rangeLength' => '2,50', 'modalUrl' => route('modalOctopusShop', ['offset' => $offset, 'modal' => 1]), 'required' => true, 'readOnly' => true])
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.address', 1), 'icon' => 'icon-road'])
-    <div id="selectAddress" style="display: none">
-        @include('pulsar::includes.html.form_hidden', ['name' => 'idAddress'])
-        @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans('pulsar::pulsar.alias'), 'name' => 'alias', 'value' => Input::old('alias'), 'valueId' => Input::old('aliasid'), 'maxLength' => '100', 'rangeLength' => '2,100', 'modalUrl' => route('modalOctopusAddress', ['ref' => $offset,'offset' => $offset, 'modal' => 1]), 'required' => true, 'labelSize' => 1, 'fieldSize' => 9, 'readOnly' => true])
+    <div id="selectAddress" @if(!isset($object->id_address_078)) style="display: none"@endif>
+        @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans('pulsar::pulsar.alias'), 'name' => 'alias', 'value' => $object->alias_077, 'valueId' => $object->id_address_078, 'maxLength' => '100', 'rangeLength' => '2,100', 'modalUrl' => route('modalOctopusAddress', ['ref' => $object->shop_078, 'offset' => $offset, 'modal' => 1]), 'required' => true, 'labelSize' => 1, 'fieldSize' => 9, 'readOnly' => true])
         <hr>
     </div>
     <div class="row">
@@ -175,25 +177,25 @@
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('octopus::pulsar.request', 1), 'icon' => 'icon-inbox'])
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.date'), 'name' => 'date', 'readOnly' => true, 'value' => date('d-m-Y'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4])
-            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.company', 1), 'name' => 'company', 'value' => Input::old('company'), 'objects' => $companies, 'idSelect' => 'id_074', 'nameSelect' => 'company_name_074', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%', 'error-placement' => 's2company', 's2-id-container' => 's2company']])
-            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.family', 1), 'name' => 'family', 'value' => Input::old('family'), 'objects' => $families, 'idSelect' => 'id_070', 'nameSelect' => 'name_070', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
-            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('octopus::pulsar.brand', 1), 'name' => 'brand', 'value' => Input::old('brand'), 'objects' => $brands, 'idSelect' => 'id_071', 'nameSelect' => 'name_071', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
-            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('octopus::pulsar.product', 1), 'name' => 'product', 'required' => true, 'idSelect' => 'id_072', 'nameSelect' => 'name_072', 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.expiration'), 'name' => 'expiration', 'value' => Input::old('expiration'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '99-99-9999']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.date'), 'name' => 'date', 'readOnly' => true, 'value' => date('d-m-Y', $object->date_078), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4])
+            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.company', 1), 'name' => 'company', 'value' => $object->company_078, 'objects' => $companies, 'idSelect' => 'id_074', 'nameSelect' => 'company_name_074', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%', 'error-placement' => 's2company', 's2-id-container' => 's2company']])
+            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.family', 1), 'name' => 'family', 'value' => $object->family_078, 'objects' => $families, 'idSelect' => 'id_070', 'nameSelect' => 'name_070', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
+            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('octopus::pulsar.brand', 1), 'name' => 'brand', 'value' => $object->brand_078, 'objects' => $brands, 'idSelect' => 'id_071', 'nameSelect' => 'name_071', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
+            @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('octopus::pulsar.product', 1), 'name' => 'product', 'value' => $object->product_078,  'objects' => $products, 'idSelect' => 'id_072', 'nameSelect' => 'name_072', 'required' => true, 'class' => 'select2', 'fieldSize' => 8, 'data' => ['language' => config('app.locale'), 'width' => '100%']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.expiration'), 'name' => 'expiration', 'value' => $object->expiration_078? date('d-m-Y', $object->expiration_078) : null, 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '99-99-9999']])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_width'), 'name' => 'viewWidth', 'value' => Input::old('viewWidth'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_height'), 'name' => 'viewHeight', 'value' => Input::old('viewHeight'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_width'), 'name' => 'totalWidth', 'value' => Input::old('totalWidth'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_height'), 'name' => 'totalHeight', 'value' => Input::old('totalHeight'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
-            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.units'), 'name' => 'units', 'value' => Input::old('units'), 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '9?9']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_width'), 'name' => 'viewWidth', 'value' => $object->view_width_078, 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.view_height'), 'name' => 'viewHeight', 'value' => $object->view_height_078, 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_width'), 'name' => 'totalWidth', 'value' => $object->total_width_078, 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('octopus::pulsar.total_height'), 'name' => 'totalHeight', 'value' => $object->total_height_078, 'fieldSize' => 4, 'data' => ['mask' => '999.99']])
+            @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.units'), 'name' => 'units', 'value' => $object->units_078, 'fieldSize' => 4, 'required' => true, 'data' => ['mask' => '9?9']])
             @include('pulsar::includes.html.form_file_group', ['label' => trans('pulsar::pulsar.attached'), 'name' => 'attached', 'value' => Input::old('attached'), 'fieldSize' => 4])
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            @include('pulsar::includes.html.form_textarea_group', ['label' => trans('pulsar::pulsar.comments'), 'name' => 'comments', 'value' => Input::old('comments'), 'labelSize' => 1, 'fieldSize' => 11])
+            @include('pulsar::includes.html.form_textarea_group', ['label' => trans('pulsar::pulsar.comments'), 'name' => 'comments', 'value' => $object->comments_078, 'labelSize' => 1, 'fieldSize' => 11])
         </div>
     </div>
     <!-- /octopus::requests.edit -->
