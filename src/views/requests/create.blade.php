@@ -196,7 +196,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            @include('pulsar::includes.html.form_textarea_group', ['label' => trans('pulsar::pulsar.comments'), 'name' => 'comments', 'value' => Input::old('comments'), 'labelSize' => 1, 'fieldSize' => 11])
+            @include('pulsar::includes.html.form_textarea_group', ['label' => trans_choice('pulsar::pulsar.comment', 2), 'name' => 'comments', 'value' => Input::old('comments'), 'labelSize' => 1, 'fieldSize' => 11])
         </div>
     </div>
     <!-- /octopus::requests.create -->

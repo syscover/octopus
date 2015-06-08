@@ -3,6 +3,7 @@
 @section('script')
     @parent
     @include('pulsar::includes.js.datatable_config')
+    <!-- octopus::shops.create -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.select2/css/select2.min.css') }}">
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/jquery.magnific-popup.min.js') }}"></script>
@@ -26,7 +27,7 @@
             margin: 19px;
         }
     </style>
-    <!-- octopus::shops.create -->
+
     <script type="text/javascript">
         $(document).ready(function() {
 
