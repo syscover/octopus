@@ -157,5 +157,12 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     Route::put(config('pulsar.appName') . '/octopus/family/update/{id}/{offset}',               ['as'=>'updateOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\Families@updateRecord',               'resource' => 'octopus-family',        'action' => 'edit']);
     Route::get(config('pulsar.appName') . '/octopus/family/delete/{id}/{offset}',               ['as'=>'deleteOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\Families@deleteRecord',               'resource' => 'octopus-family',        'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/family/delete/select/records',           ['as'=>'deleteSelectOctopusFamily',       'uses'=>'Syscover\Octopus\Controllers\Families@deleteRecordsSelect',        'resource' => 'octopus-family',        'action' => 'delete']);
-    
+
+    /*
+    |--------------------------------------------------------------------------
+    | PREFERENCES
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/preferences',                             ['as'=>'OctopusPreference',               'uses'=>'Syscover\Octopus\Controllers\Preferences@index',             'resource' => 'octopus-preference',     'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/preferences/update',                      ['as'=>'updateOctopusPreference',         'uses'=>'Syscover\Octopus\Controllers\Preferences@updateRecord',      'resource' => 'octopus-preference',     'action' => 'edit']);
 });
