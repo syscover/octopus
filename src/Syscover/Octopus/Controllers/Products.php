@@ -13,13 +13,13 @@
 use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\ControllerTrait;
+use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Product;
 
 class Products extends Controller {
 
-    use ControllerTrait;
+    use TraitController;
 
     protected $routeSuffix  = 'OctopusProduct';
     protected $folder       = 'products';

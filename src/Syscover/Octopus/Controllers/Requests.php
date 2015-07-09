@@ -16,12 +16,12 @@ use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
 use Syscover\Octopus\Models\Product;
 use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\ControllerTrait;
+use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Request as OctopusRequest;
 
 class Requests extends Controller {
 
-    use ControllerTrait;
+    use TraitController;
 
     protected $routeSuffix  = 'OctopusRequest';
     protected $folder       = 'requests';

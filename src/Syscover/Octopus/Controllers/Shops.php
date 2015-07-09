@@ -12,12 +12,12 @@
 
 use Illuminate\Support\Facades\Request;
 use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\ControllerTrait;
+use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Shop;
 
 class Shops extends Controller {
 
-    use ControllerTrait;
+    use TraitController;
 
     protected $routeSuffix  = 'OctopusShop';
     protected $folder       = 'shops';
