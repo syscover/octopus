@@ -11,7 +11,7 @@
                     <li{!! Miscellaneous::setCurrentPage('octopus-request') !!}><a href="{{ route('OctopusRequest') }}"><i class="icon-inbox"></i>{{ trans_choice('octopus::pulsar.request', 2) }}</a></li>
                 @endif
                 <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop', 'octopus-preference']) !!}>
-                    <a href="javascript:void(0);"><i class="icomoon-icon-grid"></i>Tablas maestras</a>
+                    <a href="javascript:void(0);"><i class="icomoon-icon-grid"></i>{{ trans('pulsar::pulsar.master_tables') }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'octopus-shop', 'access'))
                             <li{!! Miscellaneous::setCurrentPage('octopus-shop') !!}><a href="{{ route('OctopusShop') }}"><i class="icomoon-icon-office"></i>{{ trans_choice('octopus::pulsar.shop', 2) }}</a></li>
