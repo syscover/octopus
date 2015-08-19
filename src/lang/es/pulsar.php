@@ -26,4 +26,5 @@ return [
     'view_height'                           => 'Vista alto',
     'total_width'                           => 'Total ancho',
     'total_height'                          => 'Total alto',
+    'send_to_order'                         => 'Mandar a pedido',
 ];

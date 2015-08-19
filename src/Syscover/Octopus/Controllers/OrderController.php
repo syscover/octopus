@@ -18,8 +18,9 @@ use Syscover\Octopus\Models\Product;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Order;
+use Syscover\Octopus\Models\Request as RequestModel;
 
-class Orders extends Controller {
+class OrderController extends Controller {
 
     use TraitController;
 
@@ -34,9 +35,10 @@ class Orders extends Controller {
 
     public function createCustomRecord($parameters)
     {
-        $parameters['companies'] = Company::all();
-        $parameters['families'] = Family::all();
-        $parameters['brands']   = Brand::all();
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
+        $parameters['object']       = RequestModel::getCustomRecord($parameters);
 
         return $parameters;
     }

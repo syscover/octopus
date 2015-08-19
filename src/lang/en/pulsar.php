@@ -26,4 +26,5 @@ return [
     'view_height'                           => 'View height',
     'total_width'                           => 'Total width',
     'total_height'                          => 'Total height',
+    'send_to_order'                         => 'Send to order',
 ];

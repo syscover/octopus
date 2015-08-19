@@ -32,6 +32,20 @@ class Requests extends Controller {
     protected $icon         = 'icon-inbox';
     protected $objectTrans  = 'request';
 
+    public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
+    {
+        if($aObject['order_078'] == null)
+        {
+            $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-original-title="' . trans('octopus::pulsar.send_to_order') . '"><i class="icon-refresh"></i></a>';
+        }
+        else
+        {
+
+        }
+
+        return $actions;
+    }
+
     public function createCustomRecord($parameters)
     {
         $parameters['companies'] = Company::all();
