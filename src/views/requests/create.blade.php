@@ -16,7 +16,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            // set language conutry data
+            // set language country data
             $('[name="country"]').data('language', '{{ config('app.locale') }}');
 
             $.getAddress({

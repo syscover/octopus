@@ -3,7 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use Syscover\Pulsar\Libraries\CustomValidator;
 
-class MifinanciacionServiceProvider extends ServiceProvider
+class OctopusServiceProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap the application services.
