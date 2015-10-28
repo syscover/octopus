@@ -50,7 +50,7 @@
     @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.address', 1), 'name' => 'address', 'value' => $object->address_077, 'maxLength' => '150', 'rangeLength' => '2,150', 'required' => true,])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.phone'), 'name' => 'phone', 'value' => $object->phone_077, 'maxLength' => '50', 'rangeLength' => '2,50', 'fieldSize' => 5])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.email'), 'name' => 'email', 'value' => $object->email_077, 'maxLength' => '100', 'rangeLength' => '2,100', 'fieldSize' => 5])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.favorite'), 'name' => 'favorite', 'value' => 1, 'isChecked' => $object->favorite_077])
+    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.favorite'), 'name' => 'favorite', 'value' => 1, 'checked' => $object->favorite_077])
     @include('pulsar::includes.html.form_hidden', ['name' => 'ref', 'value' => $ref])
     <!-- /octopus::addresses.edit -->
 @stop
