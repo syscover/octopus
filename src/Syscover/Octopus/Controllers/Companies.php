@@ -28,7 +28,7 @@ class Companies extends Controller {
     protected $icon         = 'icon-building';
     protected $objectTrans  = 'company';
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Company::create([
             'company_name_074'          => Request::input('companyName'),
@@ -47,7 +47,7 @@ class Companies extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Company::where('id_074', $parameters['id'])->update([
             'company_name_074'          => Request::input('companyName'),

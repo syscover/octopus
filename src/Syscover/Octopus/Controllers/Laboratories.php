@@ -28,7 +28,7 @@ class Laboratories extends Controller {
     protected $icon         = 'icomoon-icon-lab';
     protected $objectTrans  = 'laboratory';
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Laboratory::create([
             'company_name_073'          => Request::input('companyName'),
@@ -47,7 +47,7 @@ class Laboratories extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Laboratory::where('id_073', $parameters['id'])->update([
             'company_name_073'          => Request::input('companyName'),

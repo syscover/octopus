@@ -28,7 +28,7 @@ class Customers extends Controller {
     protected $icon         = 'icomoon-icon-users';
     protected $objectTrans  = 'customer';
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         dd(Request::has('territorialArea1'));
 
@@ -50,7 +50,7 @@ class Customers extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Customer::where('id_075', $parameters['id'])->update([
             'code_075'                  => Request::input('code'),

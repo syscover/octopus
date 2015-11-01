@@ -36,7 +36,7 @@ class Shops extends Controller {
         return $actionUrlParameters;
     }
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Shop::create([
             'customer_076'              => Request::input('customerid'),
@@ -56,7 +56,7 @@ class Shops extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Shop::where('id_076', $parameters['id'])->update([
             'customer_076'              => Request::input('customerid'),

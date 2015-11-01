@@ -30,14 +30,14 @@ class Products extends Controller {
     protected $icon         = 'icomoon-icon-cube';
     protected $objectTrans  = 'product';
 
-    public function createCustomRecord($parameters)
+    public function createCustomRecord($request, $parameters)
     {
         $parameters['brands'] = Brand::all();
 
         return $parameters;
     }
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Product::create([
             'id_072'    => Request::input('id'),
@@ -46,14 +46,14 @@ class Products extends Controller {
         ]);
     }
 
-    public function editCustomRecord($parameters)
+    public function editCustomRecord($request, $parameters)
     {
         $parameters['brands'] = Brand::all();
 
         return $parameters;
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Product::where('id_072', $parameters['id'])->update([
             'id_072'    => Request::input('id'),

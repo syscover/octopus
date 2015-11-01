@@ -33,7 +33,7 @@ class OrderController extends Controller {
     protected $icon         = 'icon-refresh';
     protected $objectTrans  = 'order';
 
-    public function createCustomRecord($parameters)
+    public function createCustomRecord($request, $parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
@@ -43,7 +43,7 @@ class OrderController extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Order::create([
             'supervisor_079'            => Request::input('supervisor'),
@@ -80,7 +80,7 @@ class OrderController extends Controller {
         ]);
     }
 
-    public function editCustomRecord($parameters)
+    public function editCustomRecord($request, $parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
@@ -90,7 +90,7 @@ class OrderController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Order::where('id_079', $parameters['id'])->update([
             'customer_079'              => Request::input('customer'),

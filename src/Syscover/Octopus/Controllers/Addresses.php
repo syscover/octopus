@@ -37,7 +37,7 @@ class Addresses extends Controller {
         return $actionUrlParameters;
     }
 
-    public function storeCustomRecord($parameters)
+    public function storeCustomRecord($request, $parameters)
     {
         Address::create([
             'shop_077'                  => Request::input('ref'),
@@ -62,7 +62,7 @@ class Addresses extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         if(Request::input('favorite')) Address::resetFavorite(Request::input('ref'));
 

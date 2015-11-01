@@ -28,7 +28,7 @@ class Families extends Controller {
     protected $icon         = 'con-align-justify';
     protected $objectTrans  = 'family';
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Family::create([
             'id_070'    => Request::input('id'),
@@ -36,7 +36,7 @@ class Families extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Family::where('id_070', $parameters['id'])->update([
             'id_070'    => Request::input('id'),

@@ -46,7 +46,7 @@ class Requests extends Controller {
         return $actions;
     }
 
-    public function createCustomRecord($parameters)
+    public function createCustomRecord($request, $parameters)
     {
         $parameters['companies'] = Company::all();
         $parameters['families'] = Family::all();
@@ -55,7 +55,7 @@ class Requests extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         OctopusRequest::create([
             'supervisor_078'            => Request::input('supervisor'),
@@ -91,7 +91,7 @@ class Requests extends Controller {
         ]);
     }
 
-    public function editCustomRecord($parameters)
+    public function editCustomRecord($request, $parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
@@ -101,7 +101,7 @@ class Requests extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         OctopusRequest::where('id_078', $parameters['id'])->update([
             'customer_078'              => Request::input('customer'),
