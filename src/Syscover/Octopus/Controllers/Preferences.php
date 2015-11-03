@@ -40,6 +40,6 @@ class Preferences extends Controller {
     
     public function updateCustomRecord()
     {
-        Preference::setValue('notificationsAccountOctopus', Request::input('notificationsAccount'), 4);
+        Preference::setValue('notificationsAccountOctopus', 4, Request::input('notificationsAccount'));
     }
 }
