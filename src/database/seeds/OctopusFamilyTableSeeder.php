@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Syscover\Octopus\Models\Family;
 
-class FamilyOctopusTableSeeder extends Seeder {
+class OctopusFamilyTableSeeder extends Seeder {
 
     public function run()
     {
@@ -23,5 +23,5 @@ class FamilyOctopusTableSeeder extends Seeder {
 
 /*
  * Command to run:
- * php artisan db:seed --class="FamilyOctopusTableSeeder"
+ * php artisan db:seed --class="OctopusFamilyTableSeeder"
  */

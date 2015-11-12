@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Syscover\Octopus\Models\Brand;
 
-class BrandOctopusTableSeeder extends Seeder {
+class OctopusBrandTableSeeder extends Seeder {
 
     public function run()
     {
@@ -20,5 +20,5 @@ class BrandOctopusTableSeeder extends Seeder {
 
 /*
  * Command to run:
- * php artisan db:seed --class="BrandOctopusTableSeeder"
+ * php artisan db:seed --class="OctopusBrandTableSeeder"
  */

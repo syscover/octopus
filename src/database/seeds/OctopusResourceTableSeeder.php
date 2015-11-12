@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Syscover\Pulsar\Models\Resource;
 
-class ResourceOctopusTableSeeder extends Seeder {
+class OctopusResourceTableSeeder extends Seeder {
 
     public function run()
     {
@@ -26,5 +26,5 @@ class ResourceOctopusTableSeeder extends Seeder {
 
 /*
  * Command to run:
- * php artisan db:seed --class="ResourceOctopusTableSeeder"
+ * php artisan db:seed --class="OctopusResourceTableSeeder"
  */

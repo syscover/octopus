@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Syscover\Octopus\Models\Product;
 
-class ProductOctopusTableSeeder extends Seeder {
+class OctopusProductTableSeeder extends Seeder {
 
     public function run()
     {
@@ -52,5 +52,5 @@ class ProductOctopusTableSeeder extends Seeder {
 
 /*
  * Command to run:
- * php artisan db:seed --class="ProductOctopusTableSeeder"
+ * php artisan db:seed --class="OctopusProductTableSeeder"
  */
