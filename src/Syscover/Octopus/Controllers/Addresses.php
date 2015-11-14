@@ -88,7 +88,7 @@ class Addresses extends Controller {
         return $parameters;
     }
 
-    public function deleteCustomRecordRedirect($object, $parameters)
+    public function deleteCustomRecordRedirect($request, $object, $parameters)
     {
         $parameters['tab'] = 1;
 
@@ -98,7 +98,7 @@ class Addresses extends Controller {
         ]);
     }
 
-    public function deleteCustomRecordsRedirect($parameters)
+    public function deleteCustomRecordsRedirect($request, $parameters)
     {
         $parameters['tab'] = 1;
 
