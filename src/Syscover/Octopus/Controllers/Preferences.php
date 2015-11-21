@@ -10,8 +10,6 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Request;
-use Syscover\Forms\Models\State;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\EmailAccount;
 use Syscover\Pulsar\Models\Preference;
@@ -38,8 +36,8 @@ class Preferences extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord()
+    public function updateCustomRecord($request, $parameters)
     {
-        Preference::setValue('notificationsAccountOctopus', 4, Request::input('notificationsAccount'));
+        Preference::setValue('notificationsAccountOctopus', 4, $request->input('notificationsAccount'));
     }
 }
