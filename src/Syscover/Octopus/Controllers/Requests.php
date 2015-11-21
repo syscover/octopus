@@ -32,7 +32,7 @@ class Requests extends Controller {
     protected $icon         = 'icon-inbox';
     protected $objectTrans  = 'request';
 
-    public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
+    public function jsonCustomDataBeforeActions($request, $aObject, $actionUrlParameters, $parameters)
     {
         if($aObject['order_078'] == null)
         {
