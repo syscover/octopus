@@ -31,16 +31,16 @@ class Families extends Controller {
     public function storeCustomRecord($request, $parameters)
     {
         Family::create([
-            'id_070'    => Request::input('id'),
-            'name_070'  => Request::input('name')
+            'id_070'    => $request->input('id'),
+            'name_070'  => $request->input('name')
         ]);
     }
     
     public function updateCustomRecord($request, $parameters)
     {
         Family::where('id_070', $parameters['id'])->update([
-            'id_070'    => Request::input('id'),
-            'name_070'  => Request::input('name')
+            'id_070'    => $request->input('id'),
+            'name_070'  => $request->input('name')
         ]);
     }
 }

@@ -31,16 +31,16 @@ class Brands extends Controller {
     public function storeCustomRecord($request, $parameters)
     {
         Brand::create([
-            'id_071'    => Request::input('id'),
-            'name_071'  => Request::input('name')
+            'id_071'    => $request->input('id'),
+            'name_071'  => $request->input('name')
         ]);
     }
     
     public function updateCustomRecord($request, $parameters)
     {
         Brand::where('id_071', $parameters['id'])->update([
-            'id_071'    => Request::input('id'),
-            'name_071'  => Request::input('name')
+            'id_071'    => $request->input('id'),
+            'name_071'  => $request->input('name')
         ]);
     }
 }

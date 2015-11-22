@@ -40,9 +40,9 @@ class Products extends Controller {
     public function storeCustomRecord($request, $parameters)
     {
         Product::create([
-            'id_072'    => Request::input('id'),
-            'brand_072' => Request::input('brand'),
-            'name_072'  => Request::input('name')
+            'id_072'    => $request->input('id'),
+            'brand_072' => $request->input('brand'),
+            'name_072'  => $request->input('name')
         ]);
     }
 
@@ -56,9 +56,9 @@ class Products extends Controller {
     public function updateCustomRecord($request, $parameters)
     {
         Product::where('id_072', $parameters['id'])->update([
-            'id_072'    => Request::input('id'),
-            'brand_072' => Request::input('brand'),
-            'name_072'  => Request::input('name')
+            'id_072'    => $request->input('id'),
+            'brand_072' => $request->input('brand'),
+            'name_072'  => $request->input('name')
         ]);
     }
 

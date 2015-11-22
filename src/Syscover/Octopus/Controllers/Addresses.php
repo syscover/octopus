@@ -40,21 +40,21 @@ class Addresses extends Controller {
     public function storeCustomRecord($request, $parameters)
     {
         Address::create([
-            'shop_077'                  => Request::input('ref'),
-            'alias_077'                 => Request::input('alias'),
-            'company_name_077'          => Request::input('companyName'),
-            'name_077'                  => Request::input('name'),
-            'surname_077'               => Request::input('surname'),
-            'country_077'               => Request::input('country'),
-            'territorial_area_1_077'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
-            'territorial_area_2_077'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
-            'territorial_area_3_077'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
-            'cp_077'                    => Request::input('cp'),
-            'locality_077'              => Request::input('locality'),
-            'address_077'               => Request::input('address'),
-            'phone_077'                 => Request::input('phone'),
-            'email_077'                 => Request::input('email'),
-            'favorite_077'              => Request::input('favorite', 0)
+            'shop_077'                  => $request->input('ref'),
+            'alias_077'                 => $request->input('alias'),
+            'company_name_077'          => $request->input('companyName'),
+            'name_077'                  => $request->input('name'),
+            'surname_077'               => $request->input('surname'),
+            'country_077'               => $request->input('country'),
+            'territorial_area_1_077'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
+            'territorial_area_2_077'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
+            'territorial_area_3_077'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
+            'cp_077'                    => $request->input('cp'),
+            'locality_077'              => $request->input('locality'),
+            'address_077'               => $request->input('address'),
+            'phone_077'                 => $request->input('phone'),
+            'email_077'                 => $request->input('email'),
+            'favorite_077'              => $request->input('favorite', 0)
         ]);
 
         $parameters['modal'] = 1;
@@ -64,23 +64,23 @@ class Addresses extends Controller {
     
     public function updateCustomRecord($request, $parameters)
     {
-        if(Request::input('favorite')) Address::resetFavorite(Request::input('ref'));
+        if($request->input('favorite')) Address::resetFavorite($request->input('ref'));
 
         Address::where('id_077', $parameters['id'])->update([
-            'alias_077'                 => Request::input('alias'),
-            'company_name_077'          => Request::input('companyName'),
-            'name_077'                  => Request::input('name'),
-            'surname_077'               => Request::input('surname'),
-            'country_077'               => Request::input('country'),
-            'territorial_area_1_077'    => Request::has('territorialArea1')? Request::input('territorialArea1') : null,
-            'territorial_area_2_077'    => Request::has('territorialArea2')? Request::input('territorialArea2') : null,
-            'territorial_area_3_077'    => Request::has('territorialArea3')? Request::input('territorialArea3') : null,
-            'cp_077'                    => Request::input('cp'),
-            'locality_077'              => Request::input('locality'),
-            'address_077'               => Request::input('address'),
-            'phone_077'                 => Request::input('phone'),
-            'email_077'                 => Request::input('email'),
-            'favorite_077'              => Request::input('favorite', 0)
+            'alias_077'                 => $request->input('alias'),
+            'company_name_077'          => $request->input('companyName'),
+            'name_077'                  => $request->input('name'),
+            'surname_077'               => $request->input('surname'),
+            'country_077'               => $request->input('country'),
+            'territorial_area_1_077'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
+            'territorial_area_2_077'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
+            'territorial_area_3_077'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
+            'cp_077'                    => $request->input('cp'),
+            'locality_077'              => $request->input('locality'),
+            'address_077'               => $request->input('address'),
+            'phone_077'                 => $request->input('phone'),
+            'email_077'                 => $request->input('email'),
+            'favorite_077'              => $request->input('favorite', 0)
         ]);
 
         $parameters['modal'] = 1;
