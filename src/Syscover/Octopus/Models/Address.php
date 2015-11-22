@@ -42,7 +42,7 @@ class Address extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public static function getCustomRecordsLimit($parameters)
+    public static function addToGetRecordsLimit($parameters)
     {
         return Address::where('shop_077', $parameters['ref'])->newQuery();
     }

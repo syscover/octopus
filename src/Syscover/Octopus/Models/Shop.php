@@ -51,7 +51,7 @@ class Shop extends Model {
         return Shop::hasMany('Syscover\Octopus\Models\Address','shop_077')->where('favorite_077', true);
     }
 
-    public static function getCustomRecordsLimit()
+    public static function addToGetRecordsLimit()
     {
         return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->newQuery();
     }

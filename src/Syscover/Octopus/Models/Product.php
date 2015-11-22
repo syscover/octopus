@@ -32,7 +32,7 @@ class Product extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public static function getCustomRecordsLimit()
+    public static function addToGetRecordsLimit()
     {
         return Product::join('008_071_brand', '008_072_product.brand_072', '=', '008_071_brand.id_071')->newQuery();
     }
