@@ -10,8 +10,7 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Request;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Address;
@@ -108,7 +107,7 @@ class Addresses extends Controller {
         ]);
     }
 
-    public function jsonFavoriteAddress(HttpRequest $request)
+    public function jsonFavoriteAddress(Request $request)
     {
         $parameters = $request->route()->parameters();
 

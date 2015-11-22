@@ -10,8 +10,7 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Request;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
@@ -62,7 +61,7 @@ class Products extends Controller {
         ]);
     }
 
-    public function jsonBrandProducts(HttpRequest $request)
+    public function jsonBrandProducts(Request $request)
     {
         $parameters = $request->route()->parameters();
 

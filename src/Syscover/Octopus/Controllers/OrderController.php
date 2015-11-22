@@ -10,7 +10,6 @@
  * @filesource
  */
 
-use Illuminate\Support\Facades\Request;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
