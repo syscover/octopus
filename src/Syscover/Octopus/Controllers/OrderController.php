@@ -37,7 +37,7 @@ class OrderController extends Controller {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['object']       = RequestModel::getCustomRecord($parameters);
+        $parameters['object']       = RequestModel::getRecord($parameters);
 
         return $parameters;
     }

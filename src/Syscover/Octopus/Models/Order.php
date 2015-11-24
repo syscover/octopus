@@ -52,7 +52,7 @@ class Order extends Model {
             ->newQuery();
     }
 
-    public static function getCustomRecord($parameters)
+    public static function getRecord($parameters)
     {
         return Order::join('008_075_customer', '008_079_order.customer_079', '=', '008_075_customer.id_075')
             ->join('008_076_shop', '008_079_order.shop_079', '=', '008_076_shop.id_076')

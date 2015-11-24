@@ -56,7 +56,7 @@ class Shop extends Model {
         return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->newQuery();
     }
 
-    public static function getCustomRecord($parameters)
+    public static function getRecord($parameters)
     {
         return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')
             ->find($parameters['id']);

@@ -52,7 +52,7 @@ class Request extends Model {
             ->newQuery();
     }
 
-    public static function getCustomRecord($parameters)
+    public static function getRecord($parameters)
     {
         return Request::join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
             ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
