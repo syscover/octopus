@@ -31,6 +31,6 @@
 
 @section('rows')
     <!-- octopus::preferences.index -->
-    @include('pulsar::includes.html.form_select_group', ['label' => trans('forms::pulsar.notifications_account'), 'name' => 'notificationsAccount', 'value' => $notificationsAccount->value_018, 'objects' => $accounts, 'idSelect' => 'id_013', 'nameSelect' => 'name_013', 'class' => 'form-control', 'fieldSize' => 5, 'required' => true])
+    @include('pulsar::includes.html.form_select_group', ['label' => trans('forms::pulsar.notifications_account'), 'name' => 'notificationsAccount', 'value' => $notificationsAccount->value_018, 'objects' => $accounts, 'idSelect' => 'id_013', 'nameSelect' => 'name_013', 'fieldSize' => 5, 'required' => true])
     <!-- /octopus::preferences.index -->
 @stop
