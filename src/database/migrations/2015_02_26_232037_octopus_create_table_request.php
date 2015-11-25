@@ -55,30 +55,30 @@ class OctopusCreateTableRequest extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('supervisor_078')->references('id_010')
+            $table->foreign('supervisor_078', 'fk01_008_078_request')->references('id_010')
                 ->on('001_010_user')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('customer_078')->references('id_075')->on('008_075_customer')
+            $table->foreign('customer_078', 'fk02_008_078_request')->references('id_075')->on('008_075_customer')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('shop_078')->references('id_076')->on('008_076_shop')
+            $table->foreign('shop_078', 'fk03_008_078_request')->references('id_076')->on('008_076_shop')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('company_078')->references('id_074')
+            $table->foreign('company_078', 'fk04_008_078_request')->references('id_074')
                 ->on('008_074_company')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('family_078')->references('id_070')
+            $table->foreign('family_078', 'fk05_008_078_request')->references('id_070')
                 ->on('008_070_family')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('brand_078')->references('id_071')
+            $table->foreign('brand_078', 'fk06_008_078_request')->references('id_071')
                 ->on('008_071_brand')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('product_078')->references('id_072')
+            $table->foreign('product_078', 'fk07_008_078_request')->references('id_072')
                 ->on('008_072_product')->onDelete('restrict')->onUpdate('cascade');
 
-            $table->foreign('id_address_078')->references('id_077')
+            $table->foreign('id_address_078', 'fk08_008_078_request')->references('id_077')
                 ->on('008_077_address')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('country_078')->references('id_002')->on('001_002_country')
+            $table->foreign('country_078', 'fk01_009_078_request')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_1_078')->references('id_003')->on('001_003_territorial_area_1')
+            $table->foreign('territorial_area_1_078', 'fk10_008_078_request')->references('id_003')->on('001_003_territorial_area_1')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_2_078')->references('id_004')->on('001_004_territorial_area_2')
+            $table->foreign('territorial_area_2_078', 'fk11_008_078_request')->references('id_004')->on('001_004_territorial_area_2')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_3_078')->references('id_005')->on('001_005_territorial_area_3')
+            $table->foreign('territorial_area_3_078', 'fk12_008_078_request')->references('id_005')->on('001_005_territorial_area_3')
                 ->onDelete('restrict')->onUpdate('cascade');
         });
 	}

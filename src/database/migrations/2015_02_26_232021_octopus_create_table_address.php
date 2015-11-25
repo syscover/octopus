@@ -33,15 +33,15 @@ class OctopusCreateTableAddress extends Migration {
             $table->string('latitude_077', 50)->nullable();
             $table->string('longitude_077', 50)->nullable();
 
-            $table->foreign('shop_077')->references('id_076')
+            $table->foreign('shop_077', 'fk01_008_077_address')->references('id_076')
                 ->on('008_076_shop')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('country_077')->references('id_002')->on('001_002_country')
+            $table->foreign('country_077', 'fk02_008_077_address')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_1_077')->references('id_003')->on('001_003_territorial_area_1')
+            $table->foreign('territorial_area_1_077', 'fk03_008_077_address')->references('id_003')->on('001_003_territorial_area_1')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_2_077')->references('id_004')->on('001_004_territorial_area_2')
+            $table->foreign('territorial_area_2_077', 'fk04_008_077_address')->references('id_004')->on('001_004_territorial_area_2')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_3_077')->references('id_005')->on('001_005_territorial_area_3')
+            $table->foreign('territorial_area_3_077', 'fk05_008_077_address')->references('id_005')->on('001_005_territorial_area_3')
                 ->onDelete('restrict')->onUpdate('cascade');
         });
 	}

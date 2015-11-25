@@ -31,15 +31,15 @@ class OctopusCreateTableShop extends Migration {
             $table->string('email_076', 100)->nullable();
             $table->string('web_076', 100)->nullable();
 
-            $table->foreign('customer_076')->references('id_075')
+            $table->foreign('customer_076', 'fk01_008_076_shop')->references('id_075')
                 ->on('008_075_customer')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('country_076')->references('id_002')->on('001_002_country')
+            $table->foreign('country_076', 'fk02_008_076_shop')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_1_076')->references('id_003')->on('001_003_territorial_area_1')
+            $table->foreign('territorial_area_1_076', 'fk03_008_076_shop')->references('id_003')->on('001_003_territorial_area_1')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_2_076')->references('id_004')->on('001_004_territorial_area_2')
+            $table->foreign('territorial_area_2_076', 'fk04_008_076_shop')->references('id_004')->on('001_004_territorial_area_2')
                 ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('territorial_area_3_076')->references('id_005')->on('001_005_territorial_area_3')
+            $table->foreign('territorial_area_3_076', 'fk05_008_076_shop')->references('id_005')->on('001_005_territorial_area_3')
                 ->onDelete('restrict')->onUpdate('cascade');
         });
 	}
