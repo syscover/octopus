@@ -2,7 +2,6 @@
 
 @section('script')
     @parent
-        
     <!-- octopus::addresses.create -->
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
     <script type="text/javascript">
