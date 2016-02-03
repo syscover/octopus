@@ -1,0 +1,43 @@
+<?php namespace Syscover\Octopus\Controllers;
+
+/**
+ * @package	    Forms
+ * @author	    Jose Carlos Rodríguez Palacín
+ * @copyright   Copyright (c) 2015, SYSCOVER, SL
+ * @license
+ * @link		http://www.syscover.com
+ * @since		Version 2.0
+ * @filesource
+ */
+
+use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Models\EmailAccount;
+use Syscover\Pulsar\Models\Preference;
+use Syscover\Pulsar\Traits\TraitController;
+
+class Preferences extends Controller {
+
+    use TraitController;
+
+    protected $routeSuffix  = 'OctopusPreference';
+    protected $folder       = 'preferences';
+    protected $package      = 'octopus';
+    protected $aColumns     = ['id_200', 'name_200'];
+    protected $nameM        = 'name_200';
+    protected $model        = '\Syscover\Pulsar\Models\Preference';
+    protected $icon         = 'icon-cog';
+    protected $objectTrans  = 'preference';
+
+    public function indexCustom($parameters)
+    {
+        $parameters['accounts'] = EmailAccount::all();
+        $parameters['notificationsAccount']  = Preference::getValue('notificationsAccountOctopus', 4);
+
+        return $parameters;
+    }
+    
+    public function updateCustomRecord($request, $parameters)
+    {
+        Preference::setValue('notificationsAccountOctopus', 4, $request->input('notificationsAccount'));
+    }
+}
