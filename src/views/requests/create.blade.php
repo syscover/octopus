@@ -141,7 +141,7 @@
 
 @section('rows')
     <!-- octopus::requests.create -->
-    @include('pulsar::includes.html.form_hidden', ['name' => 'supervisor', 'value' => Auth::user()->id_010 ])
+    @include('pulsar::includes.html.form_hidden', ['name' => 'supervisor', 'value' => auth('pulsar')->user()->id_010 ])
     @include('pulsar::includes.html.form_hidden', ['name' => 'customer'])
     @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'name' => 'id', 'readOnly' => true, 'fieldSize' => 2])
     @include('pulsar::includes.html.form_iframe_select_group', ['label' => trans_choice('octopus::pulsar.shop', 1), 'name' => 'shop', 'value' => old('shop'), 'valueId' => old('shopid'), 'maxLength' => '50', 'rangeLength' => '2,50', 'modalUrl' => route('modalOctopusShop', ['offset' => $offset, 'modal' => 1]), 'required' => true, 'readOnly' => true])
