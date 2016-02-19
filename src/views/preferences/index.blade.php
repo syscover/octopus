@@ -3,9 +3,6 @@
 @section('script')
     @parent
     <!-- octopus::preferences.index -->
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/plugins/pnotify/jquery.pnotify.default.css') }}">
-
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/pnotify/jquery.pnotify.min.js') }}"></script>
     @include('pulsar::includes.js.success_message')
 
     <script type="text/javascript">
