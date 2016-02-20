@@ -23,7 +23,7 @@ class Customers extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_075', 'code_075', 'company_name_075', ['data' => 'email_075', 'type' => 'email'], 'phone_075', 'contact_075'];
     protected $nameM        = 'company_name_075';
-    protected $model        = '\Syscover\Octopus\Models\Customer';
+    protected $model        = Customer::class;
     protected $icon         = 'icomoon-icon-users';
     protected $objectTrans  = 'customer';
 

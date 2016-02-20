@@ -23,7 +23,7 @@ class Families extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_070', 'name_070'];
     protected $nameM        = 'name_070';
-    protected $model        = '\Syscover\Octopus\Models\Family';
+    protected $model        = Family::class;
     protected $icon         = 'con-align-justify';
     protected $objectTrans  = 'family';
 

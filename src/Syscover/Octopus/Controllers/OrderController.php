@@ -28,7 +28,7 @@ class OrderController extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_079', ['type' => 'date', 'data' => 'date_079', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'name_072', ['type' => 'email', 'data' => 'email_079'], 'phone_079'];
     protected $nameM        = 'id_079';
-    protected $model        = '\Syscover\Octopus\Models\Order';
+    protected $model        = Order::class;
     protected $icon         = 'icon-refresh';
     protected $objectTrans  = 'order';
 

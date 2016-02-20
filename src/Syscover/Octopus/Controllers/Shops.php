@@ -14,8 +14,8 @@ use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Shop;
 
-class Shops extends Controller {
-
+class Shops extends Controller
+{
     use TraitController;
 
     protected $routeSuffix  = 'OctopusShop';
@@ -23,7 +23,7 @@ class Shops extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_076', 'company_name_075', 'name_076', ['data' => 'email_076', 'type' => 'email'], 'phone_076', 'contact_076'];
     protected $nameM        = 'company_name_076';
-    protected $model        = '\Syscover\Octopus\Models\Shop';
+    protected $model        = Shop::class;
     protected $icon         = 'icomoon-icon-office';
     protected $objectTrans  = 'shop';
 

@@ -23,7 +23,7 @@ class Brands extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_071', 'name_071'];
     protected $nameM        = 'name_071';
-    protected $model        = '\Syscover\Octopus\Models\Brand';
+    protected $model        = Brand::class;
     protected $icon         = 'icomoon-icon-medal-2';
     protected $objectTrans  = 'brand';
 

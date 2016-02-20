@@ -24,7 +24,7 @@ class Addresses extends Controller {
     protected $package          = 'octopus';
     protected $aColumns         = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
     protected $nameM            = 'alias_077';
-    protected $model            = '\Syscover\Octopus\Models\Address';
+    protected $model            = Address::class;
     protected $icon             = 'icon-road';
     protected $objectTrans      = 'address';
 

@@ -25,7 +25,7 @@ class Products extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_072', 'name_071', 'name_072'];
     protected $nameM        = 'name_071';
-    protected $model        = '\Syscover\Octopus\Models\Product';
+    protected $model        = Product::class;
     protected $icon         = 'icomoon-icon-cube';
     protected $objectTrans  = 'product';
 

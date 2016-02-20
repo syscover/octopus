@@ -24,7 +24,7 @@ class Preferences extends Controller {
     protected $package      = 'octopus';
     protected $aColumns     = ['id_200', 'name_200'];
     protected $nameM        = 'name_200';
-    protected $model        = '\Syscover\Pulsar\Models\Preference';
+    protected $model        = Preference::class;
     protected $icon         = 'icon-cog';
     protected $objectTrans  = 'preference';
 
