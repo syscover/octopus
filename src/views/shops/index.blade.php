@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.index', ['newTrans' => 'new', 'callback' => 'relatedShop'])
 
-@section('script')
+@section('head')
     @parent
     <!-- octopus::shops.index -->
     <script type="text/javascript">

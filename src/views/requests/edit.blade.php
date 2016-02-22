@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.form', ['action' => 'update', 'enctype' => true])
 
-@section('script')
+@section('head')
     @parent
     <!-- octopus::requests.edit -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">

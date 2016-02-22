@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.form', ['action' => 'store', 'newTrans' => 'new', 'modal' => true])
 
-@section('script')
+@section('head')
     @parent
     <!-- octopus::addresses.create -->
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>

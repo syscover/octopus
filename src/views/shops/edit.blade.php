@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.tab', ['tabs' => [['id' => 'box_tab1', 'name' => trans_choice('octopus::pulsar.shop', 1)], ['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.address', 2)], ['id' => 'box_tab3', 'name' => trans_choice('pulsar::pulsar.photo', 2)]]])
 
-@section('script')
+@section('head')
     @parent
     @include('pulsar::includes.js.datatable_config')
     <!-- octopus::shops.create -->

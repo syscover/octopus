@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.index', ['newTrans' => 'new', 'newButton' => false])
 
-@section('script')
+@section('head')
     @parent
     <!-- octopus::orders.index -->
     <script type="text/javascript">
