@@ -42,9 +42,14 @@ class Address extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public static function addToGetIndexRecords($parameters)
+    public function scopeBuilder($query)
     {
-        return Address::where('shop_077', $parameters['ref'])->newQuery();
+        return $query;
+    }
+
+    public function addToGetIndexRecords($parameters)
+    {
+        return $this->where('shop_077', $parameters['ref']);
     }
 
     public function customCount($parameters)

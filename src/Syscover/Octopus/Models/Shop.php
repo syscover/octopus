@@ -51,14 +51,8 @@ class Shop extends Model {
         return Shop::hasMany('Syscover\Octopus\Models\Address','shop_077')->where('favorite_077', true);
     }
 
-    public static function addToGetIndexRecords($parameters)
+    public function scopeBuilder($query)
     {
-        return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')->newQuery();
-    }
-
-    public static function getRecord($parameters)
-    {
-        return Shop::join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')
-            ->find($parameters['id']);
+        return $query->join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075');
     }
 }

@@ -32,13 +32,15 @@ class Product extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public static function addToGetIndexRecords($parameters)
+    public function scopeBuilder($query)
     {
-        return Product::join('008_071_brand', '008_072_product.brand_072', '=', '008_071_brand.id_071')->newQuery();
+        return $query->join('008_071_brand', '008_072_product.brand_072', '=', '008_071_brand.id_071');
     }
 
     public static function getBrandProducts($brand)
     {
+        // todo, eliminar este metodo
+        dd('revisar!!');
         return Product::where('brand_072', $brand)->get();
     }
 }

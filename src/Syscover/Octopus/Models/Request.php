@@ -44,20 +44,11 @@ class Request extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public static function addToGetIndexRecords($parameters)
+    public function scopeBuilder($query)
     {
-        return Request::join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
+        return $query->join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
             ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
             ->join('008_072_product', '008_078_request.product_078', '=', '008_072_product.id_072')
-            ->newQuery();
-    }
-
-    public static function getRecord($parameters)
-    {
-        return Request::join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
-            ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
-            ->join('008_072_product', '008_078_request.product_078', '=', '008_072_product.id_072')
-            ->leftJoin('008_077_address', '008_078_request.id_address_078', '=', '008_077_address.id_077')
-            ->find($parameters['id']);
+            ->leftJoin('008_077_address', '008_078_request.id_address_078', '=', '008_077_address.id_077');
     }
 }
