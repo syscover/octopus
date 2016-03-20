@@ -47,12 +47,12 @@ class Address extends Model {
         return $query;
     }
 
-    public function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($request, $parameters)
     {
         return $this->where('shop_077', $parameters['ref']);
     }
 
-    public function customCount($parameters)
+    public function customCount($request, $parameters)
     {
         return Address::where('shop_077', $parameters['ref'])->newQuery();
     }
