@@ -17,7 +17,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | ORDER
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/order/{offset?}',                            ['as'=>'OctopusOrder',                      'uses'=>'Syscover\Octopus\Controllers\OrderController@index',                     'resource' => 'octopus-order',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/order/{offset?}',                            ['as'=>'octopusOrder',                      'uses'=>'Syscover\Octopus\Controllers\OrderController@index',                     'resource' => 'octopus-order',       'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/order/json/data',                            ['as'=>'jsonDataOctopusOrder',              'uses'=>'Syscover\Octopus\Controllers\OrderController@jsonData',                  'resource' => 'octopus-order',       'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/order/create/{id}/{offset}',                 ['as'=>'createOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@createRecord',              'resource' => 'octopus-order',       'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/order/store/{offset}',                      ['as'=>'storeOctopusOrder',                 'uses'=>'Syscover\Octopus\Controllers\OrderController@storeRecord',               'resource' => 'octopus-order',       'action' => 'create']);
@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | REQUEST
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/request/{offset?}',                            ['as'=>'OctopusRequest',                   'uses'=>'Syscover\Octopus\Controllers\Requests@index',                     'resource' => 'octopus-request',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/request/{offset?}',                            ['as'=>'octopusRequest',                   'uses'=>'Syscover\Octopus\Controllers\Requests@index',                     'resource' => 'octopus-request',       'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/request/json/data',                            ['as'=>'jsonDataOctopusRequest',           'uses'=>'Syscover\Octopus\Controllers\Requests@jsonData',                  'resource' => 'octopus-request',       'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/request/create/{offset}',                      ['as'=>'createOctopusRequest',             'uses'=>'Syscover\Octopus\Controllers\Requests@createRecord',              'resource' => 'octopus-request',       'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/request/store/{offset}',                      ['as'=>'storeOctopusRequest',              'uses'=>'Syscover\Octopus\Controllers\Requests@storeRecord',               'resource' => 'octopus-request',       'action' => 'create']);
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | ADDRESS
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/address/{offset?}',                                         ['as'=>'OctopusAddress',                    'uses'=>'Syscover\Octopus\Controllers\Addresses@index',                           'resource' => 'octopus-address',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/address/{offset?}',                                         ['as'=>'octopusAddress',                    'uses'=>'Syscover\Octopus\Controllers\Addresses@index',                           'resource' => 'octopus-address',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/address/modal/{ref?}/{offset?}/{modal?}',                   ['as'=>'modalOctopusAddress',               'uses'=>'Syscover\Octopus\Controllers\Addresses@index',                           'resource' => 'octopus-address',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/address/json/data/{ref}/{modal}',                           ['as'=>'jsonDataOctopusAddress',            'uses'=>'Syscover\Octopus\Controllers\Addresses@jsonData',                        'resource' => 'octopus-address',        'action' => 'access']);
     Route::post(config('pulsar.appName') . '/octopus/address/favorite/address/{shop?}',                         ['as'=>'jsonFavoriteAddressOctopusAddress', 'uses'=>'Syscover\Octopus\Controllers\Addresses@jsonFavoriteAddress',             'resource' => 'octopus-address',        'action' => 'access']);
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | SHOP
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/shop/{offset?}',                                ['as'=>'OctopusShop',                       'uses'=>'Syscover\Octopus\Controllers\Shops@index',                         'resource' => 'octopus-shop',           'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/shop/{offset?}',                                ['as'=>'octopusShop',                       'uses'=>'Syscover\Octopus\Controllers\Shops@index',                         'resource' => 'octopus-shop',           'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/shop/modal/{offset}/{modal}',                   ['as'=>'modalOctopusShop',                  'uses'=>'Syscover\Octopus\Controllers\Shops@index',                         'resource' => 'octopus-shop',           'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/shop/json/data/{modal}',                        ['as'=>'jsonDataOctopusShop',               'uses'=>'Syscover\Octopus\Controllers\Shops@jsonData',                      'resource' => 'octopus-shop',           'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/shop/create/{offset}',                          ['as'=>'createOctopusShop',                 'uses'=>'Syscover\Octopus\Controllers\Shops@createRecord',                  'resource' => 'octopus-shop',           'action' => 'create']);
@@ -77,7 +77,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | CUSTOMER
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/customer/{offset?}',                            ['as'=>'OctopusCustomer',                   'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/customer/{offset?}',                            ['as'=>'octopusCustomer',                   'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/customer/modal/{offset}/{modal}',               ['as'=>'modalOctopusCustomer',              'uses'=>'Syscover\Octopus\Controllers\Customers@index',                     'resource' => 'octopus-customer',       'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/customer/json/data/{modal}',                    ['as'=>'jsonDataOctopusCustomer',           'uses'=>'Syscover\Octopus\Controllers\Customers@jsonData',                  'resource' => 'octopus-customer',       'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/customer/create/{offset}',                      ['as'=>'createOctopusCustomer',             'uses'=>'Syscover\Octopus\Controllers\Customers@createRecord',              'resource' => 'octopus-customer',       'action' => 'create']);
@@ -92,7 +92,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | COMPANY
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/company/{offset?}',                             ['as'=>'OctopusCompany',                   'uses'=>'Syscover\Octopus\Controllers\Companies@index',                      'resource' => 'octopus-company',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/company/{offset?}',                             ['as'=>'octopusCompany',                   'uses'=>'Syscover\Octopus\Controllers\Companies@index',                      'resource' => 'octopus-company',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/company/json/data',                             ['as'=>'jsonDataOctopusCompany',           'uses'=>'Syscover\Octopus\Controllers\Companies@jsonData',                   'resource' => 'octopus-company',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/company/create/{offset}',                       ['as'=>'createOctopusCompany',             'uses'=>'Syscover\Octopus\Controllers\Companies@createRecord',               'resource' => 'octopus-company',        'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/company/store/{offset}',                       ['as'=>'storeOctopusCompany',              'uses'=>'Syscover\Octopus\Controllers\Companies@storeRecord',                'resource' => 'octopus-company',        'action' => 'create']);
@@ -106,7 +106,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | LABORATORY
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/laboratory/{offset?}',                          ['as'=>'OctopusLaboratory',                   'uses'=>'Syscover\Octopus\Controllers\Laboratories@index',                      'resource' => 'octopus-laboratory',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/laboratory/{offset?}',                          ['as'=>'octopusLaboratory',                   'uses'=>'Syscover\Octopus\Controllers\Laboratories@index',                      'resource' => 'octopus-laboratory',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/laboratory/json/data',                          ['as'=>'jsonDataOctopusLaboratory',           'uses'=>'Syscover\Octopus\Controllers\Laboratories@jsonData',                   'resource' => 'octopus-laboratory',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/laboratory/create/{offset}',                    ['as'=>'createOctopusLaboratory',             'uses'=>'Syscover\Octopus\Controllers\Laboratories@createRecord',               'resource' => 'octopus-laboratory',        'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/laboratory/store/{offset}',                    ['as'=>'storeOctopusLaboratory',              'uses'=>'Syscover\Octopus\Controllers\Laboratories@storeRecord',                'resource' => 'octopus-laboratory',        'action' => 'create']);
@@ -120,7 +120,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PRODUCT
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/product/{offset?}',                             ['as'=>'OctopusProduct',                   'uses'=>'Syscover\Octopus\Controllers\Products@index',                      'resource' => 'octopus-product',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/product/{offset?}',                             ['as'=>'octopusProduct',                   'uses'=>'Syscover\Octopus\Controllers\Products@index',                      'resource' => 'octopus-product',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/product/json/data',                             ['as'=>'jsonDataOctopusProduct',           'uses'=>'Syscover\Octopus\Controllers\Products@jsonData',                   'resource' => 'octopus-product',        'action' => 'access']);
     Route::post(config('pulsar.appName') . '/octopus/product/brand/{brand?}',                       ['as'=>'jsonBrandProductsOctopusProduct',  'uses'=>'Syscover\Octopus\Controllers\Products@jsonBrandProducts',          'resource' => 'octopus-address',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/product/create/{offset}',                       ['as'=>'createOctopusProduct',             'uses'=>'Syscover\Octopus\Controllers\Products@createRecord',               'resource' => 'octopus-product',        'action' => 'create']);
@@ -135,7 +135,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | BRAND
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/brand/{offset?}',                               ['as'=>'OctopusBrand',                   'uses'=>'Syscover\Octopus\Controllers\Brands@index',                      'resource' => 'octopus-brand',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/brand/{offset?}',                               ['as'=>'octopusBrand',                   'uses'=>'Syscover\Octopus\Controllers\Brands@index',                      'resource' => 'octopus-brand',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/octopus/brand/json/data',                               ['as'=>'jsonDataOctopusBrand',           'uses'=>'Syscover\Octopus\Controllers\Brands@jsonData',                   'resource' => 'octopus-brand',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/octopus/brand/create/{offset}',                         ['as'=>'createOctopusBrand',             'uses'=>'Syscover\Octopus\Controllers\Brands@createRecord',               'resource' => 'octopus-brand',        'action' => 'create']);
     Route::post(config('pulsar.appName') . '/octopus/brand/store/{offset}',                         ['as'=>'storeOctopusBrand',              'uses'=>'Syscover\Octopus\Controllers\Brands@storeRecord',                'resource' => 'octopus-brand',        'action' => 'create']);
@@ -149,20 +149,20 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | FAMILY
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/family/{offset?}',                          ['as'=>'OctopusFamily',                   'uses'=>'Syscover\Octopus\Controllers\Families@index',                      'resource' => 'octopus-family',        'action' => 'access']);
-    Route::any(config('pulsar.appName') . '/octopus/family/json/data',                          ['as'=>'jsonDataOctopusFamily',           'uses'=>'Syscover\Octopus\Controllers\Families@jsonData',                   'resource' => 'octopus-family',        'action' => 'access']);
-    Route::get(config('pulsar.appName') . '/octopus/family/create/{offset}',                    ['as'=>'createOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\Families@createRecord',               'resource' => 'octopus-family',        'action' => 'create']);
-    Route::post(config('pulsar.appName') . '/octopus/family/store/{offset}',                    ['as'=>'storeOctopusFamily',              'uses'=>'Syscover\Octopus\Controllers\Families@storeRecord',                'resource' => 'octopus-family',        'action' => 'create']);
-    Route::get(config('pulsar.appName') . '/octopus/family/{id}/edit/{offset}',                 ['as'=>'editOctopusFamily',               'uses'=>'Syscover\Octopus\Controllers\Families@editRecord',                 'resource' => 'octopus-family',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/octopus/family/update/{id}/{offset}',               ['as'=>'updateOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\Families@updateRecord',               'resource' => 'octopus-family',        'action' => 'edit']);
-    Route::get(config('pulsar.appName') . '/octopus/family/delete/{id}/{offset}',               ['as'=>'deleteOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\Families@deleteRecord',               'resource' => 'octopus-family',        'action' => 'delete']);
-    Route::delete(config('pulsar.appName') . '/octopus/family/delete/select/records',           ['as'=>'deleteSelectOctopusFamily',       'uses'=>'Syscover\Octopus\Controllers\Families@deleteRecordsSelect',        'resource' => 'octopus-family',        'action' => 'delete']);
+    Route::any(config('pulsar.appName') . '/octopus/family/{offset?}',                          ['as'=>'octopusFamily',                   'uses'=>'Syscover\Octopus\Controllers\FamilyController@index',                      'resource' => 'octopus-family',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/family/json/data',                          ['as'=>'jsonDataOctopusFamily',           'uses'=>'Syscover\Octopus\Controllers\FamilyController@jsonData',                   'resource' => 'octopus-family',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/family/create/{offset}',                    ['as'=>'createOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\FamilyController@createRecord',               'resource' => 'octopus-family',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/family/store/{offset}',                    ['as'=>'storeOctopusFamily',              'uses'=>'Syscover\Octopus\Controllers\FamilyController@storeRecord',                'resource' => 'octopus-family',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/family/{id}/edit/{offset}',                 ['as'=>'editOctopusFamily',               'uses'=>'Syscover\Octopus\Controllers\FamilyController@editRecord',                 'resource' => 'octopus-family',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/family/update/{id}/{offset}',               ['as'=>'updateOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\FamilyController@updateRecord',               'resource' => 'octopus-family',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/family/delete/{id}/{offset}',               ['as'=>'deleteOctopusFamily',             'uses'=>'Syscover\Octopus\Controllers\FamilyController@deleteRecord',               'resource' => 'octopus-family',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/family/delete/select/records',           ['as'=>'deleteSelectOctopusFamily',       'uses'=>'Syscover\Octopus\Controllers\FamilyController@deleteRecordsSelect',        'resource' => 'octopus-family',        'action' => 'delete']);
 
     /*
     |--------------------------------------------------------------------------
     | PREFERENCES
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/octopus/preferences',                             ['as'=>'OctopusPreference',               'uses'=>'Syscover\Octopus\Controllers\Preferences@index',             'resource' => 'octopus-preference',     'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/octopus/preferences/update',                      ['as'=>'updateOctopusPreference',         'uses'=>'Syscover\Octopus\Controllers\Preferences@updateRecord',      'resource' => 'octopus-preference',     'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/octopus/preferences',                             ['as'=>'octopusPreference',               'uses'=>'Syscover\Octopus\Controllers\PreferenceController@index',             'resource' => 'octopus-preference',     'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/preferences/update',                      ['as'=>'updateOctopusPreference',         'uses'=>'Syscover\Octopus\Controllers\PreferenceController@updateRecord',      'resource' => 'octopus-preference',     'action' => 'edit']);
 });

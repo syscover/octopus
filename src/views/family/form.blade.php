@@ -1,7 +1,7 @@
 @extends('pulsar::layouts.form')
 
 @section('rows')
-    <!-- octopus::families.create -->
+    <!-- octopus::family.create -->
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
@@ -17,5 +17,5 @@
         'rangeLength' => '2,50',
         'required' => true
     ])
-    <!-- ./octopus::families.create -->
+    <!-- ./octopus::family.create -->
 @stop

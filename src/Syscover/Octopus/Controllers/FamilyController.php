@@ -1,25 +1,15 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Family;
 
-class Families extends Controller {
+class FamilyController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusFamily';
-    protected $folder       = 'families';
+    protected $routeSuffix  = 'octopusFamily';
+    protected $folder       = 'family';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_070', 'name_070'];
     protected $nameM        = 'name_070';

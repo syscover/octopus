@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- octopus::families.index -->
+    <!-- octopus::family.index -->
     <script type="text/javascript">
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -21,16 +21,16 @@
             }
         });
     </script>
-    <!-- octopus::families.index -->
+    <!-- ./octopus::family.index -->
 @stop
 
 @section('tHead')
-    <!-- octopus::families.index -->
+    <!-- octopus::family.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::families.index -->
+    <!-- ./octopus::family.index -->
 @stop
