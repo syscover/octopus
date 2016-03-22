@@ -1,25 +1,15 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 
-class Brands extends Controller {
+class BrandController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusBrand';
-    protected $folder       = 'brands';
+    protected $routeSuffix  = 'octopusBrand';
+    protected $folder       = 'brand';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_071', 'name_071'];
     protected $nameM        = 'name_071';
