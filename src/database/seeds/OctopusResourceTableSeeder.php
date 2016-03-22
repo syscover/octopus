@@ -9,6 +9,7 @@ class OctopusResourceTableSeeder extends Seeder {
     {
         Resource::insert([
             ['id_007' => 'octopus',             'name_007' => 'Octopus Package',            'package_007' => '8'],
+            ['id_007' => 'octopus-preference',  'name_007' => 'Preferences',                'package_007' => '8'],
             ['id_007' => 'octopus-family',      'name_007' => 'Family',                     'package_007' => '8'],
             ['id_007' => 'octopus-brand',       'name_007' => 'Brand',                      'package_007' => '8'],
             ['id_007' => 'octopus-product',     'name_007' => 'Product',                    'package_007' => '8'],
