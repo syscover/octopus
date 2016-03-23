@@ -28,5 +28,4 @@ class OctopusCreateTableBrand extends Migration {
 	{
         Schema::drop('008_071_brand');
 	}
-
 }

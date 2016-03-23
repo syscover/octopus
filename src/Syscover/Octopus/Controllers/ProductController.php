@@ -1,27 +1,17 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Illuminate\Http\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Product;
 
-class Products extends Controller {
+class ProductController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusProduct';
-    protected $folder       = 'products';
+    protected $routeSuffix  = 'octopusProduct';
+    protected $folder       = 'product';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_072', 'name_071', 'name_072'];
     protected $nameM        = 'name_071';
@@ -65,7 +55,7 @@ class Products extends Controller {
     {
         $parameters = $request->route()->parameters();
 
-        $products = Product::getBrandProducts($parameters['brand']);
+        $products = Product::builder()->where('brand_072', $parameters['brand'])->get();
 
         return response()->json($products);
     }

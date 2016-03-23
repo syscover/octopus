@@ -84,7 +84,7 @@ class OrderController extends Controller {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::getBrandProducts($parameters['object']->brand_079);
+        $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_079)->get();
 
         return $parameters;
     }

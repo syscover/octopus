@@ -95,7 +95,8 @@ class Requests extends Controller {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::getBrandProducts($parameters['object']->brand_078);
+        $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_078)->get();
+
 
         return $parameters;
     }

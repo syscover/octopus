@@ -32,5 +32,4 @@ class OctopusCreateTableProduct extends Migration {
 	{
         Schema::drop('008_072_product');
 	}
-
 }
