@@ -31,7 +31,7 @@ class Requests extends Controller {
     protected $icon         = 'icon-inbox';
     protected $objectTrans  = 'request';
 
-    public function jsonCustomDataBeforeActions($request, $aObject, $actionUrlParameters, $parameters)
+    public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
         if($aObject['order_078'] == null)
         {
@@ -45,93 +45,92 @@ class Requests extends Controller {
         return $actions;
     }
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
-        $parameters['companies'] = Company::all();
-        $parameters['families'] = Family::all();
-        $parameters['brands']   = Brand::all();
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
 
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         OctopusRequest::create([
-            'supervisor_078'            => $request->input('supervisor'),
-            'customer_078'              => $request->input('customer'),
-            'shop_078'                  => $request->input('shopid'),
-            'company_078'               => $request->input('company'),
-            'family_078'                => $request->input('family'),
-            'brand_078'                 => $request->input('brand'),
-            'product_078'               => $request->input('product'),
-            'id_address_078'            => $request->input('aliasid'),
-            'company_name_078'          => $request->input('companyName'),
-            'name_078'                  => $request->input('name'),
-            'surname_078'               => $request->input('surname'),
-            'country_078'               => $request->input('country'),
-            'territorial_area_1_078'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_078'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_078'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_078'                    => $request->input('cp'),
-            'locality_078'              => $request->input('locality'),
-            'address_078'               => $request->input('address'),
-            'phone_078'                 => $request->input('phone'),
-            'email_078'                 => $request->input('email'),
-            'observations_078'          => $request->input('observations'),
-            'date_078'                  => \DateTime::createFromFormat('d-m-Y',$request->input('date'))->getTimestamp(),
-            'view_height_078'           => $request->input('viewHeight'),
-            'view_width_078'            => $request->input('viewWidth'),
-            'total_height_078'          => $request->input('totalHeight'),
-            'total_width_078'           => $request->input('totalWidth'),
-            'units_078'                 => $request->input('units'),
-            'expiration_078'            => $request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$request->input('expiration'))->getTimestamp() : null,
-            'attached_078'              => $request->input('attached'),
-            'comments_078'              => $request->input('comments')
+            'supervisor_078'            => $this->request->input('supervisor'),
+            'customer_078'              => $this->request->input('customer'),
+            'shop_078'                  => $this->request->input('shopid'),
+            'company_078'               => $this->request->input('company'),
+            'family_078'                => $this->request->input('family'),
+            'brand_078'                 => $this->request->input('brand'),
+            'product_078'               => $this->request->input('product'),
+            'id_address_078'            => $this->request->input('aliasid'),
+            'company_name_078'          => $this->request->input('companyName'),
+            'name_078'                  => $this->request->input('name'),
+            'surname_078'               => $this->request->input('surname'),
+            'country_078'               => $this->request->input('country'),
+            'territorial_area_1_078'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_078'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_078'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_078'                    => $this->request->input('cp'),
+            'locality_078'              => $this->request->input('locality'),
+            'address_078'               => $this->request->input('address'),
+            'phone_078'                 => $this->request->input('phone'),
+            'email_078'                 => $this->request->input('email'),
+            'observations_078'          => $this->request->input('observations'),
+            'date_078'                  => \DateTime::createFromFormat('d-m-Y',$this->request->input('date'))->getTimestamp(),
+            'view_height_078'           => $this->request->input('viewHeight'),
+            'view_width_078'            => $this->request->input('viewWidth'),
+            'total_height_078'          => $this->request->input('totalHeight'),
+            'total_width_078'           => $this->request->input('totalWidth'),
+            'units_078'                 => $this->request->input('units'),
+            'expiration_078'            => $this->request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$this->request->input('expiration'))->getTimestamp() : null,
+            'attached_078'              => $this->request->input('attached'),
+            'comments_078'              => $this->request->input('comments')
         ]);
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_078)->get();
 
-
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         OctopusRequest::where('id_078', $parameters['id'])->update([
-            'customer_078'              => $request->input('customer'),
-            'shop_078'                  => $request->input('shopid'),
-            'company_078'               => $request->input('company'),
-            'family_078'                => $request->input('family'),
-            'brand_078'                 => $request->input('brand'),
-            'product_078'               => $request->input('product'),
-            'id_address_078'            => $request->input('aliasid'),
-            'company_name_078'          => $request->input('companyName'),
-            'name_078'                  => $request->input('name'),
-            'surname_078'               => $request->input('surname'),
-            'country_078'               => $request->input('country'),
-            'territorial_area_1_078'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_078'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_078'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_078'                    => $request->input('cp'),
-            'locality_078'              => $request->input('locality'),
-            'address_078'               => $request->input('address'),
-            'phone_078'                 => $request->input('phone'),
-            'email_078'                 => $request->input('email'),
-            'observations_078'          => $request->input('observations'),
-            'view_height_078'           => $request->input('viewHeight'),
-            'view_width_078'            => $request->input('viewWidth'),
-            'total_height_078'          => $request->input('totalHeight'),
-            'total_width_078'           => $request->input('totalWidth'),
-            'units_078'                 => $request->input('units'),
-            'expiration_078'            => $request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$request->input('expiration'))->getTimestamp() : null,
-            'attached_078'              => $request->input('attached'),
-            'comments_078'              => $request->input('comments')
+            'customer_078'              => $this->request->input('customer'),
+            'shop_078'                  => $this->request->input('shopid'),
+            'company_078'               => $this->request->input('company'),
+            'family_078'                => $this->request->input('family'),
+            'brand_078'                 => $this->request->input('brand'),
+            'product_078'               => $this->request->input('product'),
+            'id_address_078'            => $this->request->input('aliasid'),
+            'company_name_078'          => $this->request->input('companyName'),
+            'name_078'                  => $this->request->input('name'),
+            'surname_078'               => $this->request->input('surname'),
+            'country_078'               => $this->request->input('country'),
+            'territorial_area_1_078'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_078'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_078'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_078'                    => $this->request->input('cp'),
+            'locality_078'              => $this->request->input('locality'),
+            'address_078'               => $this->request->input('address'),
+            'phone_078'                 => $this->request->input('phone'),
+            'email_078'                 => $this->request->input('email'),
+            'observations_078'          => $this->request->input('observations'),
+            'view_height_078'           => $this->request->input('viewHeight'),
+            'view_width_078'            => $this->request->input('viewWidth'),
+            'total_height_078'          => $this->request->input('totalHeight'),
+            'total_width_078'           => $this->request->input('totalWidth'),
+            'units_078'                 => $this->request->input('units'),
+            'expiration_078'            => $this->request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$this->request->input('expiration'))->getTimestamp() : null,
+            'attached_078'              => $this->request->input('attached'),
+            'comments_078'              => $this->request->input('comments')
         ]);
     }
 }

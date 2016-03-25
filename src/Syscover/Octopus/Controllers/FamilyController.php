@@ -17,19 +17,19 @@ class FamilyController extends Controller {
     protected $icon         = 'con-align-justify';
     protected $objectTrans  = 'family';
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Family::create([
-            'id_070'    => $request->input('id'),
-            'name_070'  => $request->input('name')
+            'id_070'    => $this->request->input('id'),
+            'name_070'  => $this->request->input('name')
         ]);
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Family::where('id_070', $parameters['id'])->update([
-            'id_070'    => $request->input('id'),
-            'name_070'  => $request->input('name')
+            'id_070'    => $this->request->input('id'),
+            'name_070'  => $this->request->input('name')
         ]);
     }
 }

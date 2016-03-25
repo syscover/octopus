@@ -27,41 +27,41 @@ class Companies extends Controller {
     protected $icon         = 'icon-building';
     protected $objectTrans  = 'company';
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Company::create([
-            'company_name_074'          => $request->input('companyName'),
-            'tin_074'                   => $request->input('tin'),
-            'country_074'               => $request->input('country'),
-            'territorial_area_1_074'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_074'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_074'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_074'                    => $request->input('cp'),
-            'locality_074'              => $request->input('locality'),
-            'address_074'               => $request->input('address'),
-            'contact_074'               => $request->input('contact'),
-            'phone_074'                 => $request->input('phone'),
-            'email_074'                 => $request->input('email'),
-            'web_074'                   => $request->input('web')
+            'company_name_074'          => $this->request->input('companyName'),
+            'tin_074'                   => $this->request->input('tin'),
+            'country_074'               => $this->request->input('country'),
+            'territorial_area_1_074'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_074'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_074'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_074'                    => $this->request->input('cp'),
+            'locality_074'              => $this->request->input('locality'),
+            'address_074'               => $this->request->input('address'),
+            'contact_074'               => $this->request->input('contact'),
+            'phone_074'                 => $this->request->input('phone'),
+            'email_074'                 => $this->request->input('email'),
+            'web_074'                   => $this->request->input('web')
         ]);
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Company::where('id_074', $parameters['id'])->update([
-            'company_name_074'          => $request->input('companyName'),
-            'tin_074'                   => $request->input('tin'),
-            'country_074'               => $request->input('country'),
-            'territorial_area_1_074'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_074'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_074'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_074'                    => $request->input('cp'),
-            'locality_074'              => $request->input('locality'),
-            'address_074'               => $request->input('address'),
-            'contact_074'               => $request->input('contact'),
-            'phone_074'                 => $request->input('phone'),
-            'email_074'                 => $request->input('email'),
-            'web_074'                   => $request->input('web')
+            'company_name_074'          => $this->request->input('companyName'),
+            'tin_074'                   => $this->request->input('tin'),
+            'country_074'               => $this->request->input('country'),
+            'territorial_area_1_074'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_074'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_074'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_074'                    => $this->request->input('cp'),
+            'locality_074'              => $this->request->input('locality'),
+            'address_074'               => $this->request->input('address'),
+            'contact_074'               => $this->request->input('contact'),
+            'phone_074'                 => $this->request->input('phone'),
+            'email_074'                 => $this->request->input('email'),
+            'web_074'                   => $this->request->input('web')
         ]);
     }
 }

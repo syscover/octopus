@@ -17,19 +17,19 @@ class BrandController extends Controller {
     protected $icon         = 'icomoon-icon-medal-2';
     protected $objectTrans  = 'brand';
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Brand::create([
-            'id_071'    => $request->input('id'),
-            'name_071'  => $request->input('name')
+            'id_071'    => $this->request->input('id'),
+            'name_071'  => $this->request->input('name')
         ]);
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Brand::where('id_071', $parameters['id'])->update([
-            'id_071'    => $request->input('id'),
-            'name_071'  => $request->input('name')
+            'id_071'    => $this->request->input('id'),
+            'name_071'  => $this->request->input('name')
         ]);
     }
 }

@@ -26,8 +26,8 @@ class PreferenceController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
-        Preference::setValue('octopusNotificationsAccount', 8, $request->input('notificationsAccount'));
+        Preference::setValue('octopusNotificationsAccount', 8, $this->request->input('notificationsAccount'));
     }
 }

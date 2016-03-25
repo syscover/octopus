@@ -32,7 +32,7 @@ class OrderController extends Controller {
     protected $icon         = 'icon-refresh';
     protected $objectTrans  = 'order';
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
@@ -42,44 +42,44 @@ class OrderController extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Order::create([
-            'supervisor_079'            => $request->input('supervisor'),
-            'customer_079'              => $request->input('customer'),
-            'shop_079'                  => $request->input('shopid'),
-            'company_079'               => $request->input('company'),
-            'family_079'                => $request->input('family'),
-            'brand_079'                 => $request->input('brand'),
-            'product_079'               => $request->input('product'),
-            'laboratory_079'            => $request->input('laboratory'),
-            'id_address_079'            => $request->input('aliasid'),
-            'company_name_079'          => $request->input('companyName'),
-            'name_079'                  => $request->input('name'),
-            'surname_079'               => $request->input('surname'),
-            'country_079'               => $request->input('country'),
-            'territorial_area_1_079'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_079'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_079'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_079'                    => $request->input('cp'),
-            'locality_079'              => $request->input('locality'),
-            'address_079'               => $request->input('address'),
-            'phone_079'                 => $request->input('phone'),
-            'email_079'                 => $request->input('email'),
-            'observations_079'          => $request->input('observations'),
-            'date_079'                  => \DateTime::createFromFormat('d-m-Y',$request->input('date'))->getTimestamp(),
-            'view_height_079'           => $request->input('viewHeight'),
-            'view_width_079'            => $request->input('viewWidth'),
-            'total_height_079'          => $request->input('totalHeight'),
-            'total_width_079'           => $request->input('totalWidth'),
-            'units_079'                 => $request->input('units'),
-            'expiration_079'            => $request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$request->input('expiration'))->getTimestamp() : null,
-            'attached_079'              => $request->input('attached'),
-            'comments_079'              => $request->input('comments')
+            'supervisor_079'            => $this->request->input('supervisor'),
+            'customer_079'              => $this->request->input('customer'),
+            'shop_079'                  => $this->request->input('shopid'),
+            'company_079'               => $this->request->input('company'),
+            'family_079'                => $this->request->input('family'),
+            'brand_079'                 => $this->request->input('brand'),
+            'product_079'               => $this->request->input('product'),
+            'laboratory_079'            => $this->request->input('laboratory'),
+            'id_address_079'            => $this->request->input('aliasid'),
+            'company_name_079'          => $this->request->input('companyName'),
+            'name_079'                  => $this->request->input('name'),
+            'surname_079'               => $this->request->input('surname'),
+            'country_079'               => $this->request->input('country'),
+            'territorial_area_1_079'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_079'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_079'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_079'                    => $this->request->input('cp'),
+            'locality_079'              => $this->request->input('locality'),
+            'address_079'               => $this->request->input('address'),
+            'phone_079'                 => $this->request->input('phone'),
+            'email_079'                 => $this->request->input('email'),
+            'observations_079'          => $this->request->input('observations'),
+            'date_079'                  => \DateTime::createFromFormat('d-m-Y',$this->request->input('date'))->getTimestamp(),
+            'view_height_079'           => $this->request->input('viewHeight'),
+            'view_width_079'            => $this->request->input('viewWidth'),
+            'total_height_079'          => $this->request->input('totalHeight'),
+            'total_width_079'           => $this->request->input('totalWidth'),
+            'units_079'                 => $this->request->input('units'),
+            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$this->request->input('expiration'))->getTimestamp() : null,
+            'attached_079'              => $this->request->input('attached'),
+            'comments_079'              => $this->request->input('comments')
         ]);
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
@@ -89,38 +89,38 @@ class OrderController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Order::where('id_079', $parameters['id'])->update([
-            'customer_079'              => $request->input('customer'),
-            'shop_079'                  => $request->input('shopid'),
-            'company_079'               => $request->input('company'),
-            'family_079'                => $request->input('family'),
-            'brand_079'                 => $request->input('brand'),
-            'product_079'               => $request->input('product'),
-            'laboratory_079'            => $request->input('laboratory'),
-            'id_address_079'            => $request->input('aliasid'),
-            'company_name_079'          => $request->input('companyName'),
-            'name_079'                  => $request->input('name'),
-            'surname_079'               => $request->input('surname'),
-            'country_079'               => $request->input('country'),
-            'territorial_area_1_079'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_079'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_079'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_079'                    => $request->input('cp'),
-            'locality_079'              => $request->input('locality'),
-            'address_079'               => $request->input('address'),
-            'phone_079'                 => $request->input('phone'),
-            'email_079'                 => $request->input('email'),
-            'observations_079'          => $request->input('observations'),
-            'view_height_079'           => $request->input('viewHeight'),
-            'view_width_079'            => $request->input('viewWidth'),
-            'total_height_079'          => $request->input('totalHeight'),
-            'total_width_079'           => $request->input('totalWidth'),
-            'units_079'                 => $request->input('units'),
-            'expiration_079'            => $request->has('expiration')? \DateTime::createFromFormat('d-m-Y',$request->input('expiration'))->getTimestamp() : null,
-            'attached_079'              => $request->input('attached'),
-            'comments_079'              => $request->input('comments')
+            'customer_079'              => $this->request->input('customer'),
+            'shop_079'                  => $this->request->input('shopid'),
+            'company_079'               => $this->request->input('company'),
+            'family_079'                => $this->request->input('family'),
+            'brand_079'                 => $this->request->input('brand'),
+            'product_079'               => $this->request->input('product'),
+            'laboratory_079'            => $this->request->input('laboratory'),
+            'id_address_079'            => $this->request->input('aliasid'),
+            'company_name_079'          => $this->request->input('companyName'),
+            'name_079'                  => $this->request->input('name'),
+            'surname_079'               => $this->request->input('surname'),
+            'country_079'               => $this->request->input('country'),
+            'territorial_area_1_079'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_079'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_079'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_079'                    => $this->request->input('cp'),
+            'locality_079'              => $this->request->input('locality'),
+            'address_079'               => $this->request->input('address'),
+            'phone_079'                 => $this->request->input('phone'),
+            'email_079'                 => $this->request->input('email'),
+            'observations_079'          => $this->request->input('observations'),
+            'view_height_079'           => $this->request->input('viewHeight'),
+            'view_width_079'            => $this->request->input('viewWidth'),
+            'total_height_079'          => $this->request->input('totalHeight'),
+            'total_width_079'           => $this->request->input('totalWidth'),
+            'units_079'                 => $this->request->input('units'),
+            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat('d-m-Y', $this->request->input('expiration'))->getTimestamp() : null,
+            'attached_079'              => $this->request->input('attached'),
+            'comments_079'              => $this->request->input('comments')
         ]);
     }
 }

@@ -1,6 +1,5 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-use Illuminate\Http\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
@@ -19,41 +18,41 @@ class ProductController extends Controller {
     protected $icon         = 'icomoon-icon-cube';
     protected $objectTrans  = 'product';
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
         $parameters['brands'] = Brand::all();
 
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Product::create([
-            'id_072'    => $request->input('id'),
-            'brand_072' => $request->input('brand'),
-            'name_072'  => $request->input('name')
+            'id_072'    => $this->request->input('id'),
+            'brand_072' => $this->request->input('brand'),
+            'name_072'  => $this->request->input('name')
         ]);
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['brands'] = Brand::all();
 
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Product::where('id_072', $parameters['id'])->update([
-            'id_072'    => $request->input('id'),
-            'brand_072' => $request->input('brand'),
-            'name_072'  => $request->input('name')
+            'id_072'    => $this->request->input('id'),
+            'brand_072' => $this->request->input('brand'),
+            'name_072'  => $this->request->input('name')
         ]);
     }
 
-    public function jsonBrandProducts(Request $request)
+    public function jsonBrandProducts()
     {
-        $parameters = $request->route()->parameters();
+        $parameters = $this->request->route()->parameters();
 
         $products = Product::builder()->where('brand_072', $parameters['brand'])->get();
 

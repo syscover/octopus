@@ -35,43 +35,43 @@ class Shops extends Controller
         return $actionUrlParameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         Shop::create([
-            'customer_076'              => $request->input('customerid'),
-            'name_076'                  => $request->input('name'),
-            'tin_076'                   => $request->input('tin'),
-            'country_076'               => $request->input('country'),
-            'territorial_area_1_076'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_076'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_076'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_076'                    => $request->input('cp'),
-            'locality_076'              => $request->input('locality'),
-            'address_076'               => $request->input('address'),
-            'contact_076'               => $request->input('contact'),
-            'phone_076'                 => $request->input('phone'),
-            'email_076'                 => $request->input('email'),
-            'web_076'                   => $request->input('web')
+            'customer_076'              => $this->request->input('customerid'),
+            'name_076'                  => $this->request->input('name'),
+            'tin_076'                   => $this->request->input('tin'),
+            'country_076'               => $this->request->input('country'),
+            'territorial_area_1_076'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_076'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_076'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_076'                    => $this->request->input('cp'),
+            'locality_076'              => $this->request->input('locality'),
+            'address_076'               => $this->request->input('address'),
+            'contact_076'               => $this->request->input('contact'),
+            'phone_076'                 => $this->request->input('phone'),
+            'email_076'                 => $this->request->input('email'),
+            'web_076'                   => $this->request->input('web')
         ]);
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Shop::where('id_076', $parameters['id'])->update([
-            'customer_076'              => $request->input('customerid'),
-            'name_076'                  => $request->input('name'),
-            'tin_076'                   => $request->input('tin'),
-            'country_076'               => $request->input('country'),
-            'territorial_area_1_076'    => $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-            'territorial_area_2_076'    => $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-            'territorial_area_3_076'    => $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-            'cp_076'                    => $request->input('cp'),
-            'locality_076'              => $request->input('locality'),
-            'address_076'               => $request->input('address'),
-            'contact_076'               => $request->input('contact'),
-            'phone_076'                 => $request->input('phone'),
-            'email_076'                 => $request->input('email'),
-            'web_076'                   => $request->input('web')
+            'customer_076'              => $this->request->input('customerid'),
+            'name_076'                  => $this->request->input('name'),
+            'tin_076'                   => $this->request->input('tin'),
+            'country_076'               => $this->request->input('country'),
+            'territorial_area_1_076'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_076'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_076'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_076'                    => $this->request->input('cp'),
+            'locality_076'              => $this->request->input('locality'),
+            'address_076'               => $this->request->input('address'),
+            'contact_076'               => $this->request->input('contact'),
+            'phone_076'                 => $this->request->input('phone'),
+            'email_076'                 => $this->request->input('email'),
+            'web_076'                   => $this->request->input('web')
         ]);
     }
 }
