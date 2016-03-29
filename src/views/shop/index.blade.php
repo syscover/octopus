@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- octopus::shops.index -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
             {
@@ -19,6 +19,7 @@
                         { 'sClass': 'checkbox-column', 'aTargets': [6]},
                         { 'sClass': 'align-center', 'aTargets': [7]}
                         @endif
+
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
@@ -27,7 +28,7 @@
             }
         });
     </script>
-    <!-- octopus::shops.index -->
+    <!-- ./octopus::shops.index -->
 @stop
 
 @section('tHead')
@@ -44,5 +45,5 @@
         @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::shops.index -->
+    <!-- ./octopus::shops.index -->
 @stop

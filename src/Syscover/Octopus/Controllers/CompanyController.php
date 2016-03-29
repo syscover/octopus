@@ -14,7 +14,7 @@ use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Company;
 
-class Companies extends Controller {
+class CompanyController extends Controller {
 
     use TraitController;
 

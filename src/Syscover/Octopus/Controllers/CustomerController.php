@@ -1,31 +1,35 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Customer;
 
-class Customers extends Controller {
+class CustomerController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusCustomer';
-    protected $folder       = 'customers';
+    protected $routeSuffix  = 'octopusCustomer';
+    protected $folder       = 'customer';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_075', 'code_075', 'company_name_075', ['data' => 'email_075', 'type' => 'email'], 'phone_075', 'contact_075'];
     protected $nameM        = 'company_name_075';
     protected $model        = Customer::class;
     protected $icon         = 'icomoon-icon-users';
     protected $objectTrans  = 'customer';
+
+    public function customIndex($parameters)
+    {
+        if(isset($parameters['modal']) && $parameters['modal'] == 1)
+            $parameters['viewParameters']['deleteSelectButton'] = false;
+
+        return $parameters;
+    }
+
+    public function setViewParametersJsonData($parameters)
+    {
+        if($parameters['modal'] == 1)
+            $this->viewParameters['checkBoxColumn'] = false;
+    }
 
     public function storeCustomRecord($parameters)
     {

@@ -18,7 +18,7 @@ class PreferenceController extends Controller {
     protected $icon         = 'icon-cog';
     protected $objectTrans  = 'preference';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['accounts'] = EmailAccount::all();
         $parameters['notificationsAccount']  = Preference::getValue('octopusNotificationsAccount', 8);

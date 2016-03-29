@@ -1,27 +1,32 @@
 <?php namespace Syscover\Octopus\Models;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
+/**
+ * Class Shop
+ *
+ * Model with properties
+ * <br><b>[id, customer, name, tin, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, contact, phone, email, web]</b>
+ *
+ * @package Syscover\Octopus\Models
+ */
 
 class Shop extends Model {
 
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '008_076_shop';
     protected $primaryKey   = 'id_076';
+    protected $suffix       = '076';
     public $timestamps      = false;
     protected $fillable     = ['id_076', 'customer_076', 'name_076', 'tin_076', 'country_076', 'territorial_area_1_076', 'territorial_area_2_076', 'territorial_area_3_072', 'cp_076', 'locality_076', 'address_076', 'contact_076', 'phone_076', 'email_076', 'web_076'];
+    protected $maps         = [];
+    protected $relationMaps = [];
     private static $rules   = [
         'customerid'    => 'required',
         'name'          => 'required|between:2,100',

@@ -1,25 +1,15 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Shop;
 
-class Shops extends Controller
+class ShopController extends Controller
 {
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusShop';
-    protected $folder       = 'shops';
+    protected $routeSuffix  = 'octopusShop';
+    protected $folder       = 'shop';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_076', 'company_name_075', 'name_076', ['data' => 'email_076', 'type' => 'email'], 'phone_076', 'contact_076'];
     protected $nameM        = 'company_name_076';

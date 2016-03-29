@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- octopus::customers.index -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
             {
@@ -26,7 +26,7 @@
             }
         });
     </script>
-    <!-- octopus::customers.index -->
+    <!-- ./octopus::customers.index -->
 @stop
 
 @section('tHead')
@@ -43,5 +43,5 @@
         @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::customers.index -->
+    <!-- ./octopus::customers.index -->
 @stop
