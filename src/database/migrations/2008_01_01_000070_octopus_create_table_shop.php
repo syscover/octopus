@@ -16,20 +16,20 @@ class OctopusCreateTableShop extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id_076')->unsigned();
             $table->integer('customer_076')->unsigned();
-            $table->string('name_076', 100);
-            $table->string('tin_076', 50)->nullable();
+            $table->string('name_076');
+            $table->string('tin_076')->nullable();
             $table->string('country_076', 2);
             $table->string('territorial_area_1_076', 6)->nullable();
             $table->string('territorial_area_2_076', 10)->nullable();
             $table->string('territorial_area_3_076', 10)->nullable();
-            $table->string('cp_076', 10)->nullable();
-            $table->string('locality_076', 100)->nullable();
-            $table->string('address_076', 150)->nullable();
-            $table->string('contact_076', 100)->nullable();
-            $table->string('phone_076', 50)->nullable();
-            $table->string('fax_076', 50)->nullable();
-            $table->string('email_076', 100)->nullable();
-            $table->string('web_076', 100)->nullable();
+            $table->string('cp_076')->nullable();
+            $table->string('locality_076')->nullable();
+            $table->string('address_076')->nullable();
+            $table->string('contact_076')->nullable();
+            $table->string('phone_076')->nullable();
+            $table->string('fax_076')->nullable();
+            $table->string('email_076')->nullable();
+            $table->string('web_076')->nullable();
 
             $table->foreign('customer_076', 'fk01_008_076_shop')->references('id_075')
                 ->on('008_075_customer')->onDelete('cascade')->onUpdate('cascade');

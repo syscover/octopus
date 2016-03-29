@@ -15,20 +15,20 @@ class OctopusCreateTableCustomer extends Migration {
         Schema::create('008_075_customer', function($table){
             $table->engine = 'InnoDB';
             $table->increments('id_075')->unsigned();
-            $table->string('code_075', 50)->nullable();
-            $table->string('company_name_075', 100);
-            $table->string('tin_075', 50)->nullable();
+            $table->string('code_075')->nullable();
+            $table->string('company_name_075');
+            $table->string('tin_075')->nullable();
             $table->string('country_075', 2);
             $table->string('territorial_area_1_075', 6)->nullable();
             $table->string('territorial_area_2_075', 10)->nullable();
             $table->string('territorial_area_3_075', 10)->nullable();
-            $table->string('cp_075', 10)->nullable();
-            $table->string('locality_075', 100)->nullable();
-            $table->string('address_075', 150)->nullable();
-            $table->string('contact_075', 100)->nullable();
-            $table->string('phone_075', 50)->nullable();
-            $table->string('email_075', 100)->nullable();
-            $table->string('web_075', 100)->nullable();
+            $table->string('cp_075')->nullable();
+            $table->string('locality_075')->nullable();
+            $table->string('address_075')->nullable();
+            $table->string('contact_075')->nullable();
+            $table->string('phone_075')->nullable();
+            $table->string('email_075')->nullable();
+            $table->string('web_075')->nullable();
 
             $table->foreign('country_075', 'fk01_008_075_customer')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');

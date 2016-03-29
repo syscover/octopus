@@ -52,13 +52,14 @@
         'fieldSize' => 2,
         'label' => 'ID',
         'name' => 'id',
+        'value' => old('id', isset($object->id_076)? $object->id_076 : null),
         'readOnly' => true
     ])
     @include('pulsar::includes.html.form_iframe_select_group', [
         'label' => trans_choice('pulsar::pulsar.customer', 1),
         'name' => 'customer',
-        'value' => old('customer'),
-        'valueId' => old('customerid'),
+        'value' => old('customer', isset($object->company_name_075)? $object->company_name_075 : null),
+        'valueId' => old('customerid', isset($object->customer_076)? $object->customer_076 : null),
         'maxLength' => '50',
         'rangeLength' => '2,50',
         'modalUrl' => route('modalOctopusCustomer', [
@@ -70,7 +71,7 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans('pulsar::pulsar.name'),
         'name' => 'name',
-        'value' => old('name'),
+        'value' => old('name', isset($object->name_076)? $object->name_076 : null),
         'maxLength' => '100',
         'rangeLength' => '2,100',
         'required' => true
@@ -79,7 +80,7 @@
         'fieldSize' => 4,
         'label' => trans('pulsar::pulsar.tin'),
         'name' => 'tin',
-        'value' => old('tin'),
+        'value' => old('tin', isset($object->tin_076)? $object->tin_076 : null),
         'maxLength' => '50',
         'rangeLength' => '2,50'
     ])
@@ -87,7 +88,7 @@
         'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.web'),
         'name' => 'web',
-        'value' => old('web'),
+        'value' => old('web', isset($object->web_076)? $object->web_076 : null),
         'maxLength' => '100',
         'rangeLength' => '2,100'
     ])
@@ -95,7 +96,7 @@
         'fieldSize' => 5,
         'label' => trans_choice('pulsar::pulsar.contact', 1),
         'name' => 'contact',
-        'value' => old('contact'),
+        'value' => old('contact', isset($object->contact_076)? $object->contact_076 : null),
         'maxLength' => '100',
         'rangeLength' => '2,100'
     ])
@@ -145,7 +146,7 @@
         'fieldSize' => 2,
         'label' => trans('pulsar::pulsar.cp'),
         'name' => 'cp',
-        'value' => old('cp'),
+        'value' => old('cp', isset($object->cp_076)? $object->cp_076 : null),
         'maxLength' => '10',
         'rangeLength' => '2,10'
     ])
@@ -153,14 +154,14 @@
         'fieldSize' => 4,
         'label' => trans('pulsar::pulsar.locality'),
         'name' => 'locality',
-        'value' => old('locality'),
+        'value' => old('locality', isset($object->locality_076)? $object->locality_076 : null),
         'maxLength' => '100',
         'rangeLength' => '2,100'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
         'name' => 'address',
-        'value' => old('address'),
+        'value' => old('address', isset($object->address_076)? $object->address_076 : null),
         'maxLength' => '150',
         'rangeLength' => '2,150',
         'required' => true
@@ -169,7 +170,7 @@
         'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.phone'),
         'name' => 'phone',
-        'value' => old('phone'),
+        'value' => old('phone', isset($object->phone_076)? $object->phone_076 : null),
         'maxLength' => '50',
         'rangeLength' => '2,50'
     ])
@@ -177,7 +178,7 @@
         'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.email'),
         'name' => 'email',
-        'value' => old('email'),
+        'value' => old('email', isset($object->email_076)? $object->email_076 : null),
         'maxLength' => '100',
         'rangeLength' => '2,100',
         'type' => 'email'

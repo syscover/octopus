@@ -29,18 +29,18 @@ class OctopusCreateTableOrder extends Migration {
 
             //address
             $table->integer('id_address_079')->unsigned()->nullable();
-            $table->string('company_name_079',100)->nullable();
-            $table->string('name_079',50)->nullable();
-            $table->string('surname_079',50)->nullable();
-            $table->string('country_079',2);
-            $table->string('territorial_area_1_079',6)->nullable();
-            $table->string('territorial_area_2_079',10)->nullable();
-            $table->string('territorial_area_3_079',10)->nullable();
-            $table->string('cp_079',10)->nullable();
-            $table->string('locality_079',100)->nullable();
-            $table->string('address_079',150)->nullable();
-            $table->string('phone_079',50)->nullable();
-            $table->string('email_079',100)->nullable();
+            $table->string('company_name_079')->nullable();
+            $table->string('name_079')->nullable();
+            $table->string('surname_079')->nullable();
+            $table->string('country_079', 2);
+            $table->string('territorial_area_1_079', 6)->nullable();
+            $table->string('territorial_area_2_079', 10)->nullable();
+            $table->string('territorial_area_3_079', 10)->nullable();
+            $table->string('cp_079')->nullable();
+            $table->string('locality_079')->nullable();
+            $table->string('address_079')->nullable();
+            $table->string('phone_079')->nullable();
+            $table->string('email_079')->nullable();
             $table->text('observations_079')->nullable();
 
             //request
@@ -51,7 +51,7 @@ class OctopusCreateTableOrder extends Migration {
             $table->decimal('total_height_079', 6, 2);
             $table->smallInteger('units_079')->unsigned();
             $table->integer('expiration_079')->nullable()->unsigned()->default(0);
-            $table->string('attached_079',255)->nullable();
+            $table->string('attached_079')->nullable();
             $table->text('comments_079')->nullable();
 
             $table->timestamps();

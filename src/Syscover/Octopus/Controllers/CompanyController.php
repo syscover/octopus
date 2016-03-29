@@ -1,15 +1,5 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Company;
@@ -19,7 +9,7 @@ class CompanyController extends Controller {
     use TraitController;
 
     protected $routeSuffix  = 'OctopusCompany';
-    protected $folder       = 'companies';
+    protected $folder       = 'company';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_074', 'company_name_074', 'email_074', 'phone_074', 'contact_074'];
     protected $nameM        = 'name_company_074';

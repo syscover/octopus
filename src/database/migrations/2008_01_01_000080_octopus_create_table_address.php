@@ -16,22 +16,22 @@ class OctopusCreateTableAddress extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id_077')->unsigned();
             $table->integer('shop_077')->unsigned();
-            $table->string('alias_077', 100)->nullable();
-            $table->string('company_name_077', 100)->nullable();
-            $table->string('name_077', 50)->nullable();
-            $table->string('surname_077', 50)->nullable();
+            $table->string('alias_077')->nullable();
+            $table->string('company_name_077')->nullable();
+            $table->string('name_077')->nullable();
+            $table->string('surname_077')->nullable();
             $table->string('country_077', 2);
             $table->string('territorial_area_1_077', 6)->nullable();
             $table->string('territorial_area_2_077', 10)->nullable();
             $table->string('territorial_area_3_077', 10)->nullable();
-            $table->string('cp_077', 10)->nullable();
-            $table->string('locality_077', 100)->nullable();
-            $table->string('address_077', 150);
-            $table->string('phone_077', 50)->nullable();
-            $table->string('email_077', 100)->nullable();
+            $table->string('cp_077')->nullable();
+            $table->string('locality_077')->nullable();
+            $table->string('address_077');
+            $table->string('phone_077')->nullable();
+            $table->string('email_077')->nullable();
             $table->boolean('favorite_077');
-            $table->string('latitude_077', 50)->nullable();
-            $table->string('longitude_077', 50)->nullable();
+            $table->string('latitude_077')->nullable();
+            $table->string('longitude_077')->nullable();
 
             $table->foreign('shop_077', 'fk01_008_077_address')->references('id_076')
                 ->on('008_076_shop')->onDelete('cascade')->onUpdate('cascade');

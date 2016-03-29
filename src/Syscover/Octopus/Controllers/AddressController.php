@@ -4,18 +4,18 @@ use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Address;
 
-class Addresses extends Controller {
+class AddressController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix      = 'OctopusAddress';
-    protected $folder           = 'addresses';
-    protected $package          = 'octopus';
-    protected $aColumns         = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
-    protected $nameM            = 'alias_077';
-    protected $model            = Address::class;
-    protected $icon             = 'icon-road';
-    protected $objectTrans      = 'address';
+    protected $routeSuffix  = 'octopusAddress';
+    protected $folder       = 'address';
+    protected $package      = 'octopus';
+    protected $aColumns     = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
+    protected $nameM        = 'alias_077';
+    protected $model        = Address::class;
+    protected $icon         = 'fa fa-road';
+    protected $objectTrans  = 'address';
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
@@ -49,7 +49,7 @@ class Addresses extends Controller {
 
         return $parameters;
     }
-    
+
     public function updateCustomRecord($parameters)
     {
         if($this->request->input('favorite')) Address::resetFavorite($this->request->input('ref'));

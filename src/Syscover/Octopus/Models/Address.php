@@ -1,27 +1,32 @@
 <?php namespace Syscover\Octopus\Models;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
+/**
+ * Class Address
+ *
+ * Model with properties
+ * <br><b>[id, name]</b>
+ *
+ * @package Syscover\Octopus\Models
+ */
 
 class Address extends Model {
 
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '008_077_address';
     protected $primaryKey   = 'id_077';
+    protected $suffix       = '077';
     public $timestamps      = false;
     protected $fillable     = ['id_077', 'shop_077', 'alias_077', 'business_077', 'name_077', 'surname_077', 'country_077', 'territorial_area_1_077', 'territorial_area_2_077', 'territorial_area_3_072', 'cp_077', 'locality_077', 'address_077', 'phone_077', 'email_077', 'favorite_077', 'latitude_077', 'longitude_077'];
+    protected $maps         = [];
+    protected $relationMaps = [];
     private static $rules   = [
         'alias'         => 'between:2,100',
         'business'      => 'between:2,100',

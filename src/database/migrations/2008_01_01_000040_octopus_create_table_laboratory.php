@@ -15,19 +15,19 @@ class OctopusCreateTableLaboratory extends Migration {
         Schema::create('008_073_laboratory', function($table){
             $table->engine = 'InnoDB';
             $table->increments('id_073')->unsigned();
-            $table->string('company_name_073', 100);
-            $table->string('tin_073', 50)->nullable();
+            $table->string('company_name_073');
+            $table->string('tin_073')->nullable();
             $table->string('country_073', 2);
             $table->string('territorial_area_1_073', 6)->nullable();
             $table->string('territorial_area_2_073', 10)->nullable();
             $table->string('territorial_area_3_073', 10)->nullable();
-            $table->string('cp_073', 10)->nullable();
-            $table->string('locality_073', 100)->nullable();
-            $table->string('address_073', 150)->nullable();
-            $table->string('contact_073', 100)->nullable();
-            $table->string('phone_073', 50)->nullable();
-            $table->string('email_073', 100)->nullable();
-            $table->string('web_073', 100)->nullable();
+            $table->string('cp_073')->nullable();
+            $table->string('locality_073')->nullable();
+            $table->string('address_073')->nullable();
+            $table->string('contact_073')->nullable();
+            $table->string('phone_073')->nullable();
+            $table->string('email_073')->nullable();
+            $table->string('web_073')->nullable();
 
             $table->foreign('country_073', 'fk01_008_073_laboratory')->references('id_002')->on('001_002_country')
                 ->onDelete('restrict')->onUpdate('cascade');
