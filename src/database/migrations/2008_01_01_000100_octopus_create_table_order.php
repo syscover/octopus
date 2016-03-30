@@ -55,6 +55,7 @@ class OctopusCreateTableOrder extends Migration {
 
             $table->smallInteger('units_079')->unsigned();
 
+            // expiration date
             $table->integer('expiration_079')->nullable()->unsigned()->default(0);
             $table->string('expiration_text_079')->nullable();
 
