@@ -53,7 +53,6 @@
                     // URL to redirect after update address
                     var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 1]) }}'
                     $('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))
-
                 })
             }
 

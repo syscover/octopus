@@ -1,15 +1,5 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
@@ -23,7 +13,7 @@ class OrderController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusOrder';
+    protected $routeSuffix  = 'octopusOrder';
     protected $folder       = 'orders';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_079', ['type' => 'date', 'data' => 'date_079', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'name_072', ['type' => 'email', 'data' => 'email_079'], 'phone_079'];

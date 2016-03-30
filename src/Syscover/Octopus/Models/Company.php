@@ -1,27 +1,32 @@
 <?php namespace Syscover\Octopus\Models;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
+/**
+ * Class Company
+ *
+ * Model with properties
+ * <br><b>[id, company_name, tin, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, contact, phone, email, web]</b>
+ *
+ * @package Syscover\Octopus\Models
+ */
 
 class Company extends Model {
 
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '008_074_company';
     protected $primaryKey   = 'id_074';
+    protected $suffix       = '074';
     public $timestamps      = false;
     protected $fillable     = ['id_074', 'company_name_074', 'tin_074', 'country_074', 'territorial_area_1_074', 'territorial_area_2_074', 'territorial_area_3_072', 'cp_074', 'locality_074', 'address_074', 'contact_074', 'phone_074', 'email_074', 'web_074'];
+    protected $maps         = [];
+    protected $relationMaps = [];
     private static $rules   = [
         'companyName'   => 'required|between:2,100',
         'tin'           => 'between:2,50',

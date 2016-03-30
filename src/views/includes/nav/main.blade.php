@@ -2,13 +2,13 @@
     <a href="javascript:void(0)"><i class="sys-icon-octopus"></i>Octopus</a>
     <ul class="sub-menu">
         @if(session('userAcl')->allows('mifinan', 'access'))
-            <li{!! Miscellaneous::setCurrentPage('mifinan') !!}><a href="{{ route('OctopusFamily') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.committed', 2) }}</a></li>
+            <li{!! Miscellaneous::setCurrentPage('mifinan') !!}><a href="{{ route('octopusFamily') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.committed', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('mifinan', 'access'))
-            <li{!! Miscellaneous::setCurrentPage('octopus-order') !!}><a href="{{ route('OctopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
+            <li{!! Miscellaneous::setCurrentPage('octopus-order') !!}><a href="{{ route('octopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('octopus-request', 'access'))
-            <li{!! Miscellaneous::setCurrentPage('octopus-request') !!}><a href="{{ route('OctopusRequest') }}"><i class="fa fa-inbox"></i>{{ trans_choice('octopus::pulsar.request', 2) }}</a></li>
+            <li{!! Miscellaneous::setCurrentPage('octopus-request') !!}><a href="{{ route('octopusRequest') }}"><i class="fa fa-inbox"></i>{{ trans_choice('octopus::pulsar.request', 2) }}</a></li>
         @endif
         <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop', 'octopus-preference']) !!}>
             <a href="javascript:void(0)"><i class="icomoon-icon-grid"></i>{{ trans('pulsar::pulsar.master_tables') }}</a>

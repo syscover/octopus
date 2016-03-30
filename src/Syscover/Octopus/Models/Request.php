@@ -1,27 +1,32 @@
 <?php namespace Syscover\Octopus\Models;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
+/**
+ * Class Request
+ *
+ * Model with properties
+ * <br><b>[id, order, committed, supervisor, customer, shop, company, family, brand, product, id_address, company_name, name, surname, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, phone, email, observations, date, view_height, view_width, total_height, total_width, units, expiration, attached, comments]</b>
+ *
+ * @package Syscover\Octopus\Models
+ */
 
 class Request extends Model {
 
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '008_078_request';
     protected $primaryKey   = 'id_078';
+    protected $suffix       = '078';
     public $timestamps      = false;
     protected $fillable     = ['id_078', 'order_078', 'committed_078', 'supervisor_078', 'customer_078', 'shop_078', 'company_078', 'family_078', 'brand_078', 'product_078', 'id_address_078', 'company_name_078', 'name_078', 'surname_078', 'country_078', 'territorial_area_1_078', 'territorial_area_2_078', 'territorial_area_3_072', 'cp_078', 'locality_078', 'address_078', 'phone_078', 'email_078', 'observations_078', 'date_078', 'view_height_078', 'view_width_078', 'total_height_078', 'total_width_078', 'units_078', 'expiration_078', 'attached_078', 'comments_078'];
+    protected $maps         = [];
+    protected $relationMaps = [];
     private static $rules   = [
         'shopid'        => 'required',
         'companyName'   => 'required|between:2,100',

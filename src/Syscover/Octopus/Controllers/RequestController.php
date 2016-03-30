@@ -1,15 +1,5 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-/**
- * @package	    Pulsar
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
@@ -18,17 +8,17 @@ use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Request as OctopusRequest;
 
-class Requests extends Controller {
+class RequestController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'OctopusRequest';
-    protected $folder       = 'requests';
+    protected $routeSuffix  = 'octopusRequest';
+    protected $folder       = 'request';
     protected $package      = 'octopus';
     protected $aColumns     = ['id_078', ['type' => 'date', 'data' => 'date_078', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'name_072', ['type' => 'email', 'data' => 'email_078'], 'phone_078'];
     protected $nameM        = 'id_078';
     protected $model        = OctopusRequest::class;
-    protected $icon         = 'icon-inbox';
+    protected $icon         = 'fa fa-inbox';
     protected $objectTrans  = 'request';
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
@@ -78,7 +68,7 @@ class Requests extends Controller {
             'phone_078'                 => $this->request->input('phone'),
             'email_078'                 => $this->request->input('email'),
             'observations_078'          => $this->request->input('observations'),
-            'date_078'                  => \DateTime::createFromFormat('d-m-Y',$this->request->input('date'))->getTimestamp(),
+            'date_078'                  => \DateTime::createFromFormat('d-m-Y', $this->request->input('date'))->getTimestamp(),
             'view_height_078'           => $this->request->input('viewHeight'),
             'view_width_078'            => $this->request->input('viewWidth'),
             'total_height_078'          => $this->request->input('totalHeight'),
