@@ -21,7 +21,7 @@
             }
         });
     </script>
-    <!-- octopus::brands.index -->
+    <!-- ./octopus::brands.index -->
 @stop
 
 @section('tHead')
@@ -32,5 +32,5 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::brands.index -->
+    <!-- ./octopus::brands.index -->
 @stop

@@ -16,7 +16,6 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::get(config('pulsar.appName') . '/octopus/order/delete/{id}/{offset}',                 ['as'=>'deleteOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecord',              'resource' => 'octopus-order',       'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/order/delete/select/records',             ['as'=>'deleteSelectOctopusOrder',          'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecordsSelect',       'resource' => 'octopus-order',       'action' => 'delete']);
 
-
     /*
     |--------------------------------------------------------------------------
     | REQUEST

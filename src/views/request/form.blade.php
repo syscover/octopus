@@ -67,7 +67,6 @@
                 }
             })
 
-
             $('.magnific-popup').magnificPopup({
                 type: 'iframe',
                 removalDelay: 300,
@@ -150,7 +149,6 @@
     </script>
 
     @include('pulsar::includes.js.delete_file')
-
     <!-- ./octopus::requests.create -->
 @stop
 

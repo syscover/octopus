@@ -27,11 +27,7 @@ class RequestController extends Controller {
     {
         if($aObject['order_078'] == null)
         {
-            $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-original-title="' . trans('octopus::pulsar.send_to_order') . '"><i class="fa fa-retweet"></i></a>';
-        }
-        else
-        {
-
+            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.send_to_order') . '"><i class="fa fa-retweet"></i></a>';
         }
 
         return $actions;

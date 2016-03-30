@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- octopus::requests.index -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
             {
@@ -18,11 +18,31 @@
                     "bProcessing": true,
                     "bServerSide": true,
                     "sAjaxSource": "{{ route('jsonData' . ucfirst($routeSuffix)) }}"
-                }).fnSetFilteringDelay();
+                }).fnSetFilteringDelay()
             }
-        });
+        })
+
+        $.createOrder = function(that)
+        {
+            var message = '{{ trans('octopus::pulsar.message_create_order') }}'
+
+            $.msgbox(message.replace('%id%', $(that).data('id')), {
+                    type:'confirm',
+                    buttons: [
+                        {type: 'submit', value: '{{ trans('pulsar::pulsar.accept') }}'},
+                        {type: 'cancel', value: '{{ trans('pulsar::pulsar.cancel') }}'}
+                    ]
+                },
+                function(buttonPressed) {
+                    if(buttonPressed == '{{ trans('pulsar::pulsar.accept') }}')
+                    {
+                        $(location).attr('href', $(that).data('href'))
+                    }
+                }
+            )
+        }
     </script>
-    <!-- octopus::requests.index -->
+    <!-- ./octopus::requests.index -->
 @stop
 
 @section('tHead')
@@ -38,5 +58,5 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::requests.index -->
+    <!-- ./octopus::requests.index -->
 @stop

@@ -1,22 +1,37 @@
 <?php namespace Syscover\Octopus\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
+/**
+ * Class Order
+ *
+ * Model with properties
+ * <br><b>[id, order, committed, supervisor, customer, shop, company, family, brand, product, laboratory, id_address, company_name, name, surname, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
+ *
+ * @package Syscover\Octopus\Models
+ */
 
 class Order extends Model {
 
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '008_079_order';
     protected $primaryKey   = 'id_079';
+    protected $suffix       = '079';
     public $timestamps      = false;
     protected $fillable     = ['id_079', 'order_079', 'committed_079', 'supervisor_079', 'customer_079', 'shop_079', 'company_079', 'family_079', 'brand_079', 'product_079', 'laboratory_079', 'id_address_079', 'company_name_079', 'name_079', 'surname_079', 'country_079', 'territorial_area_1_079', 'territorial_area_2_079', 'territorial_area_3_072', 'cp_079', 'locality_079', 'address_079', 'phone_079', 'email_079', 'observations_079', 'date_079', 'date_text_079', 'view_height_079', 'view_width_079', 'total_height_079', 'total_width_079', 'units_079', 'expiration_079', 'expiration_text_079', 'attachment_079', 'comments_079'];
+    protected $maps         = [];
+    protected $relationMaps = [];
     private static $rules   = [
-        'shopid'        => 'required',
-        'companyName'   => 'required|between:2,100',
-        'name'          => 'required|between:2,50',
-        'surname'       => 'required|between:2,50',
+        'shopId'        => 'required',
+        'companyName'   => 'between:2,255',
+        'name'          => 'between:2,255',
+        'surname'       => 'between:2,255',
         'country'       => 'not_in:null',
         'cp'            => 'between:0,10',
         'locality'      => 'between:0,100',
