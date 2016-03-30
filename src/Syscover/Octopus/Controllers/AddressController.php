@@ -35,20 +35,20 @@ class AddressController extends Controller {
     {
         Address::create([
             'shop_077'                  => $this->request->input('ref'),
-            'alias_077'                 => $this->request->input('alias'),
-            'company_name_077'          => $this->request->input('companyName'),
-            'name_077'                  => $this->request->input('name'),
-            'surname_077'               => $this->request->input('surname'),
+            'alias_077'                 => $this->request->has('alias')? $this->request->input('alias') : null,
+            'company_name_077'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
+            'name_077'                  => $this->request->has('name')? $this->request->input('name') : null,
+            'surname_077'               => $this->request->has('surname')? $this->request->input('surname') : null,
             'country_077'               => $this->request->input('country'),
             'territorial_area_1_077'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_077'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
             'territorial_area_3_077'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_077'                    => $this->request->input('cp'),
-            'locality_077'              => $this->request->input('locality'),
-            'address_077'               => $this->request->input('address'),
-            'phone_077'                 => $this->request->input('phone'),
-            'email_077'                 => $this->request->input('email'),
-            'favorite_077'              => $this->request->input('favorite', 0)
+            'cp_077'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_077'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_077'               => $this->request->has('address')? $this->request->input('address') : null,
+            'phone_077'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_077'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'favorite_077'              => $this->request->has('favorite')
         ]);
 
         $parameters['modal'] = 1;
@@ -61,7 +61,7 @@ class AddressController extends Controller {
         if($this->request->input('favorite')) Address::resetFavorite($this->request->input('ref'));
 
         Address::where('id_077', $parameters['id'])->update([
-            'alias_077'                 => $this->request->input('alias'),
+            'alias_077'                 => $this->request->has('alias')? $this->request->input('alias') : null,
             'company_name_077'          => $this->request->input('companyName'),
             'name_077'                  => $this->request->input('name'),
             'surname_077'               => $this->request->input('surname'),
@@ -69,12 +69,12 @@ class AddressController extends Controller {
             'territorial_area_1_077'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_077'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
             'territorial_area_3_077'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_077'                    => $this->request->input('cp'),
-            'locality_077'              => $this->request->input('locality'),
-            'address_077'               => $this->request->input('address'),
-            'phone_077'                 => $this->request->input('phone'),
-            'email_077'                 => $this->request->input('email'),
-            'favorite_077'              => $this->request->input('favorite', 0)
+            'cp_077'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_077'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_077'               => $this->request->has('address')? $this->request->input('address') : null,
+            'phone_077'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_077'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'favorite_077'              => $this->request->has('favorite')
         ]);
 
         $parameters['modal'] = 1;

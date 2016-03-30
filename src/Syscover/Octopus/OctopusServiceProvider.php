@@ -21,6 +21,11 @@ class OctopusServiceProvider extends ServiceProvider
         // register translations
         $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'octopus');
 
+		// register public files
+		$this->publishes([
+			__DIR__ . '/../../../public'					=> public_path('/packages/syscover/octopus')
+		]);
+
         // register migrations
         $this->publishes([
             __DIR__ . '/../../database/migrations/' 		=> base_path('/database/migrations'),

@@ -28,7 +28,7 @@ class Shop extends Model {
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
-        'customerid'    => 'required',
+        'customerId'    => 'required',
         'name'          => 'required|between:2,100',
         'tin'           => 'between:2,50',
         'country'       => 'not_in:null',

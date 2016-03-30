@@ -71,7 +71,7 @@
         function relatedRecord(data)
         {
             $('[name="customer"]').val(data.company_name_075)
-            $('[name="customerid"]').val(data.id_075)
+            $('[name="customerId"]').val(data.id_075)
             $.magnificPopup.close()
         }
     </script>
@@ -221,7 +221,7 @@
 
 @section('box_tab2')
     <!-- octopus::shops.edit -->
-    <a href="{{ route('createOctopusAddress', $urlParameters) }}" class="magnific-popup bs-tooltip btn marginB10"><i class="fa fa-road"></i> {{ trans('pulsar::pulsar.new') }} {{ trans_choice('pulsar::pulsar.address', 1) }}</a>
+    <a href="{{ route('createOctopusAddress', $urlParameters) }}" class="magnific-popup bs-tooltip btn margin-b10"><i class="fa fa-road"></i> {{ trans('pulsar::pulsar.new') }} {{ trans_choice('pulsar::pulsar.address', 1) }}</a>
     <div class="widget box">
         <div class="widget-content no-padding">
             <form id="formView" method="post" action="{{ route('deleteSelectOctopusAddress', $urlParameters) }}">

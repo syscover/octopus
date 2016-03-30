@@ -39,7 +39,7 @@
         function relatedRecord(data)
         {
             $('[name="customer"]').val(data.company_name_075);
-            $('[name="customerid"]').val(data.id_075);
+            $('[name="customerId"]').val(data.id_075);
             $.magnificPopup.close();
         }
     </script>
@@ -59,9 +59,7 @@
         'label' => trans_choice('pulsar::pulsar.customer', 1),
         'name' => 'customer',
         'value' => old('customer', isset($object->company_name_075)? $object->company_name_075 : null),
-        'valueId' => old('customerid', isset($object->customer_076)? $object->customer_076 : null),
-        'maxLength' => '50',
-        'rangeLength' => '2,50',
+        'valueId' => old('customerId', isset($object->customer_076)? $object->customer_076 : null),
         'modalUrl' => route('modalOctopusCustomer', [
             'offset' => $offset,
             'modal' => 1

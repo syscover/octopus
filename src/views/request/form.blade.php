@@ -1,9 +1,8 @@
-@extends('pulsar::layouts.form', ['action' => 'store', 'enctype' => true])
+@extends('pulsar::layouts.form', ['enctype' => true])
 
 @section('head')
     @parent
     <!-- octopus::requests.create -->
-
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css') }}">
@@ -30,10 +29,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ old('country') }}',
-                territorialArea1Value:      '{{ old('territorialArea1') }}',
-                territorialArea2Value:      '{{ old('territorialArea2') }}',
-                territorialArea3Value:      '{{ old('territorialArea3') }}'
+                countryValue:               '{{ old('country', isset($object->country_078)? $object->country_078 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_078)? $object->territorial_area_1_078 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_078)? $object->territorial_area_2_078 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_078)? $object->territorial_area_3_078 : null) }}'
             })
 
             $('[name="brand"]').on('change', function() {
@@ -46,7 +45,9 @@
                     $.ajax({
                         type: "POST",
                         url: '{{ route('jsonBrandProductsOctopusProduct') }}/' +  $('[name="brand"]').val(),
-                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
                         dataType: 'json',
                         context: this,
                         success: function(response) {
@@ -73,13 +74,15 @@
                 mainClass: 'mfp-fade'
             })
 
-            $('#selectAddress').hide();
+            @if(! isset($object->id_address_078))
+                $('#selectAddress').hide();
+            @endif
         })
 
         function relatedShop(data)
         {
             $('[name="shop"]').val(data.name_076)
-            $('[name="shopid"]').val(data.id_076)
+            $('[name="shopId"]').val(data.id_076)
             $('[name="customer"]').val(data.customer_076)
             $.magnificPopup.close()
 
@@ -89,12 +92,14 @@
             $.ajax({
                 type: "POST",
                 url: '{{ route('jsonFavoriteAddressOctopusAddress') }}/' +  data.id_076,
-                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
                 dataType: 'json',
                 success: function(response) {
                     $('[name="idAddress"]').val(response.id_077)
                     $('[name="alias"]').val(response.alias_077)
-                    $('[name="aliasid"]').val(response.id_077)
+                    $('[name="aliasId"]').val(response.id_077)
                     $('[name="companyName"]').val(response.company_name_077)
                     $('[name="name"]').val(response.name_077)
                     $('[name="surname"]').val(response.surname_077)
@@ -117,11 +122,12 @@
 
             $("#selectAddress").fadeIn()
         }
+
         function relatedAddress(data)
         {
             $('[name="idAddress"]').val(data.id_077)
             $('[name="alias"]').val(data.alias_077)
-            $('[name="aliasid"]').val(data.id_077)
+            $('[name="aliasId"]').val(data.id_077)
             $('[name="companyName"]').val(data.company_name_077)
             $('[name="name"]').val(data.name_077)
             $('[name="surname"]').val(data.surname_077)
@@ -142,6 +148,9 @@
             $.magnificPopup.close()
         }
     </script>
+
+    @include('pulsar::includes.js.delete_file')
+
     <!-- ./octopus::requests.create -->
 @stop
 
@@ -149,22 +158,24 @@
     <!-- octopus::requests.create -->
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'supervisor',
-        'value' => auth('pulsar')->user()->id_010
+        'value' => isset($object->supervisor_078)? $object->supervisor_078 : auth('pulsar')->user()->id_010
     ])
     @include('pulsar::includes.html.form_hidden', [
-        'name' => 'customer'
+        'name' => 'customer',
+        'value' => isset($object->customer_078)? $object->customer_078 : null
     ])
     @include('pulsar::includes.html.form_text_group', [
+        'fieldSize' => 2,
         'label' => 'ID',
         'name' => 'id',
-        'readOnly' => true,
-        'fieldSize' => 2
+        'value' => isset($object->id_078)? $object->id_078 : null,
+        'readOnly' => true
     ])
     @include('pulsar::includes.html.form_iframe_select_group', [
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',
-        'value' => old('shop'),
-        'valueId' => old('shopid'),
+        'value' => old('shop', isset($object->name_076)? $object->name_076 : null),
+        'valueId' => old('shopId', isset($object->shop_078)? $object->shop_078 : null),
         'maxLength' => '50',
         'rangeLength' => '2,50',
         'modalUrl' => route('modalOctopusShop', [
@@ -182,8 +193,8 @@
         @include('pulsar::includes.html.form_iframe_select_group', [
             'label' => trans('pulsar::pulsar.alias'),
             'name' => 'alias',
-            'value' => old('alias'),
-            'valueId' => old('aliasid'),
+            'value' => old('alias', isset($object->alias_077)? $object->alias_077 : null),
+            'valueId' => old('aliasId', isset($object->id_address_078)? $object->id_address_078 : null),
             'maxLength' => '100',
             'rangeLength' => '2,100',
             'modalUrl' => route('modalOctopusAddress', [
@@ -203,7 +214,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.company_name'),
                 'name' => 'companyName',
-                'value' => old('companyName'),
+                'value' => old('companyName', isset($object->company_name_078)? $object->company_name_078 : null),
                 'maxLength' => '100',
                 'rangeLength' => '2,100'
             ])
@@ -212,7 +223,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.name'),
                 'name' => 'name',
-                'value' => old('name'),
+                'value' => old('name', isset($object->name_078)? $object->name_078 : null),
                 'maxLength' => '255',
                 'rangeLength' => '2,255'
             ])
@@ -221,7 +232,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.surname'),
                 'name' => 'surname',
-                'value' => old('surname'),
+                'value' => old('surname', isset($object->surname_078)? $object->surname_078 : null),
                 'maxLength' => '255',
                 'rangeLength' => '2,255'
             ])
@@ -230,7 +241,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.phone'),
                 'name' => 'phone',
-                'value' => old('phone'),
+                'value' => old('phone', isset($object->phone_078)? $object->phone_078 : null),
                 'maxLength' => '50',
                 'rangeLength' => '2,50'
             ])
@@ -239,7 +250,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.email'),
                 'name' => 'email',
-                'value' => old('email'),
+                'value' => old('email', isset($object->email_078)? $object->email_078 : null),
                 'maxLength' => '100',
                 'rangeLength' => '2,100'
             ])
@@ -302,7 +313,7 @@
                 'fieldSize' => 7,
                 'label' => trans('pulsar::pulsar.cp'),
                 'name' => 'cp',
-                'value' => old('cp'),
+                'value' => old('cp', isset($object->cp_078)? $object->cp_078 : null),
                 'maxLength' => '10',
                 'rangeLength' => '2,10',
                 'fieldSize' => 4
@@ -312,7 +323,7 @@
                 'fieldSize' => 8,
                 'label' => trans('pulsar::pulsar.locality'),
                 'name' => 'locality',
-                'value' => old('locality'),
+                'value' => old('locality', isset($object->locality_078)? $object->locality_078 : null),
                 'maxLength' => '100',
                 'rangeLength' => '2,100'
             ])
@@ -321,7 +332,7 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
         'name' => 'address',
-        'value' => old('address'),
+        'value' => old('address', isset($object->address_078)? $object->address_078 : null),
         'maxLength' => '150',
         'rangeLength' => '2,150',
         'required' => true
@@ -329,7 +340,7 @@
     @include('pulsar::includes.html.form_textarea_group', [
         'label' => trans('pulsar::pulsar.observations'),
         'name' => 'observations',
-        'value' => old('observations')
+        'value' => old('observations', isset($object->observations_078)? $object->observations_078 : null)
     ])
 
     @include('pulsar::includes.html.form_section_header', [
@@ -343,10 +354,8 @@
                 'fieldSize' => 6,
                 'label' => trans_choice('pulsar::pulsar.date', 1),
                 'name' => 'date',
+                'value' => isset($object->date_text_078)? $object->date_text_078 : date(config('pulsar.datePattern')),
                 'readOnly' => true,
-                'value' => date('d-m-Y'),
-                'maxLength' => '100',
-                'rangeLength' => '2,100'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -354,7 +363,7 @@
                 'label' => trans_choice('pulsar::pulsar.company', 1),
                 'id' => 'company',
                 'name' => 'company',
-                'value' => old('company'),
+                'value' => old('company', isset($object->company_078)? $object->company_078 : null),
                 'objects' => $companies,
                 'idSelect' => 'id_074',
                 'nameSelect' => 'company_name_074',
@@ -372,7 +381,7 @@
                 'label' => trans_choice('pulsar::pulsar.family', 1),
                 'id' => 'family',
                 'name' => 'family',
-                'value' => old('family'),
+                'value' => old('family', isset($object->family_078)? $object->family_078 : null),
                 'objects' => $families,
                 'idSelect' => 'id_070',
                 'nameSelect' => 'name_070',
@@ -390,7 +399,7 @@
                 'label' => trans_choice('octopus::pulsar.brand', 1),
                 'id' => 'brand',
                 'name' => 'brand',
-                'value' => old('brand'),
+                'value' => old('brand', isset($object->brand_078)? $object->brand_078 : null),
                 'objects' => $brands,
                 'idSelect' => 'id_071',
                 'nameSelect' => 'name_071',
@@ -408,6 +417,8 @@
                 'label' => trans_choice('octopus::pulsar.product', 1),
                 'id' => 'product',
                 'name' => 'product',
+                'value' => old('product', isset($object->product_078)? $object->product_078 : null),
+                'objects' => $products,
                 'required' => true,
                 'idSelect' => 'id_072',
                 'nameSelect' => 'name_072',
@@ -471,15 +482,18 @@
                 'type' => 'number',
                 'label' => trans('pulsar::pulsar.units'),
                 'name' => 'units',
-                'value' => old('units', isset($object->units_078)? $object->units_078 : null)
+                'value' => old('units', isset($object->units_078)? $object->units_078 : null),
+                'required' => true
             ])
-
             @include('pulsar::includes.html.form_file_group', [
                 'labelSize' => 4,
                 'fieldSize' => 8,
-                'label' => trans('pulsar::pulsar.attached'),
-                'name' => 'attached',
-                'value' => old('attached', isset($object->attached_078)? $object->attached_078 : null)
+                'label' => trans_choice('pulsar::pulsar.attachment', 1),
+                'objectId' => isset($object->id_078)? $object->id_078 : null,
+                'dirName' => '/packages/syscover/octopus/storage/attachment/request',
+                'urlDelete' => route('deleteAttachmentOctopusRequest'),
+                'name' => 'attachment',
+                'value' => old('attachment', isset($object->attachment_078)? $object->attachment_078 : null)
             ])
         </div>
     </div>

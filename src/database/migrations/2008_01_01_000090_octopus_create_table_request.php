@@ -50,8 +50,8 @@ class OctopusCreateTableRequest extends Migration {
 
             $table->decimal('view_width_078', 10, 3);
             $table->decimal('view_height_078', 10, 3);
-            $table->decimal('total_width_078', 10, 3);
-            $table->decimal('total_height_078', 10, 3);
+            $table->decimal('total_width_078', 10, 3)->nullable();
+            $table->decimal('total_height_078', 10, 3)->nullable();
 
             $table->smallInteger('units_078')->unsigned();
 
@@ -59,7 +59,7 @@ class OctopusCreateTableRequest extends Migration {
             $table->integer('expiration_078')->nullable()->unsigned()->default(0);
             $table->string('expiration_text_078')->nullable();
 
-            $table->string('attached_078')->nullable();
+            $table->string('attachment_078')->nullable();
             $table->text('comments_078')->nullable();
 
             $table->foreign('supervisor_078', 'fk01_008_078_request')->references('id_010')

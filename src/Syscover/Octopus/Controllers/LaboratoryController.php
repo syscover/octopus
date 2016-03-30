@@ -21,18 +21,18 @@ class LaboratoryController extends Controller {
     {
         Laboratory::create([
             'company_name_073'          => $this->request->input('companyName'),
-            'tin_073'                   => $this->request->input('tin'),
+            'tin_073'                   => $this->request->has('tin')? $this->request->input('tin') : null,
             'country_073'               => $this->request->input('country'),
             'territorial_area_1_073'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_073'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
             'territorial_area_3_073'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_073'                    => $this->request->input('cp'),
-            'locality_073'              => $this->request->input('locality'),
-            'address_073'               => $this->request->input('address'),
-            'contact_073'               => $this->request->input('contact'),
-            'phone_073'                 => $this->request->input('phone'),
-            'email_073'                 => $this->request->input('email'),
-            'web_073'                   => $this->request->input('web')
+            'cp_073'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_073'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_073'               => $this->request->has('address')? $this->request->input('address') : null,
+            'contact_073'               => $this->request->has('contact')? $this->request->input('contact') : null,
+            'phone_073'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_073'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null
         ]);
     }
     
@@ -40,18 +40,18 @@ class LaboratoryController extends Controller {
     {
         Laboratory::where('id_073', $parameters['id'])->update([
             'company_name_073'          => $this->request->input('companyName'),
-            'tin_073'                   => $this->request->input('tin'),
+            'tin_073'                   => $this->request->has('tin')? $this->request->input('tin') : null,
             'country_073'               => $this->request->input('country'),
             'territorial_area_1_073'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_073'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
             'territorial_area_3_073'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_073'                    => $this->request->input('cp'),
-            'locality_073'              => $this->request->input('locality'),
-            'address_073'               => $this->request->input('address'),
-            'contact_073'               => $this->request->input('contact'),
-            'phone_073'                 => $this->request->input('phone'),
-            'email_073'                 => $this->request->input('email'),
-            'web_073'                   => $this->request->input('web')
+            'cp_073'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_073'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_073'               => $this->request->has('address')? $this->request->input('address') : null,
+            'contact_073'               => $this->request->has('contact')? $this->request->input('contact') : null,
+            'phone_073'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_073'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null
         ]);
     }
 }
