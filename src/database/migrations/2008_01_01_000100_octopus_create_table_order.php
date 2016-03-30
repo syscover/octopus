@@ -18,6 +18,7 @@ class OctopusCreateTableOrder extends Migration {
             $table->increments('id_079')->unsigned();
             $table->integer('request_079')->unsigned()->nullable();
             $table->integer('committed_079')->unsigned()->nullable();
+
             $table->integer('supervisor_079')->unsigned();
             $table->integer('customer_079')->unsigned();
             $table->integer('shop_079')->unsigned();
@@ -27,7 +28,7 @@ class OctopusCreateTableOrder extends Migration {
             $table->integer('product_079')->unsigned();
             $table->integer('laboratory_079')->unsigned();
 
-            //address
+            // address
             $table->integer('id_address_079')->unsigned()->nullable();
             $table->string('company_name_079')->nullable();
             $table->string('name_079')->nullable();
@@ -43,18 +44,22 @@ class OctopusCreateTableOrder extends Migration {
             $table->string('email_079')->nullable();
             $table->text('observations_079')->nullable();
 
-            //request
+            // order
             $table->integer('date_079')->unsigned();
-            $table->decimal('view_width_079', 6, 2);
-            $table->decimal('view_height_079', 6, 2);
-            $table->decimal('total_width_079', 6, 2);
-            $table->decimal('total_height_079', 6, 2);
+            $table->string('date_text_079');
+
+            $table->decimal('view_width_079', 10, 3);
+            $table->decimal('view_height_079', 10, 3);
+            $table->decimal('total_width_079', 10, 3);
+            $table->decimal('total_height_079', 10, 3);
+
             $table->smallInteger('units_079')->unsigned();
+
             $table->integer('expiration_079')->nullable()->unsigned()->default(0);
+            $table->string('expiration_text_079')->nullable();
+
             $table->string('attached_079')->nullable();
             $table->text('comments_079')->nullable();
-
-            $table->timestamps();
 
             $table->foreign('supervisor_079', 'fk01_008_079_order')->references('id_010')
                 ->on('001_010_user')->onDelete('restrict')->onUpdate('cascade');

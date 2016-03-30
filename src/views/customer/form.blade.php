@@ -48,6 +48,7 @@
         'rangeLength' => '2,50'
     ])
     @include('pulsar::includes.html.form_text_group', [
+        'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.company_name'),
         'name' => 'companyName',
         'value' => old('companyName', isset($object->company_name_075)? $object->company_name_075 : null),

@@ -25,6 +25,12 @@ class ShopController extends Controller
         return $actionUrlParameters;
     }
 
+    public function setViewParametersJsonData($parameters)
+    {
+        if($parameters['modal'] == 1)
+            $this->viewParameters['checkBoxColumn'] = false;
+    }
+
     public function storeCustomRecord($parameters)
     {
         Shop::create([

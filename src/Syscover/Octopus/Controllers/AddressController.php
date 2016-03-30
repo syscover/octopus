@@ -25,6 +25,12 @@ class AddressController extends Controller {
         return $actionUrlParameters;
     }
 
+    public function setViewParametersJsonData($parameters)
+    {
+        if($parameters['modal'] == 1)
+            $this->viewParameters['checkBoxColumn'] = false;
+    }
+
     public function storeCustomRecord($parameters)
     {
         Address::create([
@@ -98,9 +104,8 @@ class AddressController extends Controller {
 
     public function jsonFavoriteAddress()
     {
-        $parameters = $this->request->route()->parameters();
-
-        $address = Address::getFavoriteAddressShop($parameters['shop']);
+        $parameters     = $this->request->route()->parameters();
+        $address        = Address::getFavoriteAddressShop($parameters['shop']);
 
         return response()->json($address);
     }

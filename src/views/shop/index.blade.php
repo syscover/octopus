@@ -35,7 +35,7 @@
     <!-- octopus::shops.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
-        <th data-hide="phone">{{ trans('pulsar::pulsar.company_name') }}</th>
+        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.customer', 1) }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.phone') }}</th>

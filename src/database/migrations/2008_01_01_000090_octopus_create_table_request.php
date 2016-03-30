@@ -15,9 +15,11 @@ class OctopusCreateTableRequest extends Migration {
         Schema::create('008_078_request', function($table)
         {
             $table->engine = 'InnoDB';
+
             $table->increments('id_078')->unsigned();
             $table->integer('order_078')->unsigned()->nullable();
             $table->integer('committed_078')->unsigned()->nullable();
+
             $table->integer('supervisor_078')->unsigned();
             $table->integer('customer_078')->unsigned();
             $table->integer('shop_078')->unsigned();
@@ -42,18 +44,22 @@ class OctopusCreateTableRequest extends Migration {
             $table->string('email_078')->nullable();
             $table->text('observations_078')->nullable();
 
-            //request
+            // request
             $table->integer('date_078')->unsigned();
-            $table->decimal('view_width_078', 6, 2);
-            $table->decimal('view_height_078', 6, 2);
-            $table->decimal('total_width_078', 6, 2);
-            $table->decimal('total_height_078', 6, 2);
+            $table->string('date_text_078');
+
+            $table->decimal('view_width_078', 10, 3);
+            $table->decimal('view_height_078', 10, 3);
+            $table->decimal('total_width_078', 10, 3);
+            $table->decimal('total_height_078', 10, 3);
+
             $table->smallInteger('units_078')->unsigned();
+
             $table->integer('expiration_078')->nullable()->unsigned()->default(0);
+            $table->string('expiration_text_078')->nullable();
+
             $table->string('attached_078')->nullable();
             $table->text('comments_078')->nullable();
-
-            $table->timestamps();
 
             $table->foreign('supervisor_078', 'fk01_008_078_request')->references('id_010')
                 ->on('001_010_user')->onDelete('restrict')->onUpdate('cascade');
