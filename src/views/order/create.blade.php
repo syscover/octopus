@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- octopus::orders.create -->
+    <!-- octopus::order.create -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css') }}">
@@ -145,11 +145,11 @@
     </script>
 
     @include('pulsar::includes.js.delete_file')
-    <!-- ./octopus::orders.create -->
+    <!-- ./octopus::order.create -->
 @stop
 
 @section('rows')
-    <!-- octopus::orders.create -->
+    <!-- octopus::order.create -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'request',
        'value' => $object->id_078
@@ -465,7 +465,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_width') . ' (cm)',
                 'name' => 'totalWidth',
-                'value' => $object->total_width_078
+                'value' => isset($object->total_width_078)? $object->total_width_078 : null
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -473,7 +473,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_height') . ' (cm)',
                 'name' => 'totalHeight',
-                'value' => $object->total_height_078
+                'value' => isset($object->total_height_078)? $object->total_height_078 : null
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -500,5 +500,5 @@
         'name' => 'comments',
         'value' => old('comments', isset($object->comments_078)? $object->comments_078 : null)
     ])
-    <!-- ./octopus::orders.create -->
+    <!-- ./octopus::order.create -->
 @stop

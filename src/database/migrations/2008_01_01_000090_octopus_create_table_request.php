@@ -19,7 +19,7 @@ class OctopusCreateTableRequest extends Migration {
 
                 $table->increments('id_078')->unsigned();
                 $table->integer('order_078')->unsigned()->nullable();
-                $table->integer('committed_078')->unsigned()->nullable();
+                $table->integer('stock_078')->unsigned()->nullable();
 
                 $table->integer('supervisor_078')->unsigned();
                 $table->integer('customer_078')->unsigned();

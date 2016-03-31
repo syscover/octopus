@@ -2,11 +2,11 @@
 
 @section('head')
     @parent
-    <!-- octopus::order.form -->
+    <!-- octopus::stock.create -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css') }}">
-    
+
     <script src="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
@@ -14,10 +14,10 @@
     <script src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
     <script>
         $(document).ready(function() {
-    
+
             // set language conutry data
             $('[name="country"]').data('language', '{{ config('app.locale') }}')
-    
+
             $.getAddress({
                 id:                         '01',
                 type:                       'laravel',
@@ -25,21 +25,21 @@
                 token:                      '{{ csrf_token() }}',
                 lang:                       '{{ config('app.locale') }}',
                 highlightCountrys:          ['ES','US'],
-    
+
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
-    
+
                 countryValue:               '{{ old('country', isset($object->country_079)? $object->country_079 : null) }}',
                 territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_079)? $object->territorial_area_1_079 : null) }}',
                 territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_079)? $object->territorial_area_2_079 : null) }}',
                 territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_079)? $object->territorial_area_3_079 : null) }}'
             })
-    
+
             $('[name="brand"]').on('change', function() {
-    
+
                 $("[name='product']").val("")
                 $("[name='product']").select2()
-    
+
                 if($('[name="brand"]').val() != "")
                 {
                     $.ajax({
@@ -66,24 +66,24 @@
                     $("[name='product']").append(new Option("Select a {{ trans_choice('octopus::pulsar.product', 1) }}", ""))
                 }
             })
-    
+
             $('.magnific-popup').magnificPopup({
                 type: 'iframe',
                 removalDelay: 300,
                 mainClass: 'mfp-fade'
             })
         })
-    
+
         function relatedShop(data)
         {
             $('[name="shop"]').val(data.name_076)
             $('[name="shopid"]').val(data.id_076)
             $('[name="customer"]').val(data.customer_076)
             $.magnificPopup.close()
-    
+
             // set url to add address
             $("#selectAddress a").attr('href', '{{ route("modalOctopusAddress") }}/' + data.id_076 + '/{{ $offset }}/1')
-    
+
             $.ajax({
                 type: "POST",
                 url: '{{ route('jsonFavoriteAddressOctopusAddress') }}/' +  data.id_076,
@@ -98,7 +98,7 @@
                     $('[name="companyName"]').val(response.company_name_077)
                     $('[name="name"]').val(response.name_077)
                     $('[name="surname"]').val(response.surname_077)
-    
+
                     $.getAddress.setOptions({
                         id:                         '01',
                         countryValue:               response.country_077,
@@ -106,7 +106,7 @@
                         territorialArea2Value:      response.territorial_area_2_077,
                         territorialArea3Value:      response.territorial_area_3_077
                     })
-    
+
                     $('[name="cp"]').val(response.cp_077)
                     $('[name="locality"]').val(response.locality_077)
                     $('[name="phone"]').val(response.phone_077)
@@ -114,10 +114,10 @@
                     $('[name="address"]').val(response.address_077)
                 }
             })
-    
+
             $("#selectAddress").fadeIn()
         }
-    
+
         function relatedAddress(data)
         {
             $('[name="idAddress"]').val(data.id_077)
@@ -126,7 +126,7 @@
             $('[name="companyName"]').val(data.company_name_077)
             $('[name="name"]').val(data.name_077)
             $('[name="surname"]').val(data.surname_077)
-    
+
             $.getAddress.setOptions({
                 id:                         '01',
                 countryValue:               data.country_077,
@@ -134,7 +134,7 @@
                 territorialArea2Value:      data.territorial_area_2_077,
                 territorialArea3Value:      data.territorial_area_3_077
             })
-    
+
             $('[name="cp"]').val(data.cp_077)
             $('[name="locality"]').val(data.locality_077)
             $('[name="phone"]').val(data.phone_077)
@@ -145,14 +145,22 @@
     </script>
 
     @include('pulsar::includes.js.delete_file')
-    <!-- ./octopus::order.form -->
+    <!-- ./octopus::stock.create -->
 @stop
 
 @section('rows')
-    <!-- octopus::order.form -->
+    <!-- octopus::stock.create -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'request',
+       'value' => $object->request_079
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+       'name' => 'order',
        'value' => $object->id_079
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+       'name' => 'laboratory',
+       'value' => $object->laboratory_079
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'supervisor',
@@ -165,7 +173,6 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
-        'value' => $object->id_079,
         'readOnly' => true,
         'fieldSize' => 2
     ])
@@ -491,7 +498,6 @@
                 'label' => trans_choice('pulsar::pulsar.attachment', 1),
                 'objectId' => isset($object->id_079)? $object->id_079 : null,
                 'dirName' => '/packages/syscover/octopus/storage/attachment/order',
-                'urlDelete' => route('deleteAttachmentOctopusOrder'),
                 'name' => 'attachment',
                 'value' => isset($object->attachment_079)? $object->attachment_079 : null
             ])
@@ -502,5 +508,5 @@
         'name' => 'comments',
         'value' => old('comments', isset($object->comments_079)? $object->comments_079 : null)
     ])
-    <!-- ./octopus::order.create -->
+    <!-- ./octopus::stock.create -->
 @stop

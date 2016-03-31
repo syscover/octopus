@@ -24,7 +24,7 @@ class Request extends Model {
     protected $primaryKey   = 'id_078';
     protected $suffix       = '078';
     public $timestamps      = false;
-    protected $fillable     = ['id_078', 'order_078', 'committed_078', 'supervisor_078', 'customer_078', 'shop_078', 'company_078', 'family_078', 'brand_078', 'product_078', 'id_address_078', 'company_name_078', 'name_078', 'surname_078', 'country_078', 'territorial_area_1_078', 'territorial_area_2_078', 'territorial_area_3_072', 'cp_078', 'locality_078', 'address_078', 'phone_078', 'email_078', 'observations_078', 'date_078', 'date_text_078', 'view_height_078', 'view_width_078', 'total_height_078', 'total_width_078', 'units_078', 'expiration_078', 'expiration_text_078', 'attachment_078', 'comments_078'];
+    protected $fillable     = ['id_078', 'order_078', 'stock_078', 'supervisor_078', 'customer_078', 'shop_078', 'company_078', 'family_078', 'brand_078', 'product_078', 'id_address_078', 'company_name_078', 'name_078', 'surname_078', 'country_078', 'territorial_area_1_078', 'territorial_area_2_078', 'territorial_area_3_072', 'cp_078', 'locality_078', 'address_078', 'phone_078', 'email_078', 'observations_078', 'date_078', 'date_text_078', 'view_height_078', 'view_width_078', 'total_height_078', 'total_width_078', 'units_078', 'expiration_078', 'expiration_text_078', 'attachment_078', 'comments_078'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
@@ -33,11 +33,11 @@ class Request extends Model {
         'name'          => 'between:2,255',
         'surname'       => 'between:2,255',
         'country'       => 'not_in:null',
-        'cp'            => 'between:0,10',
-        'locality'      => 'between:0,100',
-        'address'       => 'required|between:0,150',
-        'phone'         => 'between:0,50',
-        'email'         => 'email|between:0,100',
+        'cp'            => 'between:0,255',
+        'locality'      => 'between:0,255',
+        'address'       => 'required|between:0,255',
+        'phone'         => 'between:0,255',
+        'email'         => 'email|between:0,255',
         'viewWidth'     => 'required|numeric',
         'viewHeight'    => 'required|numeric',
         'units'         => 'required|numeric',

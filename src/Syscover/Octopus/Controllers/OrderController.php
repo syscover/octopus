@@ -1,13 +1,14 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Illuminate\Support\Facades\File;
+use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Libraries\Miscellaneous;
+use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
 use Syscover\Octopus\Models\Laboratory;
 use Syscover\Octopus\Models\Product;
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Order;
 use Syscover\Octopus\Models\Request as RequestModel;
 
@@ -34,9 +35,9 @@ class OrderController extends Controller {
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
-        if($aObject['order_078'] == null)
+        if($aObject['stock_079'] == null)
         {
-            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_commited') . '"><i class="fa fa-retweet"></i></a>';
+            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route('createOctopusStock', $actionUrlParameters) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
         }
         else
         {
@@ -66,7 +67,7 @@ class OrderController extends Controller {
         elseif($this->request->has('attachment'))
         {
             File::copy(public_path() . '/packages/syscover/octopus/storage/attachment/request/' . $this->request->input('attachment'), public_path() . '/packages/syscover/octopus/storage/attachment/order/' . $this->request->input('attachment'));
-            $filename = $this->request->has('attachment');
+            $filename = $this->request->input('attachment');
         }
 
         $laboratory = Laboratory::builder()->where('favorite_073', true)->get()->first();
@@ -104,7 +105,7 @@ class OrderController extends Controller {
             'units_079'                 => $this->request->input('units'),
             'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
             'expiration_text_079'       => $this->request->has('expiration')? $this->request->input('expiration') : null,
-            'attached_079'              => $this->request->hasFile('attachment')? $filename : null,
+            'attachment_079'            => isset($filename)? $filename : null,
             'comments_079'              => $this->request->has('comments')? $this->request->input('comments') : null
         ]);
 
@@ -125,14 +126,13 @@ class OrderController extends Controller {
     
     public function updateCustomRecord($parameters)
     {
-        Order::where('id_079', $parameters['id'])->update([
+        $order = [
             'customer_079'              => $this->request->input('customer'),
-            'shop_079'                  => $this->request->input('shopid'),
+            'shop_079'                  => $this->request->input('shopId'),
             'company_079'               => $this->request->input('company'),
             'family_079'                => $this->request->input('family'),
             'brand_079'                 => $this->request->input('brand'),
             'product_079'               => $this->request->input('product'),
-            'laboratory_079'            => $this->request->input('laboratory'),
             'id_address_079'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
             'company_name_079'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_079'                  => $this->request->has('name')? $this->request->input('name') : null,
@@ -141,20 +141,40 @@ class OrderController extends Controller {
             'territorial_area_1_079'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_079'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
             'territorial_area_3_079'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_079'                    => $this->request->input('cp'),
-            'locality_079'              => $this->request->input('locality'),
-            'address_079'               => $this->request->input('address'),
-            'phone_079'                 => $this->request->input('phone'),
-            'email_079'                 => $this->request->input('email'),
-            'observations_079'          => $this->request->input('observations'),
+            'cp_079'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_079'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_079'               => $this->request->has('address')? $this->request->input('address') : null,
+            'phone_079'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_079'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'observations_079'          => $this->request->has('observations')? $this->request->input('observations') : null,
             'view_height_079'           => $this->request->input('viewHeight'),
             'view_width_079'            => $this->request->input('viewWidth'),
-            'total_height_079'          => $this->request->input('totalHeight'),
-            'total_width_079'           => $this->request->input('totalWidth'),
+            'total_height_079'          => $this->request->has('totalWidth')? $this->request->input('totalWidth') : null,
+            'total_width_079'           => $this->request->has('totalHeight')? $this->request->input('totalHeight') : null,
             'units_079'                 => $this->request->input('units'),
-            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat('d-m-Y', $this->request->input('expiration'))->getTimestamp() : null,
-            'attached_079'              => $this->request->input('attached'),
-            'comments_079'              => $this->request->input('comments')
+            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
+            'expiration_text_079'       => $this->request->has('expiration')? $this->request->input('expiration') : null,
+            'comments_079'              => $this->request->has('comments')? $this->request->input('comments') : null
+        ];
+
+        if($this->request->hasFile('attachment'))
+            $order['attachment_079'] = Miscellaneous::uploadFiles('attachment', public_path() . '/packages/syscover/octopus/storage/attachment/order');
+
+        Order::where('id_079', $parameters['id'])->update($order);
+    }
+
+    public function ajaxDeleteFile()
+    {
+        File::delete(public_path() . '/packages/syscover/octopus/storage/attachment/order/' . $this->request->input('file'));
+
+        Order::where('id_079', $this->request->input('id'))->update([
+            'attachment_079' => null,
+        ]);
+
+        return response()->json([
+            'status'    => 'success',
+            'file'      => $this->request->input('file'),
+            'id'        => $this->request->input('id')
         ]);
     }
 }

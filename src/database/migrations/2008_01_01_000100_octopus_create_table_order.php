@@ -18,7 +18,7 @@ class OctopusCreateTableOrder extends Migration {
                 $table->engine = 'InnoDB';
                 $table->increments('id_079')->unsigned();
                 $table->integer('request_079')->unsigned()->nullable();
-                $table->integer('committed_079')->unsigned()->nullable();
+                $table->integer('stock_079')->unsigned()->nullable();
 
                 $table->integer('supervisor_079')->unsigned();
                 $table->integer('customer_079')->unsigned();
@@ -79,16 +79,15 @@ class OctopusCreateTableOrder extends Migration {
                     ->on('008_072_product')->onDelete('restrict')->onUpdate('cascade');
                 $table->foreign('laboratory_079', 'fk08_008_079_order')->references('id_073')
                     ->on('008_073_laboratory')->onDelete('restrict')->onUpdate('cascade');
-
-                $table->foreign('id_address_079', 'fk08_008_079_order')->references('id_077')
+                $table->foreign('id_address_079', 'fk09_008_079_order')->references('id_077')
                     ->on('008_077_address')->onDelete('cascade')->onUpdate('cascade');
-                $table->foreign('country_079', 'fk09_008_079_order')->references('id_002')->on('001_002_country')
+                $table->foreign('country_079', 'fk09_010_079_order')->references('id_002')->on('001_002_country')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_1_079', 'fk10_008_079_order')->references('id_003')->on('001_003_territorial_area_1')
+                $table->foreign('territorial_area_1_079', 'fk11_008_079_order')->references('id_003')->on('001_003_territorial_area_1')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_2_079', 'fk11_008_079_order')->references('id_004')->on('001_004_territorial_area_2')
+                $table->foreign('territorial_area_2_079', 'fk12_008_079_order')->references('id_004')->on('001_004_territorial_area_2')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_3_079', 'fk12_008_079_order')->references('id_005')->on('001_005_territorial_area_3')
+                $table->foreign('territorial_area_3_079', 'fk13_008_079_order')->references('id_005')->on('001_005_territorial_area_3')
                     ->onDelete('restrict')->onUpdate('cascade');
             });
         }
