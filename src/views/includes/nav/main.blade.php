@@ -4,7 +4,7 @@
         @if(session('userAcl')->allows('mifinan', 'access'))
             <li{!! Miscellaneous::setCurrentPage('mifinan') !!}><a href="{{ route('octopusFamily') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.committed', 2) }}</a></li>
         @endif
-        @if(session('userAcl')->allows('octopus-request', 'access'))
+        @if(session('userAcl')->allows('octopus-order', 'access'))
             <li{!! Miscellaneous::setCurrentPage('octopus-order') !!}><a href="{{ route('octopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('octopus-request', 'access'))
