@@ -152,7 +152,7 @@
     <!-- octopus::order.form -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'request',
-       'value' => $object->id_079
+       'value' => $object->request_079
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'supervisor',
@@ -165,7 +165,7 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
-        'value' => $object->id_079,
+        'value' => isset($object->id_079)? $object->id_079 : null,
         'readOnly' => true,
         'fieldSize' => 2
     ])
@@ -437,7 +437,7 @@
                 'data' => [
                     'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')),
                     'locale' => config('app.locale'),
-                    'default-date' => date('Y-m-d', $object->expiration_079)
+                    'default-date' => old('expiration', isset($object->expiration_079)? date('Y-m-d', $object->expiration_079) : null)
                 ]
             ])
         </div>
@@ -485,16 +485,28 @@
                 'value' => $object->units_079,
                 'required' => true
             ])
-            @include('pulsar::includes.html.form_file_group', [
-                'labelSize' => 4,
-                'fieldSize' => 8,
-                'label' => trans_choice('pulsar::pulsar.attachment', 1),
-                'objectId' => isset($object->id_079)? $object->id_079 : null,
-                'dirName' => '/packages/syscover/octopus/storage/attachment/order',
-                'urlDelete' => route('deleteAttachmentOctopusOrder'),
-                'name' => 'attachment',
-                'value' => isset($object->attachment_079)? $object->attachment_079 : null
-            ])
+            @if($action == 'store')
+                @include('pulsar::includes.html.form_file_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 8,
+                    'label' => trans_choice('pulsar::pulsar.attachment', 1),
+                    'objectId' => isset($object->id_079)? $object->id_079 : null,
+                    'dirName' => '/packages/syscover/octopus/storage/attachment/request',
+                    'name' => 'attachment',
+                    'value' => isset($object->attachment_079)? $object->attachment_079 : null
+                ])
+            @else
+                @include('pulsar::includes.html.form_file_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 8,
+                    'label' => trans_choice('pulsar::pulsar.attachment', 1),
+                    'objectId' => isset($object->id_079)? $object->id_079 : null,
+                    'dirName' => '/packages/syscover/octopus/storage/attachment/order',
+                    'urlDelete' => route('deleteAttachmentOctopusOrder'),
+                    'name' => 'attachment',
+                    'value' => isset($object->attachment_079)? $object->attachment_079 : null
+                ])
+            @endif
         </div>
     </div>
     @include('pulsar::includes.html.form_textarea_group', [

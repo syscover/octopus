@@ -53,7 +53,46 @@ class OrderController extends Controller {
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->get();
-        $parameters['object']       = RequestModel::builder()->find($parameters['id']);
+
+        $request = RequestModel::builder()->find($parameters['id']);
+
+        $object = [
+            'name_076'                  => $request->name_076,
+            'alias_077'                 => $request->alias_077,
+            'request_079'               => $request->id_078,
+            'supervisor_079'            => $request->supervisor_078,
+            'customer_079'              => isset($request->customer_078)? $request->customer_078 : null,
+            'shop_079'                  => $request->shop_078,
+            'company_079'               => $request->company_078,
+            'family_079'                => $request->family_078,
+            'brand_079'                 => $request->brand_078,
+            'product_079'               => $request->product_078,
+            'id_address_079'            => isset($request->id_address_078)? $request->id_address_078 : null,
+            'company_name_079'          => isset($request->company_name_078)? $request->company_name_078 : null,
+            'name_079'                  => isset($request->name_078)? $request->name_078 : null,
+            'surname_079'               => isset($request->surname_078)? $request->surname_078 : null,
+            'country_079'               => $request->country_078,
+            'territorial_area_1_079'    => isset($request->territorial_area_1_078)? $request->territorial_area_1_078 : null,
+            'territorial_area_2_079'    => isset($request->territorial_area_2_078)? $request->territorial_area_2_078 : null,
+            'territorial_area_3_079'    => isset($request->territorial_area_3_078)? $request->territorial_area_3_078 : null,
+            'cp_079'                    => isset($request->cp_078)? $request->cp_078 : null,
+            'locality_079'              => isset($request->locality_078)? $request->locality_078 : null,
+            'address_079'               => isset($request->address_078)? $request->address_078 : null,
+            'phone_079'                 => isset($request->phone_078)? $request->phone_078 : null,
+            'email_079'                 => isset($request->email_078)? $request->email_078 : null,
+            'observations_079'          => isset($request->observations_078)? $request->observations_078 : null,
+            'view_height_079'           => $request->view_width_078,
+            'view_width_079'            => $request->view_height_078,
+            'total_height_079'          => isset($request->total_width_078)? $request->total_width_078 : null,
+            'total_width_079'           => isset($request->total_height_078)? $request->total_height_078 : null,
+            'units_079'                 => $request->units_078,
+            'expiration_079'            => isset($request->expiration_078)? $request->expiration_078 : null,
+            'expiration_text_079'       => isset($request->expiration_text_078)? $request->expiration_text_078 : null,
+            'attachment_079'            => isset($request->attachment_078)? $request->attachment_078 : null,
+            'comments_079'              => isset($request->comments_078)? $request->comments_078 : null,
+        ];
+
+        $parameters['object'] = (object)$object;
 
         return $parameters;
     }

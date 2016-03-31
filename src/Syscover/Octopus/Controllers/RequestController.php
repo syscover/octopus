@@ -5,6 +5,7 @@ use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
 use Syscover\Octopus\Models\Product;
+use Syscover\Octopus\Models\Stock;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Pulsar\Traits\TraitController;
@@ -44,13 +45,60 @@ class RequestController extends Controller {
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->get();
 
+        if(isset($parameters['stock']))
+        {
+            $stock = Stock::builder()->find($parameters['stock']);
+            $object = [
+                'name_076'                  => $stock->name_076,
+                'alias_077'                 => $stock->alias_077,
+                'customer_078'              => isset($stock->customer_080)? $stock->customer_080 : null,
+                'shop_078'                  => $stock->shop_080,
+                'company_078'               => $stock->company_080,
+                'family_078'                => $stock->family_080,
+                'brand_078'                 => $stock->brand_080,
+                'product_078'               => $stock->product_080,
+                'id_address_078'            => isset($stock->id_address_080)? $stock->id_address_080 : null,
+                'company_name_078'          => isset($stock->company_name_080)? $stock->company_name_080 : null,
+                'name_078'                  => isset($stock->name_080)? $stock->name_080 : null,
+                'surname_078'               => isset($stock->surname_080)? $stock->surname_080 : null,
+                'country_078'               => $stock->country_080,
+                'territorial_area_1_078'    => isset($stock->territorial_area_1_080)? $stock->territorial_area_1_080 : null,
+                'territorial_area_2_078'    => isset($stock->territorial_area_2_080)? $stock->territorial_area_2_080 : null,
+                'territorial_area_3_078'    => isset($stock->territorial_area_3_080)? $stock->territorial_area_3_080 : null,
+                'cp_078'                    => isset($stock->cp_080)? $stock->cp_080 : null,
+                'locality_078'              => isset($stock->locality_080)? $stock->locality_080 : null,
+                'address_078'               => isset($stock->address_080)? $stock->address_080 : null,
+                'phone_078'                 => isset($stock->phone_080)? $stock->phone_080 : null,
+                'email_078'                 => isset($stock->email_080)? $stock->email_080 : null,
+                'observations_078'          => isset($stock->observations_080)? $stock->observations_080 : null,
+                'view_width_078'            => $stock->view_width_080,
+                'view_height_078'           => $stock->view_height_080,
+                'total_width_078'           => isset($stock->total_width_080)? $stock->total_width_080 : null,
+                'total_height_078'          => isset($stock->total_height_080)? $stock->total_height_080 : null,
+                'units_078'                 => $stock->units_080,
+                'expiration_078'            => isset($stock->expiration_080)? $stock->expiration_080 : null,
+                'expiration_text_078'       => isset($stock->expiration_text_080)? $stock->expiration_text_080 : null,
+                'attachment_078'            => isset($stock->attachment_080)? $stock->attachment_080 : null,
+                'comments_078'              => isset($stock->comments_080)? $stock->comments_080 : null,
+            ];
+
+            $parameters['object'] = (object)$object;
+        }
+
         return $parameters;
     }
 
     public function storeCustomRecord($parameters)
     {
         if($this->request->hasFile('attachment'))
+        {
             $filename = Miscellaneous::uploadFiles('attachment', public_path() . '/packages/syscover/octopus/storage/attachment/request');
+        }
+        elseif($this->request->has('attachment'))
+        {
+            File::copy(public_path() . '/packages/syscover/octopus/storage/attachment/stock/' . $this->request->input('attachment'), public_path() . '/packages/syscover/octopus/storage/attachment/request/' . $this->request->input('attachment'));
+            $filename = $this->request->input('attachment');
+        }
 
         OctopusRequest::create([
             'supervisor_078'            => $this->request->input('supervisor'),
@@ -83,9 +131,17 @@ class RequestController extends Controller {
             'units_078'                 => $this->request->input('units'),
             'expiration_078'            => $this->request->has('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
             'expiration_text_078'       => $this->request->has('expiration')? $this->request->input('expiration') : null,
-            'attachment_078'            => $this->request->hasFile('attachment')? $filename : null,
+            'attachment_078'            => isset($filename)? $filename : null,
             'comments_078'              => $this->request->has('comments')? $this->request->input('comments') : null
         ]);
+
+        if($this->request->has('stock'))
+        {
+            Stock::where('id_080', $this->request->input('stock'))->update([
+                'expiration_080'        => date('U'),
+                'expiration_text_080'   => date(config('pulsar.datePattern'))
+            ]);
+        }
     }
 
     public function editCustomRecord($parameters)

@@ -2,16 +2,6 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Admin Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the paginator library to build
-    | the pagination links. You're free to change them to anything you want.
-    | If you come up with something more exciting, let us know.
-    |
-    */
     'brand'                                 => 'Marca|Marcas',
     'company'                               => 'Empresa|Empresas',
     'create_order'                          => 'Crear pedido',
@@ -20,10 +10,12 @@ return [
     'laboratory'                            => 'Laboratorio|Laboratorios',
     'message_create_order'                  => '¿Desea crear el pedido desde la peticón %id%?',
     'message_create_stock'                  => '¿Desea crear el stock desde el pedido %id%?',
+    'message_replace_stock'                 => '¿Desea crear una petición para reemplazar el stock %id%?',
     'order'                                 => 'Pedido|Pedidos',
     'package_name'                          => 'Octopus',
     'product'                               => 'Producto|Productos',
     'request'                               => 'Solicitud|Solicitudes',
+    'replace_stock'                         => 'Reemplazar stock',
     'shop'                                  => 'Punto de venta|Punto de venta',
     'stock'                                 => 'Stock|Stocks',
     'total_height'                          => 'Total alto',

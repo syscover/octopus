@@ -22,9 +22,9 @@
             }
         })
 
-        $.createStock = function(that)
+        $.replaceStock = function(that)
         {
-            var message = '{{ trans('octopus::pulsar.message_create_stock') }}'
+            var message = '{{ trans('octopus::pulsar.message_replace_stock') }}'
 
             $.msgbox(message.replace('%id%', $(that).data('id')), {
                     type:'confirm',

@@ -1,8 +1,8 @@
-<li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-order', 'octopus-preference']) !!}>
+<li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-order','octopus-stock', 'octopus-preference']) !!}>
     <a href="javascript:void(0)"><i class="sys-icon-octopus"></i>Octopus</a>
     <ul class="sub-menu">
-        @if(session('userAcl')->allows('mifinan', 'access'))
-            <li{!! Miscellaneous::setCurrentPage('mifinan') !!}><a href="{{ route('octopusFamily') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.stock', 2) }}</a></li>
+        @if(session('userAcl')->allows('octopus-stock', 'access'))
+            <li{!! Miscellaneous::setCurrentPage('octopus-stock') !!}><a href="{{ route('octopusStock') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.stock', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('octopus-order', 'access'))
             <li{!! Miscellaneous::setCurrentPage('octopus-order') !!}><a href="{{ route('octopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
