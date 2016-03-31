@@ -3,17 +3,18 @@
 @section('head')
     @parent
     <!-- octopus::orders.create -->
+    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css') }}">
 
+    <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         $(document).ready(function() {
 
             // set language conutry data
-            $('[name="country"]').data('language', '{{ config('app.locale') }}');
+            $('[name="country"]').data('language', '{{ config('app.locale') }}')
 
             $.getAddress({
                 id:                         '01',
@@ -26,72 +27,75 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ old('country') }}',
-                territorialArea1Value:      '{{ old('territorialArea1') }}',
-                territorialArea2Value:      '{{ old('territorialArea2') }}',
-                territorialArea3Value:      '{{ old('territorialArea3') }}'
-            });
+                countryValue:               '{{ old('country', isset($object->country_078)? $object->country_078 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_078)? $object->territorial_area_1_078 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_078)? $object->territorial_area_2_078 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_078)? $object->territorial_area_3_078 : null) }}'
+            })
 
             $('[name="brand"]').on('change', function() {
 
-                $("[name='product']").val("");
-                $("[name='product']").select2();
+                $("[name='product']").val("")
+                $("[name='product']").select2()
 
                 if($('[name="brand"]').val() != "")
                 {
                     $.ajax({
                         type: "POST",
                         url: '{{ route('jsonBrandProductsOctopusProduct') }}/' +  $('[name="brand"]').val(),
-                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
                         dataType: 'json',
                         context: this,
                         success: function(response) {
-                            $("[name='product'] option").remove();
-                            $("[name='product']").append(new Option("Select a {{ trans_choice('octopus::pulsar.product', 1) }}", ""));
+                            $("[name='product'] option").remove()
+                            $("[name='product']").append(new Option("Select a {{ trans_choice('octopus::pulsar.product', 1) }}", ""))
                             for(var i in response)
                             {
-                                $("[name='product']").append(new Option(response[i].name_072, response[i].id_072));
+                                $("[name='product']").append(new Option(response[i].name_072, response[i].id_072))
                             }
                         }
-                    });
+                    })
                 }
                 else
                 {
-                    $("[name='product'] option").remove();
-                    $("[name='product']").append(new Option("Select a {{ trans_choice('octopus::pulsar.product', 1) }}", ""));
+                    $("[name='product'] option").remove()
+                    $("[name='product']").append(new Option("Select a {{ trans_choice('octopus::pulsar.product', 1) }}", ""))
                 }
-            });
-
+            })
 
             $('.magnific-popup').magnificPopup({
                 type: 'iframe',
                 removalDelay: 300,
                 mainClass: 'mfp-fade'
-            });
-        });
+            })
+        })
 
         function relatedShop(data)
         {
-            $('[name="shop"]').val(data.name_076);
-            $('[name="shopid"]').val(data.id_076);
-            $('[name="customer"]').val(data.customer_076);
-            $.magnificPopup.close();
+            $('[name="shop"]').val(data.name_076)
+            $('[name="shopid"]').val(data.id_076)
+            $('[name="customer"]').val(data.customer_076)
+            $.magnificPopup.close()
 
             // set url to add address
-            $("#selectAddress a").attr('href', '{{ route("modalOctopusAddress") }}/' + data.id_076 + '/{{ $offset }}/1');
+            $("#selectAddress a").attr('href', '{{ route("modalOctopusAddress") }}/' + data.id_076 + '/{{ $offset }}/1')
 
             $.ajax({
                 type: "POST",
                 url: '{{ route('jsonFavoriteAddressOctopusAddress') }}/' +  data.id_076,
-                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
                 dataType: 'json',
                 success: function(response) {
-                    $('[name="idAddress"]').val(response.id_077);
-                    $('[name="alias"]').val(response.alias_077);
-                    $('[name="aliasid"]').val(response.id_077);
-                    $('[name="companyName"]').val(response.company_name_077);
-                    $('[name="name"]').val(response.name_077);
-                    $('[name="surname"]').val(response.surname_077);
+                    $('[name="idAddress"]').val(response.id_077)
+                    $('[name="alias"]').val(response.alias_077)
+                    $('[name="aliasid"]').val(response.id_077)
+                    $('[name="companyName"]').val(response.company_name_077)
+                    $('[name="name"]').val(response.name_077)
+                    $('[name="surname"]').val(response.surname_077)
 
                     $.getAddress.setOptions({
                         id:                         '01',
@@ -99,26 +103,27 @@
                         territorialArea1Value:      response.territorial_area_1_077,
                         territorialArea2Value:      response.territorial_area_2_077,
                         territorialArea3Value:      response.territorial_area_3_077
-                    });
+                    })
 
-                    $('[name="cp"]').val(response.cp_077);
-                    $('[name="locality"]').val(response.locality_077);
-                    $('[name="phone"]').val(response.phone_077);
-                    $('[name="email"]').val(response.email_077);
-                    $('[name="address"]').val(response.address_077);
+                    $('[name="cp"]').val(response.cp_077)
+                    $('[name="locality"]').val(response.locality_077)
+                    $('[name="phone"]').val(response.phone_077)
+                    $('[name="email"]').val(response.email_077)
+                    $('[name="address"]').val(response.address_077)
                 }
-            });
+            })
 
-            $("#selectAddress").fadeIn();
+            $("#selectAddress").fadeIn()
         }
+
         function relatedAddress(data)
         {
-            $('[name="idAddress"]').val(data.id_077);
-            $('[name="alias"]').val(data.alias_077);
-            $('[name="aliasid"]').val(data.id_077);
-            $('[name="companyName"]').val(data.company_name_077);
-            $('[name="name"]').val(data.name_077);
-            $('[name="surname"]').val(data.surname_077);
+            $('[name="idAddress"]').val(data.id_077)
+            $('[name="alias"]').val(data.alias_077)
+            $('[name="aliasid"]').val(data.id_077)
+            $('[name="companyName"]').val(data.company_name_077)
+            $('[name="name"]').val(data.name_077)
+            $('[name="surname"]').val(data.surname_077)
 
             $.getAddress.setOptions({
                 id:                         '01',
@@ -126,17 +131,19 @@
                 territorialArea1Value:      data.territorial_area_1_077,
                 territorialArea2Value:      data.territorial_area_2_077,
                 territorialArea3Value:      data.territorial_area_3_077
-            });
+            })
 
-            $('[name="cp"]').val(data.cp_077);
-            $('[name="locality"]').val(data.locality_077);
-            $('[name="phone"]').val(data.phone_077);
-            $('[name="email"]').val(data.email_077);
-            $('[name="address"]').val(data.address_077);
-            $.magnificPopup.close();
+            $('[name="cp"]').val(data.cp_077)
+            $('[name="locality"]').val(data.locality_077)
+            $('[name="phone"]').val(data.phone_077)
+            $('[name="email"]').val(data.email_077)
+            $('[name="address"]').val(data.address_077)
+            $.magnificPopup.close()
         }
     </script>
-    <!-- octopus::orders.create -->
+
+    @include('pulsar::includes.js.delete_file')
+    <!-- ./octopus::orders.create -->
 @stop
 
 @section('rows')
@@ -197,5 +204,5 @@
             @include('pulsar::includes.html.form_textarea_group', ['label' => trans_choice('pulsar::pulsar.comment', 2), 'name' => 'comments', 'value' => old('comments'), 'labelSize' => 1, 'fieldSize' => 11])
         </div>
     </div>
-    <!-- /octopus::orders.create -->
+    <!-- ./octopus::orders.create -->
 @stop

@@ -22,6 +22,14 @@ class OrderController extends Controller {
     protected $model        = Order::class;
     protected $icon         = 'icon-refresh';
     protected $objectTrans  = 'order';
+    protected $viewParameters = [
+        'newButton'             => false,   // button from index view to create record
+        'checkBoxColumn'        => true,    // checkbox from index view to select various records
+        'showButton'            => false,   // button from ajax response, to view record
+        'editButton'            => true,    // button from ajax response, to edit record
+        'deleteButton'          => true,    // button from ajax response, to delete record
+        'deleteSelectButton'    => true     // button delete records when select checkbox on index view
+    ];
 
     public function createCustomRecord($parameters)
     {
