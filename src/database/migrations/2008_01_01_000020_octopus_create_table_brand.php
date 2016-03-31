@@ -12,11 +12,14 @@ class OctopusCreateTableBrand extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('008_071_brand', function($table){
-            $table->engine = 'InnoDB';
-            $table->increments('id_071')->unsigned();
-            $table->string('name_071');
-        });
+		if(! Schema::hasTable('008_071_brand'))
+		{
+			Schema::create('008_071_brand', function ($table) {
+				$table->engine = 'InnoDB';
+				$table->increments('id_071')->unsigned();
+				$table->string('name_071');
+			});
+		}
 	}
 
 	/**
@@ -26,6 +29,9 @@ class OctopusCreateTableBrand extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('008_071_brand');
+		if(Schema::hasTable('008_071_brand'))
+		{
+			Schema::drop('008_071_brand');
+		}
 	}
 }

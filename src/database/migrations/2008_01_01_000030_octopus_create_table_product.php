@@ -12,15 +12,18 @@ class OctopusCreateTableProduct extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('008_072_product', function($table){
-            $table->engine = 'InnoDB';
-            $table->increments('id_072')->unsigned();
-            $table->integer('brand_072')->unsigned();
-            $table->string('name_072');
+		if(! Schema::hasTable('008_072_product'))
+		{
+			Schema::create('008_072_product', function ($table) {
+				$table->engine = 'InnoDB';
+				$table->increments('id_072')->unsigned();
+				$table->integer('brand_072')->unsigned();
+				$table->string('name_072');
 
-            $table->foreign('brand_072', 'fk01_008_072_product')->references('id_071')
-                ->on('008_071_brand')->onDelete('cascade')->onUpdate('cascade');
-        });
+				$table->foreign('brand_072', 'fk01_008_072_product')->references('id_071')
+					->on('008_071_brand')->onDelete('cascade')->onUpdate('cascade');
+			});
+		}
 	}
 
 	/**
@@ -30,6 +33,9 @@ class OctopusCreateTableProduct extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('008_072_product');
+		if(Schema::hasTable('008_072_product'))
+		{
+			Schema::drop('008_072_product');
+		}
 	}
 }

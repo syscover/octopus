@@ -12,11 +12,14 @@ class OctopusCreateTableFamily extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('008_070_family', function($table){
-            $table->engine = 'InnoDB';
-            $table->increments('id_070')->unsigned();
-            $table->string('name_070');
-        });
+		if(! Schema::hasTable('008_070_family'))
+		{
+			Schema::create('008_070_family', function ($table) {
+				$table->engine = 'InnoDB';
+				$table->increments('id_070')->unsigned();
+				$table->string('name_070');
+			});
+		}
 	}
 
 	/**
@@ -26,7 +29,10 @@ class OctopusCreateTableFamily extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('008_070_family');
+		if(Schema::hasTable('008_070_family'))
+		{
+			Schema::drop('008_070_family');
+		}
 	}
 
 }

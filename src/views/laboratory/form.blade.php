@@ -153,5 +153,11 @@
         'rangeLength' => '2,100',
         'fieldSize' => 5
     ])
+    @include('pulsar::includes.html.form_checkbox_group', [
+        'label' => trans('pulsar::pulsar.favorite'),
+        'name' => 'favorite',
+        'value' => 1,
+        'checked' => old('favorite', isset($object->favorite_073)? $object->favorite_073 : null)
+    ])
     <!-- ./octopus::laboratories.create -->
 @stop

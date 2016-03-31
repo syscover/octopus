@@ -16,6 +16,21 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::get(config('pulsar.appName') . '/octopus/order/delete/{id}/{offset}',                 ['as'=>'deleteOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecord',              'resource' => 'octopus-order',       'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/order/delete/select/records',             ['as'=>'deleteSelectOctopusOrder',          'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecordsSelect',       'resource' => 'octopus-order',       'action' => 'delete']);
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | ORDER
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/order/{offset?}',                            ['as'=>'octopusOrder',                      'uses'=>'Syscover\Octopus\Controllers\OrderController@index',                     'resource' => 'octopus-order',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/order/json/data',                            ['as'=>'jsonDataOctopusOrder',              'uses'=>'Syscover\Octopus\Controllers\OrderController@jsonData',                  'resource' => 'octopus-order',       'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/order/create/{id}/{offset}',                 ['as'=>'createOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@createRecord',              'resource' => 'octopus-order',       'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/order/store/{offset}',                      ['as'=>'storeOctopusOrder',                 'uses'=>'Syscover\Octopus\Controllers\OrderController@storeRecord',               'resource' => 'octopus-order',       'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/order/{id}/edit/{offset}',                   ['as'=>'editOctopusOrder',                  'uses'=>'Syscover\Octopus\Controllers\OrderController@editRecord',                'resource' => 'octopus-order',       'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/order/update/{id}/{offset}',                 ['as'=>'updateOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@updateRecord',              'resource' => 'octopus-order',       'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/order/delete/{id}/{offset}',                 ['as'=>'deleteOctopusOrder',                'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecord',              'resource' => 'octopus-order',       'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/order/delete/select/records',             ['as'=>'deleteSelectOctopusOrder',          'uses'=>'Syscover\Octopus\Controllers\OrderController@deleteRecordsSelect',       'resource' => 'octopus-order',       'action' => 'delete']);
+
     /*
     |--------------------------------------------------------------------------
     | REQUEST

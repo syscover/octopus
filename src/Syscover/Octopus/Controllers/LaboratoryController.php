@@ -32,7 +32,8 @@ class LaboratoryController extends Controller {
             'contact_073'               => $this->request->has('contact')? $this->request->input('contact') : null,
             'phone_073'                 => $this->request->has('phone')? $this->request->input('phone') : null,
             'email_073'                 => $this->request->has('email')? $this->request->input('email') : null,
-            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null
+            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null,
+            'favorite_073'              => $this->request->has('favorite')
         ]);
     }
     
@@ -51,7 +52,8 @@ class LaboratoryController extends Controller {
             'contact_073'               => $this->request->has('contact')? $this->request->input('contact') : null,
             'phone_073'                 => $this->request->has('phone')? $this->request->input('phone') : null,
             'email_073'                 => $this->request->has('email')? $this->request->input('email') : null,
-            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null
+            'web_073'                   => $this->request->has('web')? $this->request->input('web') : null,
+            'favorite_073'              => $this->request->has('favorite')
         ]);
     }
 }
