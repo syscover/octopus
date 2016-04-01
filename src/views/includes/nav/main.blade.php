@@ -1,14 +1,20 @@
-<li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-order','octopus-stock', 'octopus-preference']) !!}>
+<li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-supervisor-request','octopus-order','octopus-stock', 'octopus-supervisor-stock', 'octopus-preference']) !!}>
     <a href="javascript:void(0)"><i class="sys-icon-octopus"></i>Octopus</a>
     <ul class="sub-menu">
         @if(session('userAcl')->allows('octopus-stock', 'access'))
             <li{!! Miscellaneous::setCurrentPage('octopus-stock') !!}><a href="{{ route('octopusStock') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.stock', 2) }}</a></li>
+        @endif
+        @if(session('userAcl')->allows('octopus-supervisor-stock', 'access'))
+            <li{!! Miscellaneous::setCurrentPage('octopus-supervisor-stock') !!}><a href="{{ route('octopusSupervisorStock') }}"><i class="fa fa-th-large"></i>{{ trans_choice('octopus::pulsar.supervisor_stock', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('octopus-order', 'access'))
             <li{!! Miscellaneous::setCurrentPage('octopus-order') !!}><a href="{{ route('octopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
         @endif
         @if(session('userAcl')->allows('octopus-request', 'access'))
             <li{!! Miscellaneous::setCurrentPage('octopus-request') !!}><a href="{{ route('octopusRequest') }}"><i class="fa fa-inbox"></i>{{ trans_choice('octopus::pulsar.request', 2) }}</a></li>
+        @endif
+        @if(session('userAcl')->allows('octopus-supervisor-request', 'access'))
+            <li{!! Miscellaneous::setCurrentPage('octopus-supervisor-request') !!}><a href="{{ route('octopusSupervisorRequest') }}"><i class="fa fa-inbox"></i>{{ trans_choice('octopus::pulsar.supervisor_request', 2) }}</a></li>
         @endif
         <li{!! Miscellaneous::setCurrentOpenPage(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop', 'octopus-preference']) !!}>
             <a href="javascript:void(0)"><i class="icomoon-icon-grid"></i>{{ trans('pulsar::pulsar.master_tables') }}</a>

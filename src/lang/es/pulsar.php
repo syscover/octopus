@@ -18,6 +18,8 @@ return [
     'replace_stock'                         => 'Reemplazar stock',
     'shop'                                  => 'Punto de venta|Punto de venta',
     'stock'                                 => 'Stock|Stocks',
+    'supervisor_request'                    => 'Peticón de delegado|Peticiones de delegado',
+    'supervisor_stock'                      => 'Stock de delegado|Stocks de delegado',
     'total_height'                          => 'Total alto',
     'total_width'                           => 'Total ancho',
     'view_height'                           => 'Vista alto',

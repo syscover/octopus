@@ -18,6 +18,8 @@ return [
     'replace_stock'                         => 'Replace stock',
     'shop'                                  => 'Shop|Shops',
     'stock'                                 => 'Stock|Stocks',
+    'supervisor_request'                    => 'Supervisor request|Supervisor requests',
+    'supervisor_stock'                      => 'Supervisor stock|Supervisor stocks',
     'total_height'                          => 'Total height',
     'total_width'                           => 'Total width',
     'view_height'                           => 'View height',

@@ -56,4 +56,18 @@ class Stock extends Model {
             ->join('008_072_product', '008_080_stock.product_080', '=', '008_072_product.id_072')
             ->leftJoin('008_077_address', '008_080_stock.id_address_080', '=', '008_077_address.id_077');
     }
+
+    public function addToGetIndexRecords($request, $parameters)
+    {
+        // get actions to know where it comes from the request
+        $actions = $request->route()->getAction();
+
+        $query =  $this->builder();
+
+        // filter requests only from current user
+        if($actions['resource'] === 'octopus-supervisor-stock')
+            $query->where('supervisor_080', auth('pulsar')->user()->id_010);
+
+        return $query;
+    }
 }

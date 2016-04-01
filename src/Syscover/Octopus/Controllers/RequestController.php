@@ -1,5 +1,6 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
@@ -23,6 +24,19 @@ class RequestController extends Controller {
     protected $model        = OctopusRequest::class;
     protected $icon         = 'fa fa-inbox';
     protected $objectTrans  = 'request';
+
+    function __construct(Request $request)
+    {
+        parent::__construct($request);
+
+        $actions = $this->request->route()->getAction();
+
+        // if request comes from delegate request
+        if($actions['resource'] === 'octopus-delegate-request')
+        {
+            $this->routeSuffix = 'octopusDelegateRequest';
+        }
+    }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
