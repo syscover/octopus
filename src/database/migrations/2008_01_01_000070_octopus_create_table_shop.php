@@ -19,7 +19,6 @@ class OctopusCreateTableShop extends Migration {
                 $table->increments('id_076')->unsigned();
                 $table->integer('customer_076')->unsigned();
                 $table->string('name_076');
-                $table->string('tin_076')->nullable();
                 $table->string('country_076', 2);
                 $table->string('territorial_area_1_076', 6)->nullable();
                 $table->string('territorial_area_2_076', 10)->nullable();

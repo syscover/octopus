@@ -16,7 +16,8 @@ class OctopusFamilyTableSeeder extends Seeder {
             ['id_070' => 6,'name_070' => 'Foto papel sobre cartón-pluma'],
             ['id_070' => 7,'name_070' => 'Logo Vinilo Adhesivo Recortado'],
             ['id_070' => 8,'name_070' => 'Vinilo Impreso Adhesivo Translúcido'],
-            ['id_070' => 9,'name_070' => 'Plotter BackLigth']
+            ['id_070' => 9,'name_070' => 'Plotter BackLigth'],
+            ['id_070' => 10,'name_070' => 'Archivo Digital por WeTransfer'],
         ]);
     }
 }

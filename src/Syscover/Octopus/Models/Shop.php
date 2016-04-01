@@ -10,7 +10,7 @@ use Sofa\Eloquence\Mappable;
  * Class Shop
  *
  * Model with properties
- * <br><b>[id, customer, name, tin, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, contact, phone, email, web]</b>
+ * <br><b>[id, customer, name, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, contact, phone, email, web]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -24,21 +24,20 @@ class Shop extends Model {
     protected $primaryKey   = 'id_076';
     protected $suffix       = '076';
     public $timestamps      = false;
-    protected $fillable     = ['id_076', 'customer_076', 'name_076', 'tin_076', 'country_076', 'territorial_area_1_076', 'territorial_area_2_076', 'territorial_area_3_072', 'cp_076', 'locality_076', 'address_076', 'contact_076', 'phone_076', 'email_076', 'web_076'];
+    protected $fillable     = ['id_076', 'customer_076', 'name_076', 'country_076', 'territorial_area_1_076', 'territorial_area_2_076', 'territorial_area_3_072', 'cp_076', 'locality_076', 'address_076', 'contact_076', 'phone_076', 'email_076', 'web_076'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
         'customerId'    => 'required',
-        'name'          => 'required|between:2,100',
-        'tin'           => 'between:2,50',
+        'name'          => 'required|between:2,255',
         'country'       => 'not_in:null',
-        'cp'            => 'between:0,10',
-        'locality'      => 'between:0,100',
-        'address'       => 'required|between:0,150',
-        'contact'       => 'between:0,100',
-        'phone'         => 'between:0,50',
-        'email'         => 'email|between:0,100',
-        'web'           => 'between:0,100'
+        'cp'            => 'between:0,255',
+        'locality'      => 'between:0,255',
+        'address'       => 'required|between:0,255',
+        'contact'       => 'between:0,255',
+        'phone'         => 'between:0,255',
+        'email'         => 'email|between:0,255',
+        'web'           => 'between:0,255'
     ];
 
     public static function validate($data)
@@ -58,6 +57,12 @@ class Shop extends Model {
 
     public function scopeBuilder($query)
     {
-        return $query->join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075');
+        return $query->join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')
+            ->join('001_002_country', function ($join) {
+                $join->on('008_076_shop.country_076', '=', '001_002_country.id_002')
+                    ->where('001_002_country.lang_002', '=', base_lang()->id_001);
+            })
+            ->leftJoin('001_003_territorial_area_1', '008_076_shop.territorial_area_1_076', '=', '001_003_territorial_area_1.id_003')
+            ->leftJoin('001_004_territorial_area_2', '008_076_shop.territorial_area_2_076', '=', '001_004_territorial_area_2.id_004');
     }
 }

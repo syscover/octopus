@@ -36,7 +36,6 @@ class ShopController extends Controller
         Shop::create([
             'customer_076'              => $this->request->input('customerId'),
             'name_076'                  => $this->request->input('name'),
-            'tin_076'                   => $this->request->has('tin')? $this->request->input('tin') : null,
             'country_076'               => $this->request->input('country'),
             'territorial_area_1_076'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_076'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,

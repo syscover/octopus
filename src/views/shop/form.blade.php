@@ -70,33 +70,25 @@
         'label' => trans('pulsar::pulsar.name'),
         'name' => 'name',
         'value' => old('name', isset($object->name_076)? $object->name_076 : null),
-        'maxLength' => '100',
-        'rangeLength' => '2,100',
+        'maxLength' => '255',
+        'rangeLength' => '2,255',
         'required' => true
-    ])
-    @include('pulsar::includes.html.form_text_group', [
-        'fieldSize' => 4,
-        'label' => trans('pulsar::pulsar.tin'),
-        'name' => 'tin',
-        'value' => old('tin', isset($object->tin_076)? $object->tin_076 : null),
-        'maxLength' => '50',
-        'rangeLength' => '2,50'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.web'),
         'name' => 'web',
         'value' => old('web', isset($object->web_076)? $object->web_076 : null),
-        'maxLength' => '100',
-        'rangeLength' => '2,100'
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 5,
         'label' => trans_choice('pulsar::pulsar.contact', 1),
         'name' => 'contact',
         'value' => old('contact', isset($object->contact_076)? $object->contact_076 : null),
-        'maxLength' => '100',
-        'rangeLength' => '2,100'
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 4,
@@ -145,23 +137,23 @@
         'label' => trans('pulsar::pulsar.cp'),
         'name' => 'cp',
         'value' => old('cp', isset($object->cp_076)? $object->cp_076 : null),
-        'maxLength' => '10',
-        'rangeLength' => '2,10'
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 4,
         'label' => trans('pulsar::pulsar.locality'),
         'name' => 'locality',
         'value' => old('locality', isset($object->locality_076)? $object->locality_076 : null),
-        'maxLength' => '100',
-        'rangeLength' => '2,100'
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
         'name' => 'address',
         'value' => old('address', isset($object->address_076)? $object->address_076 : null),
-        'maxLength' => '150',
-        'rangeLength' => '2,150',
+        'maxLength' => '255',
+        'rangeLength' => '2,255',
         'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
@@ -169,16 +161,16 @@
         'label' => trans('pulsar::pulsar.phone'),
         'name' => 'phone',
         'value' => old('phone', isset($object->phone_076)? $object->phone_076 : null),
-        'maxLength' => '50',
-        'rangeLength' => '2,50'
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 5,
         'label' => trans('pulsar::pulsar.email'),
         'name' => 'email',
         'value' => old('email', isset($object->email_076)? $object->email_076 : null),
-        'maxLength' => '100',
-        'rangeLength' => '2,100',
+        'maxLength' => '255',
+        'rangeLength' => '2,255',
         'type' => 'email'
     ])
     <!-- ./octopus::shops.create -->

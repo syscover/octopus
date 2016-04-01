@@ -32,6 +32,8 @@ class OctopusCreateTableCustomer extends Migration {
                 $table->string('email_075')->nullable();
                 $table->string('web_075')->nullable();
 
+                $table->unique('code_075', 'ui_008_075_customer');
+
                 $table->foreign('country_075', 'fk01_008_075_customer')->references('id_002')->on('001_002_country')
                     ->onDelete('restrict')->onUpdate('cascade');
                 $table->foreign('territorial_area_1_075', 'fk02_008_075_customer')->references('id_003')->on('001_003_territorial_area_1')
