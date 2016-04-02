@@ -1,14 +1,21 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Syscover\Octopus\Models\Address;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
 use Syscover\Octopus\Models\Product;
+use Syscover\Octopus\Models\Shop;
 use Syscover\Octopus\Models\Stock;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
+use Syscover\Pulsar\Models\EmailAccount;
+use Syscover\Pulsar\Models\Preference;
+use Syscover\Pulsar\Models\User;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Request as OctopusRequest;
 
@@ -114,7 +121,7 @@ class RequestController extends Controller {
             $filename = $this->request->input('attachment');
         }
 
-        OctopusRequest::create([
+        $octopusRequest = OctopusRequest::create([
             'supervisor_078'            => $this->request->input('supervisor'),
             'customer_078'              => $this->request->input('customer'),
             'shop_078'                  => $this->request->input('shopId'),
@@ -156,6 +163,37 @@ class RequestController extends Controller {
                 'expiration_text_080'   => date(config('pulsar.datePattern'))
             ]);
         }
+
+        // send email confirmation
+        $octopusRequest         = OctopusRequest::builder()->find($octopusRequest->id_078);
+        // get notification account
+        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
+        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
+
+        if($emailAccount == null) return null;
+
+        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
+        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
+        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
+        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
+        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
+        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
+
+        //$billingUser = User::builder()->find((int)Preference::getValue('projectsBillingUser', 6)->value_018);
+        $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
+
+        $dataMessage = [
+            'emailTo'           => $supervisor->email_010,
+            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'octopusRequest'    => $octopusRequest,
+            'supervisor'        => $supervisor,
+        ];
+
+        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
     }
 
     public function editCustomRecord($parameters)
@@ -220,5 +258,26 @@ class RequestController extends Controller {
             'file'      => $this->request->input('file'),
             'id'        => $this->request->input('id')
         ]);
+    }
+
+
+    public function checkEmail()
+    {
+        $octopusRequest = OctopusRequest::builder()->find(4);
+        $supervisor     = User::builder()->find($octopusRequest->supervisor_078);
+        $shop           = Shop::builder()->find($octopusRequest->shop_078);
+
+        $dataMessage = [
+            'emailTo'           => $supervisor->email_010,
+            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'octopusRequest'    => $octopusRequest,
+            'supervisor'        => $supervisor,
+            'shop'              => $shop
+        ];
+
+
+        return view('octopus::emails.request_notification', $dataMessage);
+
     }
 }

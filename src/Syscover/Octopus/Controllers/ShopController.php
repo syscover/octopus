@@ -1,5 +1,6 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Octopus\Models\Address;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Shop;
@@ -20,7 +21,7 @@ class ShopController extends Controller
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
         // init record on tap 2
-        $actionUrlParameters['tab'] = 2;
+        $actionUrlParameters['tab'] = 1;
 
         return $actionUrlParameters;
     }
@@ -33,7 +34,7 @@ class ShopController extends Controller
 
     public function storeCustomRecord($parameters)
     {
-        Shop::create([
+        $shop = Shop::create([
             'customer_076'              => $this->request->input('customerId'),
             'name_076'                  => $this->request->input('name'),
             'country_076'               => $this->request->input('country'),
@@ -47,6 +48,25 @@ class ShopController extends Controller
             'phone_076'                 => $this->request->has('phone')? $this->request->input('phone') : null,
             'email_076'                 => $this->request->has('email')? $this->request->input('email') : null,
             'web_076'                   => $this->request->has('web')? $this->request->input('web') : null
+        ]);
+
+        // create default address
+        Address::create([
+            'shop_077'                  => $shop->id_076,
+            'alias_077'                 => trans_choice('octopus::pulsar.shop', 1),
+            'company_name_077'          => $this->request->input('name'),
+            'name_077'                  => null,
+            'surname_077'               => null,
+            'country_077'               => $this->request->input('country'),
+            'territorial_area_1_077'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_077'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_077'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'cp_077'                    => $this->request->has('cp')? $this->request->input('cp') : null,
+            'locality_077'              => $this->request->has('locality')? $this->request->input('locality') : null,
+            'address_077'               => $this->request->has('address')? $this->request->input('address') : null,
+            'phone_077'                 => $this->request->has('phone')? $this->request->input('phone') : null,
+            'email_077'                 => $this->request->has('email')? $this->request->input('email') : null,
+            'favorite_077'              => true
         ]);
     }
     
