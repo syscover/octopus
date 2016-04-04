@@ -37,9 +37,9 @@
         <th data-hide="phone,tablet">ID.</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.customer', 1) }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
-        <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
-        <th data-hide="phone">{{ trans('pulsar::pulsar.phone') }}</th>
-        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.contact', 1) }}</th>
+        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.territorial_area', 1) }} 2</th>
+        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.address', 1) }}</th>
+        <th data-hide="phone">{{ trans('pulsar::pulsar.locality') }}</th>
         @if(!isset($modal) || isset($modal) && !$modal)
             <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         @endif
