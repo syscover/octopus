@@ -27,7 +27,7 @@
             });
         });
     </script>
-    <!-- ./octopus::customer.create -->
+    <!-- /.octopus::customer.create -->
 @stop
 
 @section('rows')
@@ -162,5 +162,5 @@
         'maxLength' => '100',
         'rangeLength' => '2,100'
     ])
-    <!-- ./octopus::customer.create -->
+    <!-- /.octopus::customer.create -->
 @stop

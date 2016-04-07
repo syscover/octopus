@@ -17,5 +17,5 @@
         'rangeLength' => '2,50',
         'required' => true
     ])
-    <!-- ./octopus::brand.create -->
+    <!-- /.octopus::brand.create -->
 @stop

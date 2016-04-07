@@ -27,7 +27,7 @@
             });
         });
     </script>
-    <!-- ./octopus::company.create -->
+    <!-- /.octopus::company.create -->
 @stop
 
 @section('rows')
@@ -153,5 +153,5 @@
         'rangeLength' => '2,100',
         'fieldSize' => 5
     ])
-    <!-- ./octopus::company.create -->
+    <!-- /.octopus::company.create -->
 @stop

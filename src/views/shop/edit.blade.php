@@ -75,7 +75,7 @@
             $.magnificPopup.close()
         }
     </script>
-    <!-- ./octopus::shops.create -->
+    <!-- /.octopus::shops.create -->
 @stop
 
 @section('box_tab1')
@@ -208,7 +208,7 @@
             'fieldSize' => 5
         ])
     @include('pulsar::includes.html.form_record_footer')
-    <!-- ./octopus::shops.edit -->
+    <!-- /.octopus::shops.edit -->
 @stop
 
 @section('box_tab2')
@@ -240,7 +240,7 @@
             </form>
         </div>
     </div>
-    <!-- ./octopus::shops.edit -->
+    <!-- /.octopus::shops.edit -->
 @stop
 
 @section('box_tab3')

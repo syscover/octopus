@@ -4,7 +4,7 @@
     @parent
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
     <!-- octopus::laboratories.create -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
 
             $('[name="country"]').data('language', '{{ config('app.locale') }}')
@@ -27,7 +27,7 @@
             });
         });
     </script>
-    <!-- ./octopus::laboratories.create -->
+    <!-- /.octopus::laboratories.create -->
 @stop
 
 @section('rows')
@@ -159,5 +159,5 @@
         'value' => 1,
         'checked' => old('favorite', isset($object->favorite_073)? $object->favorite_073 : null)
     ])
-    <!-- ./octopus::laboratories.create -->
+    <!-- /.octopus::laboratories.create -->
 @stop
