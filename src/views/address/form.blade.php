@@ -6,7 +6,7 @@
 @section('head')
     @parent
     <!-- octopus::address.create -->
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
     <script>
         $(document).ready(function() {
 

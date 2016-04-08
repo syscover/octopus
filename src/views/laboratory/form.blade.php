@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getaddress/js/jquery.getaddress.js') }}"></script>
     <!-- octopus::laboratories.create -->
     <script>
         $(document).ready(function() {
