@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'brand'                                 => 'Brand|Brands',
     'company'                               => 'Company|Companies',
     'create_order'                          => 'Create order',

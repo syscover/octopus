@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'brand'                                 => 'Marca|Marcas',
     'company'                               => 'Empresa|Empresas',
     'create_order'                          => 'Crear pedido',
