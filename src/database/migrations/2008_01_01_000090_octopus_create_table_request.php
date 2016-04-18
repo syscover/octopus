@@ -29,7 +29,7 @@ class OctopusCreateTableRequest extends Migration {
                 $table->integer('brand_078')->unsigned();
                 $table->integer('product_078')->unsigned();
 
-                //address
+                // shipping address
                 $table->integer('id_address_078')->unsigned()->nullable();
                 $table->string('company_name_078')->nullable();
                 $table->string('name_078')->nullable();
