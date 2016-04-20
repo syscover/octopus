@@ -50,8 +50,8 @@
                     "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0]) }}"
                 }).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json){
 
-                    // URL to redirect after update address
-                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 1]) }}'
+                    /// set url to call from modal when submit any action
+                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 0]) }}'
                     $('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))
                 })
             }

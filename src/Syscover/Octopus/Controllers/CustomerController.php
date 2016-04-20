@@ -17,15 +17,18 @@ class CustomerController extends Controller
     public function customIndex($parameters)
     {
         if(isset($parameters['modal']) && $parameters['modal'] == 1)
-            $parameters['viewParameters']['deleteSelectButton'] = false;
+            $this->viewParameters['deleteSelectButton'] = false;
 
         return $parameters;
     }
 
-    public function setViewParametersJsonData($parameters)
+    public function customJsonData($parameters)
     {
         if($parameters['modal'] == 1)
+        {
             $this->viewParameters['checkBoxColumn'] = false;
+            $this->viewParameters['relatedButton']  = true;
+        }
     }
 
     public function storeCustomRecord($parameters)

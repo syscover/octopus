@@ -19,18 +19,26 @@ class AddressController extends Controller
     protected $icon         = 'fa fa-road';
     protected $objectTrans  = 'address';
 
+    public function customIndex($parameters)
+    {
+        if(isset($parameters['modal']) && $parameters['modal'] == 1)
+            $this->viewParameters['deleteSelectButton'] = false;
+
+        return $parameters;
+    }
+
+    public function customJsonData($parameters)
+    {
+        if($parameters['modal'] == 1)
+            $this->viewParameters['checkBoxColumn'] = false;
+    }
+
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
         $actionUrlParameters['modal']   = true;
         $actionUrlParameters['ref']     = $parameters['ref'];
 
         return $actionUrlParameters;
-    }
-
-    public function setViewParametersJsonData($parameters)
-    {
-        if($parameters['modal'] == 1)
-            $this->viewParameters['checkBoxColumn'] = false;
     }
 
     public function storeCustomRecord($parameters)
@@ -53,7 +61,7 @@ class AddressController extends Controller
             'favorite_077'              => $this->request->has('favorite')
         ]);
 
-        $parameters['modal'] = 1;
+        $parameters['redirectModal'] = true;
 
         return $parameters;
     }
@@ -79,7 +87,7 @@ class AddressController extends Controller
             'favorite_077'              => $this->request->has('favorite')
         ]);
 
-        $parameters['modal'] = 1;
+        $parameters['redirectModal'] = true;
 
         return $parameters;
     }

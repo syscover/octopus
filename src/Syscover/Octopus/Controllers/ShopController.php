@@ -20,18 +20,29 @@ class ShopController extends Controller
     protected $icon         = 'icomoon-icon-office';
     protected $objectTrans  = 'shop';
 
+    public function customIndex($parameters)
+    {
+        if(isset($parameters['modal']) && $parameters['modal'] == 1)
+            $this->viewParameters['deleteSelectButton'] = false;
+
+        return $parameters;
+    }
+
+    public function customJsonData($parameters)
+    {
+        if($parameters['modal'] == 1)
+        {
+            $this->viewParameters['checkBoxColumn'] = false;
+            $this->viewParameters['relatedButton']  = true;
+        }
+    }
+
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
         // init record on tap 2
         $actionUrlParameters['tab'] = 1;
 
         return $actionUrlParameters;
-    }
-
-    public function setViewParametersJsonData($parameters)
-    {
-        if($parameters['modal'] == 1)
-            $this->viewParameters['checkBoxColumn'] = false;
     }
 
     public function storeCustomRecord($parameters)
