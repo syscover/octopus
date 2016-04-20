@@ -1,28 +1,29 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Syscover\Octopus\Models\Address;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
 use Syscover\Octopus\Models\Product;
 use Syscover\Octopus\Models\Shop;
 use Syscover\Octopus\Models\Stock;
-use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Pulsar\Models\EmailAccount;
 use Syscover\Pulsar\Models\Preference;
 use Syscover\Pulsar\Models\User;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Request as OctopusRequest;
 
-class RequestController extends Controller {
+/**
+ * Class RequestController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class RequestController extends Controller
+{
     protected $routeSuffix  = 'octopusRequest';
     protected $folder       = 'request';
     protected $package      = 'octopus';

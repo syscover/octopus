@@ -1,14 +1,16 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Octopus\Models\Address;
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Shop;
+
+/**
+ * Class ShopController
+ * @package Syscover\Octopus\Controllers
+ */
 
 class ShopController extends Controller
 {
-    use TraitController;
-
     protected $routeSuffix  = 'octopusShop';
     protected $folder       = 'shop';
     protected $package      = 'octopus';
@@ -75,7 +77,6 @@ class ShopController extends Controller
         Shop::where('id_076', $parameters['id'])->update([
             'customer_076'              => $this->request->input('customerId'),
             'name_076'                  => $this->request->input('name'),
-            'tin_076'                   => $this->request->has('tin')? $this->request->input('tin') : null,
             'country_076'               => $this->request->input('country'),
             'territorial_area_1_076'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
             'territorial_area_2_076'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,

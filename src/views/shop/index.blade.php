@@ -40,7 +40,7 @@
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.territorial_area', 1) }} 2</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.address', 1) }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.locality') }}</th>
-        @if(!isset($modal) || isset($modal) && !$modal)
+        @if(! isset($modal) || isset($modal) && !$modal)
             <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>

@@ -1,14 +1,16 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Models\EmailAccount;
 use Syscover\Pulsar\Models\Preference;
-use Syscover\Pulsar\Traits\TraitController;
 
-class PreferenceController extends Controller {
+/**
+ * Class PreferenceController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class PreferenceController extends Controller
+{
     protected $routeSuffix  = 'octopusPreference';
     protected $folder       = 'preference';
     protected $package      = 'octopus';

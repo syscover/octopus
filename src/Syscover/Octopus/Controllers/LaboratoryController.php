@@ -1,13 +1,15 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Octopus\Models\Laboratory;
 
-class LaboratoryController extends Controller {
+/**
+ * Class LaboratoryController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class LaboratoryController extends Controller
+{
     protected $routeSuffix  = 'octopusLaboratory';
     protected $folder       = 'laboratory';
     protected $package      = 'octopus';

@@ -1,13 +1,15 @@
 <?php namespace Syscover\Octopus\Controllers;
 
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Octopus\Models\Address;
 
-class AddressController extends Controller {
+/**
+ * Class AddressController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class AddressController extends Controller
+{
     protected $routeSuffix  = 'octopusAddress';
     protected $folder       = 'address';
     protected $package      = 'octopus';

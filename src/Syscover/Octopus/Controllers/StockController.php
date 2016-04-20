@@ -1,9 +1,8 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Illuminate\Support\Facades\File;
-use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
@@ -12,10 +11,13 @@ use Syscover\Octopus\Models\Request as RequestModel;
 use Syscover\Octopus\Models\Order;
 use Syscover\Octopus\Models\Stock;
 
-class StockController extends Controller {
+/**
+ * Class StockController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class StockController extends Controller
+{
     protected $routeSuffix  = 'octopusStock';
     protected $folder       = 'stock';
     protected $package      = 'octopus';

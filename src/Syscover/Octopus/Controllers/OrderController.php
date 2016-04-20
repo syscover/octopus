@@ -1,9 +1,8 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Illuminate\Support\Facades\File;
-use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
@@ -12,10 +11,13 @@ use Syscover\Octopus\Models\Product;
 use Syscover\Octopus\Models\Order;
 use Syscover\Octopus\Models\Request as RequestModel;
 
-class OrderController extends Controller {
+/**
+ * Class OrderController
+ * @package Syscover\Octopus\Controllers
+ */
 
-    use TraitController;
-
+class OrderController extends Controller
+{
     protected $routeSuffix  = 'octopusOrder';
     protected $folder       = 'order';
     protected $package      = 'octopus';
