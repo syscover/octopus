@@ -40,10 +40,8 @@ class RequestController extends Controller
         $actions = $this->request->route()->getAction();
 
         // if request comes from delegate request
-        if($actions['resource'] === 'octopus-delegate-request')
-        {
-            $this->routeSuffix = 'octopusDelegateRequest';
-        }
+        if($actions['resource'] === 'octopus-supervisor-request')
+            $this->routeSuffix = 'octopusSupervisorRequest';
     }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
