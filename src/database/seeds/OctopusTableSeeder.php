@@ -17,8 +17,11 @@ class OctopusTableSeeder extends Seeder
         $this->call(OctopusCustomerTableSeeder::class);
         $this->call(OctopusShopTableSeeder::class);
         $this->call(OctopusAddressTableSeeder::class);
-        //$this->call(OctopusResourceTableSeeder::class);
-        //$this->call(OctopusPackageTableSeeder::class);
+        $this->call(OctopusRequestTableSeeder::class);
+        $this->call(OctopusOrderTableSeeder::class);
+        $this->call(OctopusStockTableSeeder::class);
+        $this->call(OctopusResourceTableSeeder::class);
+        $this->call(OctopusPackageTableSeeder::class);
 
         Model::reguard();
     }
