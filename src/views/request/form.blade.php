@@ -180,7 +180,7 @@
         'valueId' => old('shopId', isset($object->shop_078)? $object->shop_078 : null),
         'maxLength' => '255',
         'rangeLength' => '2,255',
-        'modalUrl' => route('modalOctopusShop', [
+        'modalUrl' => route('octopusShop', [
             'offset' => $offset,
             'modal' => 1
         ]),

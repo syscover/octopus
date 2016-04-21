@@ -95,7 +95,7 @@
             'valueId' => $object->customer_076,
             'maxLength' => '255',
             'rangeLength' => '2,255',
-            'modalUrl' => route('modalOctopusCustomer', [
+            'modalUrl' => route('octopusCustomer', [
                 'offset' => $offset,
                 'modal' => 1
             ]),

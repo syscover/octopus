@@ -20,10 +20,10 @@
             <a href="javascript:void(0)"><i class="icomoon-icon-grid"></i>{{ trans('pulsar::pulsar.master_tables') }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('octopus-shop', 'access'))
-                    <li{!! is_current_resource('octopus-shop') !!}><a href="{{ route('octopusShop') }}"><i class="icomoon-icon-office"></i>{{ trans_choice('octopus::pulsar.shop', 2) }}</a></li>
+                    <li{!! is_current_resource('octopus-shop') !!}><a href="{{ route('octopusShop', ['modal' => 0]) }}"><i class="icomoon-icon-office"></i>{{ trans_choice('octopus::pulsar.shop', 2) }}</a></li>
                 @endif
                 @if(is_allowed('octopus-customer', 'access'))
-                    <li{!! is_current_resource('octopus-customer') !!}><a href="{{ route('octopusCustomer') }}"><i class="icomoon-icon-users"></i>{{ trans_choice('pulsar::pulsar.customer', 2) }}</a></li>
+                    <li{!! is_current_resource('octopus-customer') !!}><a href="{{ route('octopusCustomer', ['modal' => 0]) }}"><i class="icomoon-icon-users"></i>{{ trans_choice('pulsar::pulsar.customer', 2) }}</a></li>
                 @endif
                 @if(is_allowed('octopus-company', 'access'))
                     <li{!! is_current_resource('octopus-company') !!}><a href="{{ route('octopusCompany') }}"><i class="fa fa-building"></i>{{ trans_choice('octopus::pulsar.company', 2) }}</a></li>

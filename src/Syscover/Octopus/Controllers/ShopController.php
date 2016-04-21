@@ -39,7 +39,6 @@ class ShopController extends Controller
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
-        // init record on tap 2
         $actionUrlParameters['tab'] = 1;
 
         return $actionUrlParameters;

@@ -176,7 +176,7 @@
         'valueId' => $object->shop_079,
         'maxLength' => '255',
         'rangeLength' => '2,255',
-        'modalUrl' => route('modalOctopusShop', [
+        'modalUrl' => route('octopusShop', [
             'offset' => $offset,
             'modal' => 1
         ]),

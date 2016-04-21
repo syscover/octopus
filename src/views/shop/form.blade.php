@@ -60,7 +60,7 @@
         'name' => 'customer',
         'value' => old('customer', isset($object->company_name_075)? $object->company_name_075 : null),
         'valueId' => old('customerId', isset($object->customer_076)? $object->customer_076 : null),
-        'modalUrl' => route('modalOctopusCustomer', [
+        'modalUrl' => route('octopusCustomer', [
             'offset' => $offset,
             'modal' => 1
         ]),
