@@ -24,6 +24,7 @@ class OctopusResourceTableSeeder extends Seeder {
             ['id_007' => 'octopus-stock',               'name_007' => 'Stock',                      'package_007' => '8'],
             ['id_007' => 'octopus-supervisor-stock',    'name_007' => 'Supervisor Stock',           'package_007' => '8'],
             ['id_007' => 'octopus-delegate-stock',      'name_007' => 'Delegate Stock',             'package_007' => '8'],
+            ['id_007' => 'octopus-master-tables',       'name_007' => 'Master tables',              'package_007' => '8'],
         ]);
     }
 }
