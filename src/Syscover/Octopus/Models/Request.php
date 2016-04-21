@@ -76,4 +76,17 @@ class Request extends Model
 
         return $query;
     }
+
+    public function customCount($request, $parameters)
+    {
+        // get actions to know where it comes from the request
+        $actions = $request->route()->getAction();
+
+        $query =  $this->builder();
+
+        if($actions['resource'] === 'octopus-supervisor-request')
+            $query->where('supervisor_078', auth('pulsar')->user()->id_010);
+
+        return $query;
+    }
 }

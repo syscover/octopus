@@ -39,7 +39,7 @@ class RequestController extends Controller
 
         $actions = $this->request->route()->getAction();
 
-        // if request comes from delegate request
+        // if request comes from delegate request, filter on model, only request from supervisor
         if($actions['resource'] === 'octopus-supervisor-request')
             $this->routeSuffix = 'octopusSupervisorRequest';
     }
@@ -275,8 +275,6 @@ class RequestController extends Controller
             'shop'              => $shop
         ];
 
-
         return view('octopus::emails.request_notification', $dataMessage);
-
     }
 }
