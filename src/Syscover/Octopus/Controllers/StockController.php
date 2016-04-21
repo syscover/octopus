@@ -36,6 +36,17 @@ class StockController extends Controller
         'relatedButton'         => false,
     ];
 
+    function __construct(Request $request)
+    {
+        parent::__construct($request);
+
+        $actions = $this->request->route()->getAction();
+
+        // if request comes from delegate request
+        if($actions['resource'] === 'octopus-supervisor-stock')
+            $this->routeSuffix = 'octopusSupervisorStock';
+    }
+
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
         if($aObject['expiration_080'] > date('U') || $aObject['expiration_080'] == null)
