@@ -194,6 +194,18 @@ class StockController extends Controller
         Order::where('id_079', $this->request->input('order'))->update([
             'stock_079' => $stock->id_080
         ]);
+
+        $actions = $this->request->route()->getAction();
+        if($actions['resource'] === 'octopus-laboratory-stock')
+        {
+            // redirect to orders
+            return redirect()->route('octopusLaboratoryOrder')->with([
+                'msg'        => 1,
+                'txtMsg'     => trans('pulsar::pulsar.message_create_record_successful', [
+                    'name' => $stock->id_080
+                ])
+            ]);
+        }
     }
 
     public function editCustomRecord($parameters)
