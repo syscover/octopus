@@ -59,6 +59,11 @@ class OrderController extends Controller
 
         $request = RequestModel::builder()->find($parameters['id']);
 
+        if($request->order_076 != null)
+        {
+            return 'el pedido ya ha sido creado';
+        }
+
         $object = [
             'name_076'                  => $request->name_076,
             'alias_077'                 => $request->alias_077,
