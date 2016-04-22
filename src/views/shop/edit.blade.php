@@ -1,8 +1,7 @@
 @extends('pulsar::layouts.tab', [
     'tabs' => [
         ['id' => 'box_tab1', 'name' => trans_choice('octopus::pulsar.shop', 1)],
-        ['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.address', 2)],
-        //['id' => 'box_tab3', 'name' => trans_choice('pulsar::pulsar.photo', 2)]
+        ['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.address', 2)]
     ]
 ])
 
@@ -47,11 +46,11 @@
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0]) }}"
+                    "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0, 'modalShopView' => $modal, 'redirectParentJs' => 1]) }}"
                 }).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json){
 
                     /// set url to call from modal when submit any action
-                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 0, 'modal' => 0]) }}'
+                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 0, 'modal' => $modal]) }}'
                     $('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))
                 })
             }
@@ -213,7 +212,7 @@
 
 @section('box_tab2')
     <!-- octopus::shops.edit -->
-    <a href="{{ route('createOctopusAddress', ['ref' => $urlParameters['id'], 'offset' => $urlParameters['offset'], 'modal' => 1]) }}" class="magnific-popup bs-tooltip btn margin-b10"><i class="fa fa-road"></i> {{ trans('pulsar::pulsar.new') }} {{ trans_choice('pulsar::pulsar.address', 1) }}</a>
+    <a href="{{ route('createOctopusAddress', ['ref' => $urlParameters['id'], 'offset' => $urlParameters['offset'], 'modal' => 1, 'modalShopView' => $modal, 'redirectParentJs' => 1]) }}" class="magnific-popup bs-tooltip btn margin-b10"><i class="fa fa-road"></i> {{ trans('pulsar::pulsar.new') }} {{ trans_choice('pulsar::pulsar.address', 1) }}</a>
     <div class="widget box">
         <div class="widget-content no-padding">
             <form id="formView" method="post" action="{{ route('deleteSelectOctopusAddress', $urlParameters) }}">

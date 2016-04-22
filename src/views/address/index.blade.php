@@ -15,7 +15,7 @@
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonData' . ucfirst($routeSuffix), ['ref' => $ref, 'modal' => 1]) }}"
+                    "sAjaxSource": "{{ route('jsonData' . ucfirst($routeSuffix), ['ref' => $ref, 'modal' => 1, 'modalShopView' => '0', 'redirectParentJs' => 0]) }}"
                 }).fnSetFilteringDelay();
             }
         });

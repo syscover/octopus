@@ -38,9 +38,11 @@ class AddressController extends Controller
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
-        //$actionUrlParameters['tab']     = 0;
-        $actionUrlParameters['modal']   = 1;
-        $actionUrlParameters['ref']     = $parameters['ref'];
+        // set modal = 1, because the petition can come from shop, where modal = 0
+        $actionUrlParameters['ref']                 = $parameters['ref'];
+        $actionUrlParameters['modal']               = 1;
+        $actionUrlParameters['modalShopView']       = $parameters['modalShopView'];
+        $actionUrlParameters['redirectParentJs']    = $parameters['redirectParentJs'];
 
         return $actionUrlParameters;
     }
@@ -64,8 +66,6 @@ class AddressController extends Controller
             'email_077'                 => $this->request->has('email')? $this->request->input('email') : null,
             'favorite_077'              => $this->request->has('favorite')
         ]);
-
-        $parameters['redirectModal'] = true;
 
         return $parameters;
     }
@@ -91,24 +91,32 @@ class AddressController extends Controller
             'favorite_077'              => $this->request->has('favorite')
         ]);
 
-        $parameters['redirectModal'] = true;
-
         return $parameters;
     }
 
     public function deleteCustomRecordRedirect($object, $parameters)
     {
-        $parameters['tab'] = 1;
+        if(isset($parameters['redirectParentJs']) && $parameters['redirectParentJs'] === '1')
+        {
+            // delete variable redirectParentJs, beacuse is instance on edit.blade of shop
+            unset($parameters['redirectParentJs']);
 
-        return redirect()->route('editOctopusShop', $parameters)->with([
-            'msg'        => 1,
-            'txtMsg'     => trans('pulsar::pulsar.message_delete_record_successful', ['name' => $object->{$this->nameM}])
-        ]);
+            // on shop, after delete go to address tab
+            $parameters['tab']      = 0;
+            $parameters['modal']    = $parameters['modalShopView'];
+
+            return redirect()->route('editOctopusShop', $parameters)->with([
+                'msg'        => 1,
+                'txtMsg'     => trans('pulsar::pulsar.message_delete_record_successful', ['name' => $object->{$this->nameM}])
+            ]);
+        }
+        return false;
     }
 
     public function deleteCustomRecordsRedirect($parameters)
     {
-        $parameters['tab'] = 1;
+        // on shop, after delete go to address tab
+        $parameters['tab'] = 0;
 
         return redirect()->route('editOctopusShop', $parameters)->with([
             'msg'        => 1,
