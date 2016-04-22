@@ -220,6 +220,7 @@ class OrderController extends Controller
             'order'             => $order,
             'supervisor'        => $supervisor,
             'shop'              => $shop,
+            'key'               => Crypt::encrypt($order->id_079),
             'actions'           => 'laboratory_order_actions_notification'
         ];
 

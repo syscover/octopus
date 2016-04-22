@@ -33,6 +33,20 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | LABORATORY STOCK
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/laboratory/stock/{offset?}',                            ['as' => 'octopusLaboratoryStock',                      'uses' => 'Syscover\Octopus\Controllers\StockController@index',                     'resource' => 'octopus-laboratory-stock',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/laboratory/stock/json/data',                            ['as' => 'jsonDataOctopusLaboratoryStock',              'uses' => 'Syscover\Octopus\Controllers\StockController@jsonData',                  'resource' => 'octopus-laboratory-stock',       'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/stock/create/{id}/{offset}',                 ['as' => 'createOctopusLaboratoryStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@createRecord',              'resource' => 'octopus-laboratory-stock',       'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/laboratory/stock/store/{offset}',                      ['as' => 'storeOctopusLaboratoryStock',                 'uses' => 'Syscover\Octopus\Controllers\StockController@storeRecord',               'resource' => 'octopus-laboratory-stock',       'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/stock/{id}/edit/{offset}',                   ['as' => 'editOctopusLaboratoryStock',                  'uses' => 'Syscover\Octopus\Controllers\StockController@editRecord',                'resource' => 'octopus-laboratory-stock',       'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/laboratory/stock/update/{id}/{offset}',                 ['as' => 'updateOctopusLaboratoryStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@updateRecord',              'resource' => 'octopus-laboratory-stock',       'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/stock/delete/{id}/{offset}',                 ['as' => 'deleteOctopusLaboratoryStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecord',              'resource' => 'octopus-laboratory-stock',       'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/laboratory/stock/delete/select/records',             ['as' => 'deleteSelectOctopusLaboratoryStock',          'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecordsSelect',       'resource' => 'octopus-laboratory-stock',       'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
     | ORDER
     |--------------------------------------------------------------------------
     */
