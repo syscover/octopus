@@ -212,13 +212,15 @@ class OrderController extends Controller
         $supervisor = User::builder()->find($order->supervisor_079);
         $shop       = Shop::builder()->find($order->shop_079);
 
+        // send email to laboratory
         $dataMessage = [
             'emailTo'           => $supervisor->email_010,
             'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'subject'           => 'Pedido N: ' . $order->id_079 . ' insertado por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'order'             => $order,
             'supervisor'        => $supervisor,
-            'shop'              => $shop
+            'shop'              => $shop,
+            'actions'           => 'laboratory_order_actions_notification'
         ];
 
         Mail::send('octopus::emails.order_notification', $dataMessage, function($m) use ($dataMessage) {

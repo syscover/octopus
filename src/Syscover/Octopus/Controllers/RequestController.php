@@ -191,18 +191,28 @@ class RequestController extends Controller
         config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
         config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
         config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
-        
+
         $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
         $shop       = Shop::builder()->find($octopusRequest->shop_078);
 
+        // send email to supervisor
         $dataMessage = [
             'emailTo'           => $supervisor->email_010,
             'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'octopusRequest'    => $octopusRequest,
             'supervisor'        => $supervisor,
-            'shop'              => $shop
+            'shop'              => $shop,
+            'actions'           => 'supervisor_request_actions_notification'
         ];
+
+        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
+
+        // send email to manager
+        $dataMessage['actions'] = 'manager_request_actions_notification';
 
         Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
             $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])

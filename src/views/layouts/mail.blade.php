@@ -31,7 +31,7 @@
                             @yield('mainContent')
                         </td>
                     </tr>
-                    @include('octopus::includes.block.actions_request_notification')
+                    @include('octopus::includes.block.' . $actions)
                     @include('octopus::includes.block.sent_to_email')
                 </table>
             </td>
