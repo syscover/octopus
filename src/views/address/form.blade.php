@@ -1,6 +1,5 @@
 @extends('pulsar::layouts.form', [
-    'newTrans' => 'new',
-    'modal' => true
+    'newTrans' => 'new'
 ])
 
 @section('head')

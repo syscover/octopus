@@ -62,16 +62,19 @@ class Address extends Model
 
     public function customCount($request, $parameters)
     {
-        return Address::where('shop_077', $parameters['ref'])->newQuery();
+        return Address::where('shop_077', $parameters['ref']);
     }
 
     public static function resetFavorite($shop)
     {
-        Address::where('shop_077', $shop)->update(['favorite_077' => 0]);
+        Address::where('shop_077', $shop)
+            ->update(['favorite_077' => 0]);
     }
 
     public static function getFavoriteAddressShop($shop)
     {
-        return Address::where('shop_077', $shop)->where('favorite_077', 1)->first();
+        return Address::where('shop_077', $shop)
+            ->where('favorite_077', 1)
+            ->first();
     }
 }
