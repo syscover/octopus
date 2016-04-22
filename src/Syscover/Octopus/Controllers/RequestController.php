@@ -57,8 +57,9 @@ class RequestController extends Controller
         }
         else
         {
-            if($actions['resource'] === 'octopus-supervisor-request')
-                $this->viewParameters['deleteButton'] = false;
+            $this->viewParameters['deleteButton']   = false;
+            $this->viewParameters['editButton']     = false;
+            $this->viewParameters['showButton']     = true;
 
             if($aObject['stock_078'] != null)
                 $actions = '<a class="btn btn-xs bs-tooltip" href="' . route($actions['resource'] === 'octopus-supervisor-request'? 'editOctopusSupervisorStock' : 'editOctopusStock', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
