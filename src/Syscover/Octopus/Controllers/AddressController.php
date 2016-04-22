@@ -30,7 +30,10 @@ class AddressController extends Controller
     public function customJsonData($parameters)
     {
         if($parameters['modal'] == 1)
+        {
             $this->viewParameters['checkBoxColumn'] = false;
+            $this->viewParameters['relatedButton']  = true;
+        }
     }
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
