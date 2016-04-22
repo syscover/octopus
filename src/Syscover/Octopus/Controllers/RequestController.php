@@ -46,14 +46,25 @@ class RequestController extends Controller
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
+        $actions = $this->request->route()->getAction();
+
+
         if($aObject['order_078'] == null)
         {
-            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
+            if($actions['resource'] === 'octopus-request')
+            {
+                $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
+            }
+            else
+            {
+                $actions = '';
+            }
         }
         else
         {
-            $actions = '';
+            $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans_choice('octopus::pulsar.stock', 1) . '"><i class="fa fa-th-large"></i></a>';
         }
+
 
         return $actions;
     }
@@ -180,6 +191,7 @@ class RequestController extends Controller
 
         //$billingUser = User::builder()->find((int)Preference::getValue('projectsBillingUser', 6)->value_018);
         $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
+        $shop       = Shop::builder()->find($octopusRequest->shop_078);
 
         $dataMessage = [
             'emailTo'           => $supervisor->email_010,
@@ -187,6 +199,7 @@ class RequestController extends Controller
             'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'octopusRequest'    => $octopusRequest,
             'supervisor'        => $supervisor,
+            'shop'              => $shop
         ];
 
         Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
@@ -258,6 +271,9 @@ class RequestController extends Controller
             'id'        => $this->request->input('id')
         ]);
     }
+
+
+
 
 
     public function checkEmail()

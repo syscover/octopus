@@ -201,7 +201,7 @@
             'maxLength' => '255',
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusAddress', [
-                'ref' => null,
+                'ref' => isset($object->shop_078)? $object->shop_078 : null,
                 'modal' => 1,
                 'modalShopView' => '0',
                 'redirectParentJs' => '0',

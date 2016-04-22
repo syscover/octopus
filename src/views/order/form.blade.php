@@ -82,7 +82,7 @@
             $.magnificPopup.close()
 
             // set url to add address
-            var url = '{{ route('octopusAddress', ['ref' => '%ref%', 'modal' => 1, 'offset' => $offset]) }}';
+            var url = '{{ route('octopusAddress', ['ref' => '%ref%', 'modal' => 1, 'modalShopView' => '0', 'redirectParentJs' => '0', 'offset' => $offset]) }}';
             $("#selectAddress a").attr('href', url.replace('%ref%', data.id_076))
     
             $.ajax({
@@ -198,8 +198,10 @@
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusAddress', [
                 'ref' => $object->shop_079,
+                'modal' => 1,
+                'modalShopView' => '0',
+                'redirectParentJs' => '0',
                 'offset' => $offset,
-                'modal' => 1
             ]),
             'required' => true,
             'readOnly' => true

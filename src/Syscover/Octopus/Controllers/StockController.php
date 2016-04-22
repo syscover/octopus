@@ -1,6 +1,7 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Octopus\Models\Brand;
