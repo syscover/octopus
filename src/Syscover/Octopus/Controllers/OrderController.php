@@ -2,9 +2,10 @@
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
-use Syscover\Pulsar\Libraries\Miscellaneous;
+use Syscover\Octopus\Models\Shop;
 use Syscover\Octopus\Models\Brand;
 use Syscover\Octopus\Models\Company;
 use Syscover\Octopus\Models\Family;
@@ -12,6 +13,10 @@ use Syscover\Octopus\Models\Laboratory;
 use Syscover\Octopus\Models\Product;
 use Syscover\Octopus\Models\Order;
 use Syscover\Octopus\Models\Request as RequestModel;
+use Syscover\Pulsar\Libraries\Miscellaneous;
+use Syscover\Pulsar\Models\EmailAccount;
+use Syscover\Pulsar\Models\Preference;
+use Syscover\Pulsar\Models\User;
 
 /**
  * Class OrderController
@@ -187,6 +192,39 @@ class OrderController extends Controller
         RequestModel::where('id_078', $this->request->input('request'))->update([
             'order_078' => $order->id_079
         ]);
+
+        // send email confirmation
+        $order                  = Order::builder()->find($order->id_079);
+
+        // get notification account
+        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
+        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
+
+        if($emailAccount == null) return null;
+
+        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
+        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
+        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
+        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
+        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
+        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
+
+        $supervisor = User::builder()->find($order->supervisor_079);
+        $shop       = Shop::builder()->find($order->shop_079);
+
+        $dataMessage = [
+            'emailTo'           => $supervisor->email_010,
+            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'subject'           => 'Pedido N: ' . $order->id_079 . ' insertado por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'order'             => $order,
+            'supervisor'        => $supervisor,
+            'shop'              => $shop
+        ];
+
+        Mail::send('octopus::emails.order_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
     }
 
     public function editCustomRecord($parameters)

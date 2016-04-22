@@ -167,6 +167,7 @@ class RequestController extends Controller
             'comments_078'              => $this->request->has('comments')? $this->request->input('comments') : null
         ]);
 
+        // si la peticion proviene de un stock, damos por expirado el stock duplicado
         if($this->request->has('stock'))
         {
             Stock::where('id_080', $this->request->input('stock'))->update([
@@ -177,6 +178,7 @@ class RequestController extends Controller
 
         // send email confirmation
         $octopusRequest         = OctopusRequest::builder()->find($octopusRequest->id_078);
+
         // get notification account
         $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
         $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
@@ -189,8 +191,7 @@ class RequestController extends Controller
         config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
         config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
         config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
-
-        //$billingUser = User::builder()->find((int)Preference::getValue('projectsBillingUser', 6)->value_018);
+        
         $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
         $shop       = Shop::builder()->find($octopusRequest->shop_078);
 
