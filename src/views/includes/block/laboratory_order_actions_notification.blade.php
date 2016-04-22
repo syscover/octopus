@@ -4,7 +4,7 @@
             {{ trans('pulsar::pulsar.actions_email') }},
             <a href="{{ route('editOctopusLaboratoryOrder', ['id' => $order->id_079, 'offset' => 0]) }}">{{ trans('octopus::pulsar.view_request') }}</a>
             |
-            <a href="{{ route('createOctopusLaboratoryStock', ['id' => $order->id_079, 'offset' => 0]) }}">{{ trans('octopus::pulsar.create_order') }}</a>
+            <a href="{{ route('createOctopusLaboratoryStock', ['id' => $key, 'offset' => 0]) }}">{{ trans('octopus::pulsar.create_order') }}</a>
         </p>
     </td>
 </tr>
