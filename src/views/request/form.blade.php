@@ -86,7 +86,8 @@
             $.magnificPopup.close()
 
             // set url to add address
-            $("#selectAddress a").attr('href', '{{ route("modalOctopusAddress") }}/' + data.id_076 + '/{{ $offset }}/1')
+            var url = '{{ route('octopusAddress', ['ref' => '%ref%', 'modal' => 1, 'offset' => $offset]) }}';
+            $("#selectAddress a").attr('href', url.replace('%ref%', data.id_076))
 
             $.ajax({
                 type: "POST",
@@ -199,7 +200,7 @@
             'valueId' => old('aliasId', isset($object->id_address_078)? $object->id_address_078 : null),
             'maxLength' => '255',
             'rangeLength' => '2,255',
-            'modalUrl' => route('modalOctopusAddress', [
+            'modalUrl' => route('octopusAddress', [
                 'ref' => null,
                 'offset' => $offset,
                 'modal' => 1

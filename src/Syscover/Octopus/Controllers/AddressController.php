@@ -38,7 +38,7 @@ class AddressController extends Controller
 
     public function customActionUrlParameters($actionUrlParameters, $parameters)
     {
-        $actionUrlParameters['tab']     = 0;
+        //$actionUrlParameters['tab']     = 0;
         $actionUrlParameters['modal']   = 1;
         $actionUrlParameters['ref']     = $parameters['ref'];
 
