@@ -64,7 +64,7 @@ class OrderController extends Controller
             return redirect()->route('octopusOrder')->with([
                 'msg'        => 2,
                 'txtMsg'     => trans('octopus::pulsar.request_does_not_exist', [
-                    'id' => $request->id_076
+                    'id' => $parameters['id']
                 ])
             ]);
         }
@@ -74,7 +74,7 @@ class OrderController extends Controller
             return redirect()->route('octopusOrder')->with([
                 'msg'        => 2,
                 'txtMsg'     => trans('octopus::pulsar.order_already_created', [
-                    'id' => $request->id_076
+                    'id' => $request->id_078
                 ])
             ]);
         }

@@ -71,6 +71,26 @@ class StockController extends Controller
 
         $order = Order::builder()->find($parameters['id']);
 
+        if($order == null)
+        {
+            return redirect()->route('octopusStock')->with([
+                'msg'        => 2,
+                'txtMsg'     => trans('octopus::pulsar.order_does_not_exist', [
+                    'id' => $parameters['id']
+                ])
+            ]);
+        }
+
+        if($order->stock_079 != null)
+        {
+            return redirect()->route('octopusStock')->with([
+                'msg'        => 2,
+                'txtMsg'     => trans('octopus::pulsar.stock_already_created', [
+                    'id' => $order->id_079
+                ])
+            ]);
+        }
+
         $object = [
             'name_076'                  => $order->name_076,
             'alias_077'                 => $order->alias_077,
