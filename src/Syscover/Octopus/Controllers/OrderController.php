@@ -1,6 +1,7 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Octopus\Models\Brand;
@@ -40,7 +41,7 @@ class OrderController extends Controller
     {
         if($aObject['stock_079'] == null)
         {
-            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route('createOctopusStock', $actionUrlParameters) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
+            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route('createOctopusStock', ['stock' => Crypt::encrypt($actionUrlParameters['id']), 'offset' => 0]) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
         }
         else
         {

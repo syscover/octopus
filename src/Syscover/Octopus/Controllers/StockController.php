@@ -1,6 +1,7 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Syscover\Pulsar\Libraries\Miscellaneous;
@@ -68,6 +69,9 @@ class StockController extends Controller
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->get();
+
+        // decrypt id
+        $parameters['id'] = Crypt::decrypt($parameters['id']);
 
         $order = Order::builder()->find($parameters['id']);
 
