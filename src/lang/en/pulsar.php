@@ -12,6 +12,7 @@ return [
     'message_create_stock'                  => 'Do you want create stock from order %id%?',
     'message_replace_stock'                 => 'Do you want create request to replace stock %id%?',
     'order'                                 => 'Order|Orders',
+    'order_already_created'                 => 'Order from request :id, already created',
     'package_name'                          => 'Octopus',
     'product'                               => 'Product|Products',
     'request'                               => 'Request|Requests',

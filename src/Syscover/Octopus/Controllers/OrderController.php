@@ -61,7 +61,12 @@ class OrderController extends Controller
 
         if($request->order_076 != null)
         {
-            return 'el pedido ya ha sido creado';
+            return redirect()->route('octopusOrder')->with([
+                'msg'        => 2,
+                'txtMsg'     => trans('octopus::pulsar.order_already_created', [
+                    'id' => $request->id_076
+                ])
+            ]);
         }
 
         $object = [

@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- octopus::preference.index -->
-    @include('pulsar::includes.js.success_message')
+    @include('pulsar::includes.js.messages')
     <!-- /.octopus::preference.index -->
 @stop
 

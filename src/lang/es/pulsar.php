@@ -12,6 +12,7 @@ return [
     'message_create_stock'                  => '¿Desea crear el stock desde el pedido %id%?',
     'message_replace_stock'                 => '¿Desea crear una petición para reemplazar el stock %id%?',
     'order'                                 => 'Pedido|Pedidos',
+    'order_already_created'                 => 'Pedido desde la solicitud :id, ya ha sido creado',
     'package_name'                          => 'Octopus',
     'product'                               => 'Producto|Productos',
     'request'                               => 'Solicitud|Solicitudes',
