@@ -59,7 +59,7 @@ class OrderController extends Controller
 
         $request = RequestModel::builder()->find($parameters['id']);
 
-        if($request->order_076 != null)
+        if($request->order_078 != null)
         {
             return redirect()->route('octopusOrder')->with([
                 'msg'        => 2,
