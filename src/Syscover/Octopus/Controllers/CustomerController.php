@@ -3,6 +3,11 @@
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Octopus\Models\Customer;
 
+/**
+ * Class CustomerController
+ * @package Syscover\Octopus\Controllers
+ */
+
 class CustomerController extends Controller
 {
     protected $routeSuffix  = 'octopusCustomer';
