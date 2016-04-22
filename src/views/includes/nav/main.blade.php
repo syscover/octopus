@@ -1,4 +1,4 @@
-<li{!! is_current_resource(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-supervisor-request','octopus-order','octopus-stock', 'octopus-supervisor-stock', 'octopus-preference']) !!}>
+<li{!! is_current_resource(['octopus-family','octopus-brand','octopus-product','octopus-laboratory','octopus-company','octopus-customer','octopus-shop','octopus-request','octopus-supervisor-request','octopus-order','octopus-laboratory-order','octopus-stock', 'octopus-supervisor-stock', 'octopus-preference']) !!}>
     <a href="javascript:void(0)"><i class="sys-icon-octopus"></i>Octopus</a>
     <ul class="sub-menu">
         @if(is_allowed('octopus-stock', 'access'))
@@ -9,6 +9,9 @@
         @endif
         @if(is_allowed('octopus-order', 'access'))
             <li{!! is_current_resource('octopus-order') !!}><a href="{{ route('octopusOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.order', 2) }}</a></li>
+        @endif
+        @if(is_allowed('octopus-laboratory-order', 'access'))
+            <li{!! is_current_resource('octopus-laboratory-order') !!}><a href="{{ route('octopusLaboratoryOrder') }}"><i class="fa fa-refresh"></i>{{ trans_choice('octopus::pulsar.laboratory_order', 2) }}</a></li>
         @endif
         @if(is_allowed('octopus-request', 'access'))
             <li{!! is_current_resource('octopus-request') !!}><a href="{{ route('octopusRequest') }}"><i class="fa fa-inbox"></i>{{ trans_choice('octopus::pulsar.request', 2) }}</a></li>

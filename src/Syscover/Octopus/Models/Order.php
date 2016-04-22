@@ -54,4 +54,31 @@ class Order extends Model
             ->join('008_072_product', '008_079_order.product_079', '=', '008_072_product.id_072')
             ->leftJoin('008_077_address', '008_079_order.id_address_079', '=', '008_077_address.id_077');
     }
+
+    public function addToGetIndexRecords($request, $parameters)
+    {
+        // get actions to know where it comes from the request
+        $actions = $request->route()->getAction();
+
+        $query =  $this->builder();
+
+        // filter requests only from current user
+        if($actions['resource'] === 'octopus-laboratory-order')
+            $query->whereNull('stock_079');
+
+        return $query;
+    }
+
+    public function customCount($request, $parameters)
+    {
+        // get actions to know where it comes from the request
+        $actions = $request->route()->getAction();
+
+        $query =  $this->builder();
+
+        if($actions['resource'] === 'octopus-laboratory-order')
+            $query->whereNull('stock_079');
+
+        return $query;
+    }
 }

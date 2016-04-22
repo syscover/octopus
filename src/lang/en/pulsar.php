@@ -7,6 +7,7 @@ return [
     'create_stock'                          => 'Create stock',
     'expiration'                            => 'Expiration',
     'laboratory'                            => 'Laboratory|Laboratories',
+    'laboratory_order'                      => 'Laboratory order|Laboratory orders',
     'message_create_order'                  => 'Do you want create order from request %id%?',
     'message_create_request'                => 'It has created a new request',
     'message_create_stock'                  => 'Do you want create stock from order %id%?',

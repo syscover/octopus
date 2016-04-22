@@ -44,7 +44,22 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::put(config('pulsar.appName') . '/octopus/order/update/{id}/{offset}',                 ['as' => 'updateOctopusOrder',                'uses' => 'Syscover\Octopus\Controllers\OrderController@updateRecord',              'resource' => 'octopus-order',       'action' => 'edit']);
     Route::get(config('pulsar.appName') . '/octopus/order/delete/{id}/{offset}',                 ['as' => 'deleteOctopusOrder',                'uses' => 'Syscover\Octopus\Controllers\OrderController@deleteRecord',              'resource' => 'octopus-order',       'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/order/delete/select/records',             ['as' => 'deleteSelectOctopusOrder',          'uses' => 'Syscover\Octopus\Controllers\OrderController@deleteRecordsSelect',       'resource' => 'octopus-order',       'action' => 'delete']);
-    Route::post(config('pulsar.appName') . '/octopus/order/delete/attachment',                   ['as' => 'deleteAttachmentOctopusOrder',      'uses' => 'Syscover\Octopus\Controllers\OrderController@ajaxDeleteFile',            'resource' => 'octopus-order',     'action' => 'delete']);
+    Route::post(config('pulsar.appName') . '/octopus/order/delete/attachment',                   ['as' => 'deleteAttachmentOctopusOrder',      'uses' => 'Syscover\Octopus\Controllers\OrderController@ajaxDeleteFile',            'resource' => 'octopus-order',       'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | ORDER LABORATORY
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/octopus/laboratory/order/{offset?}',                            ['as' => 'octopusLaboratoryOrder',                      'uses' => 'Syscover\Octopus\Controllers\OrderController@index',                     'resource' => 'octopus-laboratory-order',       'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/octopus/laboratory/order/json/data',                            ['as' => 'jsonDataOctopusLaboratoryOrder',              'uses' => 'Syscover\Octopus\Controllers\OrderController@jsonData',                  'resource' => 'octopus-laboratory-order',       'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/order/create/{id}/{offset}',                 ['as' => 'createOctopusLaboratoryOrder',                'uses' => 'Syscover\Octopus\Controllers\OrderController@createRecord',              'resource' => 'octopus-laboratory-order',       'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/octopus/laboratory/order/store/{offset}',                      ['as' => 'storeOctopusLaboratoryOrder',                 'uses' => 'Syscover\Octopus\Controllers\OrderController@storeRecord',               'resource' => 'octopus-laboratory-order',       'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/order/{id}/edit/{offset}',                   ['as' => 'editOctopusLaboratoryOrder',                  'uses' => 'Syscover\Octopus\Controllers\OrderController@editRecord',                'resource' => 'octopus-laboratory-order',       'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/octopus/laboratory/order/update/{id}/{offset}',                 ['as' => 'updateOctopusLaboratoryOrder',                'uses' => 'Syscover\Octopus\Controllers\OrderController@updateRecord',              'resource' => 'octopus-laboratory-order',       'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/octopus/laboratory/order/delete/{id}/{offset}',                 ['as' => 'deleteOctopusLaboratoryOrder',                'uses' => 'Syscover\Octopus\Controllers\OrderController@deleteRecord',              'resource' => 'octopus-laboratory-order',       'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/octopus/laboratory/order/delete/select/records',             ['as' => 'deleteSelectOctopusLaboratoryOrder',          'uses' => 'Syscover\Octopus\Controllers\OrderController@deleteRecordsSelect',       'resource' => 'octopus-laboratory-order',       'action' => 'delete']);
+    Route::post(config('pulsar.appName') . '/octopus/laboratory/order/delete/attachment',                   ['as' => 'deleteAttachmentOctopusLaboratoryOrder',      'uses' => 'Syscover\Octopus\Controllers\OrderController@ajaxDeleteFile',            'resource' => 'octopus-laboratory-order',       'action' => 'delete']);
 
     /*
     |--------------------------------------------------------------------------

@@ -7,6 +7,7 @@ return [
     'create_stock'                          => 'Crear stock',
     'expiration'                            => 'Caducidad',
     'laboratory'                            => 'Laboratorio|Laboratorios',
+    'laboratory_order'                      => 'Pedido de laboratorio|Pedidos de laboratorio',
     'message_create_order'                  => '¿Desea crear el pedido desde la peticón %id%?',
     'message_create_request'                => 'Se ha creado una nueva solicitud',
     'message_create_stock'                  => '¿Desea crear el stock desde el pedido %id%?',

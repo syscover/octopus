@@ -1,6 +1,7 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Syscover\Pulsar\Libraries\Miscellaneous;
@@ -36,6 +37,17 @@ class OrderController extends Controller
         'deleteSelectButton'    => true,
         'relatedButton'         => false,
     ];
+
+    function __construct(Request $request)
+    {
+        parent::__construct($request);
+
+        $actions = $this->request->route()->getAction();
+
+        // if request comes from delegate request, filter on model, only request from supervisor
+        if($actions['resource'] === 'octopus-laboratory-order')
+            $this->routeSuffix = 'octopusLaboratoryOrder';
+    }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
