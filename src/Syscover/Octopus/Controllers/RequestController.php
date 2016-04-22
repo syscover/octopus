@@ -48,7 +48,6 @@ class RequestController extends Controller
     {
         $actions = $this->request->route()->getAction();
 
-
         if($aObject['order_078'] == null)
         {
             if($actions['resource'] === 'octopus-request')
@@ -62,6 +61,10 @@ class RequestController extends Controller
         }
         else
         {
+            if($actions['resource'] === 'octopus-supervisor-request')
+            {
+                $this->viewParameters['deleteButton'] = false;
+            }
             $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans_choice('octopus::pulsar.stock', 1) . '"><i class="fa fa-th-large"></i></a>';
         }
 
