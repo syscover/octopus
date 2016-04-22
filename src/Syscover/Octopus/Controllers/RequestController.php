@@ -51,23 +51,20 @@ class RequestController extends Controller
         if($aObject['order_078'] == null)
         {
             if($actions['resource'] === 'octopus-request')
-            {
                 $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
-            }
             else
-            {
                 $actions = '';
-            }
         }
         else
         {
             if($actions['resource'] === 'octopus-supervisor-request')
-            {
                 $this->viewParameters['deleteButton'] = false;
-            }
-            $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans_choice('octopus::pulsar.stock', 1) . '"><i class="fa fa-th-large"></i></a>';
-        }
 
+            if($aObject['stock_078'] != null)
+                $actions = '<a class="btn btn-xs bs-tooltip" href="' . route($actions['resource'] === 'octopus-supervisor-request'? 'editOctopusSupervisorStock' : 'editOctopusStock', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
+            else
+                $actions = '';
+        }
 
         return $actions;
     }
