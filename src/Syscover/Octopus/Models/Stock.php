@@ -68,4 +68,17 @@ class Stock extends Model
 
         return $query;
     }
+
+    public function customCount($request, $parameters)
+    {
+        // get actions to know where it comes from the request
+        $actions = $request->route()->getAction();
+
+        $query =  $this->builder();
+
+        if($actions['resource'] === 'octopus-supervisor-stock')
+            $query->where('supervisor_080', auth('pulsar')->user()->id_010);
+
+        return $query;
+    }
 }
