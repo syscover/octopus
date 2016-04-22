@@ -16,6 +16,7 @@ return [
     'package_name'                          => 'Octopus',
     'product'                               => 'Product|Products',
     'request'                               => 'Request|Requests',
+    'request_does_not_exist'                => 'Request :id, does not exist',
     'replace_stock'                         => 'Replace stock',
     'shop'                                  => 'Shop|Shops',
     'stock'                                 => 'Stock|Stocks',
