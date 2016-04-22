@@ -44,9 +44,13 @@ class StockController extends Controller
 
         $actions = $this->request->route()->getAction();
 
-        // if request comes from delegate request
+        // if request comes from supervisor
         if($actions['resource'] === 'octopus-supervisor-stock')
             $this->routeSuffix = 'octopusSupervisorStock';
+
+        // if request comes from laboratory
+        if($actions['resource'] === 'octopus-laboratory-stock')
+            $this->routeSuffix = 'octopusLaboratoryStock';
     }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
