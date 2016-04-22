@@ -51,7 +51,7 @@
                 }).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json){
 
                     /// set url to call from modal when submit any action
-                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 0]) }}'
+                    var url = '{{ route('editOctopusShop', ['id' => $object->id_076, 'offset' => '%offset%', 'tab' => 0, 'modal' => $modal]) }}'
                     $('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))
                 })
             }
