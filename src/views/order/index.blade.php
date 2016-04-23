@@ -11,9 +11,14 @@
                     'iDisplayStart' : {{ $offset }},
                     'aaSorting': [[ 0, "desc" ]],
                     'aoColumnDefs': [
+                    @if($viewPArameters['checkBoxColumn'])
                         { 'bSortable': false, 'aTargets': [7,8]},
                         { 'sClass': 'checkbox-column', 'aTargets': [7]},
                         { 'sClass': 'align-center', 'aTargets': [8]}
+                    @else
+                        { 'bSortable': false, 'aTargets': [7]},
+                        { 'sClass': 'align-center', 'aTargets': [7]}
+                    @endif
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
@@ -55,7 +60,9 @@
         <th data-hide="phone">{{ trans_choice('octopus::pulsar.product', 1) }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.phone', 1) }}</th>
-        <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
+        @if($viewPArameters['checkBoxColumn'])
+            <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
+        @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
     <!-- /.octopus::order.index -->

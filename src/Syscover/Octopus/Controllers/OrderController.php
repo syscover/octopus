@@ -51,7 +51,11 @@ class OrderController extends Controller
 
         // if request comes from delegate request, filter on model, only request from supervisor
         if($actions['resource'] === 'octopus-laboratory-order')
-            $this->routeSuffix = 'octopusLaboratoryOrder';
+        {
+            $this->routeSuffix                          = 'octopusLaboratoryOrder';
+            $this->viewParameters['checkBoxColumn']     = false;
+        }
+
     }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
