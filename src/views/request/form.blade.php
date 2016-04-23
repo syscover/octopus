@@ -221,7 +221,8 @@
                 'name' => 'companyName',
                 'value' => old('companyName', isset($object->company_name_078)? $object->company_name_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -230,7 +231,8 @@
                 'name' => 'name',
                 'value' => old('name', isset($object->name_078)? $object->name_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -239,7 +241,8 @@
                 'name' => 'surname',
                 'value' => old('surname', isset($object->surname_078)? $object->surname_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -248,7 +251,8 @@
                 'name' => 'phone',
                 'value' => old('phone', isset($object->phone_078)? $object->phone_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -257,7 +261,8 @@
                 'name' => 'email',
                 'value' => old('email', isset($object->email_078)? $object->email_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
         </div>
         <div class="col-md-6">
@@ -321,7 +326,7 @@
                 'value' => old('cp', isset($object->cp_078)? $object->cp_078 : null),
                 'maxLength' => '10',
                 'rangeLength' => '2,10',
-                'fieldSize' => 4
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -330,7 +335,8 @@
                 'name' => 'locality',
                 'value' => old('locality', isset($object->locality_078)? $object->locality_078 : null),
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
         </div>
     </div>
