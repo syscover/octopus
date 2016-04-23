@@ -52,6 +52,7 @@ class Request extends Model
         return $query->join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
             ->join('008_074_company', '008_078_request.company_078', '=', '008_074_company.id_074')
             ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
+            ->join('008_077_address', '008_078_request.id_address_078', '=', '008_077_address.id_077')
             ->join('008_071_brand', '008_078_request.brand_078', '=', '008_071_brand.id_071')
             ->join('008_072_product', '008_078_request.product_078', '=', '008_072_product.id_072')
             ->join('008_070_family', '008_078_request.family_078', '=', '008_070_family.id_070')

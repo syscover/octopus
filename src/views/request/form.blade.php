@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- octopus::requests.create -->
+    <!-- octopus::requests.form -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jquery.magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css') }}">
@@ -150,11 +150,11 @@
     </script>
 
     @include('pulsar::includes.js.delete_file')
-    <!-- /.octopus::requests.create -->
+    <!-- /.octopus::requests.form -->
 @stop
 
 @section('rows')
-    <!-- octopus::requests.create -->
+    <!-- octopus::requests.form -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'stock',
        'value' => isset($stock)? $stock : null
@@ -520,5 +520,5 @@
         'name' => 'comments',
         'value' => old('comments', isset($object->comments_078)? $object->comments_078 : null)
     ])
-    <!-- /.octopus::requests.create -->
+    <!-- /.octopus::requests.form -->
 @stop

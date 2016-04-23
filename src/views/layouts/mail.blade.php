@@ -25,7 +25,7 @@
     <table cellspacing="0" cellpadding="0" class="layout" style="border-spacing:0;background:#ffffff;margin:0;padding:0;border-collapse:collapse;text-align:left;border:0;width:100%"><tr>
             <td style='background:#ffffff;text-align:left;vertical-align:top;font-size:15px;line-height:19px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;color:#000000;padding:0;border-spacing:0;border-collapse:collapse'>
                 <table cellspacing="0" cellpadding="0" class="layout" style="border-spacing:0;background:#ffffff;margin:0;padding:0;border-collapse:collapse;text-align:left;border:0;width:100%">
-                    @include('octopus::includes.block.actions_request_notification')
+                    @include('octopus::includes.block.' . $actions)
                     <tr>
                         <td class="main_body" style='background:#ffffff;text-align:left;vertical-align:top;font-size:15px;line-height:19px;border-collapse:collapse;color:#000000;border-spacing:0;font-family:"Helvetica Neue",helvetica,arial,sans-serif;padding:20px 0'>
                             @yield('mainContent')

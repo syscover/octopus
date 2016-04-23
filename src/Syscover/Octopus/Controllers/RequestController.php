@@ -269,6 +269,16 @@ class RequestController extends Controller
         OctopusRequest::where('id_078', $parameters['id'])->update($request);
     }
 
+    public function showCustomRecord($parameters)
+    {
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
+        $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_078)->get();
+
+        return $parameters;
+    }
+
     public function ajaxDeleteFile()
     {
         File::delete(public_path() . '/packages/syscover/octopus/storage/attachment/request/' . $this->request->input('file'));
