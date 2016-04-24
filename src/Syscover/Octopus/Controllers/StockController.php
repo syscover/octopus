@@ -46,11 +46,18 @@ class StockController extends Controller
 
         // if request comes from supervisor
         if($actions['resource'] === 'octopus-supervisor-stock')
+        {
             $this->routeSuffix = 'octopusSupervisorStock';
+            $this->viewParameters['deleteButton']   = false;
+            $this->viewParameters['editButton']     = false;
+            $this->viewParameters['showButton']     = true;
+        }
 
         // if request comes from laboratory
         if($actions['resource'] === 'octopus-laboratory-stock')
+        {
             $this->routeSuffix = 'octopusLaboratoryStock';
+        }
     }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
@@ -259,6 +266,16 @@ class StockController extends Controller
             $order['attachment_080'] = Miscellaneous::uploadFiles('attachment', public_path() . '/packages/syscover/octopus/storage/attachment/stock');
 
         Stock::where('id_080', $parameters['id'])->update($order);
+    }
+
+    public function showCustomRecord($parameters)
+    {
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_080)->get();
+
+        return $parameters;
     }
 
     public function ajaxDeleteFile()

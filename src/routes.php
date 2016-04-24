@@ -15,6 +15,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::put(config('pulsar.appName') . '/octopus/stock/update/{id}/{offset}',                 ['as' => 'updateOctopusStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@updateRecord',              'resource' => 'octopus-stock',       'action' => 'edit']);
     Route::get(config('pulsar.appName') . '/octopus/stock/delete/{id}/{offset}',                 ['as' => 'deleteOctopusStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecord',              'resource' => 'octopus-stock',       'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/stock/delete/select/records',             ['as' => 'deleteSelectOctopusStock',          'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecordsSelect',       'resource' => 'octopus-stock',       'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/octopus/stock/{id}/show/{offset}',                   ['as' => 'showOctopusStock',                  'uses' => 'Syscover\Octopus\Controllers\StockController@showRecord',                'resource' => 'octopus-stock',       'action' => 'access']);
     Route::post(config('pulsar.appName') . '/octopus/stock/delete/attachment',                   ['as' => 'deleteAttachmentOctopusStock',      'uses' => 'Syscover\Octopus\Controllers\StockController@ajaxDeleteFile',            'resource' => 'octopus-stock',       'action' => 'delete']);
 
     /*
@@ -30,6 +31,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::put(config('pulsar.appName') . '/octopus/supervisor/stock/update/{id}/{offset}',                 ['as' => 'updateOctopusSupervisorStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@updateRecord',              'resource' => 'octopus-supervisor-stock',       'action' => 'edit']);
     Route::get(config('pulsar.appName') . '/octopus/supervisor/stock/delete/{id}/{offset}',                 ['as' => 'deleteOctopusSupervisorStock',                'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecord',              'resource' => 'octopus-supervisor-stock',       'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/octopus/supervisor/stock/delete/select/records',             ['as' => 'deleteSelectOctopusSupervisorStock',          'uses' => 'Syscover\Octopus\Controllers\StockController@deleteRecordsSelect',       'resource' => 'octopus-supervisor-stock',       'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/octopus/supervisor/stock/{id}/show/{offset}',                   ['as' => 'showOctopusSupervisorStock',                  'uses' => 'Syscover\Octopus\Controllers\StockController@showRecord',                'resource' => 'octopus-supervisor-stock',       'action' => 'access']);
 
     /*
     |--------------------------------------------------------------------------
