@@ -29,6 +29,7 @@ return [
     'total_height'                          => 'Total alto',
     'total_width'                           => 'Total ancho',
     'view_height'                           => 'Vista alto',
+    'view_order'                            => 'Ver pedido',
     'view_request'                          => 'Ver solicitud',
     'view_stock'                            => 'Ver stock',
     'view_width'                            => 'Vista ancho',

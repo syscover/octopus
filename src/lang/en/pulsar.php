@@ -29,6 +29,7 @@ return [
     'total_height'                          => 'Total height',
     'total_width'                           => 'Total width',
     'view_height'                           => 'View height',
+    'view_order'                            => 'View order',
     'view_request'                          => 'View request',
     'view_stock'                            => 'View stock',
     'view_width'                            => 'View width',
