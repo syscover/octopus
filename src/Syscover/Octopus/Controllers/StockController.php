@@ -60,9 +60,11 @@ class StockController extends Controller
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
     {
+        $actions = $this->request->route()->getAction();
+
         if($aObject['expiration_080'] > date('U') || $aObject['expiration_080'] == null)
         {
-            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.replaceStock(this)" data-href="' . route('createOctopusRequestFromStock', ['stock' => $actionUrlParameters['id'], 'offset' => 0]) . '" data-id="' . $aObject->id_080 . '" data-original-title="' . trans('octopus::pulsar.replace_stock') . '"><i class="fa fa-files-o"></i></a>';
+            $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.replaceStock(this)" data-href="' . route($actions['resource'] === 'octopus-supervisor-stock'? 'createOctopusSupervisorRequestFromStock' : 'createOctopusRequestFromStock', ['stock' => $actionUrlParameters['id'], 'offset' => 0]) . '" data-id="' . $aObject->id_080 . '" data-original-title="' . trans('octopus::pulsar.replace_stock') . '"><i class="fa fa-files-o"></i></a>';
         }
         else
         {
