@@ -224,8 +224,8 @@ class RequestController extends Controller
     {
         if($parameters['object'] == null)
         {
-            // si es un supervidor, le redirigimos al listado de peticiones, si es un gestor al listado de pedidos
-            return redirect()->route($parameters['resource'] === 'octopus-supervisor-request'? 'octopusSupervisorRequest' : 'octopusOrder')->with([
+            // si es un supervidor, le redirigimos al listado de peticiones, si es un gestor al listado de peticiones del gestor
+            return redirect()->route($parameters['resource'] === 'octopus-supervisor-request'? 'octopusSupervisorRequest' : 'octopusRequest')->with([
                 'msg'        => 2,
                 'txtMsg'     => trans('octopus::pulsar.request_does_not_exist', [
                     'id' => $parameters['id']
