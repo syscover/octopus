@@ -54,6 +54,7 @@ class OrderController extends Controller
         {
             $this->routeSuffix                          = 'octopusLaboratoryOrder';
             $this->viewParameters['checkBoxColumn']     = false;
+            $this->viewParameters['showButton']         = true;
         }
 
     }

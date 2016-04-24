@@ -30,11 +30,11 @@ class StockController extends Controller
     protected $objectTrans  = 'stock';
     protected $viewParameters = [
         'newButton'             => false,
-        'checkBoxColumn'        => true,
-        'showButton'            => false,
-        'editButton'            => true,
-        'deleteButton'          => true,
-        'deleteSelectButton'    => true,
+        'checkBoxColumn'        => false,
+        'showButton'            => true,
+        'editButton'            => false,
+        'deleteButton'          => false,
+        'deleteSelectButton'    => false,
         'relatedButton'         => false,
     ];
 
