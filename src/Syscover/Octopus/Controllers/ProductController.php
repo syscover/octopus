@@ -14,7 +14,7 @@ class ProductController extends Controller
     protected $routeSuffix  = 'octopusProduct';
     protected $folder       = 'product';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_072', 'name_071', 'name_072'];
+    protected $aColumns     = ['id_072', 'name_071', 'name_072', ['data' => 'active_072', 'type' => 'active']];
     protected $nameM        = 'name_071';
     protected $model        = Product::class;
     protected $icon         = 'icomoon-icon-cube';
@@ -30,9 +30,10 @@ class ProductController extends Controller
     public function storeCustomRecord($parameters)
     {
         Product::create([
-            'id_072'    => $this->request->input('id'),
-            'brand_072' => $this->request->input('brand'),
-            'name_072'  => $this->request->input('name')
+            'id_072'        => $this->request->input('id'),
+            'brand_072'     => $this->request->input('brand'),
+            'name_072'      => $this->request->input('name'),
+            'active_072'    => $this->request->has('active')
         ]);
     }
 
@@ -46,9 +47,10 @@ class ProductController extends Controller
     public function updateCustomRecord($parameters)
     {
         Product::where('id_072', $parameters['id'])->update([
-            'id_072'    => $this->request->input('id'),
-            'brand_072' => $this->request->input('brand'),
-            'name_072'  => $this->request->input('name')
+            'id_072'        => $this->request->input('id'),
+            'brand_072'     => $this->request->input('brand'),
+            'name_072'      => $this->request->input('name'),
+            'active_072'    => $this->request->has('active')
         ]);
     }
 
@@ -56,7 +58,7 @@ class ProductController extends Controller
     {
         $parameters = $this->request->route()->parameters();
 
-        $products = Product::builder()->where('brand_072', $parameters['brand'])->get();
+        $products = Product::builder()->where('active_072', true)->where('brand_072', $parameters['brand'])->get();
 
         return response()->json($products);
     }

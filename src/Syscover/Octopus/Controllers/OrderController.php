@@ -79,7 +79,7 @@ class OrderController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->get();
 
         $request = RequestModel::builder()->find($parameters['id']);
 
@@ -241,7 +241,7 @@ class OrderController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_079)->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
 
         return $parameters;
     }
