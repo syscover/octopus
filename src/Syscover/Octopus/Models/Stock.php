@@ -50,6 +50,7 @@ class Stock extends Model
     public function scopeBuilder($query)
     {
         return $query->join('008_075_customer', '008_080_stock.customer_080', '=', '008_075_customer.id_075')
+            ->join('001_010_user', '008_080_stock.supervisor_080', '=', '001_010_user.id_010')
             ->join('008_076_shop', '008_080_stock.shop_080', '=', '008_076_shop.id_076')
             ->join('008_077_address', '008_080_stock.id_address_080', '=', '008_077_address.id_077')
             ->join('008_072_product', '008_080_stock.product_080', '=', '008_072_product.id_072');

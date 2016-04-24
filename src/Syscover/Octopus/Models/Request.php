@@ -50,6 +50,7 @@ class Request extends Model
     public function scopeBuilder($query)
     {
         return $query->join('008_075_customer', '008_078_request.customer_078', '=', '008_075_customer.id_075')
+            ->join('001_010_user', '008_078_request.supervisor_078', '=', '001_010_user.id_010')
             ->join('008_074_company', '008_078_request.company_078', '=', '008_074_company.id_074')
             ->join('008_076_shop', '008_078_request.shop_078', '=', '008_076_shop.id_076')
             ->join('008_077_address', '008_078_request.id_address_078', '=', '008_077_address.id_077')

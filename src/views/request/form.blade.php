@@ -174,6 +174,14 @@
         'value' => isset($object->id_078)? $object->id_078 : null,
         'readOnly' => true
     ])
+    @if($resource == 'octopus-request')
+        @include('pulsar::includes.html.form_text_group', [
+            'label' => trans_choice('octopus::pulsar.supervisor', 1),
+            'name' => 'supervisorName',
+            'value' => isset($object->name_010)? $object->name_010 . ' ' . $object->surname_010 : null,
+            'readOnly' => true,
+        ])
+    @endif
     @include('pulsar::includes.html.form_iframe_select_group', [
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',

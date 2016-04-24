@@ -178,6 +178,12 @@
         'readOnly' => true,
         'fieldSize' => 2
     ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans_choice('octopus::pulsar.supervisor', 1),
+        'name' => 'supervisorName',
+        'value' => isset($object->name_010)? $object->name_010 . ' ' . $object->surname_010 : null,
+        'readOnly' => true,
+    ])
     @include('pulsar::includes.html.form_iframe_select_group', [
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',

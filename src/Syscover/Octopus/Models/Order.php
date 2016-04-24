@@ -50,6 +50,7 @@ class Order extends Model
     public function scopeBuilder($query)
     {
         return $query->join('008_075_customer', '008_079_order.customer_079', '=', '008_075_customer.id_075')
+            ->join('001_010_user', '008_079_order.supervisor_079', '=', '001_010_user.id_010')
             ->join('008_076_shop', '008_079_order.shop_079', '=', '008_076_shop.id_076')
             ->join('008_077_address', '008_079_order.id_address_079', '=', '008_077_address.id_077')
             ->join('008_072_product', '008_079_order.product_079', '=', '008_072_product.id_072');
