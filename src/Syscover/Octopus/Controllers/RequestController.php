@@ -222,6 +222,17 @@ class RequestController extends Controller
 
     public function editCustomRecord($parameters)
     {
+        if($parameters['object'] == null)
+        {
+            // si es un supervidor, le redirigimos al listado de peticiones, si es un gestor al listado de pedidos
+            return redirect()->route($parameters['resource'] === 'octopus-supervisor-request'? 'octopusSupervisorRequest' : 'octopusOrder')->with([
+                'msg'        => 2,
+                'txtMsg'     => trans('octopus::pulsar.request_does_not_exist', [
+                    'id' => $parameters['id']
+                ])
+            ]);
+        }
+
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
