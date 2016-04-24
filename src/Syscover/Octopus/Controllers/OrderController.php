@@ -220,8 +220,8 @@ class OrderController extends Controller
 
         // send email to laboratory
         $dataMessage = [
-            'emailTo'           => $supervisor->email_010,
-            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'emailTo'           => $laboratory->email_073,
+            'nameTo'            => $laboratory->company_name_073,
             'subject'           => 'Pedido N: ' . $order->id_079 . ' insertado por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
             'order'             => $order,
             'supervisor'        => $supervisor,
