@@ -286,6 +286,16 @@ class OrderController extends Controller
         Order::where('id_079', $parameters['id'])->update($order);
     }
 
+    public function showCustomRecord($parameters)
+    {
+        $parameters['companies']    = Company::all();
+        $parameters['families']     = Family::all();
+        $parameters['brands']       = Brand::all();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
+
+        return $parameters;
+    }
+
     public function ajaxDeleteFile()
     {
         File::delete(public_path() . '/packages/syscover/octopus/storage/attachment/order/' . $this->request->input('file'));

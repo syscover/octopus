@@ -188,7 +188,7 @@
             'modal' => 1
         ]),
         'required' => true,
-        'readOnly' => true
+        'disabled' => $action == 'show'
     ])
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
@@ -210,7 +210,7 @@
                 'offset' => $offset,
             ]),
             'required' => true,
-            'readOnly' => true
+            'disabled' => $action == 'show'
         ])
         <hr>
     </div>
@@ -222,8 +222,9 @@
                 'label' => trans('pulsar::pulsar.company_name'),
                 'name' => 'companyName',
                 'value' => isset($object->company_name_079)? $object->company_name_079 : null,
-                'maxLength' => '255', '
-                rangeLength' => '2,255'
+                'maxLength' => '255',
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -232,7 +233,8 @@
                 'name' => 'name',
                 'value' => isset($object->name_079)? $object->name_079 : null,
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -241,7 +243,8 @@
                 'name' => 'surname',
                 'value' => isset($object->surname_079)? $object->surname_079 : null,
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -251,7 +254,7 @@
                 'value' => isset($object->phone_079)? $object->phone_079 : null,
                 'maxLength' => '255',
                 'rangeLength' => '2,255',
-                'fieldSize' => 6
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -261,7 +264,7 @@
                 'value' => isset($object->email_079)? $object->email_079 : null,
                 'maxLength' => '255',
                 'rangeLength' => '2,255',
-                'fieldSize' => 6
+                'readOnly' => $action == 'show'
             ])
         </div>
         <div class="col-md-6">
@@ -279,7 +282,8 @@
                  'data' => [
                      'language' => config('app.locale'),
                      'error-placement' => 'select2-country-outer-container'
-                 ]
+                 ],
+                 'disabled' => $action == 'show'
              ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -291,7 +295,8 @@
                 'style' => 'width:100%',
                 'data' => [
                     'language' => config('app.locale')
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -303,7 +308,8 @@
                 'style' => 'width:100%',
                 'data' => [
                     'language' => config('app.locale')
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -315,7 +321,8 @@
                 'style' => 'width:100%',
                 'data' => [
                     'language' => config('app.locale')
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -325,7 +332,7 @@
                 'value' => isset($object->cp_079)? $object->cp_079 : null,
                 'maxLength' => '255',
                 'rangeLength' => '2,255',
-                'fieldSize' => 4
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -334,7 +341,8 @@
                 'name' => 'locality',
                 'value' => isset($object->locality_079)? $object->locality_079 : null,
                 'maxLength' => '255',
-                'rangeLength' => '2,255'
+                'rangeLength' => '2,255',
+                'readOnly' => $action == 'show'
             ])
         </div>
     </div>
@@ -344,12 +352,14 @@
         'value' => old('address', isset($object->address_079)? $object->address_079 : null),
         'maxLength' => '255',
         'rangeLength' => '2,255',
-        'required' => true
+        'required' => true,
+        'readOnly' => $action == 'show'
     ])
     @include('pulsar::includes.html.form_textarea_group', [
         'label' => trans('pulsar::pulsar.observations'),
         'name' => 'observations',
-        'value' => old('observations', isset($object->observations_079)? $object->observations_079 : null)
+        'value' => old('observations', isset($object->observations_079)? $object->observations_079 : null),
+        'readOnly' => $action == 'show'
     ])
 
     @include('pulsar::includes.html.form_section_header', [
@@ -382,7 +392,8 @@
                     'language' => config('app.locale'),
                     'width' => '100%',
                     'error-placement' => 'select2-company-outer-container'
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -400,7 +411,8 @@
                     'language' => config('app.locale'),
                     'width' => '100%',
                     'error-placement' => 'select2-family-outer-container'
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -418,7 +430,8 @@
                     'language' => config('app.locale'),
                     'width' => '100%',
                     'error-placement' => 'select2-brand-outer-container'
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
@@ -436,7 +449,8 @@
                     'language' => config('app.locale'),
                     'width' => '100%',
                     'error-placement' => 'select2-product-outer-container'
-                ]
+                ],
+                'disabled' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_datetimepicker_group', [
                 'labelSize' => 4,
@@ -447,7 +461,8 @@
                     'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')),
                     'locale' => config('app.locale'),
                     'default-date' => old('expiration', isset($object->expiration_079)? date('Y-m-d', $object->expiration_079) : null)
-                ]
+                ],
+                'readOnly' => $action == 'show'
             ])
         </div>
         <div class="col-md-6">
@@ -458,7 +473,8 @@
                 'label' => trans('octopus::pulsar.view_width') . ' (cm)',
                 'name' => 'viewWidth',
                 'value' => $object->view_width_079,
-                'required' => true
+                'required' => true,
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -467,7 +483,8 @@
                 'label' => trans('octopus::pulsar.view_height') . ' (cm)',
                 'name' => 'viewHeight',
                 'value' => $object->view_height_079,
-                'required' => true
+                'required' => true,
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -475,7 +492,8 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_width') . ' (cm)',
                 'name' => 'totalWidth',
-                'value' => isset($object->total_width_079)? $object->total_width_079 : null
+                'value' => isset($object->total_width_079)? $object->total_width_079 : null,
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -483,7 +501,8 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_height') . ' (cm)',
                 'name' => 'totalHeight',
-                'value' => isset($object->total_height_079)? $object->total_height_079 : null
+                'value' => isset($object->total_height_079)? $object->total_height_079 : null,
+                'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
@@ -492,7 +511,8 @@
                 'label' => trans('pulsar::pulsar.units'),
                 'name' => 'units',
                 'value' => $object->units_079,
-                'required' => true
+                'required' => true,
+                'readOnly' => $action == 'show'
             ])
             @if($action == 'store')
                 @include('pulsar::includes.html.form_file_group', [
@@ -513,7 +533,8 @@
                     'dirName' => '/packages/syscover/octopus/storage/attachment/order',
                     'urlDelete' => route('deleteAttachmentOctopusOrder'),
                     'name' => 'attachment',
-                    'value' => isset($object->attachment_079)? $object->attachment_079 : null
+                    'value' => isset($object->attachment_079)? $object->attachment_079 : null,
+                    'disabled' => $action == 'show'
                 ])
             @endif
         </div>
@@ -521,7 +542,8 @@
     @include('pulsar::includes.html.form_textarea_group', [
         'label' => trans_choice('pulsar::pulsar.comment', 2),
         'name' => 'comments',
-        'value' => old('comments', isset($object->comments_079)? $object->comments_079 : null)
+        'value' => old('comments', isset($object->comments_079)? $object->comments_079 : null),
+        'readOnly' => $action == 'show'
     ])
     <!-- /.octopus::order.create -->
 @stop
