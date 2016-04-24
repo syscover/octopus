@@ -48,8 +48,6 @@ class StockController extends Controller
         if($actions['resource'] === 'octopus-supervisor-stock')
         {
             $this->routeSuffix = 'octopusSupervisorStock';
-            $this->viewParameters['deleteButton']   = false;
-            $this->viewParameters['editButton']     = false;
             $this->viewParameters['showButton']     = true;
         }
 
