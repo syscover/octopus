@@ -50,6 +50,10 @@ class RequestController extends Controller
 
         if($aObject['order_078'] == null)
         {
+            $this->viewParameters['deleteButton']   = true;
+            $this->viewParameters['editButton']     = true;
+            $this->viewParameters['showButton']     = false;
+
             if($actions['resource'] === 'octopus-request')
                 $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', ['id' => $actionUrlParameters['id'], 'offset' => $actionUrlParameters['offset']]) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
             else
