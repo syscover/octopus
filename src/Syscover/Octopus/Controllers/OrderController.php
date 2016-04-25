@@ -279,8 +279,9 @@ class OrderController extends Controller
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
 
-        $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => Crypt::encrypt($parameters['id']), 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_stock') . '</a>';
-
+        if($parameters['object']->stock_079 == null)
+            $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => Crypt::encrypt($parameters['id']), 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_stock') . '</a>';
+        
         return $parameters;
     }
 
