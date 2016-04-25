@@ -198,7 +198,7 @@
             'modal' => 1
         ]),
         'required' => true,
-        'disabled' => $action == 'show'
+        'disabled' => $action == 'show' || $resource == 'octopus-laboratory-stock'
     ])
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
@@ -220,7 +220,7 @@
                 'offset' => $offset,
             ]),
             'required' => true,
-            'disabled' => $action == 'show'
+            'disabled' => $action == 'show' || $resource == 'octopus-laboratory-stock'
         ])
         <hr>
     </div>
