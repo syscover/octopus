@@ -56,7 +56,6 @@ class OrderController extends Controller
             $this->viewParameters['checkBoxColumn']     = false;
             $this->viewParameters['showButton']         = true;
         }
-
     }
 
     public function jsonCustomDataBeforeActions($aObject, $actionUrlParameters, $parameters)
@@ -65,10 +64,24 @@ class OrderController extends Controller
 
         if($aObject['stock_079'] == null)
         {
+            if($actions['resource'] === 'octopus-order')
+            {
+                $this->viewParameters['deleteButton']   = true;
+                $this->viewParameters['editButton']     = true;
+                $this->viewParameters['showButton']     = false;
+            }
+            
             $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route($actions['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['stock' => Crypt::encrypt($actionUrlParameters['id']), 'offset' => 0]) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
         }
         else
         {
+            if($actions['resource'] === 'octopus-order')
+            {
+                $this->viewParameters['deleteButton']   = false;
+                $this->viewParameters['editButton']     = false;
+                $this->viewParameters['showButton']     = true;
+            }
+
             $actions = '';
         }
 
