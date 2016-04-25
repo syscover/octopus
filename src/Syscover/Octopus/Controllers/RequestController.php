@@ -251,21 +251,6 @@ class RequestController extends Controller
         return $parameters;
     }
 
-    public function ajaxDeleteFile()
-    {
-        File::delete(public_path() . '/packages/syscover/octopus/storage/attachment/request/' . $this->request->input('file'));
-
-        OctopusRequest::where('id_078', $this->request->input('id'))->update([
-            'attachment_078' => null,
-        ]);
-
-        return response()->json([
-            'status'    => 'success',
-            'file'      => $this->request->input('file'),
-            'id'        => $this->request->input('id')
-        ]);
-    }
-
     private function sendRequestEmail($id, $action)
     {
         $octopusRequest         = OctopusRequest::builder()->find($id);
@@ -309,5 +294,20 @@ class RequestController extends Controller
             $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
                 ->subject($dataMessage['subject']);
         });
+    }
+
+    public function ajaxDeleteFile()
+    {
+        File::delete(public_path() . '/packages/syscover/octopus/storage/attachment/request/' . $this->request->input('file'));
+
+        OctopusRequest::where('id_078', $this->request->input('id'))->update([
+            'attachment_078' => null,
+        ]);
+
+        return response()->json([
+            'status'    => 'success',
+            'file'      => $this->request->input('file'),
+            'id'        => $this->request->input('id')
+        ]);
     }
 }
