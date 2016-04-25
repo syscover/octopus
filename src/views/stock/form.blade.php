@@ -482,7 +482,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.view_width') . ' (cm)',
                 'name' => 'viewWidth',
-                'value' => $object->view_width_080,
+                'value' => number_format($object->view_width_080, 2),
                 'required' => true,
                 'readOnly' => $action == 'show'
             ])
@@ -492,7 +492,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.view_height') . ' (cm)',
                 'name' => 'viewHeight',
-                'value' => $object->view_height_080,
+                'value' => number_format($object->view_height_080, 2),
                 'required' => true,
                 'readOnly' => $action == 'show'
             ])
@@ -502,7 +502,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_width') . ' (cm)',
                 'name' => 'totalWidth',
-                'value' => isset($object->total_width_080)? $object->total_width_080 : null,
+                'value' => isset($object->total_width_080)? number_format($object->total_width_080, 2) : null,
                 'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
@@ -511,7 +511,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_height') . ' (cm)',
                 'name' => 'totalHeight',
-                'value' => isset($object->total_height_080)? $object->total_height_080 : null,
+                'value' => isset($object->total_height_080)? number_format($object->total_height_080, 2) : null,
                 'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [

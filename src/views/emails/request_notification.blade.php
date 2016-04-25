@@ -182,10 +182,10 @@
                 <strong>{{ trans_choice('pulsar::pulsar.family', 1) }}:</strong> {{ $octopusRequest->name_070 }}
             </div>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
-                <strong>{{ trans('octopus::pulsar.view_width') . ' (cm)' }}:</strong> {{ $octopusRequest->view_width_078 }}
+                <strong>{{ trans('octopus::pulsar.view_width') . ' (cm)' }}:</strong> {{ number_format($octopusRequest->view_width_078, 2) }}
             </div>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
-                <strong>{{ trans('octopus::pulsar.view_height') . ' (cm)' }}:</strong> {{ $octopusRequest->view_height_078 }}
+                <strong>{{ trans('octopus::pulsar.view_height') . ' (cm)' }}:</strong> {{ number_format($octopusRequest->view_height_078, 2) }}
             </div>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
                 <strong>{{ trans('pulsar::pulsar.units') }}:</strong> {{ $octopusRequest->units_078 }}
@@ -209,10 +209,10 @@
                 <strong>&nbsp;</strong> &nbsp;
             </div>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
-                <strong>{{ trans('octopus::pulsar.total_width') . ' (cm)' }}:</strong> {{ $octopusRequest->total_width_078 }}
+                <strong>{{ trans('octopus::pulsar.total_width') . ' (cm)' }}:</strong> {{ number_format($octopusRequest->total_width_078, 2) }}
             </div>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
-                <strong>{{ trans('octopus::pulsar.total_height') . ' (cm)' }}:</strong> {{ $octopusRequest->total_height_078 }}
+                <strong>{{ trans('octopus::pulsar.total_height') . ' (cm)' }}:</strong> {{ number_format($octopusRequest->total_height_078, 2) }}
             </div>
             @if(! empty($octopusRequest->attachment_078))
                 <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">

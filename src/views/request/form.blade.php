@@ -478,7 +478,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.view_width') . ' (cm)',
                 'name' => 'viewWidth',
-                'value' => old('viewWidth', isset($object->view_width_078)? $object->view_width_078 : null),
+                'value' => old('viewWidth', isset($object->view_width_078)? number_format($object->view_width_078, 2) : null),
                 'required' => true,
                 'readOnly' => $action == 'show'
             ])
@@ -488,7 +488,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.view_height') . ' (cm)',
                 'name' => 'viewHeight',
-                'value' => old('viewHeight', isset($object->view_height_078)? $object->view_height_078 : null),
+                'value' => old('viewHeight', isset($object->view_height_078)? number_format($object->view_height_078, 2) : null),
                 'required' => true,
                 'readOnly' => $action == 'show'
             ])
@@ -498,7 +498,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_width') . ' (cm)',
                 'name' => 'totalWidth',
-                'value' => old('totalWidth', isset($object->total_width_078)? $object->total_width_078 : null),
+                'value' => old('totalWidth', isset($object->total_width_078)? number_format($object->total_width_078, 2) : null),
                 'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
@@ -507,7 +507,7 @@
                 'type' => 'number',
                 'label' => trans('octopus::pulsar.total_height') . ' (cm)',
                 'name' => 'totalHeight',
-                'value' => old('totalHeight', isset($object->total_height_078)? $object->total_height_078 : null),
+                'value' => old('totalHeight', isset($object->total_height_078)? number_format($object->total_height_078, 2) : null),
                 'readOnly' => $action == 'show'
             ])
             @include('pulsar::includes.html.form_text_group', [
