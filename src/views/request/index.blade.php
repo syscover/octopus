@@ -51,7 +51,7 @@
         <th data-hide="phone,tablet">ID.</th>
         <th>{{ trans_choice('pulsar::pulsar.date', 1) }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.code') }}</th>
-        <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
+        <th data-class="expand">{{ trans_choice('octopus::pulsar.shop', 1) }}</th>
         <th data-hide="phone">{{ trans_choice('octopus::pulsar.product', 1) }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.phone', 1) }}</th>
