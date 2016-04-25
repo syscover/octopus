@@ -264,7 +264,9 @@ class RequestController extends Controller
 
         // get notification account
         $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
+        $managerProfile         = Preference::getValue('octopusManagerProfile', 8);
         $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
+        $managers               = User::builder()->where('profile_010', $managerProfile->value_018)->get();
 
         if($emailAccount == null) return null;
 
@@ -297,9 +299,12 @@ class RequestController extends Controller
         // send email to manager
         $dataMessage['actions'] = 'manager_request_actions_notification';
 
-        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
-            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
-                ->subject($dataMessage['subject']);
+        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage, $managers) {
+
+            $m->subject($dataMessage['subject']);
+
+            foreach($managers as $manager)
+                $m->to($manager->email_010, $manager->name_010 . ' ' . $manager->surname_010);
         });
     }
 

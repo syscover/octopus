@@ -20,7 +20,7 @@
         'required' => true
     ])
     @include('pulsar::includes.html.form_select_group', [
-        'label' => trans_choice('pulsar::pulsar.profile', 1),
+        'label' => trans('octopus::pulsar.manager_profile'),
         'name' => 'managerProfile',
         'value' => (int)$managerProfile->value_018,
         'objects' => $profiles,
