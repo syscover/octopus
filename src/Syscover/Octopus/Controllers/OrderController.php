@@ -109,6 +109,8 @@ class OrderController extends Controller
             'alias_077'                 => $request->alias_077,
             'request_079'               => $request->id_078,
             'supervisor_079'            => $request->supervisor_078,
+            'name_010'                  => $request->name_010,
+            'surname_010'               => $request->surname_010,
             'customer_079'              => isset($request->customer_078)? $request->customer_078 : null,
             'shop_079'                  => $request->shop_078,
             'company_079'               => $request->company_078,
