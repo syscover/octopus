@@ -275,7 +275,7 @@ class StockController extends Controller
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_080)->get();
 
-        $parameters['afterButtonFooter'] = '<a id="invoiceButton" class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-supervisor-stock'? 'createOctopusSupervisorRequestFromStock' : 'createOctopusRequestFromStock', ['stock' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.replace_stock') . '</a>';
+        $parameters['afterButtonFooter'] = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-supervisor-stock'? 'createOctopusSupervisorRequestFromStock' : 'createOctopusRequestFromStock', ['stock' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.replace_stock') . '</a>';
 
         return $parameters;
     }

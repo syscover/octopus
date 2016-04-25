@@ -51,7 +51,7 @@ class RequestController extends Controller
         if($aObject['order_078'] == null)
         {
             if($actions['resource'] === 'octopus-request')
-                $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', $actionUrlParameters) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
+                $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createOrder(this)" data-href="' . route('createOctopusOrder', ['id' => $actionUrlParameters['id'], 'offset' => $actionUrlParameters['offset']]) . '" data-id="' . $aObject->id_078 . '" data-original-title="' . trans('octopus::pulsar.create_order') . '"><i class="fa fa-retweet"></i></a>';
             else
                 $actions = '';
         }
@@ -192,10 +192,13 @@ class RequestController extends Controller
             ]);
         }
 
-        $parameters['companies']    = Company::all();
-        $parameters['families']     = Family::all();
-        $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_078)->get();
+        $parameters['companies']            = Company::all();
+        $parameters['families']             = Family::all();
+        $parameters['brands']               = Brand::all();
+        $parameters['products']             = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_078)->get();
+
+        if($parameters['resource'] === 'octopus-request')
+            $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route('createOctopusOrder', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_order') . '</a>';
 
         return $parameters;
     }
