@@ -1,4 +1,4 @@
-@extends('pulsar::layouts.form', ['action' => 'update', 'cancelButton' => false])
+@extends('pulsar::layouts.form', ['action' => 'update'])
 
 @section('head')
     @parent
@@ -16,6 +16,16 @@
         'objects' => $accounts,
         'idSelect' => 'id_013',
         'nameSelect' => 'name_013',
+        'fieldSize' => 5,
+        'required' => true
+    ])
+    @include('pulsar::includes.html.form_select_group', [
+        'label' => trans_choice('pulsar::pulsar.profile', 1),
+        'name' => 'managerProfile',
+        'value' => (int)$managerProfile->value_018,
+        'objects' => $profiles,
+        'idSelect' => 'id_006',
+        'nameSelect' => 'name_006',
         'fieldSize' => 5,
         'required' => true
     ])
