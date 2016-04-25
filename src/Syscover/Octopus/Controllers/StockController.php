@@ -26,7 +26,7 @@ class StockController extends Controller
     protected $aColumns     = ['id_080', ['type' => 'date', 'data' => 'date_080', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'name_072', ['type' => 'email', 'data' => 'email_080'], 'phone_080'];
     protected $nameM        = 'id_080';
     protected $model        = Stock::class;
-    protected $icon         = 'icon-refresh';
+    protected $icon         = 'fa fa-th-large';
     protected $objectTrans  = 'stock';
     protected $viewParameters = [
         'newButton'             => false,
