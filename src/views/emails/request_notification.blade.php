@@ -214,6 +214,11 @@
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
                 <strong>{{ trans('octopus::pulsar.total_height') . ' (cm)' }}:</strong> {{ $octopusRequest->total_height_078 }}
             </div>
+            @if(! empty($octopusRequest->attachment_078))
+                <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
+                    <strong>{{ trans_choice('pulsar::pulsar.attachment', 1) }}:</strong> <a href="{{ asset('packages/syscover/octopus/storage/attachment/request/' . $octopusRequest->attachment_078 ) }}">{{ $octopusRequest->attachment_078 }}</a>
+                </div>
+            @endif
         </td>
     </tr>
     <!-- /.request -->
