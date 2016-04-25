@@ -15,6 +15,8 @@ return [
     'order'                                 => 'Pedido|Pedidos',
     'order_already_created'                 => 'Pedido desde la solicitud :id, ya ha sido creado',
     'order_does_not_exist'                  => 'El pedido: :id no existe',
+    'order_subject_create'                  => 'Pedido N: :id, insertada por :name :surname',
+    'order_subject_update'                  => 'Pedido N: :id, actualizada por :name :surname',
     'package_name'                          => 'Octopus',
     'product'                               => 'Producto|Productos',
     'request'                               => 'Solicitud|Solicitudes',

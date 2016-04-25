@@ -15,6 +15,8 @@ return [
     'order'                                 => 'Order|Orders',
     'order_already_created'                 => 'Order from request :id, already created',
     'order_does_not_exist'                  => 'Order :id, does not exist',
+    'order_subject_create'                  => 'Order N: :id, insert by :name :surname',
+    'order_subject_update'                  => 'Order N: :id, updated by :name :surname',
     'package_name'                          => 'Octopus',
     'product'                               => 'Product|Products',
     'request'                               => 'Request|Requests',

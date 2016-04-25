@@ -202,41 +202,7 @@ class OrderController extends Controller
             'order_078' => $order->id_079
         ]);
 
-        // send email confirmation
-        $order                  = Order::builder()->find($order->id_079);
-
-        // get notification account
-        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
-        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
-
-        if($emailAccount == null) return null;
-
-        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
-        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
-        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
-        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
-        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
-        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
-
-        $supervisor = User::builder()->find($order->supervisor_079);
-        $shop       = Shop::builder()->find($order->shop_079);
-
-        // send email to laboratory
-        $dataMessage = [
-            'emailTo'           => $laboratory->email_073,
-            'nameTo'            => $laboratory->company_name_073,
-            'subject'           => 'Pedido N: ' . $order->id_079 . ' insertado por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
-            'order'             => $order,
-            'supervisor'        => $supervisor,
-            'shop'              => $shop,
-            'key'               => Crypt::encrypt($order->id_079),
-            'actions'           => 'laboratory_order_actions_notification'
-        ];
-
-        Mail::send('octopus::emails.order_notification', $dataMessage, function($m) use ($dataMessage) {
-            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
-                ->subject($dataMessage['subject']);
-        });
+        $this->sendOrderEmail($order->id_079, 'store');
     }
 
     public function editCustomRecord($parameters)
@@ -286,6 +252,8 @@ class OrderController extends Controller
             $order['attachment_079'] = Miscellaneous::uploadFiles('attachment', public_path() . '/packages/syscover/octopus/storage/attachment/order');
 
         Order::where('id_079', $parameters['id'])->update($order);
+
+        $this->sendOrderEmail($order->id_079, 'update');
     }
 
     public function showCustomRecord($parameters)
@@ -296,6 +264,46 @@ class OrderController extends Controller
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
 
         return $parameters;
+    }
+
+    private function sendOrderEmail($id, $action)
+    {
+        // send email confirmation
+        $order                  = Order::builder()->find($id);
+        $laboratory             = Laboratory::builder()->where('favorite_073', true)->get()->first();
+
+        // get notification account
+        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
+        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
+
+        if($emailAccount == null) return null;
+
+        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
+        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
+        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
+        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
+        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
+        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
+
+        $supervisor = User::builder()->find($order->supervisor_079);
+        $shop       = Shop::builder()->find($order->shop_079);
+
+        // send email to laboratory
+        $dataMessage = [
+            'emailTo'           => $laboratory->email_073,
+            'nameTo'            => $laboratory->company_name_073,
+            'subject'           => trans($action == 'update'? 'octopus:pulsar.order_subject_update' : 'octopus:pulsar.order_subject_create', ['id' => $order->id_079, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
+            'order'             => $order,
+            'supervisor'        => $supervisor,
+            'shop'              => $shop,
+            'key'               => Crypt::encrypt($order->id_079),
+            'actions'           => 'laboratory_order_actions_notification'
+        ];
+
+        Mail::send('octopus::emails.order_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
     }
 
     public function ajaxDeleteFile()
