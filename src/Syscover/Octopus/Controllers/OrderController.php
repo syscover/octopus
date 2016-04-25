@@ -70,7 +70,7 @@ class OrderController extends Controller
                 $this->viewParameters['editButton']     = true;
                 $this->viewParameters['showButton']     = false;
             }
-            
+
             $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route($actions['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['stock' => Crypt::encrypt($actionUrlParameters['id']), 'offset' => 0]) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
         }
         else
@@ -278,9 +278,8 @@ class OrderController extends Controller
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
-
-        if($parameters['resource'] === 'octopus-request')
-            $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_stock') . '</a>';
+        
+        $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_stock') . '</a>';
 
         return $parameters;
     }
