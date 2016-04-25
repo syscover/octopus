@@ -176,48 +176,7 @@ class RequestController extends Controller
             ]);
         }
 
-        // send email confirmation
-        $octopusRequest         = OctopusRequest::builder()->find($octopusRequest->id_078);
-
-        // get notification account
-        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
-        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
-
-        if($emailAccount == null) return null;
-
-        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
-        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
-        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
-        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
-        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
-        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
-
-        $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
-        $shop       = Shop::builder()->find($octopusRequest->shop_078);
-
-        // send email to supervisor
-        $dataMessage = [
-            'emailTo'           => $supervisor->email_010,
-            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
-            'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
-            'octopusRequest'    => $octopusRequest,
-            'supervisor'        => $supervisor,
-            'shop'              => $shop,
-            'actions'           => 'supervisor_request_actions_notification'
-        ];
-
-        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
-            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
-                ->subject($dataMessage['subject']);
-        });
-
-        // send email to manager
-        $dataMessage['actions'] = 'manager_request_actions_notification';
-
-        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
-            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
-                ->subject($dataMessage['subject']);
-        });
+        $this->sendRequestEmail($octopusRequest->id_078, 'store');
     }
 
     public function editCustomRecord($parameters)
@@ -278,6 +237,8 @@ class RequestController extends Controller
             $request['attachment_078'] = Miscellaneous::uploadFiles('attachment', public_path() . '/packages/syscover/octopus/storage/attachment/request');
 
         OctopusRequest::where('id_078', $parameters['id'])->update($request);
+
+        $this->sendRequestEmail($parameters['id'], 'update');
     }
 
     public function showCustomRecord($parameters)
@@ -305,21 +266,48 @@ class RequestController extends Controller
         ]);
     }
 
-//    public function checkEmail()
-//    {
-//        $octopusRequest = OctopusRequest::builder()->find(4);
-//        $supervisor     = User::builder()->find($octopusRequest->supervisor_078);
-//        $shop           = Shop::builder()->find($octopusRequest->shop_078);
-//
-//        $dataMessage = [
-//            'emailTo'           => $supervisor->email_010,
-//            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
-//            'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
-//            'octopusRequest'    => $octopusRequest,
-//            'supervisor'        => $supervisor,
-//            'shop'              => $shop
-//        ];
-//
-//        return view('octopus::emails.request_notification', $dataMessage);
-//    }
+    private function sendRequestEmail($id, $action)
+    {
+        $octopusRequest         = OctopusRequest::builder()->find($id);
+
+        // get notification account
+        $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
+        $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
+
+        if($emailAccount == null) return null;
+
+        config(['mail.host'         =>  $emailAccount->outgoing_server_013]);
+        config(['mail.port'         =>  $emailAccount->outgoing_port_013]);
+        config(['mail.from'         =>  ['address' => $emailAccount->email_013, 'name' => $emailAccount->name_013]]);
+        config(['mail.encryption'   =>  $emailAccount->outgoing_secure_013 == 'null'? null : $emailAccount->outgoing_secure_013]);
+        config(['mail.username'     =>  $emailAccount->outgoing_user_013]);
+        config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
+
+        $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
+        $shop       = Shop::builder()->find($octopusRequest->shop_078);
+
+        // send email to supervisor
+        $dataMessage = [
+            'emailTo'           => $supervisor->email_010,
+            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'subject'           => trans($action == 'update'? 'octopus:pulsar.request_subject_update' : 'octopus:pulsar.request_subject_create', ['id' => $octopusRequest->id_078, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
+            'octopusRequest'    => $octopusRequest,
+            'supervisor'        => $supervisor,
+            'shop'              => $shop,
+            'actions'           => 'supervisor_request_actions_notification'
+        ];
+
+        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
+
+        // send email to manager
+        $dataMessage['actions'] = 'manager_request_actions_notification';
+
+        Mail::send('octopus::emails.request_notification', $dataMessage, function($m) use ($dataMessage) {
+            $m->to($dataMessage['emailTo'], $dataMessage['nameTo'])
+                ->subject($dataMessage['subject']);
+        });
+    }
 }

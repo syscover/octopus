@@ -19,6 +19,8 @@ return [
     'product'                               => 'Product|Products',
     'request'                               => 'Request|Requests',
     'request_does_not_exist'                => 'Request :id, does not exist',
+    'request_subject_create'                => 'Request N: :id, insert by :name :surname',
+    'request_subject_update'                => 'Request N: :id, updated by :name :surname',
     'replace_stock'                         => 'Replace stock',
     'shop'                                  => 'Shop|Shops',
     'stock'                                 => 'Stock|Stocks',

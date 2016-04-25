@@ -19,6 +19,8 @@ return [
     'product'                               => 'Producto|Productos',
     'request'                               => 'Solicitud|Solicitudes',
     'request_does_not_exist'                => 'La solicitud: :id no existe',
+    'request_subject_create'                => 'Solicitud N: :id, insertada por :name :surname',
+    'request_subject_update'                => 'Solicitud N: :id, actualizada por :name :surname',
     'replace_stock'                         => 'Reemplazar stock',
     'shop'                                  => 'Punto de venta|Punto de venta',
     'stock'                                 => 'Stock|Stocks',
