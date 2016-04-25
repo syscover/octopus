@@ -207,10 +207,13 @@ class OrderController extends Controller
 
     public function editCustomRecord($parameters)
     {
-        $parameters['companies']    = Company::all();
-        $parameters['families']     = Family::all();
-        $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
+        $parameters['companies']            = Company::all();
+        $parameters['families']             = Family::all();
+        $parameters['brands']               = Brand::all();
+        $parameters['products']             = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
+
+        // create stock by manager
+        $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route('createOctopusStock', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_order') . '</a>';
 
         return $parameters;
     }
@@ -262,6 +265,9 @@ class OrderController extends Controller
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_079)->get();
+
+        if($parameters['resource'] === 'octopus-request')
+            $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_order') . '</a>';
 
         return $parameters;
     }
