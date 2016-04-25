@@ -144,22 +144,23 @@
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
                 <strong>{{ trans_choice('pulsar::pulsar.phone', 1) }}:</strong> {{ $order->phone_079 }}
             </div>
-            <br>
         </td>
         <td class="content_body" style='background:#ffffff;text-align:left;vertical-align:top;font-size:15px;line-height:19px;border-collapse:collapse;color:#000000;border-spacing:0;font-family:"Helvetica Neue",helvetica,arial,sans-serif;padding:0 0 0 55px'>
             <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
                 <strong>{{ trans('pulsar::pulsar.email') }}:</strong> {{ $order->email_079  }}
             </div>
-            <br>
         </td>
     </tr>
-    <tr>
-        <td colspan="2" class="content_body" style='background:#ffffff;text-align:left;vertical-align:top;font-size:15px;line-height:19px;border-collapse:collapse;color:#000000;border-spacing:0;font-family:"Helvetica Neue",helvetica,arial,sans-serif;padding:0 0 0 55px'>
-            <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
-                <strong>{{ trans('pulsar::pulsar.observations') }}:</strong> {!! $shop->observations_079 !!}
-            </div>
-        </td>
-    </tr>
+    @if(! empty($order->observations_079))
+        <tr>
+            <td colspan="2" class="content_body" style='background:#ffffff;text-align:left;vertical-align:top;font-size:15px;line-height:19px;border-collapse:collapse;color:#000000;border-spacing:0;font-family:"Helvetica Neue",helvetica,arial,sans-serif;padding:0 0 0 55px'>
+                <div class="formatted_content" style="padding-bottom:19px;padding:0 !important;border:none !important;margin:0 0 5px !important;max-width:none !important">
+                    <strong>{{ trans('pulsar::pulsar.observations') }}:</strong> {!! $order->observations_079 !!}
+                </div>
+                <br>
+            </td>
+        </tr>
+    @endif
     <!-- /.address -->
     <!-- order -->
     <tr>

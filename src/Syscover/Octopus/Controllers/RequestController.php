@@ -322,4 +322,24 @@ class RequestController extends Controller
             'id'        => $this->request->input('id')
         ]);
     }
+
+    public function checkEmail()
+    {
+        $octopusRequest = OctopusRequest::builder()->find(2304);
+        $supervisor     = User::builder()->find($octopusRequest->supervisor_078);
+        $shop           = Shop::builder()->find($octopusRequest->shop_078);
+
+        $dataMessage = [
+            'emailTo'           => $supervisor->email_010,
+            'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'subject'           => 'Solicitud N: ' . $octopusRequest->id_078 . ' insertada por ' . $supervisor->name_010 . ' ' . $supervisor->surname_010,
+            'octopusRequest'    => $octopusRequest,
+            'supervisor'        => $supervisor,
+            'shop'              => $shop,
+            'actions'           => 'supervisor_request_actions_notification'
+        ];
+
+        return view('octopus::emails.request_notification', $dataMessage);
+    }
+
 }
