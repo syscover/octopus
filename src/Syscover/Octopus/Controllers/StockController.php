@@ -88,7 +88,7 @@ class StockController extends Controller
 
         if($order == null)
         {
-            return redirect()->route('octopusStock')->with([
+            return redirect()->route($this->resource == 'octopus-stock'? 'octopusStock' : 'octopusLaboratoryOrder')->with([
                 'msg'        => 2,
                 'txtMsg'     => trans('octopus::pulsar.order_does_not_exist', [
                     'id' => $parameters['id']
@@ -98,7 +98,7 @@ class StockController extends Controller
 
         if($order->stock_079 != null)
         {
-            return redirect()->route('octopusStock')->with([
+            return redirect()->route($this->resource == 'octopus-stock'? 'octopusStock' : 'octopusLaboratoryOrder')->with([
                 'msg'        => 2,
                 'txtMsg'     => trans('octopus::pulsar.stock_already_created', [
                     'id' => $order->id_079
