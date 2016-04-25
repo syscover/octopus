@@ -292,7 +292,7 @@ class OrderController extends Controller
         $dataMessage = [
             'emailTo'           => $laboratory->email_073,
             'nameTo'            => $laboratory->company_name_073,
-            'subject'           => trans($action == 'update'? 'octopus:pulsar.order_subject_update' : 'octopus:pulsar.order_subject_create', ['id' => $order->id_079, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
+            'subject'           => trans($action == 'update'? 'octopus::pulsar.order_subject_update' : 'octopus::pulsar.order_subject_create', ['id' => $order->id_079, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
             'order'             => $order,
             'supervisor'        => $supervisor,
             'shop'              => $shop,

@@ -290,7 +290,7 @@ class RequestController extends Controller
         $dataMessage = [
             'emailTo'           => $supervisor->email_010,
             'nameTo'            => $supervisor->name_010 . ' ' . $supervisor->surname_010,
-            'subject'           => trans($action == 'update'? 'octopus:pulsar.request_subject_update' : 'octopus:pulsar.request_subject_create', ['id' => $octopusRequest->id_078, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
+            'subject'           => trans($action == 'update'? 'octopus::pulsar.request_subject_update' : 'octopus::pulsar.request_subject_create', ['id' => $octopusRequest->id_078, 'name' => $supervisor->name_010, 'surname' => $supervisor->surname_010]),
             'octopusRequest'    => $octopusRequest,
             'supervisor'        => $supervisor,
             'shop'              => $shop,
