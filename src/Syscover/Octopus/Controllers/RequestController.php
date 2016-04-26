@@ -27,7 +27,7 @@ class RequestController extends Controller
     protected $routeSuffix  = 'octopusRequest';
     protected $folder       = 'request';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_078', ['type' => 'date', 'data' => 'date_078', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'name_072', ['type' => 'email', 'data' => 'email_078'], 'phone_078'];
+    protected $aColumns     = ['id_078', ['type' => 'date', 'data' => 'date_078', 'format' => 'd-m-Y'], 'code_075', 'name_076',  'address_078', 'locality_078', 'name_072'];
     protected $nameM        = 'id_078';
     protected $model        = OctopusRequest::class;
     protected $icon         = 'fa fa-inbox';
