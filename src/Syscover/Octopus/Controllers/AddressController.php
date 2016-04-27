@@ -1,5 +1,6 @@
 <?php namespace Syscover\Octopus\Controllers;
 
+use Syscover\Octopus\Models\Shop;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Octopus\Models\Address;
 
@@ -23,6 +24,11 @@ class AddressController extends Controller
     {
         if(isset($parameters['modal']) && $parameters['modal'] == 1)
             $this->viewParameters['deleteSelectButton'] = false;
+
+        $shop       = Shop::builder()->find($parameters['ref']);
+        $customer   = $shop->getCustomer;
+
+        $parameters['customTransHeader']    = trans_choice('pulsar::pulsar.address', 1) . ' ' . trans('pulsar::pulsar.from') . ' ' . $shop->name_076 . ' ( ' . $customer->code_075 . ' - ' . $customer->company_name_075 . ')';
 
         return $parameters;
     }

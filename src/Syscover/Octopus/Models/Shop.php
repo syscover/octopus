@@ -43,14 +43,19 @@ class Shop extends Model
         return Validator::make($data, static::$rules);
 	}
 
-    public function addresses()
+    public function getAddresses()
     {
-        return Shop::hasMany('Syscover\Octopus\Models\Address','shop_077');
+        return $this->hasMany('Syscover\Octopus\Models\Address','shop_077');
     }
 
-    public function favoriteAddress()
+    public function getFavoriteAddress()
     {
-        return Shop::hasMany('Syscover\Octopus\Models\Address','shop_077')->where('favorite_077', true);
+        return $this->hasMany('Syscover\Octopus\Models\Address','shop_077')->where('favorite_077', true);
+    }
+
+    public function getCustomer()
+    {
+        return $this->hasOne('Syscover\Octopus\Models\Customer','id_075','customer_076');
     }
 
     public function scopeBuilder($query)

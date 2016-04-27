@@ -1,4 +1,7 @@
-@extends('pulsar::layouts.index', ['newTrans' => 'new', 'callback' => 'relatedAddress'])
+@extends('pulsar::layouts.index', [
+    'newTrans' => 'new2',
+    'callback' => 'relatedAddress'
+])
 
 @section('head')
     @parent
