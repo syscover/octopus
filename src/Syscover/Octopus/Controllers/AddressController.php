@@ -28,7 +28,7 @@ class AddressController extends Controller
         $shop       = Shop::builder()->find($parameters['ref']);
         $customer   = $shop->getCustomer;
 
-        $parameters['customTransHeader']    = trans_choice('pulsar::pulsar.address', 1) . ' ' . trans('pulsar::pulsar.from') . ' ' . $shop->name_076 . ' ( ' . $customer->code_075 . ' - ' . $customer->company_name_075 . ')';
+        $parameters['customTransHeader']    = trans_choice('pulsar::pulsar.address', 1) . ' ' . trans('pulsar::pulsar.from') . ' ' . $shop->name_076 . ' (' . $customer->code_075 . ' - ' . $customer->company_name_075 . ')';
 
         return $parameters;
     }
