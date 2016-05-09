@@ -275,7 +275,7 @@ class OrderController extends Controller
 
         Order::where('id_079', $parameters['id'])->update($order);
 
-        $this->sendOrderEmail($order->id_079, 'update');
+        $this->sendOrderEmail($parameters['id'], 'update');
     }
 
     public function showCustomRecord($parameters)

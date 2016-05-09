@@ -26,6 +26,7 @@ return [
     'request_subject_update'                => 'Solicitud N: :id, actualizada por :name :surname',
     'replace_stock'                         => 'Reemplazar stock',
     'shop'                                  => 'Punto de venta|Punto de venta',
+    'shipping_address'                      => 'Dirección de envío|Direcciones de envío',
     'stock'                                 => 'Stock|Stocks',
     'stock_already_created'                 => 'Stock desde el pedido :id, ya ha sido creado',
     'supervisor'                            => 'Delegado|Delegados',

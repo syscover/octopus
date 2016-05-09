@@ -50,7 +50,8 @@
         'name' => 'alias',
         'value' => old('alias', isset($object->alias_077)? $object->alias_077 : null),
         'maxLength' => '100',
-        'rangeLength' => '2,100'
+        'rangeLength' => '2,100',
+        'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans('pulsar::pulsar.company_name'),

@@ -26,7 +26,7 @@ class Address extends Model
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
-        'alias'         => 'between:2,100',
+        'alias'         => 'required|between:2,100',
         'business'      => 'between:2,100',
         'name'          => 'between:2,50',
         'surname'       => 'between:2,50',

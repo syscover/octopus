@@ -25,6 +25,7 @@ return [
     'request_subject_create'                => 'Request N: :id, insert by :name :surname',
     'request_subject_update'                => 'Request N: :id, updated by :name :surname',
     'replace_stock'                         => 'Replace stock',
+    'shipping_address'                      => 'Shipping address|Shipping addresses',
     'shop'                                  => 'Shop|Shops',
     'stock'                                 => 'Stock|Stocks',
     'supervisor'                            => 'Supervisor|Supervisors',

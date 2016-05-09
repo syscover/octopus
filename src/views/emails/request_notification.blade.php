@@ -94,7 +94,7 @@
     <!-- address -->
     <tr>
         <td colspan="2" class="header_body brown" valign="middle" width="100%" style='background:#ffffff;text-align:left;font-size:15px;line-height:19px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;border-collapse:collapse;padding:0;border-spacing:0;vertical-align:middle;padding-left:10px;width:auto !important'>
-            <strong style="color:brown;">{{ trans_choice('pulsar::pulsar.address', 1) }}</strong>
+            <strong style="color:brown;">{{ trans_choice('octopus::pulsar.shipping_address', 1) }}</strong>
         </td>
     </tr>
     <tr>

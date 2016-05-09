@@ -82,6 +82,9 @@
         {
             $('[name="shop"]').val(data.name_076)
             $('[name="shopId"]').val(data.id_076)
+            $('[name="shopAddress"]').val(data.address_076)
+            $('[name="shopCp"]').val(data.cp_076)
+            $('[name="shopLocality"]').val(data.locality_076)
             $('[name="customer"]').val(data.customer_076)
             $.magnificPopup.close()
 
@@ -196,9 +199,44 @@
         'required' => true,
         'disabled' => $action == 'show'
     ])
-    @include('pulsar::includes.html.form_section_header', [
+    @include('pulsar::includes.html.form_text_group', [
         'label' => trans_choice('pulsar::pulsar.address', 1),
-        'icon' => 'icon-road'
+        'name' => 'shopAddress',
+        'value' => old('shopAddress', isset($object->address_076)? $object->address_076 : null),
+        'maxLength' => '255',
+        'rangeLength' => '2,255',
+        'readOnly' => true
+    ])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 7,
+                'label' => trans('pulsar::pulsar.cp'),
+                'name' => 'shopCp',
+                'value' => isset($object->cp_076)? $object->cp_076 : null,
+                'maxLength' => '255',
+                'rangeLength' => '2,255',
+                'readOnly' => true
+            ])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 8,
+                'label' => trans('pulsar::pulsar.locality'),
+                'name' => 'shopLocality',
+                'value' => isset($object->locality_076)? $object->locality_076 : null,
+                'maxLength' => '255',
+                'rangeLength' => '2,255',
+                'readOnly' => true
+            ])
+        </div>
+    </div>
+
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans_choice('octopus::pulsar.shipping_address', 1),
+        'icon' => 'fa fa-road'
     ])
     <div id="selectAddress">
         @include('pulsar::includes.html.form_iframe_select_group', [
