@@ -53,7 +53,10 @@ class Order extends Model
             ->join('001_010_user', '008_079_order.supervisor_079', '=', '001_010_user.id_010')
             ->join('008_076_shop', '008_079_order.shop_079', '=', '008_076_shop.id_076')
             ->join('008_077_address', '008_079_order.id_address_079', '=', '008_077_address.id_077')
-            ->join('008_072_product', '008_079_order.product_079', '=', '008_072_product.id_072');
+            ->join('008_072_product', '008_079_order.product_079', '=', '008_072_product.id_072')
+            ->join('008_071_brand', '008_079_order.brand_079', '=', '008_071_brand.id_071')
+            ->join('008_070_family', '008_079_order.family_079', '=', '008_070_family.id_070')
+            ->join('008_074_company', '008_079_order.company_079', '=', '008_074_company.id_074');
     }
 
     public function addToGetIndexRecords($request, $parameters)
