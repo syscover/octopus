@@ -1,8 +1,8 @@
 <?php namespace Syscover\Octopus\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Octopus\Models\Brand;
@@ -28,19 +28,17 @@ class StockController extends Controller
     protected $model        = Stock::class;
     protected $icon         = 'fa fa-th-large';
     protected $objectTrans  = 'stock';
-    protected $viewParameters = [
-        'newButton'             => false,
-        'checkBoxColumn'        => false,
-        'showButton'            => true,
-        'editButton'            => false,
-        'deleteButton'          => false,
-        'deleteSelectButton'    => false,
-        'relatedButton'         => false,
-    ];
-
+    
     function __construct(Request $request)
     {
         parent::__construct($request);
+
+        $this->viewParameters['newButton']          = false;
+        $this->viewParameters['checkBoxColumn']     = false;
+        $this->viewParameters['showButton']         = true;
+        $this->viewParameters['editButton']         = false;
+        $this->viewParameters['deleteButton']       = false;
+        $this->viewParameters['deleteSelectButton'] = false;
 
         $actions = $this->request->route()->getAction();
 

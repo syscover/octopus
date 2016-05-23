@@ -16,8 +16,6 @@ class PreferenceController extends Controller
     protected $routeSuffix  = 'octopusPreference';
     protected $folder       = 'preference';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_200', 'name_200'];
-    protected $nameM        = 'name_200';
     protected $model        = Preference::class;
     protected $icon         = 'icon-cog';
     protected $objectTrans  = 'preference';

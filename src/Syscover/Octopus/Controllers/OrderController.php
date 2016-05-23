@@ -33,19 +33,12 @@ class OrderController extends Controller
     protected $model        = Order::class;
     protected $icon         = 'fa fa-refresh';
     protected $objectTrans  = 'order';
-    protected $viewParameters = [
-        'newButton'             => false,
-        'checkBoxColumn'        => true,
-        'showButton'            => false,
-        'editButton'            => true,
-        'deleteButton'          => true,
-        'deleteSelectButton'    => true,
-        'relatedButton'         => false,
-    ];
 
     function __construct(Request $request)
     {
         parent::__construct($request);
+
+        $this->viewParameters['newButton'] = false;
 
         $actions = $this->request->route()->getAction();
 
