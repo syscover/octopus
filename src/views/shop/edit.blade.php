@@ -59,19 +59,19 @@
                 type: 'iframe',
                 removalDelay: 300,
                 mainClass: 'mfp-fade'
-            })
+            });
 
             // set tab active
             @if(isset($tab))
-                $('.tabbable li:eq({{ $tab }}) a').tab('show')
+                $('.tabbable li:eq({{ $tab }}) a').tab('show');
             @endif
         });
 
         function relatedRecord(data)
         {
-            $('[name="customer"]').val(data.company_name_075)
-            $('[name="customerId"]').val(data.id_075)
-            $.magnificPopup.close()
+            $('[name="customer"]').val(data.company_name_075);
+            $('[name="customerId"]').val(data.id_075);
+            $.magnificPopup.close();
         }
     </script>
     <!-- /.octopus::shops.create -->
