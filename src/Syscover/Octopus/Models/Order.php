@@ -66,9 +66,9 @@ class Order extends Model
 
         $query =  $this->builder();
 
-        // filter requests only from current user
-        if($actions['resource'] === 'octopus-laboratory-order')
-            $query->whereNull('stock_079');
+        // filter order for laboratory, that has not stock
+        //if($actions['resource'] === 'octopus-laboratory-order')
+        //    $query->whereNull('stock_079');
 
         return $query;
     }
@@ -80,8 +80,9 @@ class Order extends Model
 
         $query =  $this->builder();
 
-        if($actions['resource'] === 'octopus-laboratory-order')
-            $query->whereNull('stock_079');
+        // filter order for laboratory, that has not stock
+        //if($actions['resource'] === 'octopus-laboratory-order')
+        //    $query->whereNull('stock_079');
 
         return $query;
     }

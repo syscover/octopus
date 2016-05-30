@@ -63,6 +63,13 @@ class OrderController extends Controller
                 $this->viewParameters['editButton']     = true;
                 $this->viewParameters['showButton']     = false;
             }
+            elseif($actions['resource'] === 'octopus-laboratory-order')
+            {
+                // manager
+                $this->viewParameters['deleteButton']   = true;
+                $this->viewParameters['editButton']     = true;
+                $this->viewParameters['showButton']     = true;
+            }
 
             $actions = '<a class="create-order btn btn-xs bs-tooltip" onclick="$.createStock(this)" data-href="' . route($actions['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['stock' => Crypt::encrypt($actionUrlParameters['id']), 'offset' => 0]) . '" data-id="' . $aObject->id_079 . '" data-original-title="' . trans('octopus::pulsar.create_stock') . '"><i class="fa fa-retweet"></i></a>';
         }
@@ -76,6 +83,15 @@ class OrderController extends Controller
                 $this->viewParameters['showButton']     = true;
 
                 $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('showOctopusStock', ['id' => $aObject->stock_079, 'offset' => 0]) . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
+            }
+            elseif($actions['resource'] === 'octopus-laboratory-order')
+            {
+                // manager
+                $this->viewParameters['deleteButton']   = false;
+                $this->viewParameters['editButton']     = false;
+                $this->viewParameters['showButton']     = true;
+
+                $actions = '';
             }
             else
             {
