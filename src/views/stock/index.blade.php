@@ -8,18 +8,18 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'iDisplayStart' : {{ $offset }},
-                    'aaSorting': [[ 0, "desc" ]],
-                    'aoColumnDefs': [
-//                        { 'bSortable': false, 'aTargets': [7,8]},
-//                        { 'sClass': 'checkbox-column', 'aTargets': [7]},
-//                        { 'sClass': 'align-center', 'aTargets': [8]}
-                        { 'bSortable': false, 'aTargets': [7]},
-                        { 'sClass': 'align-center', 'aTargets': [7]}
+                    'displayStart' : {{ $offset }},
+                    'sorting': [[0, 'desc']],
+                    'columnDefs': [
+//                        { 'sortable': false, 'targets': [7,8]},
+//                        { 'class': 'checkbox-column', 'targets': [7]},
+//                        { 'class': 'align-center', 'targets': [8]}
+                        { 'sortable': false, 'targets': [7]},
+                        { 'class': 'align-center', 'targets': [7]}
                     ],
-                    "bProcessing": true,
-                    "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonData' . ucfirst($routeSuffix)) }}"
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "{{ route('jsonData' . ucfirst($routeSuffix)) }}"
                 }).fnSetFilteringDelay();
             }
         })

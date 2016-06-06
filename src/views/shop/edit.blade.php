@@ -38,15 +38,15 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'iDisplayStart' : 0,
-                    'aoColumnDefs': [
-                        { 'bSortable': false, 'aTargets': [7,8]},
-                        { 'sClass': 'checkbox-column', 'aTargets': [7]},
-                        { 'sClass': 'align-center', 'aTargets': [6,8]}
+                    'displayStart' : 0,
+                    'columnDefs': [
+                        { 'sortable': false, 'targets': [7,8]},
+                        { 'class': 'checkbox-column', 'targets': [7]},
+                        { 'class': 'align-center', 'targets': [6,8]}
                     ],
-                    "bProcessing": true,
-                    "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0, 'modalShopView' => $modal, 'redirectParentJs' => 1]) }}"
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "{{ route('jsonDataOctopusAddress', ['ref' => $object->id_076, 'modal' => 0, 'modalShopView' => $modal, 'redirectParentJs' => 1]) }}"
                 }).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json){
 
                     /// set url to call from modal when submit any action

@@ -11,14 +11,14 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'iDisplayStart' : {{ $offset }},
-                    'aoColumnDefs': [
-                        { 'bSortable': false, 'aTargets': [7]},
-                        { 'sClass': 'align-center', 'aTargets': [6,7]}
+                    'displayStart' : {{ $offset }},
+                    'columnDefs': [
+                        { 'sortable': false, 'targets': [7]},
+                        { 'class': 'align-center', 'targets': [6,7]}
                     ],
-                    "bProcessing": true,
-                    "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonData' . ucfirst($routeSuffix), ['ref' => $ref, 'modal' => 1, 'modalShopView' => '0', 'redirectParentJs' => 0]) }}"
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "{{ route('jsonData' . ucfirst($routeSuffix), ['ref' => $ref, 'modal' => 1, 'modalShopView' => '0', 'redirectParentJs' => 0]) }}"
                 }).fnSetFilteringDelay();
             }
         });
