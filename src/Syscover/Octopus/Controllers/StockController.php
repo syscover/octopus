@@ -106,6 +106,9 @@ class StockController extends Controller
 
         $object = [
             'name_076'                  => $order->name_076,
+            'address_076'               => $order->address_076,
+            'cp_076'                    => $order->cp_076,
+            'locality_076'              => $order->locality_076,
             'alias_077'                 => $order->alias_077,
             'request_080'               => $order->request_079,
             'order_080'                 => $order->id_079,

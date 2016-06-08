@@ -84,8 +84,12 @@ class RequestController extends Controller
         if(isset($parameters['stock']))
         {
             $stock = Stock::builder()->find($parameters['stock']);
+
             $object = [
                 'name_076'                  => $stock->name_076,
+                'address_076'               => $stock->address_076,
+                'cp_076'                    => $stock->cp_076,
+                'locality_076'              => $stock->locality_076,
                 'alias_077'                 => $stock->alias_077,
                 'customer_078'              => isset($stock->customer_080)? $stock->customer_080 : null,
                 'shop_078'                  => $stock->shop_080,

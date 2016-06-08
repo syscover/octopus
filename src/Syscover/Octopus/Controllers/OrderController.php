@@ -134,6 +134,9 @@ class OrderController extends Controller
 
         $object = [
             'name_076'                  => $request->name_076,
+            'address_076'               => $request->address_076,
+            'cp_076'                    => $request->cp_076,
+            'locality_076'              => $request->locality_076,
             'alias_077'                 => $request->alias_077,
             'request_079'               => $request->id_078,
             'supervisor_079'            => $request->supervisor_078,
