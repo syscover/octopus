@@ -8,20 +8,26 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'displayStart' : {{ $offset }},
-                    'columnDefs': [
+                    "displayStart": {{ $offset }},
+                    "columnDefs": [
                         @if(isset($modal) && $modal)
-                        { 'sortable': false, 'targets': [6]},
-                        { 'class': 'align-center', 'targets': [6]}
+                        { "sortable": false, "targets": [6]},
+                        { "class": "align-center", "targets": [6]}
                         @else
-                        { 'sortable': false, 'targets': [6,7]},
-                        { 'class': 'checkbox-column', 'targets': [6]},
-                        { 'class': 'align-center', 'targets': [7]}
+                        { "sortable": false, "targets": [6,7]},
+                        { "class": "checkbox-column", "targets": [6]},
+                        { "class": "align-center", "targets": [7]}
                         @endif
                     ],
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "{{ route('jsonData' . ucfirst($routeSuffix), ['modal' => $modal? 1 : 0]) }}"
+                    "ajax": {
+                        "url": "{{ route('jsonData' . ucfirst($routeSuffix), ['modal' => $modal? 1 : 0]) }}",
+                        "type": "POST",
+                        "headers": {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        }
+                    }
                 }).fnSetFilteringDelay();
             }
         });
