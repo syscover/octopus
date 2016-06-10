@@ -55,6 +55,8 @@ class AddressController extends Controller
 
     public function storeCustomRecord($parameters)
     {
+        if($this->request->input('favorite')) Address::resetFavorite($this->request->input('ref'));
+
         Address::create([
             'shop_077'                  => $this->request->input('ref'),
             'alias_077'                 => $this->request->has('alias')? $this->request->input('alias') : null,
