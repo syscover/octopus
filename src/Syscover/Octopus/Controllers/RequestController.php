@@ -270,7 +270,7 @@ class RequestController extends Controller
         $notificationsAccount   = Preference::getValue('octopusNotificationsAccount', 8);
         $managerProfile         = Preference::getValue('octopusManagerProfile', 8);
         $emailAccount           = EmailAccount::find($notificationsAccount->value_018);
-        $managers               = User::builder()->where('profile_010', $managerProfile->value_018)->where('access_010', true)->get();
+        $managers               = User::builder()->where('profile_id_010', $managerProfile->value_018)->where('access_010', true)->get();
 
         if($emailAccount == null) return null;
 

@@ -49,7 +49,7 @@ class Address extends Model
     {
         return $query->join('001_002_country', function ($join) {
             $join->on('008_077_address.country_077', '=', '001_002_country.id_002')
-                ->where('001_002_country.lang_002', '=', base_lang()->id_001);
+                ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
             })
             ->leftJoin('001_003_territorial_area_1', '008_077_address.territorial_area_1_077', '=', '001_003_territorial_area_1.id_003')
             ->leftJoin('001_004_territorial_area_2', '008_077_address.territorial_area_2_077', '=', '001_004_territorial_area_2.id_004');

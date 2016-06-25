@@ -63,7 +63,7 @@ class Shop extends Model
         return $query->join('008_075_customer', '008_076_shop.customer_076', '=', '008_075_customer.id_075')
             ->join('001_002_country', function ($join) {
                 $join->on('008_076_shop.country_076', '=', '001_002_country.id_002')
-                    ->where('001_002_country.lang_002', '=', base_lang()->id_001);
+                    ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
             })
             ->leftJoin('001_003_territorial_area_1', '008_076_shop.territorial_area_1_076', '=', '001_003_territorial_area_1.id_003')
             ->leftJoin('001_004_territorial_area_2', '008_076_shop.territorial_area_2_076', '=', '001_004_territorial_area_2.id_004');
