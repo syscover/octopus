@@ -91,13 +91,13 @@ class RequestController extends Controller
                 'cp_076'                    => $stock->cp_076,
                 'locality_076'              => $stock->locality_076,
                 'alias_077'                 => $stock->alias_077,
-                'customer_078'              => isset($stock->customer_080)? $stock->customer_080 : null,
-                'shop_078'                  => $stock->shop_080,
-                'company_078'               => $stock->company_080,
-                'family_078'                => $stock->family_080,
-                'brand_078'                 => $stock->brand_080,
-                'product_078'               => $stock->product_080,
-                'id_address_078'            => isset($stock->id_address_080)? $stock->id_address_080 : null,
+                'customer_id_078'           => isset($stock->customer_080)? $stock->customer_080 : null,
+                'shop_id_078'               => $stock->shop_080,
+                'company_id_078'            => $stock->company_080,
+                'family_id_078'             => $stock->family_080,
+                'brand_id_078'              => $stock->brand_080,
+                'product_id_078'            => $stock->product_080,
+                'address_id_078'            => isset($stock->id_address_080)? $stock->id_address_080 : null,
                 'company_name_078'          => isset($stock->company_name_080)? $stock->company_name_080 : null,
                 'name_078'                  => isset($stock->name_080)? $stock->name_080 : null,
                 'surname_078'               => isset($stock->surname_080)? $stock->surname_080 : null,
@@ -141,14 +141,14 @@ class RequestController extends Controller
         }
 
         $octopusRequest = OctopusRequest::create([
-            'supervisor_078'            => $this->request->input('supervisor'),
-            'customer_078'              => $this->request->input('customer'),
-            'shop_078'                  => $this->request->input('shopId'),
-            'company_078'               => $this->request->input('company'),
-            'family_078'                => $this->request->input('family'),
-            'brand_078'                 => $this->request->input('brand'),
-            'product_078'               => $this->request->input('product'),
-            'id_address_078'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
+            'supervisor_id_078'         => $this->request->input('supervisor'),
+            'customer_id_078'           => $this->request->input('customer'),
+            'shop_id_078'               => $this->request->input('shopId'),
+            'company_id_078'            => $this->request->input('company'),
+            'family_id_078'             => $this->request->input('family'),
+            'brand_id_078'              => $this->request->input('brand'),
+            'product_id_078'            => $this->request->input('product'),
+            'address_id_078'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
             'company_name_078'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_078'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_078'               => $this->request->has('surname')? $this->request->input('surname') : null,
@@ -203,7 +203,7 @@ class RequestController extends Controller
         $parameters['companies']            = Company::all();
         $parameters['families']             = Family::all();
         $parameters['brands']               = Brand::all();
-        $parameters['products']             = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_078)->get();
+        $parameters['products']             = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_id_078)->get();
 
         if($parameters['resource'] === 'octopus-request')
             $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route('createOctopusOrder', ['id' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_order') . '</a>';
@@ -214,13 +214,13 @@ class RequestController extends Controller
     public function updateCustomRecord($parameters)
     {
         $request = [
-            'customer_078'              => $this->request->input('customer'),
-            'shop_078'                  => $this->request->input('shopId'),
-            'company_078'               => $this->request->input('company'),
-            'family_078'                => $this->request->input('family'),
-            'brand_078'                 => $this->request->input('brand'),
-            'product_078'               => $this->request->input('product'),
-            'id_address_078'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
+            'customer_id_078'           => $this->request->input('customer'),
+            'shop_id_078'               => $this->request->input('shopId'),
+            'company_id_078'            => $this->request->input('company'),
+            'family_id_078'             => $this->request->input('family'),
+            'brand_id_078'              => $this->request->input('brand'),
+            'product_id_078'            => $this->request->input('product'),
+            'address_id_078'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
             'company_name_078'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_078'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_078'               => $this->request->has('surname')? $this->request->input('surname') : null,
@@ -257,7 +257,7 @@ class RequestController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('brand_072', $parameters['object']->brand_078)->get();
+        $parameters['products']     = Product::builder()->where('brand_id_072', $parameters['object']->brand_id_078)->get();
 
         return $parameters;
     }
@@ -282,7 +282,7 @@ class RequestController extends Controller
         config(['mail.password'     =>  Crypt::decrypt($emailAccount->outgoing_pass_013)]);
 
         $supervisor = User::builder()->find((int)$this->request->input('supervisor'));
-        $shop       = Shop::builder()->find($octopusRequest->shop_078);
+        $shop       = Shop::builder()->find($octopusRequest->shop_id_078);
 
         // send email to supervisor
         $dataMessage = [
@@ -330,8 +330,8 @@ class RequestController extends Controller
 //    public function checkEmail()
 //    {
 //        $octopusRequest = OctopusRequest::builder()->find(2304);
-//        $supervisor     = User::builder()->find($octopusRequest->supervisor_078);
-//        $shop           = Shop::builder()->find($octopusRequest->shop_078);
+//        $supervisor     = User::builder()->find($octopusRequest->supervisor_id_078);
+//        $shop           = Shop::builder()->find($octopusRequest->shop_id_078);
 //
 //        $dataMessage = [
 //            'emailTo'           => $supervisor->email_010,

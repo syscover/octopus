@@ -112,15 +112,15 @@ class StockController extends Controller
             'alias_077'                 => $order->alias_077,
             'request_080'               => $order->request_079,
             'order_080'                 => $order->id_079,
-            'supervisor_080'            => $order->supervisor_079,
-            'customer_080'              => isset($order->customer_079)? $order->customer_079 : null,
-            'shop_080'                  => $order->shop_079,
-            'company_080'               => $order->company_079,
-            'family_080'                => $order->family_079,
-            'brand_080'                 => $order->brand_079,
-            'product_080'               => $order->product_079,
-            'laboratory_080'            => $order->laboratory_079,
-            'id_address_080'            => isset($order->id_address_079)? $order->id_address_079 : null,
+            'supervisor_080'            => $order->supervisor_id_079,
+            'customer_080'              => isset($order->customer_id_079)? $order->customer_id_079 : null,
+            'shop_080'                  => $order->shop_id_079,
+            'company_080'               => $order->company_id_079,
+            'family_080'                => $order->family_id_079,
+            'brand_080'                 => $order->brand_id_079,
+            'product_080'               => $order->product_id_079,
+            'laboratory_080'            => $order->laboratory_id_079,
+            'id_address_080'            => isset($order->address_id_079)? $order->address_id_079 : null,
             'company_name_080'          => isset($order->company_name_079)? $order->company_name_079 : null,
             'name_080'                  => isset($order->name_079)? $order->name_079 : null,
             'surname_080'               => isset($order->surname_079)? $order->surname_079 : null,
@@ -225,7 +225,7 @@ class StockController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_080)->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_080)->get();
 
         return $parameters;
     }
@@ -274,7 +274,7 @@ class StockController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_072', $parameters['object']->brand_080)->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_080)->get();
 
         if($parameters['object']->expiration_080 == null || $parameters['object']->expiration_080 > date('U'))
             $parameters['afterButtonFooter'] = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-supervisor-stock'? 'createOctopusSupervisorRequestFromStock' : 'createOctopusRequestFromStock', ['stock' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.replace_stock') . '</a>';

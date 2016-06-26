@@ -23,10 +23,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ old('country', isset($object->country_076)? $object->country_076 : null) }}',
-                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_076)? $object->territorial_area_1_076 : null) }}',
-                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_076)? $object->territorial_area_2_076 : null) }}',
-                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_076)? $object->territorial_area_3_076 : null) }}'
+                countryValue:               '{{ old('country', isset($object->country_id_076)? $object->country_id_076 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_id_076)? $object->territorial_area_1_id_076 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_id_076)? $object->territorial_area_2_id_076 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_id_076)? $object->territorial_area_3_id_076 : null) }}'
             });
 
             $('.magnific-popup').magnificPopup({
@@ -59,7 +59,7 @@
         'label' => trans_choice('pulsar::pulsar.customer', 1),
         'name' => 'customer',
         'value' => old('customer', isset($object->company_name_075)? $object->company_name_075 : null),
-        'valueId' => old('customerId', isset($object->customer_076)? $object->customer_076 : null),
+        'valueId' => old('customerId', isset($object->customer_id_076)? $object->customer_id_076 : null),
         'modalUrl' => route('octopusCustomer', [
             'offset' => $offset,
             'modal' => 1

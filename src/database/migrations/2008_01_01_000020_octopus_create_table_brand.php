@@ -16,6 +16,7 @@ class OctopusCreateTableBrand extends Migration {
 		{
 			Schema::create('008_071_brand', function ($table) {
 				$table->engine = 'InnoDB';
+				
 				$table->increments('id_071')->unsigned();
 				$table->string('name_071');
 			});

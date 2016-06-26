@@ -21,16 +21,16 @@ class OctopusCreateTableRequest extends Migration {
                 $table->integer('order_078')->unsigned()->nullable();
                 $table->integer('stock_078')->unsigned()->nullable();
 
-                $table->integer('supervisor_078')->unsigned();
-                $table->integer('customer_078')->unsigned()->nullable();
-                $table->integer('shop_078')->unsigned()->nullable();
-                $table->integer('company_078')->unsigned();
-                $table->integer('family_078')->unsigned();
-                $table->integer('brand_078')->unsigned();
-                $table->integer('product_078')->unsigned();
+                $table->integer('supervisor_id_078')->unsigned();
+                $table->integer('customer_id_078')->unsigned()->nullable();
+                $table->integer('shop_id_078')->unsigned()->nullable();
+                $table->integer('company_id_078')->unsigned();
+                $table->integer('family_id_078')->unsigned();
+                $table->integer('brand_id_078')->unsigned();
+                $table->integer('product_id_078')->unsigned();
 
                 // shipping address
-                $table->integer('id_address_078')->unsigned()->nullable();
+                $table->integer('address_id_078')->unsigned()->nullable();
                 $table->string('company_name_078')->nullable();
                 $table->string('name_078')->nullable();
                 $table->string('surname_078')->nullable();
@@ -63,21 +63,21 @@ class OctopusCreateTableRequest extends Migration {
                 $table->string('attachment_078')->nullable();
                 $table->text('comments_078')->nullable();
 
-                $table->foreign('supervisor_078', 'fk01_008_078_request')->references('id_010')
+                $table->foreign('supervisor_id_078', 'fk01_008_078_request')->references('id_010')
                     ->on('001_010_user')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('customer_078', 'fk02_008_078_request')->references('id_075')->on('008_075_customer')
+                $table->foreign('customer_id_078', 'fk02_008_078_request')->references('id_075')->on('008_075_customer')
                     ->onDelete('set null')->onUpdate('cascade');
-                $table->foreign('shop_078', 'fk03_008_078_request')->references('id_076')->on('008_076_shop')
+                $table->foreign('shop_id_078', 'fk03_008_078_request')->references('id_076')->on('008_076_shop')
                     ->onDelete('set null')->onUpdate('cascade');
-                $table->foreign('company_078', 'fk04_008_078_request')->references('id_074')
+                $table->foreign('company_id_078', 'fk04_008_078_request')->references('id_074')
                     ->on('008_074_company')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('family_078', 'fk05_008_078_request')->references('id_070')
+                $table->foreign('family_id_078', 'fk05_008_078_request')->references('id_070')
                     ->on('008_070_family')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('brand_078', 'fk06_008_078_request')->references('id_071')
+                $table->foreign('brand_id_078', 'fk06_008_078_request')->references('id_071')
                     ->on('008_071_brand')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('product_078', 'fk07_008_078_request')->references('id_072')
+                $table->foreign('product_id_078', 'fk07_008_078_request')->references('id_072')
                     ->on('008_072_product')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('id_address_078', 'fk08_008_078_request')->references('id_077')
+                $table->foreign('address_id_078', 'fk08_008_078_request')->references('id_077')
                     ->on('008_077_address')->onDelete('set null')->onUpdate('cascade');
 
                 $table->foreign('country_078', 'fk09_008_078_request')->references('id_002')->on('001_002_country')

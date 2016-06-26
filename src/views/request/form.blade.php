@@ -73,7 +73,7 @@
                 mainClass: 'mfp-fade'
             })
 
-            @if(! isset($object->id_address_078))
+            @if(! isset($object->address_id_078))
                 $('#selectAddress').hide();
             @endif
         })
@@ -85,7 +85,7 @@
             $('[name="shopAddress"]').val(data.address_076)
             $('[name="shopCp"]').val(data.cp_076)
             $('[name="shopLocality"]').val(data.locality_076)
-            $('[name="customer"]').val(data.customer_076)
+            $('[name="customer"]').val(data.customer_id_076)
             $.magnificPopup.close()
 
             // set url to add address
@@ -109,10 +109,10 @@
 
                     $.getAddress.setOptions({
                         id:                         '01',
-                        countryValue:               response.country_077,
-                        territorialArea1Value:      response.territorial_area_1_077,
-                        territorialArea2Value:      response.territorial_area_2_077,
-                        territorialArea3Value:      response.territorial_area_3_077
+                        countryValue:               response.country_id_077,
+                        territorialArea1Value:      response.territorial_area_1_id_077,
+                        territorialArea2Value:      response.territorial_area_2_id_077,
+                        territorialArea3Value:      response.territorial_area_3_id_077
                     })
 
                     $('[name="cp"]').val(response.cp_077)
@@ -137,10 +137,10 @@
 
             $.getAddress.setOptions({
                 id:                         '01',
-                countryValue:               data.country_077,
-                territorialArea1Value:      data.territorial_area_1_077,
-                territorialArea2Value:      data.territorial_area_2_077,
-                territorialArea3Value:      data.territorial_area_3_077
+                countryValue:               data.country_id_077,
+                territorialArea1Value:      data.territorial_area_1_id_077,
+                territorialArea2Value:      data.territorial_area_2_id_077,
+                territorialArea3Value:      data.territorial_area_3_id_077
             })
 
             $('[name="cp"]').val(data.cp_077)
@@ -164,11 +164,11 @@
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'supervisor',
-        'value' => isset($object->supervisor_078)? $object->supervisor_078 : auth('pulsar')->user()->id_010
+        'value' => isset($object->supervisor_id_078)? $object->supervisor_id_078 : auth('pulsar')->user()->id_010
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'customer',
-        'value' => isset($object->customer_078)? $object->customer_078 : null
+        'value' => isset($object->customer_id_078)? $object->customer_id_078 : null
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 2,
@@ -189,7 +189,7 @@
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',
         'value' => old('shop', isset($object->name_076)? $object->name_076 : null),
-        'valueId' => old('shopId', isset($object->shop_078)? $object->shop_078 : null),
+        'valueId' => old('shopId', isset($object->shop_id_078)? $object->shop_id_078 : null),
         'maxLength' => '255',
         'rangeLength' => '2,255',
         'modalUrl' => route('octopusShop', [
@@ -243,11 +243,11 @@
             'label' => trans('pulsar::pulsar.alias'),
             'name' => 'alias',
             'value' => old('alias', isset($object->alias_077)? $object->alias_077 : null),
-            'valueId' => old('aliasId', isset($object->id_address_078)? $object->id_address_078 : null),
+            'valueId' => old('aliasId', isset($object->address_id_078)? $object->address_id_078 : null),
             'maxLength' => '255',
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusAddress', [
-                'ref' => isset($object->shop_078)? $object->shop_078 : null,
+                'ref' => isset($object->shop_id_078)? $object->shop_id_078 : null,
                 'modal' => 1,
                 'modalShopView' => '0',
                 'redirectParentJs' => '0',
@@ -426,7 +426,7 @@
                 'label' => trans_choice('pulsar::pulsar.company', 1),
                 'id' => 'company',
                 'name' => 'company',
-                'value' => (int)old('company', isset($object->company_078)? $object->company_078 : null),
+                'value' => (int)old('company', isset($object->company_id_078)? $object->company_id_078 : null),
                 'objects' => $companies,
                 'idSelect' => 'id_074',
                 'nameSelect' => 'company_name_074',
@@ -445,7 +445,7 @@
                 'label' => trans_choice('pulsar::pulsar.family', 1),
                 'id' => 'family',
                 'name' => 'family',
-                'value' => (int)old('family', isset($object->family_078)? $object->family_078 : null),
+                'value' => (int)old('family', isset($object->family_id_078)? $object->family_id_078 : null),
                 'objects' => $families,
                 'idSelect' => 'id_070',
                 'nameSelect' => 'name_070',
@@ -464,7 +464,7 @@
                 'label' => trans_choice('octopus::pulsar.brand', 1),
                 'id' => 'brand',
                 'name' => 'brand',
-                'value' => (int)old('brand', isset($object->brand_078)? $object->brand_078 : null),
+                'value' => (int)old('brand', isset($object->brand_id_078)? $object->brand_id_078 : null),
                 'objects' => $brands,
                 'idSelect' => 'id_071',
                 'nameSelect' => 'name_071',
@@ -483,7 +483,7 @@
                 'label' => trans_choice('octopus::pulsar.product', 1),
                 'id' => 'product',
                 'name' => 'product',
-                'value' => (int)old('product', isset($object->product_078)? $object->product_078 : null),
+                'value' => (int)old('product', isset($object->product_id_078)? $object->product_id_078 : null),
                 'objects' => $products,
                 'required' => true,
                 'idSelect' => 'id_072',

@@ -81,7 +81,7 @@
             $('[name="shopAddress"]').val(data.address_076)
             $('[name="shopCp"]').val(data.cp_076)
             $('[name="shopLocality"]').val(data.locality_076)
-            $('[name="customer"]').val(data.customer_076)
+            $('[name="customer"]').val(data.customer_id_076)
             $.magnificPopup.close()
 
             // set url to add address
@@ -105,10 +105,10 @@
     
                     $.getAddress.setOptions({
                         id:                         '01',
-                        countryValue:               response.country_077,
-                        territorialArea1Value:      response.territorial_area_1_077,
-                        territorialArea2Value:      response.territorial_area_2_077,
-                        territorialArea3Value:      response.territorial_area_3_077
+                        countryValue:               response.country_id_077,
+                        territorialArea1Value:      response.territorial_area_1_id_077,
+                        territorialArea2Value:      response.territorial_area_2_id_077,
+                        territorialArea3Value:      response.territorial_area_3_id_077
                     })
     
                     $('[name="cp"]').val(response.cp_077)
@@ -133,10 +133,10 @@
     
             $.getAddress.setOptions({
                 id:                         '01',
-                countryValue:               data.country_077,
-                territorialArea1Value:      data.territorial_area_1_077,
-                territorialArea2Value:      data.territorial_area_2_077,
-                territorialArea3Value:      data.territorial_area_3_077
+                countryValue:               data.country_id_077,
+                territorialArea1Value:      data.territorial_area_1_id_077,
+                territorialArea2Value:      data.territorial_area_2_id_077,
+                territorialArea3Value:      data.territorial_area_3_id_077
             })
     
             $('[name="cp"]').val(data.cp_077)

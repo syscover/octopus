@@ -16,6 +16,7 @@ class OctopusCreateTableFamily extends Migration {
 		{
 			Schema::create('008_070_family', function ($table) {
 				$table->engine = 'InnoDB';
+				
 				$table->increments('id_070')->unsigned();
 				$table->string('name_070');
 			});
@@ -34,5 +35,4 @@ class OctopusCreateTableFamily extends Migration {
 			Schema::drop('008_070_family');
 		}
 	}
-
 }

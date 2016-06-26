@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Laboratory
  *
  * Model with properties
- * <br><b>[id, company_name, tin, country, territorial_area_1, territorial_area_2, territorial_area_3, cp, locality, address, contact, phone, email, web, favorite]</b>
+ * <br><b>[id, company_name, tin, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, locality, address, contact, phone, email, web, favorite]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -22,7 +22,7 @@ class Laboratory extends Model
     protected $primaryKey   = 'id_073';
     protected $suffix       = '073';
     public $timestamps      = false;
-    protected $fillable     = ['id_073', 'company_name_073', 'tin_073', 'country_073', 'territorial_area_1_073', 'territorial_area_2_073', 'territorial_area_3_073', 'cp_073', 'locality_073', 'address_073', 'contact_073', 'phone_073', 'email_073', 'web_073', 'favorite_073'];
+    protected $fillable     = ['id_073', 'company_name_073', 'tin_073', 'country_id_073', 'territorial_area_1_id_073', 'territorial_area_2_id_073', 'territorial_area_3_id_073', 'cp_073', 'locality_073', 'address_073', 'contact_073', 'phone_073', 'email_073', 'web_073', 'favorite_073'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [

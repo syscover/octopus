@@ -13,7 +13,7 @@
         'fieldSize' => 5,
         'label' => trans_choice('octopus::pulsar.brand', 1),
         'name' => 'brand',
-        'value' => old('brand', isset($object)? $object->brand_072 : null),
+        'value' => old('brand', isset($object)? $object->brand_id_072 : null),
         'required' => true,
         'objects' => $brands,
         'idSelect' => 'id_071',

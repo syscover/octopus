@@ -81,7 +81,7 @@
             $('[name="shopAddress"]').val(data.address_076)
             $('[name="shopCp"]').val(data.cp_076)
             $('[name="shopLocality"]').val(data.locality_076)
-            $('[name="customer"]').val(data.customer_076)
+            $('[name="customer"]').val(data.customer_id_076)
             $.magnificPopup.close()
 
             // set url to add address
@@ -105,10 +105,10 @@
     
                     $.getAddress.setOptions({
                         id:                         '01',
-                        countryValue:               response.country_077,
-                        territorialArea1Value:      response.territorial_area_1_077,
-                        territorialArea2Value:      response.territorial_area_2_077,
-                        territorialArea3Value:      response.territorial_area_3_077
+                        countryValue:               response.country_id_077,
+                        territorialArea1Value:      response.territorial_area_1_id_077,
+                        territorialArea2Value:      response.territorial_area_2_id_077,
+                        territorialArea3Value:      response.territorial_area_3_id_077
                     })
     
                     $('[name="cp"]').val(response.cp_077)
@@ -133,10 +133,10 @@
     
             $.getAddress.setOptions({
                 id:                         '01',
-                countryValue:               data.country_077,
-                territorialArea1Value:      data.territorial_area_1_077,
-                territorialArea2Value:      data.territorial_area_2_077,
-                territorialArea3Value:      data.territorial_area_3_077
+                countryValue:               data.country_id_077,
+                territorialArea1Value:      data.territorial_area_1_id_077,
+                territorialArea2Value:      data.territorial_area_2_id_077,
+                territorialArea3Value:      data.territorial_area_3_id_077
             })
     
             $('[name="cp"]').val(data.cp_077)
@@ -160,11 +160,11 @@
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'supervisor',
-       'value' => $object->supervisor_079
+       'value' => $object->supervisor_id_079
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'customer',
-        'value' => $object->customer_079
+        'value' => $object->customer_id_079
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
@@ -183,7 +183,7 @@
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',
         'value' => $object->name_076,
-        'valueId' => $object->shop_079,
+        'valueId' => $object->shop_id_079,
         'maxLength' => '255',
         'rangeLength' => '2,255',
         'modalUrl' => route('octopusShop', [
@@ -237,11 +237,11 @@
             'label' => trans('pulsar::pulsar.alias'),
             'name' => 'alias',
             'value' => $object->alias_077,
-            'valueId' => $object->id_address_079,
+            'valueId' => $object->address_id_079,
             'maxLength' => '255',
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusAddress', [
-                'ref' => $object->shop_079,
+                'ref' => $object->shop_id_079,
                 'modal' => 1,
                 'modalShopView' => '0',
                 'redirectParentJs' => '0',
@@ -420,7 +420,7 @@
                 'label' => trans_choice('pulsar::pulsar.company', 1),
                 'id' => 'company',
                 'name' => 'company',
-                'value' => (int)$object->company_079,
+                'value' => (int)$object->company_id_079,
                 'objects' => $companies,
                 'idSelect' => 'id_074',
                 'nameSelect' => 'company_name_074',
@@ -439,7 +439,7 @@
                 'label' => trans_choice('pulsar::pulsar.family', 1),
                 'id' => 'family',
                 'name' => 'family',
-                'value' => (int)$object->family_079,
+                'value' => (int)$object->family_id_079,
                 'objects' => $families,
                 'idSelect' => 'id_070',
                 'nameSelect' => 'name_070',
@@ -458,7 +458,7 @@
                 'label' => trans_choice('octopus::pulsar.brand', 1),
                 'id' => 'brand',
                 'name' => 'brand',
-                'value' => (int)$object->brand_079,
+                'value' => (int)$object->brand_id_079,
                 'objects' => $brands,
                 'idSelect' => 'id_071',
                 'nameSelect' => 'name_071',
@@ -477,7 +477,7 @@
                 'label' => trans_choice('octopus::pulsar.product', 1),
                 'id' => 'product',
                 'name' => 'product',
-                'value' => (int)$object->product_079,
+                'value' => (int)$object->product_id_079,
                 'objects' => $products,
                 'required' => true,
                 'idSelect' => 'id_072',

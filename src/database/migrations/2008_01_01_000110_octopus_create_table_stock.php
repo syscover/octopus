@@ -16,6 +16,7 @@ class OctopusCreateTableStock extends Migration {
 		{
 			Schema::create('008_080_stock', function ($table) {
 				$table->engine = 'InnoDB';
+				
 				$table->increments('id_080')->unsigned();
 				$table->integer('request_080')->unsigned()->nullable();
 				$table->integer('order_080')->unsigned()->nullable();
@@ -77,10 +78,10 @@ class OctopusCreateTableStock extends Migration {
 					->on('008_071_brand')->onDelete('restrict')->onUpdate('cascade');
 				$table->foreign('product_080', 'fk07_008_080_order')->references('id_072')
 					->on('008_072_product')->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('laboratory_080', 'fk08_008_080_order')->references('id_073')
-					->on('008_073_laboratory')->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('id_address_080', 'fk09_008_080_order')->references('id_077')
+				$table->foreign('id_address_080', 'fk08_008_080_order')->references('id_077')
 					->on('008_077_address')->onDelete('set null')->onUpdate('cascade');
+				$table->foreign('laboratory_080', 'fk09_008_080_order')->references('id_073')
+					->on('008_073_laboratory')->onDelete('restrict')->onUpdate('cascade');
 
 				$table->foreign('country_080', 'fk10_008_080_order')->references('id_002')->on('001_002_country')
 					->onDelete('restrict')->onUpdate('cascade');

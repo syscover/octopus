@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Product
  *
  * Model with properties
- * <br><b>[id, brand, name, active]</b>
+ * <br><b>[id, brand_id, name, active]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -22,7 +22,7 @@ class Product extends Model
     protected $primaryKey   = 'id_072';
     protected $suffix       = '072';
     public $timestamps      = false;
-    protected $fillable     = ['id_072', 'brand_072', 'name_072', 'active_072'];
+    protected $fillable     = ['id_072', 'brand_id_072', 'name_072', 'active_072'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
@@ -37,6 +37,6 @@ class Product extends Model
 
     public function scopeBuilder($query)
     {
-        return $query->join('008_071_brand', '008_072_product.brand_072', '=', '008_071_brand.id_071');
+        return $query->join('008_071_brand', '008_072_product.brand_id_072', '=', '008_071_brand.id_071');
     }
 }

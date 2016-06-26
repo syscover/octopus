@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         Product::create([
             'id_072'        => $this->request->input('id'),
-            'brand_072'     => $this->request->input('brand'),
+            'brand_id_072'  => $this->request->input('brand'),
             'name_072'      => $this->request->input('name'),
             'active_072'    => $this->request->has('active')
         ]);
@@ -48,7 +48,7 @@ class ProductController extends Controller
     {
         Product::where('id_072', $parameters['id'])->update([
             'id_072'        => $this->request->input('id'),
-            'brand_072'     => $this->request->input('brand'),
+            'brand_id_072'  => $this->request->input('brand'),
             'name_072'      => $this->request->input('name'),
             'active_072'    => $this->request->has('active')
         ]);
@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         $parameters = $this->request->route()->parameters();
 
-        $products = Product::builder()->where('active_072', true)->where('brand_072', $parameters['brand'])->get();
+        $products = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['brand'])->get();
 
         return response()->json($products);
     }

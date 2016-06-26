@@ -20,10 +20,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ old('country', isset($object->country_074)? $object->country_074 : null) }}',
-                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_074)? $object->territorial_area_1_074 : null) }}',
-                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_074)? $object->territorial_area_2_074 : null) }}',
-                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_074)? $object->territorial_area_3_074 : null) }}'
+                countryValue:               '{{ old('country', isset($object->country_id_074)? $object->country_id_074 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_id_074)? $object->territorial_area_1_id_074 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_id_074)? $object->territorial_area_2_id_074 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_id_074)? $object->territorial_area_3_id_074 : null) }}'
             });
         });
     </script>

@@ -29,10 +29,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ $object->country_076 }}',
-                territorialArea1Value:      '{{ $object->territorial_area_1_076 }}',
-                territorialArea2Value:      '{{ $object->territorial_area_2_076 }}',
-                territorialArea3Value:      '{{ $object->territorial_area_3_076 }}'
+                countryValue:               '{{ $object->country_id_076 }}',
+                territorialArea1Value:      '{{ $object->territorial_area_1_id_076 }}',
+                territorialArea2Value:      '{{ $object->territorial_area_2_id_076 }}',
+                territorialArea3Value:      '{{ $object->territorial_area_3_id_076 }}'
             })
 
             if ($.fn.dataTable)
@@ -97,7 +97,7 @@
             'label' => trans_choice('pulsar::pulsar.customer', 1),
             'name' => 'customer',
             'value' => $object->company_name_075,
-            'valueId' => $object->customer_076,
+            'valueId' => $object->customer_id_076,
             'maxLength' => '255',
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusCustomer', [
