@@ -29,10 +29,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
     
-                countryValue:               '{{ old('country', isset($object->country_079)? $object->country_079 : null) }}',
-                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_079)? $object->territorial_area_1_079 : null) }}',
-                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_079)? $object->territorial_area_2_079 : null) }}',
-                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_079)? $object->territorial_area_3_079 : null) }}'
+                countryValue:               '{{ old('country', isset($object->country_id_079)? $object->country_id_079 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_id_079)? $object->territorial_area_1_id_079 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_id_079)? $object->territorial_area_2_id_079 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_id_079)? $object->territorial_area_3_id_079 : null) }}'
             })
     
             $('[name="brand"]').on('change', function() {
@@ -156,7 +156,7 @@
     <!-- octopus::order.form -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'request',
-       'value' => $object->request_079
+       'value' => $object->request_id_079
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'supervisor',

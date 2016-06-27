@@ -22,7 +22,7 @@ class Company extends Model
     protected $primaryKey   = 'id_074';
     protected $suffix       = '074';
     public $timestamps      = false;
-    protected $fillable     = ['id_074', 'company_name_074', 'tin_074', 'country_id_074', 'territorial_area_1_id_074', 'territorial_area_2_id_074', 'territorial_area_3_id_072', 'cp_074', 'locality_074', 'address_074', 'contact_074', 'phone_074', 'email_074', 'web_074'];
+    protected $fillable     = ['id_074', 'company_name_074', 'tin_074', 'country_id_074', 'territorial_area_1_id_074', 'territorial_area_2_id_074', 'territorial_area_3_id_074', 'cp_074', 'locality_074', 'address_074', 'contact_074', 'phone_074', 'email_074', 'web_074'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [

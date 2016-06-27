@@ -22,7 +22,7 @@ class Customer extends Model
     protected $primaryKey   = 'id_075';
     protected $suffix       = '075';
     public $timestamps      = false;
-    protected $fillable     = ['id_075', 'code_075', 'company_name_075', 'tin_075', 'country_id_075', 'territorial_area_1_id_075', 'territorial_area_2_id_075', 'territorial_area_3_id_072', 'cp_075', 'locality_075', 'address_075', 'contact_075', 'phone_075', 'email_075', 'web_075'];
+    protected $fillable     = ['id_075', 'code_075', 'company_name_075', 'tin_075', 'country_id_075', 'territorial_area_1_id_075', 'territorial_area_2_id_075', 'territorial_area_3_id_075', 'cp_075', 'locality_075', 'address_075', 'contact_075', 'phone_075', 'email_075', 'web_075'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [

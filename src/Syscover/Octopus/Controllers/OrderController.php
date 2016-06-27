@@ -55,7 +55,7 @@ class OrderController extends Controller
     {
         $actions = $this->request->route()->getAction();
 
-        if($aObject['stock_079'] == null)
+        if($aObject['stock_id_079'] == null)
         {
             if($actions['resource'] === 'octopus-order')
             {
@@ -82,7 +82,7 @@ class OrderController extends Controller
                 $this->viewParameters['editButton']     = false;
                 $this->viewParameters['showButton']     = true;
 
-                $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('showOctopusStock', ['id' => $aObject->stock_079, 'offset' => 0]) . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
+                $actions = '<a class="btn btn-xs bs-tooltip" href="' . route('showOctopusStock', ['id' => $aObject->stock_id_079, 'offset' => 0]) . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
             }
             elseif($actions['resource'] === 'octopus-laboratory-order')
             {
@@ -122,7 +122,7 @@ class OrderController extends Controller
             ]);
         }
 
-        if($request->order_078 != null)
+        if($request->order_id_078 != null)
         {
             return redirect()->route('octopusOrder')->with([
                 'msg'        => 2,
@@ -138,7 +138,7 @@ class OrderController extends Controller
             'cp_076'                    => $request->cp_076,
             'locality_076'              => $request->locality_076,
             'alias_077'                 => $request->alias_077,
-            'request_079'               => $request->id_078,
+            'request_id_079'            => $request->id_078,
             'supervisor_id_079'         => $request->supervisor_id_078,
             'name_010'                  => $request->name_010,
             'surname_010'               => $request->surname_010,
@@ -152,10 +152,10 @@ class OrderController extends Controller
             'company_name_079'          => isset($request->company_name_078)? $request->company_name_078 : null,
             'name_079'                  => isset($request->name_078)? $request->name_078 : null,
             'surname_079'               => isset($request->surname_078)? $request->surname_078 : null,
-            'country_079'               => $request->country_078,
-            'territorial_area_1_079'    => isset($request->territorial_area_1_078)? $request->territorial_area_1_078 : null,
-            'territorial_area_2_079'    => isset($request->territorial_area_2_078)? $request->territorial_area_2_078 : null,
-            'territorial_area_3_079'    => isset($request->territorial_area_3_078)? $request->territorial_area_3_078 : null,
+            'country_id_079'            => $request->country_id_078,
+            'territorial_area_1_id_079' => isset($request->territorial_area_1_id_078)? $request->territorial_area_1_id_078 : null,
+            'territorial_area_2_id_079' => isset($request->territorial_area_2_id_078)? $request->territorial_area_2_id_078 : null,
+            'territorial_area_3_id_079' => isset($request->territorial_area_3_id_078)? $request->territorial_area_3_id_078 : null,
             'cp_079'                    => isset($request->cp_078)? $request->cp_078 : null,
             'locality_079'              => isset($request->locality_078)? $request->locality_078 : null,
             'address_079'               => isset($request->address_078)? $request->address_078 : null,
@@ -193,7 +193,7 @@ class OrderController extends Controller
         $laboratory = Laboratory::builder()->where('favorite_073', true)->get()->first();
 
         $order = Order::create([
-            'request_079'               => $this->request->input('request'),
+            'request_id_079'            => $this->request->input('request'),
             'supervisor_id_079'         => $this->request->input('supervisor'),
             'customer_id_079'           => $this->request->input('customer'),
             'shop_id_079'               => $this->request->input('shopId'),
@@ -206,10 +206,10 @@ class OrderController extends Controller
             'company_name_079'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_079'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_079'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_079'               => $this->request->input('country'),
-            'territorial_area_1_079'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_079'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_079'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_079'            => $this->request->input('country'),
+            'territorial_area_1_id_079' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_079' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_079' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_079'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_079'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_079'               => $this->request->has('address')? $this->request->input('address') : null,
@@ -230,7 +230,7 @@ class OrderController extends Controller
         ]);
 
         RequestModel::where('id_078', $this->request->input('request'))->update([
-            'order_078' => $order->id_079
+            'order_id_078' => $order->id_079
         ]);
 
         $this->sendOrderEmail($order->id_079, 'store');
@@ -262,10 +262,10 @@ class OrderController extends Controller
             'company_name_079'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_079'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_079'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_079'               => $this->request->input('country'),
-            'territorial_area_1_079'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_079'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_079'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_079'            => $this->request->input('country'),
+            'territorial_area_1_id_079' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_079' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_079' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_079'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_079'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_079'               => $this->request->has('address')? $this->request->input('address') : null,
@@ -297,7 +297,7 @@ class OrderController extends Controller
         $parameters['brands']       = Brand::all();
         $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_id_079)->get();
 
-        if($parameters['object']->stock_079 == null)
+        if($parameters['object']->stock_id_079 == null)
             $parameters['afterButtonFooter']    = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-laboratory-order'? 'createOctopusLaboratoryStock' : 'createOctopusStock', ['id' => Crypt::encrypt($parameters['id']), 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.create_stock') . '</a>';
 
         return $parameters;

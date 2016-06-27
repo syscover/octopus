@@ -29,10 +29,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
 
-                countryValue:               '{{ old('country', isset($object->country_078)? $object->country_078 : null) }}',
-                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_078)? $object->territorial_area_1_078 : null) }}',
-                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_078)? $object->territorial_area_2_078 : null) }}',
-                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_078)? $object->territorial_area_3_078 : null) }}'
+                countryValue:               '{{ old('country', isset($object->country_id_078)? $object->country_id_078 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_id_078)? $object->territorial_area_1_id_078 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_id_078)? $object->territorial_area_2_id_078 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_id_078)? $object->territorial_area_3_id_078 : null) }}'
             })
 
             $('[name="brand"]').on('change', function() {

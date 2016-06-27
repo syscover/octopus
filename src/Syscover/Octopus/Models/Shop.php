@@ -22,7 +22,7 @@ class Shop extends Model
     protected $primaryKey   = 'id_076';
     protected $suffix       = '076';
     public $timestamps      = false;
-    protected $fillable     = ['id_076', 'customer_id_076', 'name_076', 'country_id_076', 'territorial_area_1_id_076', 'territorial_area_2_id_076', 'territorial_area_3_id_072', 'cp_076', 'locality_076', 'address_076', 'contact_076', 'phone_076', 'email_076', 'web_076'];
+    protected $fillable     = ['id_076', 'customer_id_076', 'name_076', 'country_id_076', 'territorial_area_1_id_076', 'territorial_area_2_id_076', 'territorial_area_3_id_076', 'cp_076', 'locality_076', 'address_076', 'contact_076', 'phone_076', 'email_076', 'web_076'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [

@@ -48,7 +48,7 @@ class RequestController extends Controller
     {
         $actions = $this->request->route()->getAction();
 
-        if($aObject['order_078'] == null)
+        if($aObject['order_id_078'] == null)
         {
             $this->viewParameters['deleteButton']   = true;
             $this->viewParameters['editButton']     = true;
@@ -65,8 +65,8 @@ class RequestController extends Controller
             $this->viewParameters['editButton']     = false;
             $this->viewParameters['showButton']     = true;
 
-            if($aObject['stock_078'] != null)
-                $actions = '<a class="btn btn-xs bs-tooltip" href="' . route($actions['resource'] === 'octopus-supervisor-request'? 'showOctopusSupervisorStock' : 'showOctopusStock', ['id' => $aObject->stock_078, 'offset' => 0]) . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
+            if($aObject['stock_id_078'] != null)
+                $actions = '<a class="btn btn-xs bs-tooltip" href="' . route($actions['resource'] === 'octopus-supervisor-request'? 'showOctopusSupervisorStock' : 'showOctopusStock', ['id' => $aObject->stock_id_078, 'offset' => 0]) . '" data-original-title="' . trans('octopus::pulsar.view_stock') . '"><i class="fa fa-th-large"></i></a>';
             else
                 $actions = '';
         }
@@ -91,20 +91,20 @@ class RequestController extends Controller
                 'cp_076'                    => $stock->cp_076,
                 'locality_076'              => $stock->locality_076,
                 'alias_077'                 => $stock->alias_077,
-                'customer_id_078'           => isset($stock->customer_080)? $stock->customer_080 : null,
-                'shop_id_078'               => $stock->shop_080,
-                'company_id_078'            => $stock->company_080,
-                'family_id_078'             => $stock->family_080,
-                'brand_id_078'              => $stock->brand_080,
-                'product_id_078'            => $stock->product_080,
-                'address_id_078'            => isset($stock->id_address_080)? $stock->id_address_080 : null,
+                'customer_id_078'           => isset($stock->customer_id_080)? $stock->customer_id_080 : null,
+                'shop_id_078'               => $stock->shop_id_080,
+                'company_id_078'            => $stock->company_id_080,
+                'family_id_078'             => $stock->family_id_080,
+                'brand_id_078'              => $stock->brand_id_080,
+                'product_id_078'            => $stock->product_id_080,
+                'address_id_078'            => isset($stock->address_id_080)? $stock->address_id_080 : null,
                 'company_name_078'          => isset($stock->company_name_080)? $stock->company_name_080 : null,
                 'name_078'                  => isset($stock->name_080)? $stock->name_080 : null,
                 'surname_078'               => isset($stock->surname_080)? $stock->surname_080 : null,
-                'country_078'               => $stock->country_080,
-                'territorial_area_1_078'    => isset($stock->territorial_area_1_080)? $stock->territorial_area_1_080 : null,
-                'territorial_area_2_078'    => isset($stock->territorial_area_2_080)? $stock->territorial_area_2_080 : null,
-                'territorial_area_3_078'    => isset($stock->territorial_area_3_080)? $stock->territorial_area_3_080 : null,
+                'country_id_078'            => $stock->country_id_080,
+                'territorial_area_1_id_078' => isset($stock->territorial_area_1_id_080)? $stock->territorial_area_1_id_080 : null,
+                'territorial_area_2_id_078' => isset($stock->territorial_area_2_id_080)? $stock->territorial_area_2_id_080 : null,
+                'territorial_area_3_id_078' => isset($stock->territorial_area_3_id_080)? $stock->territorial_area_3_id_080 : null,
                 'cp_078'                    => isset($stock->cp_080)? $stock->cp_080 : null,
                 'locality_078'              => isset($stock->locality_080)? $stock->locality_080 : null,
                 'address_078'               => isset($stock->address_080)? $stock->address_080 : null,
@@ -152,10 +152,10 @@ class RequestController extends Controller
             'company_name_078'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_078'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_078'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_078'               => $this->request->input('country'),
-            'territorial_area_1_078'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_078'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_078'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_078'            => $this->request->input('country'),
+            'territorial_area_1_id_078' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_078' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_078' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_078'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_078'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_078'               => $this->request->has('address')? $this->request->input('address') : null,
@@ -224,10 +224,10 @@ class RequestController extends Controller
             'company_name_078'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_078'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_078'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_078'               => $this->request->input('country'),
-            'territorial_area_1_078'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_078'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_078'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_078'            => $this->request->input('country'),
+            'territorial_area_1_id_078' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_078' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_078' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_078'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_078'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_078'               => $this->request->has('address')? $this->request->input('address') : null,

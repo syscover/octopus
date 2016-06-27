@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Stock
  *
  * Model with properties
- * <br><b>[id, request, order, supervisor, customer, shop, company, family, brand, product, laboratory, id_address, company_name, name, surname, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
+ * <br><b>[id, request_id, order_id, supervisor_id, customer_id, shop_id, company_id, family_id, brand_id, product_id, laboratory_id, address_id, company_name, name, surname, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -22,7 +22,7 @@ class Stock extends Model
     protected $primaryKey   = 'id_080';
     protected $suffix       = '080';
     public $timestamps      = false;
-    protected $fillable     = ['id_080', 'request_080', 'order_080', 'supervisor_080', 'customer_080', 'shop_080', 'company_080', 'family_080', 'brand_080', 'product_080', 'laboratory_080', 'id_address_080', 'company_name_080', 'name_080', 'surname_080', 'country_080', 'territorial_area_1_080', 'territorial_area_2_080', 'territorial_area_3_072', 'cp_080', 'locality_080', 'address_080', 'phone_080', 'email_080', 'observations_080', 'date_080', 'date_text_080', 'view_height_080', 'view_width_080', 'total_height_080', 'total_width_080', 'units_080', 'expiration_080', 'expiration_text_080', 'attachment_080', 'comments_080'];
+    protected $fillable     = ['id_080', 'request_id_080', 'order_id_080', 'supervisor_id_080', 'customer_id_080', 'shop_id_080', 'company_id_080', 'family_id_080', 'brand_id_080', 'product_id_080', 'laboratory_id_080', 'address_id_080', 'company_name_080', 'name_080', 'surname_080', 'country_id_080', 'territorial_area_1_id_080', 'territorial_area_2_id_080', 'territorial_area_3_id_080', 'cp_080', 'locality_080', 'address_080', 'phone_080', 'email_080', 'observations_080', 'date_080', 'date_text_080', 'view_height_080', 'view_width_080', 'total_height_080', 'total_width_080', 'units_080', 'expiration_080', 'expiration_text_080', 'attachment_080', 'comments_080'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
@@ -49,11 +49,11 @@ class Stock extends Model
 
     public function scopeBuilder($query)
     {
-        return $query->join('008_075_customer', '008_080_stock.customer_080', '=', '008_075_customer.id_075')
-            ->join('001_010_user', '008_080_stock.supervisor_080', '=', '001_010_user.id_010')
-            ->join('008_076_shop', '008_080_stock.shop_080', '=', '008_076_shop.id_076')
-            ->join('008_077_address', '008_080_stock.id_address_080', '=', '008_077_address.id_077')
-            ->join('008_072_product', '008_080_stock.product_080', '=', '008_072_product.id_072');
+        return $query->join('008_075_customer', '008_080_stock.customer_id_080', '=', '008_075_customer.id_075')
+            ->join('001_010_user', '008_080_stock.supervisor_id_080', '=', '001_010_user.id_010')
+            ->join('008_076_shop', '008_080_stock.shop_id_080', '=', '008_076_shop.id_076')
+            ->join('008_077_address', '008_080_stock.address_id_080', '=', '008_077_address.id_077')
+            ->join('008_072_product', '008_080_stock.product_id_080', '=', '008_072_product.id_072');
     }
 
     public function addToGetIndexRecords($request, $parameters)
@@ -65,7 +65,7 @@ class Stock extends Model
 
         // filter requests only from current user
         if($actions['resource'] === 'octopus-supervisor-stock')
-            $query->where('supervisor_080', auth('pulsar')->user()->id_010);
+            $query->where('supervisor_id_080', auth('pulsar')->user()->id_010);
 
         return $query;
     }
@@ -78,7 +78,7 @@ class Stock extends Model
         $query =  $this->builder();
 
         if($actions['resource'] === 'octopus-supervisor-stock')
-            $query->where('supervisor_080', auth('pulsar')->user()->id_010);
+            $query->where('supervisor_id_080', auth('pulsar')->user()->id_010);
 
         return $query;
     }

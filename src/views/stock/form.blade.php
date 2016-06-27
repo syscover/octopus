@@ -29,10 +29,10 @@
                 useSeparatorHighlight:      true,
                 textSeparatorHighlight:     '------------------',
     
-                countryValue:               '{{ old('country', isset($object->country_080)? $object->country_080 : null) }}',
-                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_080)? $object->territorial_area_1_080 : null) }}',
-                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_080)? $object->territorial_area_2_080 : null) }}',
-                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_080)? $object->territorial_area_3_080 : null) }}'
+                countryValue:               '{{ old('country', isset($object->country_id_080)? $object->country_id_080 : null) }}',
+                territorialArea1Value:      '{{ old('territorialArea1', isset($object->territorial_area_1_id_080)? $object->territorial_area_1_id_080 : null) }}',
+                territorialArea2Value:      '{{ old('territorialArea2', isset($object->territorial_area_2_id_080)? $object->territorial_area_2_id_080 : null) }}',
+                territorialArea3Value:      '{{ old('territorialArea3', isset($object->territorial_area_3_id_080)? $object->territorial_area_3_id_080 : null) }}'
             })
     
             $('[name="brand"]').on('change', function() {
@@ -156,23 +156,23 @@
     <!-- octopus::stock.form -->
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'request',
-       'value' => $object->request_080
+       'value' => $object->request_id_080
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'order',
-       'value' => $object->order_080
+       'value' => $object->order_id_080
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'laboratory',
-       'value' => $object->laboratory_080
+       'value' => $object->laboratory_id_080
     ])
     @include('pulsar::includes.html.form_hidden', [
        'name' => 'supervisor',
-       'value' => $object->supervisor_080
+       'value' => $object->supervisor_id_080
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'customer',
-        'value' => $object->customer_080
+        'value' => $object->customer_id_080
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
@@ -193,7 +193,7 @@
         'label' => trans_choice('octopus::pulsar.shop', 1),
         'name' => 'shop',
         'value' => $object->name_076,
-        'valueId' => $object->shop_080,
+        'valueId' => $object->shop_id_080,
         'maxLength' => '255',
         'rangeLength' => '2,255',
         'modalUrl' => route('octopusShop', [
@@ -247,11 +247,11 @@
             'label' => trans('pulsar::pulsar.alias'),
             'name' => 'alias',
             'value' => $object->alias_077,
-            'valueId' => $object->id_address_080,
+            'valueId' => $object->address_id_080,
             'maxLength' => '255',
             'rangeLength' => '2,255',
             'modalUrl' => route('octopusAddress', [
-                'ref' => $object->shop_080,
+                'ref' => $object->shop_id_080,
                 'modal' => 1,
                 'modalShopView' => '0',
                 'redirectParentJs' => '0',
@@ -430,7 +430,7 @@
                 'label' => trans_choice('pulsar::pulsar.company', 1),
                 'id' => 'company',
                 'name' => 'company',
-                'value' => (int)$object->company_080,
+                'value' => (int)$object->company_id_080,
                 'objects' => $companies,
                 'idSelect' => 'id_074',
                 'nameSelect' => 'company_name_074',
@@ -449,7 +449,7 @@
                 'label' => trans_choice('pulsar::pulsar.family', 1),
                 'id' => 'family',
                 'name' => 'family',
-                'value' => (int)$object->family_080,
+                'value' => (int)$object->family_id_080,
                 'objects' => $families,
                 'idSelect' => 'id_070',
                 'nameSelect' => 'name_070',
@@ -468,7 +468,7 @@
                 'label' => trans_choice('octopus::pulsar.brand', 1),
                 'id' => 'brand',
                 'name' => 'brand',
-                'value' => (int)$object->brand_080,
+                'value' => (int)$object->brand_id_080,
                 'objects' => $brands,
                 'idSelect' => 'id_071',
                 'nameSelect' => 'name_071',
@@ -487,7 +487,7 @@
                 'label' => trans_choice('octopus::pulsar.product', 1),
                 'id' => 'product',
                 'name' => 'product',
-                'value' => (int)$object->product_080,
+                'value' => (int)$object->product_id_080,
                 'objects' => $products,
                 'required' => true,
                 'idSelect' => 'id_072',

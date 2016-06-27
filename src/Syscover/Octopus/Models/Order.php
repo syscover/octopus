@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Order
  *
  * Model with properties
- * <br><b>[id, request, stock, supervisor_id, customer_id, shop_id, company_id, family_id, brand_id, product_id, laboratory, id_address, company_name, name, surname, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
+ * <br><b>[id, request_id, stock_id, supervisor_id, customer_id, shop_id, company_id, family_id, brand_id, product_id, laboratory, address_id, company_name, name, surname, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -22,7 +22,7 @@ class Order extends Model
     protected $primaryKey   = 'id_079';
     protected $suffix       = '079';
     public $timestamps      = false;
-    protected $fillable     = ['id_079', 'request_079', 'stock_079', 'supervisor_id_079', 'customer_id_079', 'shop_id_079', 'company_id_079', 'family_id_079', 'brand_id_079', 'product_id_079', 'laboratory_id_079', 'address_id_079', 'company_name_079', 'name_079', 'surname_079', 'country_079', 'territorial_area_1_079', 'territorial_area_2_079', 'territorial_area_3_072', 'cp_079', 'locality_079', 'address_079', 'phone_079', 'email_079', 'observations_079', 'date_079', 'date_text_079', 'view_height_079', 'view_width_079', 'total_height_079', 'total_width_079', 'units_079', 'expiration_079', 'expiration_text_079', 'attachment_079', 'comments_079'];
+    protected $fillable     = ['id_079', 'request_id_079', 'stock_id_079', 'supervisor_id_079', 'customer_id_079', 'shop_id_079', 'company_id_079', 'family_id_079', 'brand_id_079', 'product_id_079', 'laboratory_id_079', 'address_id_079', 'company_name_079', 'name_079', 'surname_079', 'country_id_079', 'territorial_area_1_id_079', 'territorial_area_2_id_079', 'territorial_area_3_id_079', 'cp_079', 'locality_079', 'address_079', 'phone_079', 'email_079', 'observations_079', 'date_079', 'date_text_079', 'view_height_079', 'view_width_079', 'total_height_079', 'total_width_079', 'units_079', 'expiration_079', 'expiration_text_079', 'attachment_079', 'comments_079'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
@@ -68,7 +68,7 @@ class Order extends Model
 
         // filter order for laboratory, that has not stock
         //if($actions['resource'] === 'octopus-laboratory-order')
-        //    $query->whereNull('stock_079');
+        //    $query->whereNull('stock_id_079');
 
         return $query;
     }
@@ -82,7 +82,7 @@ class Order extends Model
 
         // filter order for laboratory, that has not stock
         //if($actions['resource'] === 'octopus-laboratory-order')
-        //    $query->whereNull('stock_079');
+        //    $query->whereNull('stock_id_079');
 
         return $query;
     }

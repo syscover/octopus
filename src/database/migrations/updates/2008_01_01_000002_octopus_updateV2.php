@@ -83,7 +83,20 @@ class OctopusUpdateV2 extends Migration
 		DBLibrary::renameColumnWithForeignKey('008_078_request', 'product_078', 'product_id_078', 'INT', 10, true, false, 'fk07_008_078_request', '008_072_product', 'id_072');
 		// change id_address_078
 		DBLibrary::renameColumnWithForeignKey('008_078_request', 'id_address_078', 'address_id_078', 'INT', 10, true, true, 'fk08_008_078_request', '008_077_address', 'id_077');
-
+		// change country_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'country_078', 'country_id_078', 'VARCHAR', 2, false, false, 'fk09_008_078_request', '001_002_country', 'id_002');
+		// change territorial_area_1_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'territorial_area_1_078', 'territorial_area_1_id_078', 'VARCHAR', 6, false, true, 'fk10_008_078_request', '001_003_territorial_area_1', 'id_003');
+		// change territorial_area_2_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'territorial_area_2_078', 'territorial_area_2_id_078', 'VARCHAR', 10, false, true, 'fk11_008_078_request', '001_004_territorial_area_2', 'id_004');
+		// change territorial_area_3_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'territorial_area_3_078', 'territorial_area_3_id_078', 'VARCHAR', 10, false, true, 'fk12_008_078_request', '001_005_territorial_area_3', 'id_005');
+		// order_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'order_078', 'order_id_078', 'INT', 10, true, true, 'fk13_008_078_request', '008_079_order', 'id_079', 'set null', 'cascade');
+		// stock_078
+		DBLibrary::renameColumnWithForeignKey('008_078_request', 'stock_078', 'stock_id_078', 'INT', 10, true, true, 'fk14_008_078_request', '008_080_stock', 'id_080', 'set null', 'cascade');
+		
+		
 		// change supervisor_079
 		DBLibrary::renameColumnWithForeignKey('008_079_order', 'supervisor_079', 'supervisor_id_079', 'INT', 10, true, false, 'fk01_008_079_order', '001_010_user', 'id_010');
 		// change customer_079
@@ -102,6 +115,49 @@ class OctopusUpdateV2 extends Migration
 		DBLibrary::renameColumnWithForeignKey('008_079_order', 'id_address_079', 'address_id_079', 'INT', 10, true, true, 'fk08_008_079_order', '008_077_address', 'id_077', 'set null', 'cascade');
 		// change laboratory_079
 		DBLibrary::renameColumnWithForeignKey('008_079_order', 'laboratory_079', 'laboratory_id_079', 'INT', 10, true, false, 'fk09_008_079_order', '008_073_laboratory', 'id_073');
+		// change country_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'country_079', 'country_id_079', 'VARCHAR', 2, false, false, 'fk10_008_079_order', '001_002_country', 'id_002');
+		// change territorial_area_1_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'territorial_area_1_079', 'territorial_area_1_id_079', 'VARCHAR', 6, false, true, 'fk11_008_079_order', '001_003_territorial_area_1', 'id_003');
+		// change territorial_area_2_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'territorial_area_2_079', 'territorial_area_2_id_079', 'VARCHAR', 10, false, true, 'fk12_008_079_order', '001_004_territorial_area_2', 'id_004');
+		// change territorial_area_3_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'territorial_area_3_079', 'territorial_area_3_id_079', 'VARCHAR', 10, false, true, 'fk13_008_079_order', '001_005_territorial_area_3', 'id_005');
+		// request_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'request_079', 'request_id_079', 'INT', 10, true, true, 'fk14_008_079_order', '008_078_request', 'id_078', 'set null', 'cascade');
+		// stock_079
+		DBLibrary::renameColumnWithForeignKey('008_079_order', 'stock_079', 'stock_id_079', 'INT', 10, true, true, 'fk15_008_079_order', '008_080_stock', 'id_080', 'set null', 'cascade');
+
+		// change supervisor_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'supervisor_080', 'supervisor_id_080', 'INT', 10, true, false, 'fk01_008_080_stock', '001_010_user', 'id_010');
+		// change customer_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'customer_080', 'customer_id_080', 'INT', 10, true, true, 'fk02_008_080_stock', '008_075_customer', 'id_075', 'set null', 'cascade');
+		// change shop_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'shop_080', 'shop_id_080', 'INT', 10, true, true, 'fk03_008_080_stock', '008_076_shop', 'id_076', 'set null', 'cascade');
+		// change company_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'company_080', 'company_id_080', 'INT', 10, true, false, 'fk04_008_080_stock', '008_074_company', 'id_074');
+		// change family_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'family_080', 'family_id_080', 'INT', 10, true, false, 'fk05_008_080_stock', '008_070_family', 'id_070');
+		// change brand_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'brand_080', 'brand_id_080', 'INT', 10, true, false, 'fk06_008_080_stock', '008_071_brand', 'id_071');
+		// change product_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'product_080', 'product_id_080', 'INT', 10, true, false, 'fk07_008_080_stock', '008_072_product', 'id_072');
+		// change id_address_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'id_address_080', 'address_id_080', 'INT', 10, true, true, 'fk08_008_080_stock', '008_077_address', 'id_077', 'set null', 'cascade');
+		// change laboratory_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'laboratory_080', 'laboratory_id_080', 'INT', 10, true, false, 'fk09_008_080_stock', '008_073_laboratory', 'id_073');
+		// change country_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'country_080', 'country_id_080', 'VARCHAR', 2, false, false, 'fk10_008_080_stock', '001_002_country', 'id_002');
+		// change territorial_area_1_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'territorial_area_1_080', 'territorial_area_1_id_080', 'VARCHAR', 6, false, true, 'fk11_008_080_stock', '001_003_territorial_area_1', 'id_003');
+		// change territorial_area_2_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'territorial_area_2_080', 'territorial_area_2_id_080', 'VARCHAR', 10, false, true, 'fk12_008_080_stock', '001_004_territorial_area_2', 'id_004');
+		// change territorial_area_3_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'territorial_area_3_080', 'territorial_area_3_id_080', 'VARCHAR', 10, false, true, 'fk13_008_080_stock', '001_005_territorial_area_3', 'id_005');
+		// request_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'request_080', 'request_id_080', 'INT', 10, true, true, 'fk14_008_080_stock', '008_078_request', 'id_078', 'set null', 'cascade');
+		// order_080
+		DBLibrary::renameColumnWithForeignKey('008_080_stock', 'order_080', 'order_id_080', 'INT', 10, true, true, 'fk15_008_080_stock', '008_079_order', 'id_079', 'set null', 'cascade');
 	}
 
 	/**

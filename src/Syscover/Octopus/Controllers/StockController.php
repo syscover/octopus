@@ -94,7 +94,7 @@ class StockController extends Controller
             ]);
         }
 
-        if($order->stock_079 != null)
+        if($order->stock_id_079 != null)
         {
             return redirect()->route($this->resource == 'octopus-stock'? 'octopusStock' : 'octopusLaboratoryOrder')->with([
                 'msg'        => 2,
@@ -110,24 +110,24 @@ class StockController extends Controller
             'cp_076'                    => $order->cp_076,
             'locality_076'              => $order->locality_076,
             'alias_077'                 => $order->alias_077,
-            'request_080'               => $order->request_079,
-            'order_080'                 => $order->id_079,
-            'supervisor_080'            => $order->supervisor_id_079,
-            'customer_080'              => isset($order->customer_id_079)? $order->customer_id_079 : null,
-            'shop_080'                  => $order->shop_id_079,
-            'company_080'               => $order->company_id_079,
-            'family_080'                => $order->family_id_079,
-            'brand_080'                 => $order->brand_id_079,
-            'product_080'               => $order->product_id_079,
-            'laboratory_080'            => $order->laboratory_id_079,
-            'id_address_080'            => isset($order->address_id_079)? $order->address_id_079 : null,
+            'request_id_080'            => $order->request_id_079,
+            'order_id_080'              => $order->id_079,
+            'supervisor_id_080'         => $order->supervisor_id_079,
+            'customer_id_080'           => isset($order->customer_id_079)? $order->customer_id_079 : null,
+            'shop_id_080'               => $order->shop_id_079,
+            'company_id_080'            => $order->company_id_079,
+            'family_id_080'             => $order->family_id_079,
+            'brand_id_080'              => $order->brand_id_079,
+            'product_id_080'            => $order->product_id_079,
+            'laboratory_id_080'         => $order->laboratory_id_079,
+            'address_id_080'            => isset($order->address_id_079)? $order->address_id_079 : null,
             'company_name_080'          => isset($order->company_name_079)? $order->company_name_079 : null,
             'name_080'                  => isset($order->name_079)? $order->name_079 : null,
             'surname_080'               => isset($order->surname_079)? $order->surname_079 : null,
-            'country_080'               => $order->country_079,
-            'territorial_area_1_080'    => isset($order->territorial_area_1_079)? $order->territorial_area_1_079 : null,
-            'territorial_area_2_080'    => isset($order->territorial_area_2_079)? $order->territorial_area_2_079 : null,
-            'territorial_area_3_080'    => isset($order->territorial_area_3_079)? $order->territorial_area_3_079 : null,
+            'country_id_080'            => $order->country_id_079,
+            'territorial_area_1_id_080' => isset($order->territorial_area_1_id_079)? $order->territorial_area_1_id_079 : null,
+            'territorial_area_2_id_080' => isset($order->territorial_area_2_id_079)? $order->territorial_area_2_id_079 : null,
+            'territorial_area_3_id_080' => isset($order->territorial_area_3_id_079)? $order->territorial_area_3_id_079 : null,
             'cp_080'                    => isset($order->cp_079)? $order->cp_079 : null,
             'locality_080'              => isset($order->locality_079)? $order->locality_079 : null,
             'address_080'               => isset($order->address_079)? $order->address_079 : null,
@@ -163,24 +163,24 @@ class StockController extends Controller
         }
 
         $stock = Stock::create([
-            'request_080'               => $this->request->input('request'),
-            'order_080'                 => $this->request->input('order'),
-            'supervisor_080'            => $this->request->input('supervisor'),
-            'customer_080'              => $this->request->input('customer'),
-            'shop_080'                  => $this->request->input('shopId'),
-            'company_080'               => $this->request->input('company'),
-            'family_080'                => $this->request->input('family'),
-            'brand_080'                 => $this->request->input('brand'),
-            'product_080'               => $this->request->input('product'),
-            'laboratory_080'            => $this->request->input('laboratory'),
-            'id_address_080'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
+            'request_id_080'            => $this->request->input('request'),
+            'order_id_080'              => $this->request->input('order'),
+            'supervisor_id_080'         => $this->request->input('supervisor'),
+            'customer_id_080'           => $this->request->input('customer'),
+            'shop_id_080'               => $this->request->input('shopId'),
+            'company_id_080'            => $this->request->input('company'),
+            'family_id_080'             => $this->request->input('family'),
+            'brand_id_080'              => $this->request->input('brand'),
+            'product_id_080'            => $this->request->input('product'),
+            'laboratory_id_080'         => $this->request->input('laboratory'),
+            'address_id_080'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
             'company_name_080'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_080'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_080'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_080'               => $this->request->input('country'),
-            'territorial_area_1_080'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_080'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_080'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_080'            => $this->request->input('country'),
+            'territorial_area_1_id_080' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_080' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_080' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_080'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_080'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_080'               => $this->request->has('address')? $this->request->input('address') : null,
@@ -201,10 +201,10 @@ class StockController extends Controller
         ]);
 
         RequestModel::where('id_078', $this->request->input('request'))->update([
-            'stock_078' => $stock->id_080
+            'stock_id_078' => $stock->id_080
         ]);
         Order::where('id_079', $this->request->input('order'))->update([
-            'stock_079' => $stock->id_080
+            'stock_id_079' => $stock->id_080
         ]);
 
         $actions = $this->request->route()->getAction();
@@ -225,7 +225,7 @@ class StockController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_080)->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_id_080)->get();
 
         return $parameters;
     }
@@ -233,20 +233,20 @@ class StockController extends Controller
     public function updateCustomRecord($parameters)
     {
         $order = [
-            'customer_080'              => $this->request->input('customer'),
-            'shop_080'                  => $this->request->input('shopId'),
-            'company_080'               => $this->request->input('company'),
-            'family_080'                => $this->request->input('family'),
-            'brand_080'                 => $this->request->input('brand'),
-            'product_080'               => $this->request->input('product'),
-            'id_address_080'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
+            'customer_id_080'           => $this->request->input('customer'),
+            'shop_id_080'               => $this->request->input('shopId'),
+            'company_id_080'            => $this->request->input('company'),
+            'family_id_080'             => $this->request->input('family'),
+            'brand_id_080'              => $this->request->input('brand'),
+            'product_id_080'            => $this->request->input('product'),
+            'address_id_080'            => $this->request->has('aliasId')? $this->request->input('aliasId') : null,
             'company_name_080'          => $this->request->has('companyName')? $this->request->input('companyName') : null,
             'name_080'                  => $this->request->has('name')? $this->request->input('name') : null,
             'surname_080'               => $this->request->has('surname')? $this->request->input('surname') : null,
-            'country_080'               => $this->request->input('country'),
-            'territorial_area_1_080'    => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_080'    => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_080'    => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+            'country_id_080'            => $this->request->input('country'),
+            'territorial_area_1_id_080' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+            'territorial_area_2_id_080' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+            'territorial_area_3_id_080' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
             'cp_080'                    => $this->request->has('cp')? $this->request->input('cp') : null,
             'locality_080'              => $this->request->has('locality')? $this->request->input('locality') : null,
             'address_080'               => $this->request->has('address')? $this->request->input('address') : null,
@@ -274,7 +274,7 @@ class StockController extends Controller
         $parameters['companies']    = Company::all();
         $parameters['families']     = Family::all();
         $parameters['brands']       = Brand::all();
-        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_080)->get();
+        $parameters['products']     = Product::builder()->where('active_072', true)->where('brand_id_072', $parameters['object']->brand_id_080)->get();
 
         if($parameters['object']->expiration_080 == null || $parameters['object']->expiration_080 > date('U'))
             $parameters['afterButtonFooter'] = '<a class="btn btn-danger margin-l10 delete-lang-record" href="' . route($parameters['resource'] === 'octopus-supervisor-stock'? 'createOctopusSupervisorRequestFromStock' : 'createOctopusRequestFromStock', ['stock' => $parameters['id'], 'offset' => $parameters['offset']]) . '">' . trans('octopus::pulsar.replace_stock') . '</a>';

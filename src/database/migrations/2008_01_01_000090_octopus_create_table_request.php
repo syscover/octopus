@@ -18,8 +18,8 @@ class OctopusCreateTableRequest extends Migration {
                 $table->engine = 'InnoDB';
 
                 $table->increments('id_078')->unsigned();
-                $table->integer('order_078')->unsigned()->nullable();
-                $table->integer('stock_078')->unsigned()->nullable();
+                $table->integer('order_id_078')->unsigned()->nullable();
+                $table->integer('stock_id_078')->unsigned()->nullable();
 
                 $table->integer('supervisor_id_078')->unsigned();
                 $table->integer('customer_id_078')->unsigned()->nullable();
@@ -34,10 +34,10 @@ class OctopusCreateTableRequest extends Migration {
                 $table->string('company_name_078')->nullable();
                 $table->string('name_078')->nullable();
                 $table->string('surname_078')->nullable();
-                $table->string('country_078', 2);
-                $table->string('territorial_area_1_078', 6)->nullable();
-                $table->string('territorial_area_2_078', 10)->nullable();
-                $table->string('territorial_area_3_078', 10)->nullable();
+                $table->string('country_id_078', 2);
+                $table->string('territorial_area_1_id_078', 6)->nullable();
+                $table->string('territorial_area_2_id_078', 10)->nullable();
+                $table->string('territorial_area_3_id_078', 10)->nullable();
                 $table->string('cp_078')->nullable();
                 $table->string('locality_078')->nullable();
                 $table->string('address_078')->nullable();
@@ -80,13 +80,13 @@ class OctopusCreateTableRequest extends Migration {
                 $table->foreign('address_id_078', 'fk08_008_078_request')->references('id_077')
                     ->on('008_077_address')->onDelete('set null')->onUpdate('cascade');
 
-                $table->foreign('country_078', 'fk09_008_078_request')->references('id_002')->on('001_002_country')
+                $table->foreign('country_id_078', 'fk09_008_078_request')->references('id_002')->on('001_002_country')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_1_078', 'fk10_008_078_request')->references('id_003')->on('001_003_territorial_area_1')
+                $table->foreign('territorial_area_1_id_078', 'fk10_008_078_request')->references('id_003')->on('001_003_territorial_area_1')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_2_078', 'fk11_008_078_request')->references('id_004')->on('001_004_territorial_area_2')
+                $table->foreign('territorial_area_2_id_078', 'fk11_008_078_request')->references('id_004')->on('001_004_territorial_area_2')
                     ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_3_078', 'fk12_008_078_request')->references('id_005')->on('001_005_territorial_area_3')
+                $table->foreign('territorial_area_3_id_078', 'fk12_008_078_request')->references('id_005')->on('001_005_territorial_area_3')
                     ->onDelete('restrict')->onUpdate('cascade');
             });
         }

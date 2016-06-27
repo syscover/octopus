@@ -16,9 +16,9 @@ class OctopusCreateRelationsRequestOrderStock extends Migration {
 		if(Schema::hasTable('008_078_request'))
 		{
 			Schema::table('008_078_request', function (Blueprint $table) {
-				$table->foreign('order_078', 'fk13_008_078_request')->references('id_079')->on('008_079_order')
+				$table->foreign('order_id_078', 'fk13_008_078_request')->references('id_079')->on('008_079_order')
 					->onDelete('set null')->onUpdate('cascade');
-				$table->foreign('stock_078', 'fk14_008_078_request')->references('id_080')->on('008_080_stock')
+				$table->foreign('stock_id_078', 'fk14_008_078_request')->references('id_080')->on('008_080_stock')
 					->onDelete('set null')->onUpdate('cascade');
 			});
 		}
@@ -26,9 +26,9 @@ class OctopusCreateRelationsRequestOrderStock extends Migration {
 		if(Schema::hasTable('008_079_order'))
 		{
 			Schema::table('008_079_order', function (Blueprint $table) {
-				$table->foreign('request_079', 'fk14_008_079_order')->references('id_078')->on('008_078_request')
+				$table->foreign('request_id_079', 'fk14_008_079_order')->references('id_078')->on('008_078_request')
 					->onDelete('set null')->onUpdate('cascade');
-				$table->foreign('stock_079', 'fk15_008_079_order')->references('id_080')->on('008_080_stock')
+				$table->foreign('stock_id_079', 'fk15_008_079_order')->references('id_080')->on('008_080_stock')
 					->onDelete('set null')->onUpdate('cascade');
 			});
 		}
@@ -36,9 +36,9 @@ class OctopusCreateRelationsRequestOrderStock extends Migration {
 		if(Schema::hasTable('008_080_stock'))
 		{
 			Schema::table('008_080_stock', function (Blueprint $table) {
-				$table->foreign('request_080', 'fk14_008_080_stock')->references('id_078')->on('008_078_request')
+				$table->foreign('request_id_080', 'fk14_008_080_stock')->references('id_078')->on('008_078_request')
 					->onDelete('set null')->onUpdate('cascade');
-				$table->foreign('order_080', 'fk15_008_080_stock')->references('id_079')->on('008_079_order')
+				$table->foreign('order_id_080', 'fk15_008_080_stock')->references('id_079')->on('008_079_order')
 					->onDelete('set null')->onUpdate('cascade');
 			});
 		}

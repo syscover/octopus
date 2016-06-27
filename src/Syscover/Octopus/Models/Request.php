@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Request
  *
  * Model with properties
- * <br><b>[id, order, committed, supervisor_id, customer_id, shop_id, company_id, family_id, brand_id, product_id, id_address, company_name, name, surname, country, territorial_area_1, territorial_area_2, territorial_area_3_072, cp, locality, address, phone, email, observations, date, view_height, view_width, total_height, total_width, units, expiration, attachment, comments]</b>
+ * <br><b>[id, order_id, stock_id, supervisor_id, customer_id, shop_id, company_id, family_id, brand_id, product_id, address_id, company_name, name, surname, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, locality, address, phone, email, observations, date, date_text, view_height, view_width, total_height, total_width, units, expiration, expiration_text, attachment, comments]</b>
  *
  * @package Syscover\Octopus\Models
  */
@@ -22,7 +22,7 @@ class Request extends Model
     protected $primaryKey   = 'id_078';
     protected $suffix       = '078';
     public $timestamps      = false;
-    protected $fillable     = ['id_078', 'order_078', 'stock_078', 'supervisor_id_078', 'customer_id_078', 'shop_id_078', 'company_id_078', 'family_id_078', 'brand_id_078', 'product_id_078', 'address_id_078', 'company_name_078', 'name_078', 'surname_078', 'country_078', 'territorial_area_1_078', 'territorial_area_2_078', 'territorial_area_3_072', 'cp_078', 'locality_078', 'address_078', 'phone_078', 'email_078', 'observations_078', 'date_078', 'date_text_078', 'view_height_078', 'view_width_078', 'total_height_078', 'total_width_078', 'units_078', 'expiration_078', 'expiration_text_078', 'attachment_078', 'comments_078'];
+    protected $fillable     = ['id_078', 'order_id_078', 'stock_id_078', 'supervisor_id_078', 'customer_id_078', 'shop_id_078', 'company_id_078', 'family_id_078', 'brand_id_078', 'product_id_078', 'address_id_078', 'company_name_078', 'name_078', 'surname_078', 'country_id_078', 'territorial_area_1_id_078', 'territorial_area_2_id_078', 'territorial_area_3_id_078', 'cp_078', 'locality_078', 'address_078', 'phone_078', 'email_078', 'observations_078', 'date_078', 'date_text_078', 'view_height_078', 'view_width_078', 'total_height_078', 'total_width_078', 'units_078', 'expiration_078', 'expiration_text_078', 'attachment_078', 'comments_078'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [
@@ -58,11 +58,11 @@ class Request extends Model
             ->join('008_072_product', '008_078_request.product_id_078', '=', '008_072_product.id_072')
             ->join('008_070_family', '008_078_request.family_id_078', '=', '008_070_family.id_070')
             ->join('001_002_country', function ($join) {
-                $join->on('008_078_request.country_078', '=', '001_002_country.id_002')
+                $join->on('008_078_request.country_id_078', '=', '001_002_country.id_002')
                     ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
             })
-            ->leftJoin('001_003_territorial_area_1', '008_078_request.territorial_area_1_078', '=', '001_003_territorial_area_1.id_003')
-            ->leftJoin('001_004_territorial_area_2', '008_078_request.territorial_area_2_078', '=', '001_004_territorial_area_2.id_004');
+            ->leftJoin('001_003_territorial_area_1', '008_078_request.territorial_area_1_id_078', '=', '001_003_territorial_area_1.id_003')
+            ->leftJoin('001_004_territorial_area_2', '008_078_request.territorial_area_2_id_078', '=', '001_004_territorial_area_2.id_004');
     }
 
     public function addToGetIndexRecords($request, $parameters)
