@@ -33,14 +33,26 @@ class OctopusCreateTableLaboratory extends Migration {
                 $table->string('web_073')->nullable();
                 $table->boolean('favorite_073');
 
-                $table->foreign('country_id_073', 'fk01_008_073_laboratory')->references('id_002')->on('001_002_country')
-                    ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_1_id_073', 'fk02_008_073_laboratory')->references('id_003')->on('001_003_territorial_area_1')
-                    ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_2_id_073', 'fk03_008_073_laboratory')->references('id_004')->on('001_004_territorial_area_2')
-                    ->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign('territorial_area_3_id_073', 'fk04_008_073_laboratory')->references('id_005')->on('001_005_territorial_area_3')
-                    ->onDelete('restrict')->onUpdate('cascade');
+                $table->foreign('country_id_073', 'fk01_008_073_laboratory')
+                    ->references('id_002')
+                    ->on('001_002_country')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
+                $table->foreign('territorial_area_1_id_073', 'fk02_008_073_laboratory')
+                    ->references('id_003')
+                    ->on('001_003_territorial_area_1')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
+                $table->foreign('territorial_area_2_id_073', 'fk03_008_073_laboratory')
+                    ->references('id_004')
+                    ->on('001_004_territorial_area_2')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
+                $table->foreign('territorial_area_3_id_073', 'fk04_008_073_laboratory')
+                    ->references('id_005')
+                    ->on('001_005_territorial_area_3')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
             });
         }
 	}
