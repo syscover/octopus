@@ -57,15 +57,13 @@ class OctopusUpdateV2 extends Migration
 		// change shop_077
 		DBLibrary::renameColumnWithForeignKey('008_077_address', 'shop_077', 'shop_id_077', 'INT', 10, true, false, 'fk01_008_077_address', '008_076_shop', 'id_076', 'cascade', 'cascade');
 		// change country_077
-		DBLibrary::renameColumnWithForeignKey('008_077_address', 'country_077', 'country_id_077', 'VARCHAR', 2, false, false, 'fk01_008_077_address', '001_002_country', 'id_002');
+		DBLibrary::renameColumnWithForeignKey('008_077_address', 'country_077', 'country_id_077', 'VARCHAR', 2, false, false, 'fk02_008_077_address', '001_002_country', 'id_002');
 		// change territorial_area_1_077
-		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_1_077', 'territorial_area_1_id_077', 'VARCHAR', 6, false, true, 'fk02_008_077_address', '001_003_territorial_area_1', 'id_003');
+		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_1_077', 'territorial_area_1_id_077', 'VARCHAR', 6, false, true, 'fk03_008_077_address', '001_003_territorial_area_1', 'id_003');
 		// change territorial_area_2_077
-		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_2_077', 'territorial_area_2_id_077', 'VARCHAR', 10, false, true, 'fk03_008_077_address', '001_004_territorial_area_2', 'id_004');
+		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_2_077', 'territorial_area_2_id_077', 'VARCHAR', 10, false, true, 'fk04_008_077_address', '001_004_territorial_area_2', 'id_004');
 		// change territorial_area_3_077
-		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_3_077', 'territorial_area_3_id_077', 'VARCHAR', 10, false, true, 'fk04_008_077_address', '001_005_territorial_area_3', 'id_005');
-		// change custom_field_group_077
-		DBLibrary::renameColumnWithForeignKey('008_077_address', 'custom_field_group_077', 'field_group_id_077', 'INT', 10, true, true, 'fk05_008_077_address', '001_025_field_group', 'id_025');
+		DBLibrary::renameColumnWithForeignKey('008_077_address', 'territorial_area_3_077', 'territorial_area_3_id_077', 'VARCHAR', 10, false, true, 'fk05_008_077_address', '001_005_territorial_area_3', 'id_005');
 
 		// change supervisor_078
 		DBLibrary::renameColumnWithForeignKey('008_078_request', 'supervisor_078', 'supervisor_id_078', 'INT', 10, true, false, 'fk01_008_078_request', '001_010_user', 'id_010');
