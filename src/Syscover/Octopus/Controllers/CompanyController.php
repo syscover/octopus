@@ -13,7 +13,7 @@ class CompanyController extends Controller
     protected $routeSuffix  = 'octopusCompany';
     protected $folder       = 'company';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_074', 'company_name_074', 'email_074', 'phone_074', 'contact_074'];
+    protected $indexColumns     = ['id_074', 'company_name_074', 'email_074', 'phone_074', 'contact_074'];
     protected $nameM        = 'name_company_074';
     protected $model        = Company::class;
     protected $icon         = 'fa fa-building';

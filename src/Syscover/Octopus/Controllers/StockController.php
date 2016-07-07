@@ -23,7 +23,7 @@ class StockController extends Controller
     protected $routeSuffix  = 'octopusStock';
     protected $folder       = 'stock';
     protected $package      = 'octopus';
-    protected $aColumns     = ['id_080', ['type' => 'date', 'data' => 'date_080', 'format' => 'd-m-Y'], 'code_075', 'name_076',  'address_076', 'locality_076', 'name_072'];
+    protected $indexColumns     = ['id_080', ['type' => 'date', 'data' => 'date_080', 'format' => 'd-m-Y'], 'code_075', 'name_076',  'address_076', 'locality_076', 'name_072'];
     protected $nameM        = 'id_080';
     protected $model        = Stock::class;
     protected $icon         = 'fa fa-th-large';
