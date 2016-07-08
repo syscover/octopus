@@ -13,7 +13,7 @@ class CustomerController extends Controller
     protected $routeSuffix  = 'octopusCustomer';
     protected $folder       = 'customer';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_075', 'code_075', 'company_name_075', ['data' => 'email_075', 'type' => 'email'], 'phone_075', 'contact_075'];
+    protected $indexColumns = ['id_075', 'code_075', 'company_name_075', ['data' => 'email_075', 'type' => 'email'], 'phone_075', 'contact_075'];
     protected $nameM        = 'company_name_075';
     protected $model        = Customer::class;
     protected $icon         = 'icomoon-icon-users';

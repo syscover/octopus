@@ -13,7 +13,7 @@ class LaboratoryController extends Controller
     protected $routeSuffix  = 'octopusLaboratory';
     protected $folder       = 'laboratory';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_073', 'company_name_073', ['data' => 'email_073', 'type' => 'email'], 'phone_073', 'contact_073'];
+    protected $indexColumns = ['id_073', 'company_name_073', ['data' => 'email_073', 'type' => 'email'], 'phone_073', 'contact_073'];
     protected $nameM        = 'name_company_073';
     protected $model        = Laboratory::class;
     protected $icon         = 'icomoon-icon-lab';

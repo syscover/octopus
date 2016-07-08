@@ -13,7 +13,7 @@ class BrandController extends Controller
     protected $routeSuffix  = 'octopusBrand';
     protected $folder       = 'brand';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_071', 'name_071'];
+    protected $indexColumns = ['id_071', 'name_071'];
     protected $nameM        = 'name_071';
     protected $model        = Brand::class;
     protected $icon         = 'icomoon-icon-medal-2';

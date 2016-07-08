@@ -14,7 +14,7 @@ class ProductController extends Controller
     protected $routeSuffix  = 'octopusProduct';
     protected $folder       = 'product';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_072', 'name_071', 'name_072', ['data' => 'active_072', 'type' => 'active']];
+    protected $indexColumns = ['id_072', 'name_071', 'name_072', ['data' => 'active_072', 'type' => 'active']];
     protected $nameM        = 'name_071';
     protected $model        = Product::class;
     protected $icon         = 'icomoon-icon-cube';

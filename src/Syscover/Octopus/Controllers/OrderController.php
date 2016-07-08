@@ -28,7 +28,7 @@ class OrderController extends Controller
     protected $routeSuffix  = 'octopusOrder';
     protected $folder       = 'order';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_079', ['type' => 'date', 'data' => 'date_079', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'address_076', 'locality_076', 'name_072'];
+    protected $indexColumns = ['id_079', ['type' => 'date', 'data' => 'date_079', 'format' => 'd-m-Y'], 'code_075', 'name_076', 'address_076', 'locality_076', 'name_072'];
     protected $nameM        = 'id_079';
     protected $model        = Order::class;
     protected $icon         = 'fa fa-refresh';

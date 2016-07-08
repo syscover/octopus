@@ -14,7 +14,7 @@ class AddressController extends Controller
     protected $routeSuffix  = 'octopusAddress';
     protected $folder       = 'address';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
+    protected $indexColumns = ['id_077', 'alias_077', 'address_077', 'locality_077', ['data' => 'email_077', 'type' => 'email'], 'phone_077', ['data' => 'favorite_077', 'type' => 'check']];
     protected $nameM        = 'alias_077';
     protected $model        = Address::class;
     protected $icon         = 'fa fa-road';

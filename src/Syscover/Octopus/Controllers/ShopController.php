@@ -14,7 +14,7 @@ class ShopController extends Controller
     protected $routeSuffix  = 'octopusShop';
     protected $folder       = 'shop';
     protected $package      = 'octopus';
-    protected $indexColumns     = ['id_076', 'company_name_075', 'name_076', 'name_004', 'address_076', 'locality_076'];
+    protected $indexColumns = ['id_076', 'company_name_075', 'name_076', 'name_004', 'address_076', 'locality_076'];
     protected $nameM        = 'company_name_076';
     protected $model        = Shop::class;
     protected $icon         = 'icomoon-icon-office';
