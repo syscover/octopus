@@ -1,9 +1,7 @@
 {
     "name": "syscover/octopus",
-    "version": "5.2",
     "description": "Octopus package",
     "keywords": ["syscover","pulsar","laravel","octopus"],
-    "license": "MIT",
     "authors": [
         {
             "name": "SYSCOVER SL",
