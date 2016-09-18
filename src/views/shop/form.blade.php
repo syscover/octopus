@@ -43,7 +43,7 @@
             $.magnificPopup.close();
         }
     </script>
-    <!-- /.octopus::shops.create -->
+    <!-- /octopus::shops.create -->
 @stop
 
 @section('rows')
@@ -173,5 +173,5 @@
         'rangeLength' => '2,255',
         'type' => 'email'
     ])
-    <!-- /.octopus::shops.create -->
+    <!-- /octopus::shops.create -->
 @stop

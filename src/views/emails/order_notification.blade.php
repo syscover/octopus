@@ -24,7 +24,7 @@
             <br>
         </td>
     </tr>
-    <!-- /.supervisor -->
+    <!-- /supervisor -->
     <!-- shop -->
     <tr>
         <td colspan="2" class="header_body brown" valign="middle" width="100%" style='background:#ffffff;text-align:left;font-size:15px;line-height:19px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;border-collapse:collapse;padding:0;border-spacing:0;vertical-align:middle;padding-left:10px;width:auto !important'>
@@ -90,7 +90,7 @@
             <br>
         </td>
     </tr>
-    <!-- /.shop -->
+    <!-- /shop -->
     <!-- address -->
     <tr>
         <td colspan="2" class="header_body brown" valign="middle" width="100%" style='background:#ffffff;text-align:left;font-size:15px;line-height:19px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;border-collapse:collapse;padding:0;border-spacing:0;vertical-align:middle;padding-left:10px;width:auto !important'>
@@ -161,7 +161,7 @@
             </td>
         </tr>
     @endif
-    <!-- /.address -->
+    <!-- /address -->
     <!-- order -->
     <tr>
         <td colspan="2" class="header_body brown" valign="middle" width="100%" style='background:#ffffff;text-align:left;font-size:15px;line-height:19px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;border-collapse:collapse;padding:0;border-spacing:0;vertical-align:middle;padding-left:10px;width:auto !important'>
@@ -222,7 +222,7 @@
             @endif
         </td>
     </tr>
-    <!-- /.order -->
+    <!-- /order -->
     <tr>
         <td colspan="2" width="100%">&nbsp;</td>
     </tr>

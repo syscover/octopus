@@ -33,7 +33,7 @@
             });
         });
     </script>
-    <!-- /.octopus::address.create -->
+    <!-- /octopus::address.create -->
 @stop
 
 @section('rows')
@@ -166,5 +166,5 @@
         'name' => 'ref',
         'value' => $ref
     ])
-    <!-- /.octopus::addresses.create -->
+    <!-- /octopus::addresses.create -->
 @stop

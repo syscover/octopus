@@ -17,5 +17,5 @@
         'rangeLength' => '2,50',
         'required' => true
     ])
-    <!-- /.octopus::family.create -->
+    <!-- /octopus::family.create -->
 @stop

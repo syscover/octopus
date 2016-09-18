@@ -153,7 +153,7 @@
     </script>
 
     @include('pulsar::includes.js.delete_file')
-    <!-- /.octopus::requests.form -->
+    <!-- /octopus::requests.form -->
 @stop
 
 @section('rows')
@@ -591,5 +591,5 @@
         'value' => old('comments', isset($object->comments_078)? $object->comments_078 : null),
         'readOnly' => $action == 'show'
     ])
-    <!-- /.octopus::requests.form -->
+    <!-- /octopus::requests.form -->
 @stop

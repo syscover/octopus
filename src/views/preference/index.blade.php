@@ -4,7 +4,7 @@
     @parent
     <!-- octopus::preference.index -->
     @include('pulsar::includes.js.messages')
-    <!-- /.octopus::preference.index -->
+    <!-- /octopus::preference.index -->
 @stop
 
 @section('rows')
@@ -29,5 +29,5 @@
         'fieldSize' => 5,
         'required' => true
     ])
-    <!-- /.octopus::preference.index -->
+    <!-- /octopus::preference.index -->
 @stop

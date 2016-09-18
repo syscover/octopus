@@ -33,5 +33,5 @@
         'value' => 1,
         'checked' => old('active', isset($object->active_072)? $object->active_072 : true)
     ])
-    <!-- /.octopus::product.create -->
+    <!-- /octopus::product.create -->
 @stop

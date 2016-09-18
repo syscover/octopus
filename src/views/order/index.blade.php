@@ -53,7 +53,7 @@
             )
         }
     </script>
-    <!-- /.octopus::order.index -->
+    <!-- /octopus::order.index -->
 @stop
 
 @section('tHead')
@@ -71,5 +71,5 @@
         @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /.octopus::order.index -->
+    <!-- /octopus::order.index -->
 @stop

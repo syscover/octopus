@@ -34,7 +34,7 @@
             }
         });
     </script>
-    <!-- /.octopus::shops.index -->
+    <!-- /octopus::shops.index -->
 @stop
 
 @section('tHead')
@@ -51,5 +51,5 @@
         @endif
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /.octopus::shops.index -->
+    <!-- /octopus::shops.index -->
 @stop
