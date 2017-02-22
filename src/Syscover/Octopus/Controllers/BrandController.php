@@ -22,7 +22,6 @@ class BrandController extends Controller
     public function storeCustomRecord($parameters)
     {
         Brand::create([
-            'id_071'    => $this->request->input('id'),
             'name_071'  => $this->request->input('name')
         ]);
     }

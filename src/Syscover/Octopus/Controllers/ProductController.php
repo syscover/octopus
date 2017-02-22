@@ -30,7 +30,6 @@ class ProductController extends Controller
     public function storeCustomRecord($parameters)
     {
         Product::create([
-            'id_072'        => $this->request->input('id'),
             'brand_id_072'  => $this->request->input('brand'),
             'name_072'      => $this->request->input('name'),
             'active_072'    => $this->request->has('active')
