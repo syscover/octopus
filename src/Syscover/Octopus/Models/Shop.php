@@ -55,7 +55,7 @@ class Shop extends Model
 
     public function getCustomer()
     {
-        return $this->hasOne('Syscover\Octopus\Models\Customer','id_075','customer_id_076');
+        return $this->hasOne('Syscover\Octopus\Models\Customer', 'id_075', 'customer_id_076');
     }
 
     public function scopeBuilder($query)
