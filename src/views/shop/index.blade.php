@@ -12,12 +12,12 @@
                     "columnDefs": [
 
                         @if(isset($modal) && $modal)
-                        { "sortable": false, "targets": [6]},
-                        { "class": "align-center", "targets": [6]}
-                        @else
-                        { "sortable": false, "targets": [6,7]},
-                        { "class": "checkbox-column", "targets": [6]},
+                        { "sortable": false, "targets": [7]},
                         { "class": "align-center", "targets": [7]}
+                        @else
+                        { "sortable": false, "targets": [7,8]},
+                        { "class": "checkbox-column", "targets": [7]},
+                        { "class": "align-center", "targets": [8]}
                         @endif
 
                     ],
@@ -41,6 +41,7 @@
     <!-- octopus::shops.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
+        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.customer', 1) }}</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.customer', 1) }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone">{{ trans_choice('pulsar::pulsar.territorial_area', 1) }} 2</th>
