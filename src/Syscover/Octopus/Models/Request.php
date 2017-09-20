@@ -59,7 +59,7 @@ class Request extends Model
             ->join('008_070_family', '008_078_request.family_id_078', '=', '008_070_family.id_070')
             ->join('001_002_country', function ($join) {
                 $join->on('008_078_request.country_id_078', '=', '001_002_country.id_002')
-                    ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
+                    ->where('001_002_country.lang_id_002', '=', base_lang2()->id_001);
             })
             ->leftJoin('001_003_territorial_area_1', '008_078_request.territorial_area_1_id_078', '=', '001_003_territorial_area_1.id_003')
             ->leftJoin('001_004_territorial_area_2', '008_078_request.territorial_area_2_id_078', '=', '001_004_territorial_area_2.id_004');
