@@ -164,7 +164,7 @@
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'supervisor',
-        'value' => isset($object->supervisor_id_078)? $object->supervisor_id_078 : auth('pulsar')->user()->id_010
+        'value' => isset($object->supervisor_id_078)? $object->supervisor_id_078 : auth()->guard('pulsar')->user()->id_010
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'customer',

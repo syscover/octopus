@@ -74,7 +74,7 @@ class Request extends Model
 
         // filter requests only from current user
         if($actions['resource'] === 'octopus-supervisor-request')
-            $query->where('supervisor_id_078', auth('pulsar')->user()->id_010);
+            $query->where('supervisor_id_078', auth()->guard('pulsar')->user()->id_010);
 
         return $query;
     }
@@ -87,7 +87,7 @@ class Request extends Model
         $query =  $this->builder();
 
         if($actions['resource'] === 'octopus-supervisor-request')
-            $query->where('supervisor_id_078', auth('pulsar')->user()->id_010);
+            $query->where('supervisor_id_078', auth()->guard('pulsar')->user()->id_010);
 
         return $query;
     }
