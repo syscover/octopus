@@ -223,8 +223,8 @@ class OrderController extends Controller
             'total_width_079'           => $this->request->has('totalWidth')? $this->request->input('totalWidth') : null,
             'total_height_079'          => $this->request->has('totalHeight')? $this->request->input('totalHeight') : null,
             'units_079'                 => $this->request->input('units'),
-            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
-            'expiration_text_079'       => $this->request->has('expiration')? $this->request->input('expiration') : null,
+            'expiration_079'            => $this->request->input('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
+            'expiration_text_079'       => $this->request->input('expiration')? $this->request->input('expiration') : null,
             'attachment_079'            => isset($filename)? $filename : null,
             'comments_079'              => $this->request->has('comments')? $this->request->input('comments') : null
         ]);
@@ -277,8 +277,8 @@ class OrderController extends Controller
             'total_height_079'          => $this->request->has('totalHeight')? $this->request->input('totalHeight') : null,
             'total_width_079'           => $this->request->has('totalWidth')? $this->request->input('totalWidth') : null,
             'units_079'                 => $this->request->input('units'),
-            'expiration_079'            => $this->request->has('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
-            'expiration_text_079'       => $this->request->has('expiration')? $this->request->input('expiration') : null,
+            'expiration_079'            => $this->request->input('expiration')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('expiration'))->getTimestamp() : null,
+            'expiration_text_079'       => $this->request->input('expiration')? $this->request->input('expiration') : null,
             'comments_079'              => $this->request->has('comments')? $this->request->input('comments') : null
         ];
 
