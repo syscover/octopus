@@ -22,7 +22,6 @@ class FamilyController extends Controller
     public function storeCustomRecord($parameters)
     {
         Family::create([
-            'id_070'    => $this->request->input('id'),
             'name_070'  => $this->request->input('name')
         ]);
     }
@@ -30,7 +29,6 @@ class FamilyController extends Controller
     public function updateCustomRecord($parameters)
     {
         Family::where('id_070', $parameters['id'])->update([
-            'id_070'    => $this->request->input('id'),
             'name_070'  => $this->request->input('name')
         ]);
     }
